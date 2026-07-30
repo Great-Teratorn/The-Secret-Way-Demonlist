@@ -1,31 +1,5 @@
 [
-   {
 
-    "name": "xo", 
-    "author": "KrmaL",
-    "id": 58825144,
-    "verification": "https://www.youtube.com/watch?v=VLmqKPw6seU",
-    "percentToQualify": 100,
-    "records": []
-
-   },
-
-   {
-
-    "name": "BUTTON MASHER", 
-    "author": "ViPriN",
-    "id": 115047336,
-    "verification": "https://www.youtube.com/watch?v=xtmxcAbMfuQ",
-    "percentToQualify": 100,
-    "records": [
-        {
-            "user": "Liverlan",
-            "link": "https://youtu.be/JoGv0_l6nRA?si=dmImhIswgopmBkgP",
-            "percent": 100,
-            "hz": 60  
-        }
-    ]
-
-   } 
+    "xo",
+    "button-masher"
 ]
- 
