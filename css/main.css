@@ -96,25 +96,30 @@ input[type="checkbox"] {
 }
 
 
+/* FULL CUSTOM SPLATTER BACKGROUND */
 body, main, #app, .main, .content, #app-container, .main-panel {
-    background-color: #050505 !important;
-    background-image: linear-gradient(rgba(0, 255, 102, 0.08) 1px, transparent 1px),
-                      linear-gradient(90deg, rgba(0, 255, 102, 0.08) 1px, transparent 1px) !important;
-    background-size: 40px 40px !important;
+    background-image: url('../assets/stripes-background.jpg') !important;
+    background-size: cover !important; /* Stretches the image to fill the screen */
+    background-position: center !important; /* Centers the paint strokes */
+    background-repeat: no-repeat !important; /* Prevents awkward repeating tiling */
+    background-attachment: fixed !important; /* Keeps the paint static when scrolling the levels list */
+    background-color: #050505 !important; /* Solid black backup color */
     color: #ffffff !important;
 }
 
 
 
-nav div:first-child, nav a:first-child, .nav-brand, .brand, header a {
+
+header h2, .nav h2, .title, h1, h2 {
     color: #00ff66 !important;
-    text-shadow: 0 0 8px rgba(0, 255, 102, 0.5) !important;
+    text-shadow: 0 0 10px rgba(0, 255, 102, 0.6) !important;
 }
 
-/* KEEP OTHER NAV LINKS WHITE */
-nav a:not(:first-child), .nav-links a {
+/* QUICK RESET TO FORCE OTHER TABS BACK TO NORMAL */
+nav a, .nav-links a, .links a {
     color: #ffffff !important;
 }
+
 
 
 
