@@ -143,23 +143,25 @@ main h2,
 
 
 
-/* FIX SUBMIT RECORD BUTTON TEXT INVISIBILITY */
-header a[class*="cta"], 
-header .nav__cta,
-header a.nav__cta {
-    background-color: #00ff66 !important; /* Flashy Neon Green button background */
-    color: #000000 !important; /* Crisp black text so it is highly visible */
+/* EXPLICIT FIX FOR SUBMIT RECORD CALL TO ACTION BUTTON */
+header nav .nav__actions a:last-child,
+header nav a:has(span),
+header nav .nav__actions a button,
+header nav a[href*="form"] {
+    background-color: #00ff66 !important; /* Forces background to Flashy Neon Green */
+    color: #000000 !important; /* Forces button text to solid black */
     font-weight: bold !important;
-    padding: 6px 12px !important; /* Gives it nice spacing */
-    border-radius: 4px !important; /* Smooth rounded corners */
+    padding: 5px 12px !important;
+    border-radius: 4px !important;
+    display: inline-block !important;
 }
 
-/* HOVER EFFECT FOR SUBMIT BUTTON */
-header a[class*="cta"]:hover, 
-header .nav__cta:hover {
-    background-color: #ffffff !important; /* Turns white when hovered */
+/* INTERACTIVE HOVER BEHAVIOR */
+header nav .nav__actions a:last-child:hover {
+    background-color: #ffffff !important; /* Shifts to crisp white when highlighted */
     color: #000000 !important;
 }
+
 
 
 
