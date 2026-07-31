@@ -2,15 +2,17 @@
 
     "name": "xo", 
     "author": "KrmaL",
+    "verifier": "PureL",
+    "creators": ["KrmaL"],
     "id": 58825144,
     "verification": "https://www.youtube.com/watch?v=VLmqKPw6seU",
     "percentToQualify": 100,
     "records": [
         {
-            "user": "Liverlan",
-            "link": "https://youtu.be/JoGv0_l6nRA?si=dmImhIswgopmBkgP",
+            "user": "PureL",
+            "link": "https://www.youtube.com/watch?v=VLmqKPw6seU",
             "percent": 100,
-            "hz": 60  
+            "hz": 360  
         }
     ]
 
