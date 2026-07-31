@@ -109,57 +109,21 @@ body, main, #app, .main, .content, #app-container, .main-panel {
 
 
 
-/* NUCLEAR TARGETING FOR THE TOP LEFT LOGO AREA */
-header, 
-header nav,
-header .nav__title,
-header h2 {
+/* ADJUSTED TITLE SIZE & SUBMIT BUTTON RESTORATION */
+header nav > h2:first-of-type,
+header h2:first-child {
     color: #00ff66 !important;
-    font-size: 20px !important;
+    font-size: 22px !important; /* Slightly increased size for better visibility */
     font-weight: bold !important;
     text-shadow: 0 0 10px rgba(0, 255, 102, 0.6) !important;
 }
 
-/* IMMEDIATELY FORCE THE REST OF THE NAV LINKS BACK TO WHITE */
+/* RESTORE BUTTONS AND TABS FROM PREVIOUS CASCADES */
 header nav a, 
-header .nav__actions a, 
-header .nav__links a,
-header button,
-header span:not(:first-child) {
-    color: #ffffff !important;
-    font-size: 1rem !important; /* Normal tab size */
+header nav button, 
+header nav span {
+    font-size: 1rem !important; /* Keeps links and buttons at normal clean sizing */
     text-shadow: none !important;
-}
-
-/* HARD SHIELD TO PROTECT LEVEL VIEWS AND RECORD HEADINGS */
-main h2, 
-.content h2, 
-.level-info h2,
-#app main h2 {
-    color: #ffffff !important;
-    font-size: 2.5rem !important;
-    text-shadow: none !important;
-}
-
-
-
-/* EXPLICIT FIX FOR SUBMIT RECORD CALL TO ACTION BUTTON */
-header nav .nav__actions a:last-child,
-header nav a:has(span),
-header nav .nav__actions a button,
-header nav a[href*="form"] {
-    background-color: #00ff66 !important; /* Forces background to Flashy Neon Green */
-    color: #000000 !important; /* Forces button text to solid black */
-    font-weight: bold !important;
-    padding: 5px 12px !important;
-    border-radius: 4px !important;
-    display: inline-block !important;
-}
-
-/* INTERACTIVE HOVER BEHAVIOR */
-header nav .nav__actions a:last-child:hover {
-    background-color: #ffffff !important; /* Shifts to crisp white when highlighted */
-    color: #000000 !important;
 }
 
 
