@@ -98,20 +98,17 @@ input[type="checkbox"] {
 
 body, main, #app, .main, .content {
     background-color: #050505 !important;
-    background: #050505 !important;
+    background-image: linear-gradient(rgba(0, 77, 30, 0.15) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(0, 77, 30, 0.15) 1px, transparent 1px) !important;
+    background-size: 30px 30px !important; /* Size of the grid stripe boxes */
     color: #ffffff !important;
 }
 
-header, nav, .nav, .navbar {
-    background-color: #5c0099 !important;
-    background: #5c0099 !important;
+
+
+header h2, .brand, h2.brand-title {
+    color: #00ff66 !important; /* Flashy Neon Green for list title only */
+    text-shadow: 0 0 10px rgba(0, 255, 102, 0.4); /* Subtle cyberpunk neon glow */
 }
 
-span, p, h1, h2, h3, div:not(.video) {
-    color: #ffffff !important;
-}
 
-.list-item, .level-button {
-    background-color: #141414 !important;
-    color: #ffffff !important;
-}
