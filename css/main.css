@@ -109,27 +109,38 @@ body, main, #app, .main, .content, #app-container, .main-panel {
 
 
 
-/* UNIVERSAL TARGET FOR NAVBAR BRAND TEXT ONLY */
-.nav__brand h2, 
-.nav__title h2,
-a[href="#/"] h2,
-.nav_actions + h2,
-header > nav > h2 {
+/* NUCLEAR TARGETING FOR THE TOP LEFT LOGO AREA */
+header, 
+header nav,
+header .nav__title,
+header h2 {
     color: #00ff66 !important;
     font-size: 20px !important;
     font-weight: bold !important;
     text-shadow: 0 0 10px rgba(0, 255, 102, 0.6) !important;
 }
 
-/* HARD PRESERVE FOR LEVEL VIEW TITLES */
+/* IMMEDIATELY FORCE THE REST OF THE NAV LINKS BACK TO WHITE */
+header nav a, 
+header .nav__actions a, 
+header .nav__links a,
+header button,
+header span:not(:first-child) {
+    color: #ffffff !important;
+    font-size: 1rem !important; /* Normal tab size */
+    text-shadow: none !important;
+}
+
+/* HARD SHIELD TO PROTECT LEVEL VIEWS AND RECORD HEADINGS */
 main h2, 
-.level-info h2, 
-.level-title,
-div.content > h2 {
+.content h2, 
+.level-info h2,
+#app main h2 {
     color: #ffffff !important;
     font-size: 2.5rem !important;
     text-shadow: none !important;
 }
+
 
 
 
