@@ -143,6 +143,23 @@ main h2,
 
 
 
+/* FIX SUBMIT RECORD BUTTON TEXT INVISIBILITY */
+header a[class*="cta"], 
+header .nav__cta,
+header a.nav__cta {
+    background-color: #00ff66 !important; /* Flashy Neon Green button background */
+    color: #000000 !important; /* Crisp black text so it is highly visible */
+    font-weight: bold !important;
+    padding: 6px 12px !important; /* Gives it nice spacing */
+    border-radius: 4px !important; /* Smooth rounded corners */
+}
+
+/* HOVER EFFECT FOR SUBMIT BUTTON */
+header a[class*="cta"]:hover, 
+header .nav__cta:hover {
+    background-color: #ffffff !important; /* Turns white when hovered */
+    color: #000000 !important;
+}
 
 
 
