@@ -98,7 +98,7 @@ input[type="checkbox"] {
 
 /* FULL CUSTOM SPLATTER BACKGROUND */
 body, main, #app, .main, .content, #app-container, .main-panel {
-    background-image: url('../assets/stripes-background.jpg') !important;
+    background-image: url('../assets/stripes-background.avif') !important;
     background-size: cover !important; /* Stretches the image to fill the screen */
     background-position: center !important; /* Centers the paint strokes */
     background-repeat: no-repeat !important; /* Prevents awkward repeating tiling */
@@ -110,15 +110,13 @@ body, main, #app, .main, .content, #app-container, .main-panel {
 
 
 
-header h2, .nav h2, .title, h1, h2 {
+/* ISOLATE AND FIX THE TOP-LEFT LOGO TEXT */
+header h2, .nav h2, .title, h1, h2, .brand-title, a.home {
     color: #00ff66 !important;
     text-shadow: 0 0 10px rgba(0, 255, 102, 0.6) !important;
+    font-size: 1.5rem !important; /* This shrinks the text down to a cleaner, sleek size */
 }
 
-/* QUICK RESET TO FORCE OTHER TABS BACK TO NORMAL */
-nav a, .nav-links a, .links a {
-    color: #ffffff !important;
-}
 
 
 
