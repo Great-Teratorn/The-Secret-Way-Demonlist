@@ -109,20 +109,23 @@ body, main, #app, .main, .content, #app-container, .main-panel {
 
 
 
-/* FORCE TOP-LEFT NAVBAR TITLE GREEN AND SLEEK */
-body #app header nav > h2,
-#app header h2:first-of-type,
-header nav h2:first-child {
+/* UNIVERSAL TARGET FOR NAVBAR BRAND TEXT ONLY */
+.nav__brand h2, 
+.nav__title h2,
+a[href="#/"] h2,
+.nav_actions + h2,
+header > nav > h2 {
     color: #00ff66 !important;
-    font-size: 24px !important;
+    font-size: 20px !important;
+    font-weight: bold !important;
     text-shadow: 0 0 10px rgba(0, 255, 102, 0.6) !important;
 }
 
-/* KEEP THE LEVEL TITLES AND RECORDS BIG AND WHITE */
+/* HARD PRESERVE FOR LEVEL VIEW TITLES */
 main h2, 
-.content h2, 
-#app main h2, 
-.level-info h2 {
+.level-info h2, 
+.level-title,
+div.content > h2 {
     color: #ffffff !important;
     font-size: 2.5rem !important;
     text-shadow: none !important;
