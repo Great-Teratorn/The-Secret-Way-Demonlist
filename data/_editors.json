@@ -1,27 +1,39 @@
 [
     {
-        "role": "owner",
-        "name": "List Owner",
-        "link": "https://www.youtube.com/@Prometheus_Alt"
+        "role": "elder",
+        "name": "Elder Moderator - Great Teratorn",
+        "link": "https://www.youtube.com/@greatteratorn",
+        "avatar": "assets/mybmw.webp"
     },
     {
-        "role": "admin",
-        "name": "List Admin",
-        "link": "https://www.youtube.com/@Prometheus_Alt"
+        "role": "elder",
+        "name": "Elder Moderator - Jackypoo",
+        "link": "https://www.youtube.com/@jackypoo521",
+        "avatar": "https://cdn.discordapp.com/avatars/619710762436526090/86d787a0df112488216ffeb131ccc45b.webp?size=1280"
     },
     {
-        "role": "helper",
-        "name": "List Helper",
-        "link": "https://www.youtube.com/@Prometheus_Alt"
+        "role": "elder",
+        "name": "Elder Moderator - J Schwizzle",
+        "link": "https://www.youtube.com/@Jschwizzle",
+        "avatar": "https://cdn.discordapp.com/avatars/1108998428727464008/649e98aba64bfb939c3f8bf87be37faf.webp?size=1280"
     },
     {
-        "role": "trial",
-        "name": "Trial List Helper",
-        "link": "https://www.youtube.com/@Prometheus_Alt"
+        "role": "list",
+        "name": "List Moderator - Gold Dyno",
+        "link": "https://www.youtube.com/@GoldDyno",
+        "avatar": "https://cdn.discordapp.com/avatars/1273658996611350622/09614e65f006d9dd5b85c4ab5080cd40.webp?size=1280"
     },
     {
-        "role": "dev",
-        "name": "List Coder",
-        "link": "https://www.youtube.com/@Prometheus_Alt"
+        "role": "list",
+        "name": "List Moderator - Liverlan",
+        "link": "https://www.youtube.com/@Liverlan",
+        "avatar": "https://cdn.discordapp.com/avatars/1273658996611350622/09614e65f006d9dd5b85c4ab5080cd40.webp?size=1280"
+    },
+    {
+        "role": "weekly",
+        "name": "Weekly Demon Helper - Omnicron",
+        "link": "https://www.youtube.com/@hiim-d9v",
+        "avatar": "https://cdn.discordapp.com/avatars/882380867325005895/9779daa7d16a3de8a65bbf7a4ad114da.webp?size=1280"
     }
 ]
+
