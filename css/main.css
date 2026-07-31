@@ -110,12 +110,25 @@ body, main, #app, .main, .content, #app-container, .main-panel {
 
 
 
-/* ISOLATE AND FIX THE TOP-LEFT LOGO TEXT */
-header h2, .nav h2, .title, h1, h2, .brand-title, a.home {
+/* CORRECT LOGO ONLY - DOES NOT TOUCH LEVEL NAMES */
+header .nav h2, 
+.nav div h2, 
+nav .brand h2 {
     color: #00ff66 !important;
+    font-size: 20px !important;
     text-shadow: 0 0 10px rgba(0, 255, 102, 0.6) !important;
-    font-size: 1.5rem !important; /* This shrinks the text down to a cleaner, sleek size */
 }
+
+/* FORCES LEVEL NAMES AND OTHER CONTENT H2s TO STAY WHITE */
+main h2, 
+.content h2, 
+.level-info h2, 
+#app main h2 {
+    color: #ffffff !important;
+    font-size: 2.5rem !important; /* Restores the big epic level name size */
+    text-shadow: none !important;
+}
+
 
 
 
