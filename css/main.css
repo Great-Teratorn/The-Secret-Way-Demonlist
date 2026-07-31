@@ -94,3 +94,24 @@ input[type="checkbox"] {
     cursor: pointer;
     margin: 0;
 }
+
+
+body, main, #app, .main, .content {
+    background-color: #050505 !important;
+    background: #050505 !important;
+    color: #ffffff !important;
+}
+
+header, nav, .nav, .navbar {
+    background-color: #5c0099 !important;
+    background: #5c0099 !important;
+}
+
+span, p, h1, h2, h3, div:not(.video) {
+    color: #ffffff !important;
+}
+
+.list-item, .level-button {
+    background-color: #141414 !important;
+    color: #ffffff !important;
+}
