@@ -75,5 +75,11 @@
             </nav>
         </header>
         <router-view :class="{ dark: store.dark }"></router-view>
+    
+        <div class="site-counter" style="margin-top: 20px; text-align: center;">
+        <p style="font-size: 0.8rem; color: #aaa; margin-bottom: 5px;">Total Site Visits</p>
+        <img src="https://views-counter.vercel.app/api?username=the-secret-way-demonlist&label=Visits&color=00ff66&style=flat-square" alt="Views">
+        </div>
+    
     </body>
 </html>
