@@ -7,6 +7,10 @@
     "id": 58825144,
     "verification": "https://www.youtube.com/watch?v=VLmqKPw6seU",
     "percentToQualify": 100,
-    "records": ["No records yet. "]
+    "records": [{
+            "user": "No records yet. ",
+            "percent": 0,
+            "hz": 0  
+        }]
 
    }
