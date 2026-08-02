@@ -85,7 +85,9 @@ export default {
                     <div class="errors" v-show="errors.length > 0">
                         <p class="error" v-for="error of errors">{{ error }}</p>
                     </div>
-                    <div class="og"><p class="type-label-md">WELCOME TO THE SECRET WAY DEMONLIST!</p></div>
+                    <div class="og">
+                    
+                    </div>
                     
                       </div>
                     <template v-if="editors">
