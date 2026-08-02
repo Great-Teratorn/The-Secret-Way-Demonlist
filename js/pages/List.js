@@ -86,8 +86,10 @@ export default {
                         <p class="error" v-for="error of errors">{{ error }}</p>
                     </div>
                     <div class="og">
-                        
-                    </div>
+                      <p class="type-label-md">WELCOME TO THE SECRET WAY DEMONLIST!</p>
+                      <p class="type-label-md">Secret ways skip at least 30% - unless they are cool secret ways, which skip at least 20%. </p>
+                      <p class="type-label-md"><a href="https://discord.gg/rCEZZA9kZD">Check our Discord Server for more details!</a></p>
+                      </div>
                     <template v-if="editors">
                         <h3>List Editors</h3>
                         <ol class="editors">
