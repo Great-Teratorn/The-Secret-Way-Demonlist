@@ -86,9 +86,7 @@ export default {
                         <p class="error" v-for="error of errors">{{ error }}</p>
                     </div>
                     <div class="og">
-                      <p class="type-label-md" style="font-size: 1.25rem; font-weight: bold; line-height: 1.3; margin-bottom: 12px; height: auto;">WELCOME TO THE SECRET WAY DEMONLIST!</p>
-                      <p class="type-label-md" style="line-height: 1.4; margin-bottom: 10px; height: auto;">Secret ways skip at least 30% - unless they are cool secret ways, which skip at least 20%.</p>
-                      <p class="type-label-md" style="line-height: 1.4; margin-bottom: 10px; height: auto;"><a href="https://discord.gg/rCEZZA9kZD">Check our Discord Server for more details!</a></p>
+                      <p class="type-label-md" style="line-height: 1.5; margin-bottom: 25px;"><span style="font-size: 1.25rem; font-weight: bold; display: block; margin-bottom: 12px;">WELCOME TO THE THE SECRET WAY DEMONLIST!</span> Secret ways skip at least 30% - unless they are cool secret ways, which skip at least 20%.<br><br><a href="https://discord.gg/rCEZZA9kZD">Check our Discord Server for more details!</a></p> </div>
                       
                     </div>
                     
