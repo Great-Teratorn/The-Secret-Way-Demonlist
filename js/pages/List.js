@@ -85,10 +85,7 @@ export default {
                     <div class="errors" v-show="errors.length > 0">
                         <p class="error" v-for="error of errors">{{ error }}</p>
                     </div>
-                    <div class="og">
-                      <p class="type-label-md" style="line-height: 1.3; margin-bottom: 5px;"><span style="font-size: 1.05rem; font-weight: bold; display: block; margin-bottom: 4px;">WELCOME TO THE SECRET WAY DEMONLIST!</span>Secret ways skip at least 30% - unless they skip at least 20% and are cool.<br><a href="https://discord.gg/rCEZZA9kZD">Check our Discord Server for details!</a></p></div>
-                      
-                    </div>
+                    <div class="og" style="height: 140px; min-height: 140px; margin-bottom: 20px;"><p class="type-label-md" style="line-height: 1.4; margin: 0;"><span style="font-size: 1.15rem; font-weight: bold; display: block; margin-bottom: 8px;">WELCOME TO THE SECRET WAY DEMONLIST!</span>Secret ways skip at least 30% - unless they skip at least 20% and are cool.<br><br><a href="https://discord.gg/rCEZZA9kZD">Check our Discord Server for details!</a></p></div>
                     
                       </div>
                     <template v-if="editors">
