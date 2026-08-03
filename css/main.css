@@ -183,39 +183,38 @@ main+aside ul li:nth-child(1) img,.editors li:nth-child(1) img,aside ul li:nth-c
 
 
 /* =======================================================
-   FINAL NAVBAR REPAIR: FULL-WIDTH BRIGHT PURPLE FIX
+   REVISED NAVBAR FIX: VIBRANT PURPLE & SPACING ADJUSTMENTS
    ======================================================= */
 
-/* 1. Target the absolute outermost wrapper to create the unified bright purple bar */
-header, .header {
-    width: 100% !important;
-    max-width: 100% !important;
-    background-color: #8c52ff !important; /* Forces the entire row to use the bright template purple */
-    background: #8c52ff !important;
-    display: flex !important;
-    justify-content: space-between !important;
-    align-items: center !important;
+/* 1. Sets a rich, vibrant deep purple across the full bar and adds breathing room from the screen edges */
+header, .header, nav {
+    background-color: #5E17EB !important; /* A highly vibrant, rich deep purple */
+    background: #5E17EB !important;
+    padding: 12px 40px !important; /* Pushes content away from the left and right screen edges */
+    box-sizing: border-box !important;
 }
 
-/* 2. Strip the isolated background blocks so the title area doesn't create a dark gap */
-nav, .nav, .nav__logo, .logo {
-    background: transparent !important;
-    background-color: transparent !important;
-    box-shadow: none !important;
+/* 2. Fixes "Secret Way Demonlist" text on the left so it stays on one line and looks clean */
+.nav__logo, .logo, .nav__brand, nav h2 {
+    white-space: nowrap !important; /* Stops the text from splitting into two stacked rows */
+    margin-right: 20px !important; /* Creates a clean gap before the tabs start */
 }
 
-/* 3. Force all 7 navigation tabs to stay on a single horizontal row */
+/* 3. Spaces out the center tabs safely */
 .nav__actions, .nav__links, nav div, nav ul {
+    gap: 15px !important; /* Gives tabs comfortable breathing room */
+}
+
+/* 4. Fixes the right-hand side so the TSWD icon and Submit Record button stop overlapping */
+.nav__right, .meta, .right-content, nav > div:last-child {
     display: flex !important;
     flex-direction: row !important;
-    flex-wrap: nowrap !important; /* Strictly prevents tabs from wrapping downwards */
     align-items: center !important;
-    gap: 12px !important; /* Perfectly spaces out all your custom tabs */
+    gap: 15px !important; /* Forces a strict physical gap between your view counter, Discord, and Submit buttons */
+    white-space: nowrap !important;
 }
 
-/* 4. Keep the active indicator line snug against the bottom of the active tab */
-.nav__underline, #nav__underline {
-    position: absolute !important;
-    bottom: 0 !important;
-    transform: translateY(0) !important;
+/* Extra safety for individual items inside the right container */
+.nav__right *, .meta * {
+    position: relative !important; /* Prevents absolute positioning from stacking items on top of each other */
 }
