@@ -183,7 +183,7 @@ main+aside ul li:nth-child(1) img,.editors li:nth-child(1) img,aside ul li:nth-c
 
 
 /* =======================================================
-   ☢️ NUCLEAR NAVBAR RESET: COMPLETE STRUCTURAL RE-LAYOUT ☢️
+   🏁 FINAL TOUCH: TSWD ICON RESIZE & COUNTER MERGE 🏁
    ======================================================= */
 
 /* 1. Reset the entire outer container into a true vibrant deep purple bar */
@@ -192,13 +192,13 @@ header, nav, .nav, #nav {
     max-width: 100% !important;
     height: auto !important;
     min-height: 60px !important;
-    background-color: #5200cc !important; /* Forces a rich, unmistakable vibrant royal purple */
+    background-color: #5200cc !important;
     background: #5200cc !important;
     display: flex !important;
     flex-direction: row !important;
     justify-content: space-between !important;
     align-items: center !important;
-    padding: 12px 30px !important; /* Keeps it perfectly tucked away from the screen edge */
+    padding: 12px 30px !important;
     box-sizing: border-box !important;
     position: relative !important;
 }
@@ -209,7 +209,7 @@ header, nav, .nav, #nav {
     background-color: transparent !important;
     display: flex !important;
     align-items: center !important;
-    white-space: nowrap !important; /* Completely bans the logo text from splitting/wrapping */
+    white-space: nowrap !important;
     margin: 0 !important;
     padding: 0 !important;
 }
@@ -219,13 +219,12 @@ header, nav, .nav, #nav {
     display: flex !important;
     flex-direction: row !important;
     align-items: center !important;
-    flex-wrap: nowrap !important; /* Keeps all 7 tabs locked to one row */
-    gap: 14px !important; /* Perfect uniform gap between all 7 items */
-    margin: 0 auto !important; /* Automatically centers the tab block dynamically */
+    flex-wrap: nowrap !important;
+    gap: 14px !important;
+    margin: 0 auto !important;
 }
 
-/* 4. NUCLEAR FIX FOR THE OVERLAPPING RIGHT SIDE BUTTONS & ICONS */
-/* Wipes out absolute positions/floats forcing them to line up normally */
+/* 4. Keeps the right container cleanly organized */
 .nav__right, .meta, .right-content, nav > div:last-child {
     position: relative !important;
     right: auto !important;
@@ -235,14 +234,14 @@ header, nav, .nav, #nav {
     flex-direction: row !important;
     align-items: center !important;
     justify-content: flex-end !important;
-    gap: 15px !important; /* Strict physical separation between counters, discord, and submit */
+    gap: 15px !important;
     white-space: nowrap !important;
     margin: 0 !important;
 }
 
-/* 5. Force ALL child elements inside the right section to drop dangerous positioning rules */
+/* 5. Force child items drop dangerous positioning rules */
 .nav__right *, .meta *, .right-content * {
-    position: static !important; /* Strips relative/absolute states causing overlaps */
+    position: static !important;
     float: none !important;
     margin: 0 !important;
 }
@@ -253,4 +252,27 @@ header, nav, .nav, #nav {
     bottom: 0 !important;
     transform: translateY(0) !important;
     z-index: 10 !important;
+}
+
+
+/* =======================================================
+   🆕 SPECIFIC FIXES FOR THE TSWD BANNER & HIT COUNTER
+   ======================================================= */
+
+/* Force the TSWD image logo on the right to scale down neatly into the purple bar */
+.nav__right img, .meta img, .right-content img, nav img {
+    height: 35px !important;  /* Shrinks the vertical thickness perfectly */
+    width: auto !important;   /* Dynamically balances the width so it doesn't squish */
+    max-height: 35px !important;
+    object-fit: contain !important;
+    border-radius: 4px !important; /* Optional: rounds the image edges slightly to look premium */
+}
+
+/* Forces the "Total Site Visits" label and the view number (82) to cluster tightly together */
+.nav__right div, .meta div, .right-content div {
+    display: flex !important;
+    flex-direction: column !important; /* Stacks text and numbers cleanly on top of each other */
+    align-items: center !important;
+    gap: 2px !important;
+    margin-right: 5px !important;
 }
