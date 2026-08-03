@@ -183,96 +183,58 @@ main+aside ul li:nth-child(1) img,.editors li:nth-child(1) img,aside ul li:nth-c
 
 
 /* =======================================================
-   ⚙️ PRECISION NAVBAR REPAIR: NO OVERLAPS & CLEAN GROUPS
+   🔧 STRUCTURAL LAYOUT FIX & ICON ISOLATION
    ======================================================= */
 
-/* 1. Base top bar layout - Forces a clean, vibrant horizontal bar */
-header, nav, .nav, #nav {
-    width: 100% !important;
-    max-width: 100% !important;
-    height: 65px !important; /* Gives the bar a fixed, clean height */
-    background-color: #4c07b5 !important; /* Vibrant deep royal purple */
-    background: #4c07b5 !important;
+/* 1. Restores default structural constraints to bring the info panel back */
+header, nav, .nav {
     display: flex !important;
     flex-direction: row !important;
     justify-content: space-between !important;
     align-items: center !important;
-    padding: 0 40px !important; /* Kept away from screen edges */
+    flex-wrap: nowrap !important;
+    height: 65px !important;
+    padding: 0 24px !important;
     box-sizing: border-box !important;
+    background-color: #5200cc !important; /* Retains your vibrant purple choice */
 }
 
-/* 2. Logo/Title on the far left */
-.nav__logo, .logo, .nav__brand, nav h2, nav > a:first-child {
-    background: transparent !important;
-    background-color: transparent !important;
-    white-space: nowrap !important;
-    margin: 0 !important;
-}
-
-/* 3. The 7 Tabs in the center */
+/* 2. Tightens the center tabs layout to leave plenty of room for both side containers */
 .nav__actions, .nav__links, nav div, nav ul {
     display: flex !important;
     flex-direction: row !important;
-    align-items: center !important;
-    flex-wrap: nowrap !important;
-    gap: 16px !important; /* Clean spacing between tabs */
-    margin: 0 auto !important; /* Perfectly centers them */
+    gap: 12px !important; /* Reduces gap slightly so it doesn't push the right side off-screen */
+    margin: 0 auto !important;
 }
 
-/* 4. Active white line tracker placement */
-.nav__underline, #nav__underline {
-    position: absolute !important;
-    bottom: 0 !important;
-    transform: translateY(0) !important;
-}
-
-/* =======================================================
-   👉 FIXES FOR THE RIGHT-SIDE OVERLAPS & COUNTERS 
-   ======================================================= */
-
-/* 5. Main container for the entire right section */
-.nav__right, .meta-container, nav > div:last-child {
+/* 3. Forces the View Text and View Counter Badge to line up horizontally */
+.meta, #meta, .nav__right > div:first-child {
     display: flex !important;
     flex-direction: row !important;
     align-items: center !important;
-    justify-content: flex-end !important;
-    gap: 20px !important; /* Spaces out Counter, Discord, and Submit button safely */
-    margin: 0 !important;
-}
-
-/* 6. Group the "Total Site Visits" label and the "Views" badge horizontally together */
-.meta, #meta, [id*="meta"], [class*="counter"] {
-    display: flex !important;
-    flex-direction: row !important; /* Puts text and badge side-by-side */
-    align-items: center !important;
-    gap: 8px !important; /* Tight gap between label and number box */
+    gap: 6px !important;
     white-space: nowrap !important;
 }
 
-/* Fixes the "Total Site Visits" label text formatting so it doesn't squish */
-.meta span, .meta div, #meta p {
-    display: inline-block !important;
-    font-size: 0.85rem !important;
-    margin: 0 !important;
-}
-
-/* 7. Fix the TSWD Icon / Submit Record button conflict */
-/* If the TSWD icon is inside or next to the button, this forces them to sit side-by-side cleanly */
-nav img, .nav__right img {
-    height: 32px !important;  /* Fits perfectly inside the 65px header */
+/* 4. TARGETED FIX FOR THE OVERLAPPING TSWD BANNER */
+/* This template uses absolute positioning rules specifically on the button's image element. We neutralize it here. */
+.nav__right img, nav a img, [class*="submit"] img {
+    position: relative !important; /* Pulls it out of absolute overlay mode */
+    top: auto !important;
+    right: auto !important;
+    transform: none !important;
+    height: 28px !important; /* Restores a proportional image size */
     width: auto !important;
-    position: relative !important; /* Stops it from flying over the text */
     display: inline-block !important;
     vertical-align: middle !important;
-    margin: 0 5px !important;
+    margin-left: 8px !important; /* Clean margin spacing between text and icon */
 }
 
-/* Ensure the Submit button retains its text layout and padding */
-.btn, [class*="submit"], [id*="submit"], nav a:last-child {
+/* 5. Clean layout structure for the Submit Button wrapper container */
+.nav__right a, [class*="submit-button"] {
     display: inline-flex !important;
     align-items: center !important;
     justify-content: center !important;
-    gap: 8px !important; /* Spacing if text and image are inside the same button */
-    position: relative !important;
     white-space: nowrap !important;
+    gap: 6px !important;
 }
