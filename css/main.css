@@ -182,36 +182,38 @@ main+aside ul li:nth-child(1) img,.editors li:nth-child(1) img,aside ul li:nth-c
 
 
 
-/* 1. Force the absolute outermost bar to be a full-width solid BRIGHT purple row */
-nav, .nav, #nav {
+/* =======================================================
+   FINAL NAVBAR REPAIR: FULL-WIDTH BRIGHT PURPLE FIX
+   ======================================================= */
+
+/* 1. Target the absolute outermost wrapper to create the unified bright purple bar */
+header, .header {
     width: 100% !important;
     max-width: 100% !important;
-    background-color: #7d26cd !important; /* <--- This forces it to be bright purple */
+    background-color: #8c52ff !important; /* Forces the entire row to use the bright template purple */
+    background: #8c52ff !important;
     display: flex !important;
-    flex-direction: row !important;
     justify-content: space-between !important;
     align-items: center !important;
-    padding: 10px 24px !important;
-    box-sizing: border-box !important;
-    position: relative !important;
 }
 
-/* 2. Strip out individual isolated background blocks so they don't look disjointed */
-.nav__logo, .logo, .nav__brand, nav > div:first-child {
+/* 2. Strip the isolated background blocks so the title area doesn't create a dark gap */
+nav, .nav, .nav__logo, .logo {
     background: transparent !important;
     background-color: transparent !important;
+    box-shadow: none !important;
 }
 
-/* 3. Force all navigation links (including your 3 new ones) to stay on one single row */
+/* 3. Force all 7 navigation tabs to stay on a single horizontal row */
 .nav__actions, .nav__links, nav div, nav ul {
     display: flex !important;
     flex-direction: row !important;
+    flex-wrap: nowrap !important; /* Strictly prevents tabs from wrapping downwards */
     align-items: center !important;
-    flex-wrap: nowrap !important; /* Strictly prevents text rows from wrapping or breaking downwards */
-    gap: 10px !important; /* Packs buttons tighter so they comfortably fit your screen */
+    gap: 12px !important; /* Perfectly spaces out all your custom tabs */
 }
 
-/* 4. Fix your active tab indicator underline so it aligns perfectly to the bottom of the row */
+/* 4. Keep the active indicator line snug against the bottom of the active tab */
 .nav__underline, #nav__underline {
     position: absolute !important;
     bottom: 0 !important;
