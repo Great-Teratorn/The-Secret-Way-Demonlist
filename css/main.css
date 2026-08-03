@@ -68,7 +68,20 @@ header .logo {
 }
 header .nav {
     flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
+
+header .nav__tab {
+    padding: 0 8px !important;
+    font-size: 0.9rem !important;
+}
+
+header .nav__underline {
+    bottom: 0 !important;
+}
+
 
 main {
     height: 0;
