@@ -66,25 +66,40 @@ header .logo {
     align-items: flex-end;
     gap: 1rem;
 }
-/* Fixes the layout structure inside the bar */
-.nav {
+header {
+    width: 100% !important;
+    min-height: 60px !important;
     display: flex !important;
     align-items: center !important;
-    gap: 8px !important;
+}
+
+header .nav {
+    display: grid !important;
+    grid-auto-flow: column !important;
+    align-items: center !important;
+    gap: 5px !important;
+    width: 100% !important;
     height: 100% !important;
 }
 
-/* Shrinks the buttons and spacing to force them onto a single line */
-.nav__tab {
-    padding: 0 6px !important;
-}
-.nav__tab span {
-    font-size: 0.85rem !important;
+header .nav__tab {
+    padding: 0 4px !important;
 }
 
-/* Pulls the white underline indicator block safely back up into the bar */
+header .nav__tab span {
+    font-size: 0.8rem !important;
+    white-space: nowrap !important;
+}
+
+header .nav__actions {
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+    white-space: nowrap !important;
+}
+
 .nav__underline {
-    bottom: -15px !important;
+    bottom: -16px !important;
 }
 
 
