@@ -86,10 +86,10 @@ export default {
                         <p class="error" v-for="error of errors">{{ error }}</p>
                     </div>
                     <div class="og">
-                    <p>This website exists because of Great Teratorn</p>
+                    <p>Great Teratorn is responsible for this website's existence!</p>
                       </div>
                     <template v-if="editors">
-                        <h3>List Editors</h3>
+                        <h3>List Staff</h3>
                         <ol class="editors">
                             <li v-for="editor in editors">
                                 <img :src="\`/assets/\${roleIconMap[editor.role]}\${store.dark ? '-dark' : ''}.svg\`" :alt="editor.role">

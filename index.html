@@ -41,8 +41,17 @@
                 <p>v1.0.0</p>
             </div>
             <nav class="nav" style="position: relative;">
+                <router-link class="nav__tab" to="/welcome">
+                    <span class="type-label-lg">Welcome</span>
+                </router-link>
                 <router-link class="nav__tab" to="/">
-                    <span class="type-label-lg">List</span>
+                    <span class="type-label-lg">Demonlist</span>
+                </router-link>
+                <router-link class="nav__tab" to="/extended">
+                    <span class="type-label-lg">Extended List</span>
+                </router-link>
+                <router-link class="nav__tab" to="/legacy">
+                    <span class="type-label-lg">Legacy List</span>
                 </router-link>
                 <router-link class="nav__tab" to="/leaderboard">
                     <span class="type-label-lg">Leaderboard</span>
