@@ -86,7 +86,7 @@ export default {
                         <p class="error" v-for="error of errors">{{ error }}</p>
                     </div>
                     <div class="og">
-                    
+                    <p>This website exists because of Great Teratorn</p>
                       </div>
                     <template v-if="editors">
                         <h3>List Editors</h3>
