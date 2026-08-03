@@ -68,47 +68,50 @@ header .logo {
 }
 header {
     width: 100% !important;
-    height: 60px !important; /* Force strict height */
+    height: 60px !important;
+    background-color: #140f23; /* Dark purple base matching your theme */
 }
 
 header .nav {
     display: flex !important;
-    flex-direction: row !important;
     align-items: center !important;
     justify-content: space-between !important;
     width: 100% !important;
     height: 100% !important;
-    flex-wrap: nowrap !important; /* Block items from falling down */
-    padding: 0 15px !important;
+    padding: 0 20px !important;
     box-sizing: border-box !important;
 }
 
-/* Shrink button sizes and text so all 6 fit on laptops */
+/* Give the tabs group breathing room and align them perfectly */
 header .nav__tab {
-    padding: 0 6px !important;
-    height: 100% !important;
+    padding: 0 10px !important;
+    height: 60px !important; /* Force full header height */
     display: inline-flex !important;
     align-items: center !important;
+    text-decoration: none !important;
 }
 
 header .nav__tab span {
-    font-size: 0.8rem !important;
+    font-size: 0.85rem !important;
     white-space: nowrap !important;
 }
 
-/* Fix right-side actions alignment */
+/* Fix right-side items (counter, discord, submit button) spacing */
 header .nav__actions {
     display: flex !important;
     align-items: center !important;
-    gap: 12px !important;
-    flex-wrap: nowrap !important;
+    gap: 15px !important;
+    height: 100% !important;
 }
 
-/* Fix the white sliding underline bar position and length */
-.nav__underline {
-    bottom: 0 !important;
+/* Push the white highlight line to the absolute bottom of the purple bar */
+header .nav__underline {
+    position: absolute !important;
+    bottom: 0 !important; /* Locks it to the absolute bottom border */
     height: 3px !important;
+    background-color: #fff !important;
 }
+
 
 
 
