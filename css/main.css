@@ -177,3 +177,43 @@ header nav span {
 main+aside ul li:nth-child(1) img,.editors li:nth-child(1) img,aside ul li:nth-child(1) img{content:url('../assets/mybmw.webp')!important;border-radius:50%!important;width:20px!important;height:20px!important;} main+aside ul li:nth-child(2) img,.editors li:nth-child(2) img,aside ul li:nth-child(2) img{content:url('https://cdn.discordapp.com/avatars/619710762436526090/86d787a0df112488216ffeb131ccc45b.webp?size=1280')!important;border-radius:50%!important;width:20px!important;height:20px!important;} main+aside ul li:nth-child(3) img,.editors li:nth-child(3) img,aside ul li:nth-child(3) img{content:url('https://cdn.discordapp.com/avatars/1108998428727464008/649e98aba64bfb939c3f8bf87be37faf.webp?size=1280')!important;border-radius:50%!important;width:20px!important;height:20px!important;} main+aside ul li:nth-child(4) img,.editors li:nth-child(4) img,aside ul li:nth-child(4) img{content:url('https://cdn.discordapp.com/avatars/1273658996611350622/09614e65f006d9dd5b85c4ab5080cd40.webp?size=1280')!important;border-radius:50%!important;width:20px!important;height:20px!important;} main+aside ul li:nth-child(5) img,.editors li:nth-child(5) img,aside ul li:nth-child(5) img{content:url('https://cdn.discordapp.com/avatars/1421471791297331272/552ff00423186e98fa4e107ef8f7180d.webp?size=1280')!important;border-radius:50%!important;width:20px!important;height:20px!important;} main+aside ul li:nth-child(6) img,.editors li:nth-child(6) img,aside ul li:nth-child(6) img{content:url('https://cdn.discordapp.com/avatars/882380867325005895/9779daa7d16a3de8a65bbf7a4ad114da.webp?size=1280')!important;border-radius:50%!important;width:20px!important;height:20px!important;}
 
 
+
+
+
+
+
+/* 1. Force the absolute outermost bar to be a full-width solid BRIGHT purple row */
+nav, .nav, #nav {
+    width: 100% !important;
+    max-width: 100% !important;
+    background-color: #7d26cd !important; /* <--- This forces it to be bright purple */
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    padding: 10px 24px !important;
+    box-sizing: border-box !important;
+    position: relative !important;
+}
+
+/* 2. Strip out individual isolated background blocks so they don't look disjointed */
+.nav__logo, .logo, .nav__brand, nav > div:first-child {
+    background: transparent !important;
+    background-color: transparent !important;
+}
+
+/* 3. Force all navigation links (including your 3 new ones) to stay on one single row */
+.nav__actions, .nav__links, nav div, nav ul {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    flex-wrap: nowrap !important; /* Strictly prevents text rows from wrapping or breaking downwards */
+    gap: 10px !important; /* Packs buttons tighter so they comfortably fit your screen */
+}
+
+/* 4. Fix your active tab indicator underline so it aligns perfectly to the bottom of the row */
+.nav__underline, #nav__underline {
+    position: absolute !important;
+    bottom: 0 !important;
+    transform: translateY(0) !important;
+}
