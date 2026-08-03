@@ -183,38 +183,74 @@ main+aside ul li:nth-child(1) img,.editors li:nth-child(1) img,aside ul li:nth-c
 
 
 /* =======================================================
-   REVISED NAVBAR FIX: VIBRANT PURPLE & SPACING ADJUSTMENTS
+   ☢️ NUCLEAR NAVBAR RESET: COMPLETE STRUCTURAL RE-LAYOUT ☢️
    ======================================================= */
 
-/* 1. Sets a rich, vibrant deep purple across the full bar and adds breathing room from the screen edges */
-header, .header, nav {
-    background-color: #5E17EB !important; /* A highly vibrant, rich deep purple */
-    background: #5E17EB !important;
-    padding: 12px 40px !important; /* Pushes content away from the left and right screen edges */
+/* 1. Reset the entire outer container into a true vibrant deep purple bar */
+header, nav, .nav, #nav {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    min-height: 60px !important;
+    background-color: #5200cc !important; /* Forces a rich, unmistakable vibrant royal purple */
+    background: #5200cc !important;
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    padding: 12px 30px !important; /* Keeps it perfectly tucked away from the screen edge */
     box-sizing: border-box !important;
+    position: relative !important;
 }
 
-/* 2. Fixes "Secret Way Demonlist" text on the left so it stays on one line and looks clean */
-.nav__logo, .logo, .nav__brand, nav h2 {
-    white-space: nowrap !important; /* Stops the text from splitting into two stacked rows */
-    margin-right: 20px !important; /* Creates a clean gap before the tabs start */
+/* 2. Fix the Logo on the left so it stays cleanly on one row */
+.nav__logo, .logo, .nav__brand, nav h2, nav > a:first-child {
+    background: transparent !important;
+    background-color: transparent !important;
+    display: flex !important;
+    align-items: center !important;
+    white-space: nowrap !important; /* Completely bans the logo text from splitting/wrapping */
+    margin: 0 !important;
+    padding: 0 !important;
 }
 
-/* 3. Spaces out the center tabs safely */
+/* 3. Wrap your center links cleanly and stop them from crowding the edges */
 .nav__actions, .nav__links, nav div, nav ul {
-    gap: 15px !important; /* Gives tabs comfortable breathing room */
-}
-
-/* 4. Fixes the right-hand side so the TSWD icon and Submit Record button stop overlapping */
-.nav__right, .meta, .right-content, nav > div:last-child {
     display: flex !important;
     flex-direction: row !important;
     align-items: center !important;
-    gap: 15px !important; /* Forces a strict physical gap between your view counter, Discord, and Submit buttons */
-    white-space: nowrap !important;
+    flex-wrap: nowrap !important; /* Keeps all 7 tabs locked to one row */
+    gap: 14px !important; /* Perfect uniform gap between all 7 items */
+    margin: 0 auto !important; /* Automatically centers the tab block dynamically */
 }
 
-/* Extra safety for individual items inside the right container */
-.nav__right *, .meta * {
-    position: relative !important; /* Prevents absolute positioning from stacking items on top of each other */
+/* 4. NUCLEAR FIX FOR THE OVERLAPPING RIGHT SIDE BUTTONS & ICONS */
+/* Wipes out absolute positions/floats forcing them to line up normally */
+.nav__right, .meta, .right-content, nav > div:last-child {
+    position: relative !important;
+    right: auto !important;
+    top: auto !important;
+    float: none !important;
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+    gap: 15px !important; /* Strict physical separation between counters, discord, and submit */
+    white-space: nowrap !important;
+    margin: 0 !important;
+}
+
+/* 5. Force ALL child elements inside the right section to drop dangerous positioning rules */
+.nav__right *, .meta *, .right-content * {
+    position: static !important; /* Strips relative/absolute states causing overlaps */
+    float: none !important;
+    margin: 0 !important;
+}
+
+/* 6. Clean up the white underline active indicator position */
+.nav__underline, #nav__underline {
+    position: absolute !important;
+    bottom: 0 !important;
+    transform: translateY(0) !important;
+    z-index: 10 !important;
 }
