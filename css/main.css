@@ -68,22 +68,27 @@ header .logo {
 }
 header {
     width: 100% !important;
-    min-height: 60px !important;
-    display: flex !important;
-    align-items: center !important;
+    height: 60px !important; /* Force strict height */
 }
 
 header .nav {
-    display: grid !important;
-    grid-auto-flow: column !important;
+    display: flex !important;
+    flex-direction: row !important;
     align-items: center !important;
-    gap: 5px !important;
+    justify-content: space-between !important;
     width: 100% !important;
     height: 100% !important;
+    flex-wrap: nowrap !important; /* Block items from falling down */
+    padding: 0 15px !important;
+    box-sizing: border-box !important;
 }
 
+/* Shrink button sizes and text so all 6 fit on laptops */
 header .nav__tab {
-    padding: 0 4px !important;
+    padding: 0 6px !important;
+    height: 100% !important;
+    display: inline-flex !important;
+    align-items: center !important;
 }
 
 header .nav__tab span {
@@ -91,16 +96,20 @@ header .nav__tab span {
     white-space: nowrap !important;
 }
 
+/* Fix right-side actions alignment */
 header .nav__actions {
     display: flex !important;
     align-items: center !important;
-    gap: 10px !important;
-    white-space: nowrap !important;
+    gap: 12px !important;
+    flex-wrap: nowrap !important;
 }
 
+/* Fix the white sliding underline bar position and length */
 .nav__underline {
-    bottom: -16px !important;
+    bottom: 0 !important;
+    height: 3px !important;
 }
+
 
 
 
