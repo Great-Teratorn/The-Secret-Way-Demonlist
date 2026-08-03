@@ -183,58 +183,75 @@ main+aside ul li:nth-child(1) img,.editors li:nth-child(1) img,aside ul li:nth-c
 
 
 /* =======================================================
-   🏁 STRICT TARGETED RESET: NO GRID INTERFERENCE
+   🏁 ABSOLUTE FIXED RESET: NO WRAPPING & PERFECT ICONS
    ======================================================= */
 
-/* 1. Force the layout bar structure to use your vibrant purple */
+/* 1. Base Navbar - Horizontal row with your rich purple choice */
 .nav {
     display: flex !important;
     flex-direction: row !important;
     justify-content: space-between !important;
     align-items: center !important;
     flex-wrap: nowrap !important;
-    background-color: #5200cc !important; /* Vibrant royal purple */
+    background-color: #5200cc !important; 
     background: #5200cc !important;
     height: 65px !important;
-    padding: 0 20px !important;
+    padding: 0 25px !important;
+    box-sizing: border-box !important;
 }
 
-/* 2. Group and center your 7 navigation tabs tightly */
+/* 2. Center Tabs Alignment */
 .nav__actions {
     display: flex !important;
     flex-direction: row !important;
     flex-wrap: nowrap !important;
-    gap: 10px !important; /* Tighter gaps to make sure it doesn't spill over */
+    gap: 12px !important;
     margin: 0 auto !important;
 }
 
-/* 3. Keep "Total Site Visits" label and the counter badge cleanly on one line */
-.meta, #meta {
-    display: flex !important;
-    flex-direction: row !important;
-    align-items: center !important;
-    gap: 6px !important;
-    white-space: nowrap !important;
-}
-
-/* 4. Fix the TSWD image logo from squishing or shifting layout blocks */
-.nav img, .nav__actions img, [class*="submit"] img {
-    position: static !important; /* Strip template absolute overlays */
-    height: 24px !important; /* Forces it to sit perfectly inside the bar height */
-    width: auto !important;
-    max-height: 24px !important;
-    display: inline-block !important;
-    vertical-align: middle !important;
-    margin: 0 4px !important;
-    transform: none !important;
-}
-
-/* 5. Force the right side container to line up naturally as separate pieces */
-.nav > div:last-child, [class*="right"] {
+/* 3. Right Container Alignment */
+.nav > div:last-child, .nav__right, [class*="right"] {
     display: flex !important;
     flex-direction: row !important;
     align-items: center !important;
     justify-content: flex-end !important;
-    gap: 12px !important; /* Distinct space between counter, Discord, and Submit */
+    gap: 15px !important;
+    white-space: nowrap !important;
+}
+
+/* 4. PREVENTS THE SITE COUNTER TEXT FROM SQUISHING/WRAPPING */
+/* Forces all text labels on the right to stay perfectly straight inline */
+.nav > div:last-child *, .nav__right *, #meta, .meta {
+    white-space: nowrap !important;
+    display: inline-flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 6px !important;
+}
+
+/* 5. FIX FOR THE GIANT FLOATING TSWD ICON BLOCK */
+/* Pulls the image out of absolute mode, scales it to 24px, and fits it inside the bar */
+.nav img, .nav__right img, [class*="submit"] img, .nav a img {
+    position: relative !important;
+    top: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    left: auto !important;
+    transform: none !important;
+    height: 24px !important;
+    width: auto !important;
+    max-height: 24px !important;
+    object-fit: contain !important;
+    display: inline-block !important;
+    margin: 0 4px !important;
+}
+
+/* 6. Clean up the link/button bounding boxes on the right */
+.nav a, .nav__right a, [class*="submit"] {
+    height: auto !important;
+    max-height: 38px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
     white-space: nowrap !important;
 }
