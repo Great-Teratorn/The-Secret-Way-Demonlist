@@ -183,56 +183,58 @@ main+aside ul li:nth-child(1) img,.editors li:nth-child(1) img,aside ul li:nth-c
 
 
 /* =======================================================
-   🏁 FINAL SAFE FIX: RESTORE INFO TAB & FIX ICONS
+   🏁 STRICT TARGETED RESET: NO GRID INTERFERENCE
    ======================================================= */
 
-/* 1. Global Navbar Reset - Restores standard dimensions and alignment */
-header, nav, .nav {
+/* 1. Force the layout bar structure to use your vibrant purple */
+.nav {
     display: flex !important;
     flex-direction: row !important;
     justify-content: space-between !important;
     align-items: center !important;
     flex-wrap: nowrap !important;
-    height: 65px !important;
-    padding: 0 30px !important;
-    box-sizing: border-box !important;
-    background-color: #5200cc !important; /* Rich vibrant royal purple */
+    background-color: #5200cc !important; /* Vibrant royal purple */
     background: #5200cc !important;
+    height: 65px !important;
+    padding: 0 20px !important;
 }
 
-/* 2. Compact Center Tabs Layout to stop pushing elements right */
-.nav__actions, .nav__links, nav div, nav ul {
+/* 2. Group and center your 7 navigation tabs tightly */
+.nav__actions {
     display: flex !important;
     flex-direction: row !important;
-    gap: 12px !important; /* Tightens tabs slightly to make room */
+    flex-wrap: nowrap !important;
+    gap: 10px !important; /* Tighter gaps to make sure it doesn't spill over */
     margin: 0 auto !important;
 }
 
-/* 3. Keep Site Counter text and View Badge on one single line */
-.meta, #meta, .nav__right > div:first-child {
+/* 3. Keep "Total Site Visits" label and the counter badge cleanly on one line */
+.meta, #meta {
     display: flex !important;
-    flex-direction: row !important; 
+    flex-direction: row !important;
     align-items: center !important;
     gap: 6px !important;
     white-space: nowrap !important;
 }
 
-/* 4. Fix TSWD Image Icon size inside the Submit Button */
-.nav__right img, nav a img, [class*="submit"] img, .nav__right a img {
-    position: static !important; /* Removes overlapping float styling */
-    height: 24px !important;    /* Forces neat proportions inside the bar */
+/* 4. Fix the TSWD image logo from squishing or shifting layout blocks */
+.nav img, .nav__actions img, [class*="submit"] img {
+    position: static !important; /* Strip template absolute overlays */
+    height: 24px !important; /* Forces it to sit perfectly inside the bar height */
     width: auto !important;
+    max-height: 24px !important;
     display: inline-block !important;
     vertical-align: middle !important;
-    margin-left: 8px !important; /* Pushes icon clean away from "Submit Record" text */
+    margin: 0 4px !important;
     transform: none !important;
 }
 
-/* 5. Right container configuration */
-.nav__right, .meta-container, nav > div:last-child {
+/* 5. Force the right side container to line up naturally as separate pieces */
+.nav > div:last-child, [class*="right"] {
     display: flex !important;
     flex-direction: row !important;
     align-items: center !important;
     justify-content: flex-end !important;
-    gap: 16px !important;
+    gap: 12px !important; /* Distinct space between counter, Discord, and Submit */
+    white-space: nowrap !important;
 }
