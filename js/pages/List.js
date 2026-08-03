@@ -87,8 +87,6 @@ export default {
                     </div>
                     <div class="og">
                     
-                    </div>
-                    
                       </div>
                     <template v-if="editors">
                         <h3>List Editors</h3>
