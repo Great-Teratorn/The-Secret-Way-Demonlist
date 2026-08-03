@@ -183,10 +183,10 @@ main+aside ul li:nth-child(1) img,.editors li:nth-child(1) img,aside ul li:nth-c
 
 
 /* =======================================================
-   🔧 STRUCTURAL LAYOUT FIX & ICON ISOLATION
+   🏁 FINAL SAFE FIX: RESTORE INFO TAB & FIX ICONS
    ======================================================= */
 
-/* 1. Restores default structural constraints to bring the info panel back */
+/* 1. Global Navbar Reset - Restores standard dimensions and alignment */
 header, nav, .nav {
     display: flex !important;
     flex-direction: row !important;
@@ -194,47 +194,45 @@ header, nav, .nav {
     align-items: center !important;
     flex-wrap: nowrap !important;
     height: 65px !important;
-    padding: 0 24px !important;
+    padding: 0 30px !important;
     box-sizing: border-box !important;
-    background-color: #5200cc !important; /* Retains your vibrant purple choice */
+    background-color: #5200cc !important; /* Rich vibrant royal purple */
+    background: #5200cc !important;
 }
 
-/* 2. Tightens the center tabs layout to leave plenty of room for both side containers */
+/* 2. Compact Center Tabs Layout to stop pushing elements right */
 .nav__actions, .nav__links, nav div, nav ul {
     display: flex !important;
     flex-direction: row !important;
-    gap: 12px !important; /* Reduces gap slightly so it doesn't push the right side off-screen */
+    gap: 12px !important; /* Tightens tabs slightly to make room */
     margin: 0 auto !important;
 }
 
-/* 3. Forces the View Text and View Counter Badge to line up horizontally */
+/* 3. Keep Site Counter text and View Badge on one single line */
 .meta, #meta, .nav__right > div:first-child {
     display: flex !important;
-    flex-direction: row !important;
+    flex-direction: row !important; 
     align-items: center !important;
     gap: 6px !important;
     white-space: nowrap !important;
 }
 
-/* 4. TARGETED FIX FOR THE OVERLAPPING TSWD BANNER */
-/* This template uses absolute positioning rules specifically on the button's image element. We neutralize it here. */
-.nav__right img, nav a img, [class*="submit"] img {
-    position: relative !important; /* Pulls it out of absolute overlay mode */
-    top: auto !important;
-    right: auto !important;
-    transform: none !important;
-    height: 28px !important; /* Restores a proportional image size */
+/* 4. Fix TSWD Image Icon size inside the Submit Button */
+.nav__right img, nav a img, [class*="submit"] img, .nav__right a img {
+    position: static !important; /* Removes overlapping float styling */
+    height: 24px !important;    /* Forces neat proportions inside the bar */
     width: auto !important;
     display: inline-block !important;
     vertical-align: middle !important;
-    margin-left: 8px !important; /* Clean margin spacing between text and icon */
+    margin-left: 8px !important; /* Pushes icon clean away from "Submit Record" text */
+    transform: none !important;
 }
 
-/* 5. Clean layout structure for the Submit Button wrapper container */
-.nav__right a, [class*="submit-button"] {
-    display: inline-flex !important;
+/* 5. Right container configuration */
+.nav__right, .meta-container, nav > div:last-child {
+    display: flex !important;
+    flex-direction: row !important;
     align-items: center !important;
-    justify-content: center !important;
-    white-space: nowrap !important;
-    gap: 6px !important;
+    justify-content: flex-end !important;
+    gap: 16px !important;
 }
