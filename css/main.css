@@ -258,35 +258,35 @@ main+aside ul li:nth-child(1) img,.editors li:nth-child(1) img,aside ul li:nth-c
 
 
 /* =======================================================
-   🔮 FINAL CHRONO FIX: SEPARATED TSWD ICON & WHITE BUTTON
+   ☢️ STRUCTURAL CSS OVERRIDE: TARGET BY EXACT ORDER ☢️
    ======================================================= */
 
-/* 1. Reset the entire top navbar row to be completely straight, level, and purple */
+/* 1. Target the absolute outermost top bar wrapper to force the rich purple */
 header, nav, .nav, .nav-container, .nav__container, #navbar, [class*="nav"] {
-    background-color: #6200ea !important; /* Elegant vibrant royal purple theme background */
+    background-color: #6200ea !important;
     background: #6200ea !important;
-    height: 46px !important; /* Locks top bar back to its native thin scale */
+    height: 46px !important;
     max-height: 46px !important;
     min-height: 46px !important;
     width: 100% !important;
     max-width: 100% !important;
     display: flex !important;
-    flex-direction: row !important; /* Forces a single straight line layout configuration */
+    flex-direction: row !important;
     justify-content: space-between !important;
     align-items: center !important;
-    padding: 0 25px !important; /* Comfortably forces content inward away from left and right margins */
+    padding: 0 25px !important;
     box-sizing: border-box !important;
 }
 
-/* 2. MATCH LISTS TAB FONTS: Forces your Lists dropdown menu text to match Welcome exactly */
+/* 2. Style the custom Lists dropdown text button to perfectly match Welcome */
 .dropdown-trigger {
-    color: rgba(255, 255, 255, 0.7) !important; /* Matches native unselected text color */
+    color: rgba(255, 255, 255, 0.7) !important;
     background: transparent !important;
     border: none !important;
     cursor: pointer !important;
     font-family: inherit !important;
-    font-size: 13.33px !important; /* Scales text down to match neighboring tabs precisely */
-    font-weight: 700 !important; /* Matches weight layout settings */
+    font-size: 13.33px !important;
+    font-weight: 700 !important;
     text-transform: uppercase !important; 
     letter-spacing: 0.5px !important;
     height: 46px !important;
@@ -300,26 +300,32 @@ header, nav, .nav, .nav-container, .nav__container, #navbar, [class*="nav"] {
     color: #ffffff !important;
 }
 
-/* 3. ALIGN RIGHT CONTAINER ROW Elements */
-/* Coordinates elements sequentially as flat side-by-side elements on a single horizontal grid */
-.nav__right, [class*="right"], nav > div:last-child {
+/* 3. TARGET THE CONTAINER FOR DISCORD, SUBMIT, AND TSWD */
+/* Instead of using a class name, this targets the LAST layout box inside your top nav bar */
+nav > div:last-child, .nav > div:last-child, header > div:last-child {
     display: inline-flex !important;
     flex-direction: row !important;
     align-items: center !important;
     justify-content: flex-end !important;
     height: 46px !important;
-    gap: 16px !important; /* Creates equal spacing distance between your Discord, Button, and TSWD logo */
+    gap: 16px !important; /* Spacing between Discord and Submit button */
     margin: 0 !important;
-    padding-right: 15px !important; /* Strict internal padding to keep the TSWD banner off the right monitor edge */
+    padding: 0 !important;
     position: relative !important;
 }
 
-/* 4. SOLID WHITE SUBMIT RECORD CARD DESIGN */
-/* Explicitly forces a clean white button wrapper that won't absorb template transparency themes */
-.nav__right a, .nav__right [class*="submit"], .nav__right #submit-btn, .nav__right .nav__button {
-    background-color: #ffffff !important; /* Forces solid white button presentation */
+/* Neutralize any absolute coordinates the template forced onto these items */
+nav > div:last-child *, .nav > div:last-child * {
+    position: static !important;
+    float: none !important;
+}
+
+/* 4. FORCE THE SUBMIT RECORD LINK TO BE SOLID WHITE */
+/* This targets the absolute last text link element inside that right side container box */
+nav > div:last-child a:last-of-type, .nav > div:last-child a:last-of-type {
+    background-color: #ffffff !important; /* True solid white background */
     background: #ffffff !important;
-    color: #6200ea !important; /* Purple text match to your layout theme background */
+    color: #6200ea !important; /* Saturated purple font color match */
     padding: 6px 14px !important;
     border-radius: 4px !important;
     font-weight: 700 !important;
@@ -330,24 +336,23 @@ header, nav, .nav, .nav-container, .nav__container, #navbar, [class*="nav"] {
     align-items: center !important;
     justify-content: center !important;
     white-space: nowrap !important;
-    height: 28px !important; /* Perfectly balances button inside the 46px row constraints */
+    height: 28px !important;
     box-sizing: border-box !important;
-    position: relative !important;
     margin: 0 !important;
 }
 
-/* 5. FIX FOR THE COMPLETELY SEPARATED TSWD IMAGE LOGO VECTOR */
-/* Pulls your logo graphic completely out of the button, spaces it out, and handles boundaries safely */
-.nav__right img, .nav__right a img, .nav__right [class*="submit"] img, .nav__right img:last-child {
-    position: relative !important; 
+/* 5. TARGET AND SEPARATE THE TSWD IMAGE LOGO BANNER */
+/* This targets the absolute last image element inside that right side container box */
+nav > div:last-child img, .nav > div:last-child img:last-child {
+    position: relative !important;
     top: auto !important;
     right: auto !important;
     transform: none !important;
-    height: 20px !important; /* Clean vertical proportional sizing inside the 46px row */
-    width: auto !important; /* Calculates width parameters automatically so aspect is natural */
+    height: 20px !important;
+    width: auto !important;
     max-height: 20px !important;
     object-fit: contain !important;
     display: inline-block !important;
-    margin-left: 20px !important; /* 👈 THE GAP: Forces a strict 20px separate buffer distance away from the white button */
-    margin-right: 10px !important; /* Comfortably tucks it inward away from the right screen monitor bezel */
+    margin-left: 20px !important; /* THE SEPARATION GAP: Pushes it 20px away from the white button */
+    margin-right: 10px !important; /* Pulls it away from the far right edge of your laptop screen */
 }
