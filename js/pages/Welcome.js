@@ -15,7 +15,7 @@ export default {
 
             <!-- Video Frame Container -->
             <div class="video-container" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; background: #000; border-radius: 8px; margin-bottom: 30px; border: 1px solid #4a3f75;">
-                <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;" src="https://www.youtube.com/watch?v=VLmqKPw6seU" title="TSWD Origins Video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;" :src="https://www.youtube.com/watch?v=S7BtDDTYVLM" title="TSWD Origins Video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
             </div>
 
@@ -49,7 +49,7 @@ export default {
 
                 <!-- Second Embedded Player (Replicates your first video layout exactly) -->
                 <div class="video-container" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 8px; margin-bottom: 20px;">
-                    <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;" src="https://www.youtube.com/watch?v=VLmqKPw6seU" title="TSWD Origins Video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;" :src="https://www.youtube.com/watch?v=S7BtDDTYVLM" title="TSWD Origins Video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
                 
                 </div>
@@ -60,5 +60,15 @@ export default {
             </div>
 
         </div>
-    `
+    `,
+           
+    
+    data() {
+        return {
+            introVideo: "https://www.youtube.com/watch?v=S7BtDDTYVLM",
+            originsVideo: "https://www.youtube.com/watch?v=S7BtDDTYVLM"
+       };
+    }
+
+
 };

@@ -4,7 +4,8 @@ import Roulette from './pages/Roulette.js';
 import Welcome from './pages/Welcome.js';
 
 export default [
-    { path: '/welcome', component: List },
+    { path: '/welcome', component: Welcome },
+    { path: '/main', component: List },
     { path: '/', component: Welcome },
     { path: '/extended', component: List },
     { path: '/legacy', component: List },
