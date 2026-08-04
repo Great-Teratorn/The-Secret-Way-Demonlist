@@ -258,29 +258,29 @@ main+aside ul li:nth-child(1) img,.editors li:nth-child(1) img,aside ul li:nth-c
 
 
 /* =======================================================
-   🔮 FINAL COMPACT NAVBAR: SINGLE ROW & VIBRANT PURPLE
+   🏁 FINAL TOUCH: TSWD ICON RESIZE & NAV LINK BALANCE 🏁
    ======================================================= */
 
-/* 1. Forces the entire navbar wrapper back into a single, tight 46px horizontal row */
+/* 1. Base top bar layout - Sets the tight horizontal bar dimensions and rich purple */
 header, nav, .nav, .nav-container, .nav__container, #navbar, [class*="nav"] {
-    background-color: #6200ea !important; /* Elegant vibrant violet purple theme */
+    background-color: #6200ea !important; /* Vibrant royal purple theme */
     background: #6200ea !important;
-    height: 46px !important; /* Lowers and locks the bar back to its native thin scale */
+    height: 46px !important;
     max-height: 46px !important;
     min-height: 46px !important;
     width: 100% !important;
     max-width: 100% !important;
     display: flex !important;
-    flex-direction: row !important; /* Forces a single straight line layout */
+    flex-direction: row !important;
     justify-content: space-between !important;
     align-items: center !important;
-    padding: 0 25px !important; /* Pushes the title text neatly away from the left/right screen edges */
+    padding: 0 25px !important;
     box-sizing: border-box !important;
 }
 
-/* 2. Pulls your logo text and version tag back to standard styling and prevents overflows */
+/* 2. Format the title logo and version counter text so they stay cleanly grouped */
 .nav__logo, .logo, nav h2, nav > a:first-child {
-    font-size: 13.33px !important; /* Matches font size exactly to neighboring elements */
+    font-size: 13.33px !important;
     font-weight: 700 !important;
     white-space: nowrap !important;
     margin: 0 !important;
@@ -288,35 +288,71 @@ header, nav, .nav, .nav-container, .nav__container, #navbar, [class*="nav"] {
     align-items: center !important;
 }
 
-/* 3. Forces "LISTS ▼" to perfectly match Welcome, Leaderboard, and Roulette fonts and weights */
-.dropdown-trigger {
-    color: rgba(255, 255, 255, 0.7) !important; /* Standard template unselected tab text wash */
-    font-size: 13.33px !important; /* Identical typography scale match across all menu items */
-    font-weight: 700 !important;
-    text-transform: uppercase !important; /* Enforces clean capitalization consistency across all words */
+/* 3. SYNC TABS: Forces Welcome, Lists, Leaderboard, and Roulette to have the exact same font parameters */
+.dropdown-trigger, .nav__tab, .nav a, nav ul li a, .nav__actions a {
+    font-size: 13.33px !important; /* Perfect uniform size match */
+    font-weight: 700 !important; /* Balanced font weight across all items */
+    text-transform: uppercase !important; /* Enforces uniform ALL-CAPS uppercase look */
     letter-spacing: 0.5px !important;
-    background: transparent !important;
-    border: none !important;
-    cursor: pointer !important;
-    font-family: inherit !important;
+    color: rgba(255, 255, 255, 0.75) !important;
     height: 46px !important;
     display: inline-flex !important;
     align-items: center !important;
-    padding: 0 12px !important;
+    padding: 0 14px !important;
+    border: none !important;
+    background: transparent !important;
+    cursor: pointer !important;
+    font-family: inherit !important;
 }
 
-.dropdown-trigger:hover {
+/* Highlight hover color for all navbar text links */
+.dropdown-trigger:hover, .nav__tab:hover, .nav a:hover, .nav__actions a:hover {
     color: #ffffff !important;
 }
 
-/* 4. Fixes the right side container so hits, discord, and submit fit inside the 46px bar bounds */
-.nav__right, [class*="right"], #meta {
+/* 4. FIX FOR THE RIGHT SIDE OVERFLOW AND VERTICAL COUNTER SQUISHING */
+/* Neutralizes the vertical stack and forces hits, discord, and submit to line up side-by-side */
+.nav__right, [class*="right"], nav > div:last-child {
     display: inline-flex !important;
     flex-direction: row !important;
     align-items: center !important;
+    justify-content: flex-end !important;
     height: 46px !important;
     max-height: 46px !important;
-    gap: 12px !important;
+    gap: 15px !important; /* Clean physical spacing between right side widgets */
     margin: 0 !important;
     white-space: nowrap !important;
+}
+
+/* Forces the Total Site Visits text label and number badge to sit straight side-by-side */
+#meta, .meta, [class*="counter"], .nav__right > div:first-child {
+    display: inline-flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 6px !important;
+    white-space: nowrap !important;
+    height: 46px !important;
+}
+
+/* Un-squishes the "Total Site Visits" label text formatting inside the row */
+#meta *, .meta *, .nav__right span {
+    font-size: 0.8rem !important;
+    display: inline-block !important;
+    line-height: 1 !important;
+    white-space: nowrap !important;
+}
+
+/* 5. FIX FOR THE OVERSIZED TSWD IMAGE VECTOR BANNER */
+/* Pulls the image out of absolute clipping bounds and forces it to fit inside the 46px bar height */
+.nav__right img, nav img, [class*="submit"] img, .nav__right a img {
+    position: relative !important;
+    top: auto !important;
+    right: auto !important;
+    transform: none !important;
+    height: 24px !important; /* Proportional image height to sit cleanly within the 46px row */
+    width: auto !important;
+    max-height: 24px !important;
+    object-fit: contain !important;
+    display: inline-block !important;
+    margin: 0 4px !important;
 }
