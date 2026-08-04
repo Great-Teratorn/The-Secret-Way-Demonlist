@@ -320,13 +320,3 @@ nav a:last-of-type,
 }
 
 
-
-/* Forces the background container behind the roulette link to become transparent */
-.nav a[href*="roulette"], 
-.nav_left a:has(span:contains("ROULETTE")) {
-    background: transparent !important;
-    background-color: transparent !important;
-    background-image: none !important;
-    box-shadow: none !important;
-    border: none !important;
-}
