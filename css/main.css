@@ -258,69 +258,107 @@ main+aside ul li:nth-child(1) img,.editors li:nth-child(1) img,aside ul li:nth-c
 
 
 /* =======================================================
-   🏁 FINAL EXACT FIXED BAR: ORIGINAL FONTS & WHITE BUTTON
+   🏁 FINAL EXACT FIXED BAR: ALIGNED TABS & WHITE BUTTON
    ======================================================= */
 
-header, nav, .nav, .nav-container, .nav__container, [class*="nav"], [id*="nav"] {
+/* 1. Level out the entire navbar height and force the vibrant purple background uniform */
+header, nav, .nav, .nav__container, #navbar {
     background-color: #6200ea !important;
     background: #6200ea !important;
+    height: 46px !important; /* Locks top bar back to its native thin scale */
+    max-height: 46px !important;
+    min-height: 46px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    display: flex !important;
+    flex-direction: row !important; /* Aligns all children straight in one single horizontal row */
+    justify-content: space-between !important;
+    align-items: center !important;
+    padding: 0 25px !important; /* Comfortably forces both side edges inward away from monitor bezels */
+    box-sizing: border-box !important;
 }
 
+/* 2. MATCH ALL TABS TEXT SCALE: Syncs Welcome, Leaderboard, and Roulette fonts perfectly to match Lists */
+.nav__tab, .nav__tab span, .nav a, nav ul li a, .nav__actions a {
+    font-size: 13.33px !important; /* Equalizes text scale precisely to match Lists */
+    font-weight: 700 !important; /* Balanced font weight choice */
+    text-transform: uppercase !important; /* Clean capitalized look */
+    letter-spacing: 0.5px !important;
+    color: rgba(255, 255, 255, 0.75) !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    height: 46px !important;
+}
+
+/* 3. Style the custom Lists dropdown trigger text link element */
 .dropdown-trigger {
-    color: rgba(255, 255, 255, 0.7) !important;
+    color: rgba(255, 255, 255, 0.75) !important;
     background: transparent !important;
     border: none !important;
     cursor: pointer !important;
     font-family: inherit !important;
-    font-size: inherit !important;
-    font-weight: inherit !important;
+    font-size: 13.33px !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+    height: 46px !important;
     display: inline-flex !important;
     align-items: center !important;
-    gap: 4px !important;
     padding: 0 14px !important;
-    height: 100% !important;
+    margin: 0 !important;
 }
 
-.dropdown-trigger:hover {
+.dropdown-trigger:hover, .nav__tab:hover, .nav__tab:hover span {
     color: #ffffff !important;
 }
 
+/* 4. ALIGN RIGHT CONTAINER ROW Elements */
+/* Pulls the right items into a clean horizontal alignment without overlap bugs */
 .nav__right, [class*="right"], nav > div:last-child {
-    display: flex !important;
+    display: inline-flex !important;
     flex-direction: row !important;
     align-items: center !important;
     justify-content: flex-end !important;
-    gap: 16px !important;
-    padding: 0 10px !important;
+    height: 46px !important;
+    gap: 16px !important; /* Distinct space between elements */
+    margin: 0 !important;
+    padding: 0 !important;
     position: relative !important;
 }
 
-.nav__right a.btn, .nav__right [class*="submit"], .nav__right #submit-btn, [class*="submit"], .nav__right .nav__button {
-    background-color: #ffffff !important;
+/* 5. FORCE THE SUBMIT RECORD LINK TO BE SOLID WHITE WITH PURPLE TEXT */
+/* This specifically hits the .nav__button class which was overriding the white background color */
+.nav__right a, .nav__right .nav__button, .nav__right [class*="submit"], .nav__right #submit-btn {
+    background-color: #ffffff !important; /* Pure clean solid white background */
     background: #ffffff !important;
-    color: #6200ea !important;
+    color: #6200ea !important; /* Vibrant background matched purple text fill font */
     padding: 6px 14px !important;
     border-radius: 4px !important;
     font-weight: 700 !important;
+    font-size: 11px !important;
+    text-transform: uppercase !important;
     text-decoration: none !important;
     display: inline-flex !important;
     align-items: center !important;
     justify-content: center !important;
-    gap: 8px !important;
     white-space: nowrap !important;
-    height: auto !important;
+    height: 28px !important; /* Restricts height to look perfectly centered inside the 46px bar */
+    box-sizing: border-box !important;
     position: relative !important;
 }
 
-.nav__right a.btn img, .nav__right [class*="submit"] img, .nav__right img, .nav__right img:last-child {
-    position: static !important;
-    height: 18px !important;
-    width: auto !important;
-    max-height: 18px !important;
+/* 6. FIX FOR THE COMPLETELY SEPARATED TSWD IMAGE LOGO VECTOR */
+/* Targets the last image on the right to scale it and separate it cleanly from the white button */
+.nav__right img, .nav__right a img, .nav__right [class*="submit"] img, .nav__right img:last-child {
+    position: relative !important;
+    top: auto !important;
+    right: auto !important;
+    transform: none !important;
+    height: 20px !important; /* Clean proportional vertical thickness */
+    width: auto !important; /* Calculates aspect automatically so it doesn't squish */
+    max-height: 20px !important;
     object-fit: contain !important;
     display: inline-block !important;
-    margin: 0 !important;
-    margin-left: 20px !important; /* Separates the TSWD banner away from the white button */
-    margin-right: 10px !important; /* Pulls it away from your monitor frame edge */
-    transform: none !important;
+    margin-left: 20px !important; /* 👈 THE GAP: Pushes it 20px away from the white button */
+    margin-right: 15px !important; /* 👈 EDGE PROTECTION: Safely pulls it away from the frame bezel edge */
 }
