@@ -6,7 +6,20 @@ import { round, score } from './score.js';
 const dir = '/The-Secret-Way-Demonlist/data';
 
 export async function fetchList() {
-    const listResult = await fetch(`${dir}/_list.json`);
+    
+    let listFile = '_list.json';
+    const hash = window.location.hash;
+    
+    if (hash.includes('/extended')) {
+        listFile = '_extended.json';
+    } else if (hash.includes('/legacy')) {
+        listFile = '_legacy.json';
+    } else if (hash.includes('/unverified')) {
+        listFile = '_unverified.json';
+    }
+    
+    const listResult = await fetch(`${dir}/${listFile}`);
+    
     try {
         const list = await listResult.json();
         return await Promise.all(

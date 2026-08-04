@@ -8,6 +8,7 @@ export default [
     { path: '/', component: List },
     { path: '/extended', component: List },
     { path: '/legacy', component: List },
+    { path: '/unverified', component: List},
     { path: '/leaderboard', component: Leaderboard },
     { path: '/roulette', component: Roulette },
 ];

@@ -181,4 +181,76 @@ main+aside ul li:nth-child(1) img,.editors li:nth-child(1) img,aside ul li:nth-c
 
 
 
+/* =======================================================
+   🎨 VUE-ROUTER DROPDOWN HOVER CONTAINER
+   ======================================================= */
 
+/* Position the relative trigger block */
+.lists-dropdown {
+    position: relative;
+    display: inline-block;
+    align-self: center;
+}
+
+/* Style the dropdown trigger to seamlessly look like a native navbar item */
+.dropdown-trigger {
+    background: transparent;
+    border: none;
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: bold;
+    padding: 10px 14px;
+    cursor: pointer;
+    font-family: inherit;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.dropdown-trigger:hover {
+    color: #ffffff;
+}
+
+/* The popup box structure holding your Vue links */
+.dropdown-menu {
+    display: none; /* Invisible by default */
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #1a0033; /* Dark theme matching background container color */
+    min-width: 150px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.6);
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    z-index: 9999 !important; /* Locks the box above video or view panels */
+    overflow: hidden;
+    padding: 4px 0;
+}
+
+/* Format your custom router links inside the menu popup box */
+.dropdown-menu .dropdown-item {
+    color: rgba(255, 255, 255, 0.8) !important;
+    padding: 10px 16px !important;
+    text-decoration: none !important;
+    display: block !important;
+    font-size: 0.95rem !important;
+    text-align: left;
+    font-family: inherit;
+    transition: background-color 0.15s;
+}
+
+/* Highlights the item selection when hovered over */
+.dropdown-menu .dropdown-item:hover {
+    background-color: #5200cc !important; /* Your vibrant deep purple color choice */
+    color: #ffffff !important;
+}
+
+/* MAGIC HOVER TRIGGER: Opens the menu immediately on mouse hover */
+.lists-dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+/* Rotates the pointer arrow icon vertically on hover */
+.lists-dropdown:hover .dropdown-trigger .arrow {
+    transform: rotate(180deg);
+}

@@ -44,15 +44,19 @@
                 <router-link class="nav__tab" to="/welcome">
                     <span class="type-label-lg">Welcome</span>
                 </router-link>
-                <router-link class="nav__tab" to="/">
-                    <span class="type-label-lg">Main</span>
-                </router-link>
-                <router-link class="nav__tab" to="/extended">
-                    <span class="type-label-lg">Extended</span>
-                </router-link>
-                <router-link class="nav__tab" to="/legacy">
-                    <span class="type-label-lg">Legacy</span>
-                </router-link>
+                <div class="lists-dropdown">
+    <button class="dropdown-trigger">
+        <span class="type-label-lg">Lists</span>
+        <span class="arrow">▼</span>
+    </button>
+    <div class="dropdown-menu">
+        <router-link class="dropdown-item" to="/">Main</router-link>
+        <router-link class="dropdown-item" to="/extended">Extended</router-link>
+        <router-link class="dropdown-item" to="/legacy">Legacy</router-link>
+        <router-link class="dropdown-item" to="/unverified">Unverified</router-link>
+    </div>
+</div>
+
                 <router-link class="nav__tab" to="/leaderboard">
                     <span class="type-label-lg">Leaderboard</span>
                 </router-link>
