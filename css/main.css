@@ -349,9 +349,9 @@ img[src*="tswd" i] {
     box-shadow: none !important;
     
     /* Forces the image to take up the full available height of the purple bar */
-    height: 45px !important;       
-    max-height: 45px !important;   
-    width: auto !important;         /* Allows width to scale naturally without squishing */
+    height: 54px !important;       
+    max-height: 54px !important;   
+    width: 145px !important;         /* Allows width to scale naturally without squishing */
     object-fit: contain !important; 
     
     display: inline-block !important;
