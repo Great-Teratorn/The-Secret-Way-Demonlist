@@ -258,72 +258,90 @@ main+aside ul li:nth-child(1) img,.editors li:nth-child(1) img,aside ul li:nth-c
 
 
 /* =======================================================
-   🏁 FINAL EXACT FIXED BAR: ORIGINAL FONTS & WHITE BUTTON
+   🏁 NAVBAR FINAL TOUCH: ALIGNED HIGHLIGHTS & WHITE BUTTON
    ======================================================= */
 
-/* 1. Sets the vibrant purple background across the navbar without forcing heavy custom row heights */
-header, nav, .nav, .nav-container, .nav__container, [class*="nav"], [id*="nav"] {
-    background-color: #6200ea !important;
+/* 1. Force the entire top structural section to remain perfectly level and uniform */
+header, nav, .nav, .nav-container, .nav__container, #navbar, [class*="nav"] {
+    background-color: #6200ea !important; /* Premium vibrant purple background */
     background: #6200ea !important;
+    height: 46px !important; /* Lowers and locks the bar back to its native thin scale */
+    max-height: 46px !important;
+    min-height: 46px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    display: flex !important;
+    flex-direction: row !important; /* Forces all children to stay straight in one row */
+    justify-content: space-between !important;
+    align-items: center !important;
+    padding: 0 25px !important;
+    box-sizing: border-box !important;
 }
 
-/* 2. Format your "LISTS ▼" trigger button to perfectly match your original font styling layout */
+/* 2. MATCH LISTS TAB FONTS: Forces your Lists dropdown menu text to match Welcome exactly */
 .dropdown-trigger {
-    color: rgba(255, 255, 255, 0.7) !important;
+    color: rgba(255, 255, 255, 0.75) !important; /* Matches native unselected text color */
     background: transparent !important;
     border: none !important;
     cursor: pointer !important;
     font-family: inherit !important;
-    font-size: inherit !important; /* Reverts size completely back to the template original scale */
-    font-weight: inherit !important; /* Reverts weight completely back to the template original scale */
+    font-size: 13.33px !important; /* Scales down text size to match neighboring tabs */
+    font-weight: 700 !important;   /* Matches weight and typography properties */
+    text-transform: uppercase !important; 
+    letter-spacing: 0.5px !important;
+    height: 46px !important;
     display: inline-flex !important;
     align-items: center !important;
-    gap: 4px !important;
     padding: 0 14px !important;
-    height: 100% !important;
+    margin: 0 !important;
 }
 
 .dropdown-trigger:hover {
-    color: #ffffff !important;
+    color: #ffffff !important; /* Bright white hover state match */
 }
 
-/* 3. Pulls the right action items cleanly apart horizontally and keeps them away from edges */
+/* 3. ALIGN RIGHT CONTAINER ITEMS: Strips old layout parameters to flatten the row */
 .nav__right, [class*="right"], nav > div:last-child {
-    display: flex !important;
+    display: inline-flex !important;
     flex-direction: row !important;
     align-items: center !important;
     justify-content: flex-end !important;
-    gap: 16px !important; /* Creates explicit separation distance between widgets */
-    padding: 0 10px !important; /* Pulls the far right icon smoothly inward away from screen borders */
+    height: 46px !important;
+    gap: 16px !important; /* Clean horizontal spacing distance between components */
+    padding-right: 15px !important; /* Explicit padding pull to keep TSWD off the screen edge border */
+    margin: 0 !important;
     position: relative !important;
 }
 
-/* 4. DESIGN FOR THE PURE WHITE SUBMIT RECORD LINK CONTAINER */
-.nav__right a.btn, .nav__right [class*="submit"], .nav__right #submit-btn, [class*="submit"] {
-    background-color: #ffffff !important; /* Forces solid white button drawer layout */
+/* 4. SOLID WHITE SUBMIT RECORD CARD: Explicit override to crush template transparency rules */
+.nav__right a, .nav__right [class*="submit"], .nav__right #submit-btn, .nav__right .nav__button {
+    background-color: #ffffff !important; /* Forces solid white button presentation */
     background: #ffffff !important;
-    color: #6200ea !important; /* Vibrant background matched purple text fill font */
+    color: #6200ea !important; /* Sets text to your vibrant purple background hue */
     padding: 6px 14px !important;
     border-radius: 4px !important;
     font-weight: 700 !important;
+    font-size: 11px !important;
+    text-transform: uppercase !important;
     text-decoration: none !important;
     display: inline-flex !important;
     align-items: center !important;
     justify-content: center !important;
-    gap: 8px !important; /* Clean margin padding between button label and icon vector */
+    gap: 8px !important;
     white-space: nowrap !important;
-    height: auto !important;
+    height: 28px !important; /* Perfectly balances button inside the 46px top navbar row */
+    box-sizing: border-box !important;
     position: relative !important;
 }
 
-/* 5. FINALLY FIX AND SEPARATE THE TSWD IMAGE LOGO VECTOR inside the button padding wrapper */
-.nav__right a.btn img, .nav__right [class*="submit"] img, .nav__right img {
-    position: static !important; /* Neutralizes clipping layout overlays */
-    height: 18px !important; /* Proportional vertical thickness scale */
-    width: auto !important; /* Balances aspect parameters naturally */
-    max-height: 18px !important;
+/* 5. RESIZE AND ISOLATE THE TSWD IMAGE ACCENT */
+.nav__right img, .nav__right a img, .nav__right [class*="submit"] img {
+    position: static !important; /* Strips layout tracking bugs causing overlaps */
+    height: 16px !important;    /* Proportional height sizing inside the white link button wrapper */
+    width: auto !important;     /* Calculates width automatically so aspect is natural */
+    max-height: 16px !important;
     object-fit: contain !important;
     display: inline-block !important;
-    margin: 0 !important; /* Stops it from pinning directly onto the top screen frame border */
+    margin: 0 !important; /* Completely stops image wrapper from touching outer window limits */
     transform: none !important;
 }
