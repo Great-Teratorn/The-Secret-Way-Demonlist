@@ -327,9 +327,9 @@ img[src*="TSWD"] {
     border: none !important;
     box-shadow: none !important;
     transform: translateY(-2px) !important; 
-    height: 52px !important; 
-    width: 140px !important;
-    max-height: 52px !important;
+    height: 150px !important; 
+    width: 200px !important;
+    max-height: 150px !important;
     object-fit: contain !important;
     display: inline-block !important;
     vertical-align: middle !important;
@@ -351,11 +351,3 @@ a:has(img[src*="TSWD"]) {
     padding: 0 !important;
 }
 
-/* Removes the box formatting from the link wrapper holding the TSWD image */
-a:has(img[src*="TSWD"]) {
-    background: transparent !important;
-    background-color: transparent !important;
-    border: none !important;
-    box-shadow: none !important;
-    padding: 0 !important;
-}
