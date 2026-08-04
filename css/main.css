@@ -258,53 +258,55 @@ main+aside ul li:nth-child(1) img,.editors li:nth-child(1) img,aside ul li:nth-c
 
 
 /* =======================================================
-   🏁 FINAL EXACT REVERSION FIX: CLEAN OVERLAYS & BALANCED NAV
+   🏁 FINAL EXACT TOUCH-UP: PERFECTION LOCK-IN 🏁
    ======================================================= */
 
-/* 1. Sets the vibrant purple background across the navbar without changing native font scales */
+/* 1. Sets the vibrant purple background across the navbar */
 header, nav, .nav, .nav-container, .nav__container, [class*="nav"], [id*="nav"] {
     background-color: #6200ea !important;
     background: #6200ea !important;
 }
 
-/* 2. Format your "LISTS ▼" trigger button to perfectly match your original template font styles */
+/* 2. Style "LISTS ▼" to match original fonts and align it perfectly with the other tabs */
 .dropdown-trigger {
     color: rgba(255, 255, 255, 0.7) !important;
     background: transparent !important;
     border: none !important;
     cursor: pointer !important;
     font-family: inherit !important;
-    font-size: inherit !important; /* Reverts text size completely back to the original layout scale */
-    font-weight: inherit !important; /* Reverts font weight completely back to the original layout scale */
+    font-size: inherit !important;
+    font-weight: inherit !important;
     display: inline-flex !important;
     align-items: center !important;
+    justify-content: center !important;
     gap: 4px !important;
     padding: 0 14px !important;
     height: 100% !important;
+    transform: translateY(-2px) !important; /* 👈 Nudges the Lists text slightly up to be inline with Welcome */
 }
 
 .dropdown-trigger:hover {
     color: #ffffff !important;
 }
 
-/* 3. ALIGN RIGHT CONTAINER ROW Elements */
-/* Pulls the right items into a clean horizontal alignment without overlap tracking bugs */
+/* 3. Align right side container items horizontally */
 .nav__right, [class*="right"], nav > div:last-child {
     display: inline-flex !important;
     flex-direction: row !important;
     align-items: center !important;
     justify-content: flex-end !important;
-    gap: 16px !important; /* Distinct space separating Discord and the white button button wrapper */
+    gap: 16px !important;
     margin: 0 !important;
     padding: 0 !important;
     position: relative !important;
 }
 
-/* 4. SOLID WHITE SUBMIT RECORD CARD: Restores visible dark blue/purple text inside */
+/* 4. FORCES THE SUBMIT RECORD BUTTON TO BE SOLID WHITE AND MAKES THE TEXT VISIBLE */
+/* This directly overrides the template's internal .nav__button class which was hiding the text */
 .nav__right a, .nav__right .nav__button, .nav__right [class*="submit"], .nav__right #submit-btn {
-    background-color: #ffffff !important; /* Pure clean solid white background container card */
+    background-color: #ffffff !important; /* Pure clean solid white background */
     background: #ffffff !important;
-    color: #311b92 !important; /* Forces an ultra-dark navy/purple font color so text is perfectly visible */
+    color: #4A148C !important; /* 👈 Forces a rich dark purple text color so it is bright and clear */
     padding: 6px 14px !important;
     border-radius: 4px !important;
     font-weight: 700 !important;
@@ -314,24 +316,23 @@ header, nav, .nav, .nav-container, .nav__container, [class*="nav"], [id*="nav"] 
     align-items: center !important;
     justify-content: center !important;
     white-space: nowrap !important;
-    height: 28px !important; /* Balanced height proportions inside the 46px layout row */
+    height: 28px !important;
     box-sizing: border-box !important;
     position: relative !important;
 }
 
-/* 5. FIX FOR THE COMPLETELY SEPARATED TSWD IMAGE LOGO VECTOR */
-/* Pulls your logo graphic completely out of the button, spaces it out, and centers it vertically */
+/* 5. FIX AND POSITION THE TSWD IMAGE LOGO OUT OF THE BOTTOM BORDER */
 .nav__right img, .nav__right a img, .nav__right [class*="submit"] img, .nav__right img:last-child {
     position: relative !important;
     top: auto !important;
     right: auto !important;
-    transform: none !important;
-    height: 20px !important; /* Clean vertical proportional sizing inside the navbar row */
-    width: auto !important;  /* Calculates width parameters automatically so aspect is natural */
+    transform: translateY(-2px) !important; /* 👈 Nudges the TSWD icon slightly up away from the bottom edge */
+    height: 20px !important;
+    width: auto !important;
     max-height: 20px !important;
     object-fit: contain !important;
     display: inline-block !important;
     vertical-align: middle !important;
-    margin-left: 20px !important; /* 👈 THE GAP: Forces a strict 20px separate buffer distance away from the white button */
-    margin-right: 15px !important; /* 👈 EDGE PROTECTION: Pulls it away from the far right screen bezel frame border */
+    margin-left: 20px !important; /* Keeps the strict separation distance away from the white button */
+    margin-right: 15px !important; /* Keeps it safely away from the right screen monitor edge */
 }
