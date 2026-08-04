@@ -320,21 +320,26 @@ nav a:last-of-type,
 }
 
 /* 5. PERFECT POSITION FOR THE TSWD IMAGE ACCENT WITH SAFETY GAP */
+/* Targets the layout container holding the image to expand it and prevent it from clipping */
 .nav__right img, 
 [class*="submit"] img, 
 img[src*="TSWD"], 
 nav a img,
-.nav img:last-child {
+.nav img:last-child,
+.nav__right > a:last-child {
     position: relative !important;
     top: auto !important;
     right: auto !important;
-    transform: translateY(-3px) !important; /* Vertically levels your TSWD brand icon inline with the row text */
-    height: 20px !important;
+    background: transparent !important; /* Removes any template background coloring on the icon wrapper */
+    border: none !important;
+    box-shadow: none !important;
+    transform: translateY(-2px) !important; /* Vertically balances the logo centered in the bar */
+    height: 22px !important; /* Crisp vertical scale height */
     width: auto !important;
-    max-height: 20px !important;
+    max-height: 22px !important;
     object-fit: contain !important;
     display: inline-block !important;
     vertical-align: middle !important;
-    margin-left: 24px !important; /* Forces a crisp horizontal separation gap from your white button */
-    margin-right: 15px !important; /* Safely anchors it away from the right monitor screen bezel */
+    margin-left: 24px !important; /* Keeps the strict separation distance away from the white button */
+    margin-right: 25px !important; /* Tucks it safely inward away from the right screen monitor edge */
 }
