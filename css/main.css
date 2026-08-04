@@ -282,7 +282,7 @@ header, nav, .nav, .nav-container, .nav__container, [class*="nav"] {
     gap: 4px !important;
     padding: 0 14px !important;
     height: 100% !important;
-    transform: translateY(-10px) !important; /* Nudges Lists slightly higher to lock into a straight line with Welcome */
+    transform: translateY(-8px) !important; /* Nudges Lists slightly higher to lock into a straight line with Welcome */
 }
 
 .dropdown-trigger:hover {
@@ -319,3 +319,14 @@ nav a:last-of-type,
     align-items: center !important;
 }
 
+
+
+/* Forces the background container behind the roulette link to become transparent */
+.nav a[href*="roulette"], 
+.nav_left a:has(span:contains("ROULETTE")) {
+    background: transparent !important;
+    background-color: transparent !important;
+    background-image: none !important;
+    box-shadow: none !important;
+    border: none !important;
+}
