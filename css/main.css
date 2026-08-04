@@ -258,101 +258,69 @@ main+aside ul li:nth-child(1) img,.editors li:nth-child(1) img,aside ul li:nth-c
 
 
 /* =======================================================
-   ☢️ STRUCTURAL CSS OVERRIDE: TARGET BY EXACT ORDER ☢️
+   🏁 FINAL EXACT FIXED BAR: ORIGINAL FONTS & WHITE BUTTON
    ======================================================= */
 
-/* 1. Target the absolute outermost top bar wrapper to force the rich purple */
-header, nav, .nav, .nav-container, .nav__container, #navbar, [class*="nav"] {
+header, nav, .nav, .nav-container, .nav__container, [class*="nav"], [id*="nav"] {
     background-color: #6200ea !important;
     background: #6200ea !important;
-    height: 46px !important;
-    max-height: 46px !important;
-    min-height: 46px !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    display: flex !important;
-    flex-direction: row !important;
-    justify-content: space-between !important;
-    align-items: center !important;
-    padding: 0 25px !important;
-    box-sizing: border-box !important;
 }
 
-/* 2. Style the custom Lists dropdown text button to perfectly match Welcome */
 .dropdown-trigger {
     color: rgba(255, 255, 255, 0.7) !important;
     background: transparent !important;
     border: none !important;
     cursor: pointer !important;
     font-family: inherit !important;
-    font-size: 13.33px !important;
-    font-weight: 700 !important;
-    text-transform: uppercase !important; 
-    letter-spacing: 0.5px !important;
-    height: 46px !important;
+    font-size: inherit !important;
+    font-weight: inherit !important;
     display: inline-flex !important;
     align-items: center !important;
+    gap: 4px !important;
     padding: 0 14px !important;
-    margin: 0 !important;
+    height: 100% !important;
 }
 
 .dropdown-trigger:hover {
     color: #ffffff !important;
 }
 
-/* 3. TARGET THE CONTAINER FOR DISCORD, SUBMIT, AND TSWD */
-/* Instead of using a class name, this targets the LAST layout box inside your top nav bar */
-nav > div:last-child, .nav > div:last-child, header > div:last-child {
-    display: inline-flex !important;
+.nav__right, [class*="right"], nav > div:last-child {
+    display: flex !important;
     flex-direction: row !important;
     align-items: center !important;
     justify-content: flex-end !important;
-    height: 46px !important;
-    gap: 16px !important; /* Spacing between Discord and Submit button */
-    margin: 0 !important;
-    padding: 0 !important;
+    gap: 16px !important;
+    padding: 0 10px !important;
     position: relative !important;
 }
 
-/* Neutralize any absolute coordinates the template forced onto these items */
-nav > div:last-child *, .nav > div:last-child * {
-    position: static !important;
-    float: none !important;
-}
-
-/* 4. FORCE THE SUBMIT RECORD LINK TO BE SOLID WHITE */
-/* This targets the absolute last text link element inside that right side container box */
-nav > div:last-child a:last-of-type, .nav > div:last-child a:last-of-type {
-    background-color: #ffffff !important; /* True solid white background */
+.nav__right a.btn, .nav__right [class*="submit"], .nav__right #submit-btn, [class*="submit"], .nav__right .nav__button {
+    background-color: #ffffff !important;
     background: #ffffff !important;
-    color: #6200ea !important; /* Saturated purple font color match */
+    color: #6200ea !important;
     padding: 6px 14px !important;
     border-radius: 4px !important;
     font-weight: 700 !important;
-    font-size: 11px !important;
-    text-transform: uppercase !important;
     text-decoration: none !important;
     display: inline-flex !important;
     align-items: center !important;
     justify-content: center !important;
+    gap: 8px !important;
     white-space: nowrap !important;
-    height: 28px !important;
-    box-sizing: border-box !important;
-    margin: 0 !important;
+    height: auto !important;
+    position: relative !important;
 }
 
-/* 5. TARGET AND SEPARATE THE TSWD IMAGE LOGO BANNER */
-/* This targets the absolute last image element inside that right side container box */
-nav > div:last-child img, .nav > div:last-child img:last-child {
-    position: relative !important;
-    top: auto !important;
-    right: auto !important;
-    transform: none !important;
-    height: 20px !important;
+.nav__right a.btn img, .nav__right [class*="submit"] img, .nav__right img, .nav__right img:last-child {
+    position: static !important;
+    height: 18px !important;
     width: auto !important;
-    max-height: 20px !important;
+    max-height: 18px !important;
     object-fit: contain !important;
     display: inline-block !important;
-    margin-left: 20px !important; /* THE SEPARATION GAP: Pushes it 20px away from the white button */
-    margin-right: 10px !important; /* Pulls it away from the far right edge of your laptop screen */
+    margin: 0 !important;
+    margin-left: 20px !important; /* Separates the TSWD banner away from the white button */
+    margin-right: 10px !important; /* Pulls it away from your monitor frame edge */
+    transform: none !important;
 }
