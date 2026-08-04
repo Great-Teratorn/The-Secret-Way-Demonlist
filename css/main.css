@@ -258,84 +258,64 @@ main+aside ul li:nth-child(1) img,.editors li:nth-child(1) img,aside ul li:nth-c
 
 
 /* =======================================================
-   🔮 ULTIMATE NAV RESET: TWO-LINE CONTAINER OVERRIDE
+   🔮 FINAL COMPACT NAVBAR: SINGLE ROW & VIBRANT PURPLE
    ======================================================= */
 
-/* 1. Expand the container background globally to cover both the title row AND the tab row */
-header, nav, .nav, .nav__container, #navbar, [class*="nav"] {
-    background-color: #6200ea !important; /* Vibrant royal purple theme */
+/* 1. Forces the entire navbar wrapper back into a single, tight 46px horizontal row */
+header, nav, .nav, .nav-container, .nav__container, #navbar, [class*="nav"] {
+    background-color: #6200ea !important; /* Elegant vibrant violet purple theme */
     background: #6200ea !important;
-    height: auto !important; /* Replaces the broken 46px lock so it doesn't squish elements out of view */
-    min-height: 80px !important; /* Comfortably contains both your title row and your tab buttons rows */
+    height: 46px !important; /* Lowers and locks the bar back to its native thin scale */
+    max-height: 46px !important;
+    min-height: 46px !important;
     width: 100% !important;
     max-width: 100% !important;
     display: flex !important;
-    flex-direction: column !important; /* Stacks the title row neatly directly on top of the tab row */
-    justify-content: center !important;
+    flex-direction: row !important; /* Forces a single straight line layout */
+    justify-content: space-between !important;
     align-items: center !important;
-    padding: 10px 35px !important; /* Pushes the title text completely away from the left/right screen edges */
+    padding: 0 25px !important; /* Pushes the title text neatly away from the left/right screen edges */
     box-sizing: border-box !important;
-    overflow: visible !important;
 }
 
-/* 2. Format the title logo and version counter text so they look unified and clear */
-.nav__logo, .nav h2, .logo, nav > a:first-child {
-    font-size: 1.25rem !important; /* Perfectly balances the size of your primary logo text */
-    font-weight: 800 !important;
+/* 2. Pulls your logo text and version tag back to standard styling and prevents overflows */
+.nav__logo, .logo, nav h2, nav > a:first-child {
+    font-size: 13.33px !important; /* Matches font size exactly to neighboring elements */
+    font-weight: 700 !important;
     white-space: nowrap !important;
     margin: 0 !important;
-    display: flex !important;
+    display: inline-flex !important;
     align-items: center !important;
-    gap: 10px !important;
 }
 
-/* 3. Pulls your sub-label version text out of hiding and displays it next to your title */
-.nav__logo span, .logo span, nav h2 span, .nav__version {
-    font-size: 0.8rem !important;
-    color: rgba(255, 255, 255, 0.6) !important; /* Makes the version number cleanly visible */
-    font-weight: normal !important;
-    display: inline-block !important;
-    margin-left: 6px !important;
-}
-
-/* 4. Forces ALL tabs to line up horizontally in a tight, compact, equal row underneath the title */
-.nav__actions, .nav__links, nav ul, nav div:nth-child(2) {
-    display: flex !important;
-    flex-direction: row !important;
-    justify-content: center !important;
-    align-items: center !important;
-    flex-wrap: nowrap !important;
-    width: 100% !important;
-    margin-top: 8px !important; /* Spacing between the top title text row and the tab line button row */
-}
-
-/* 5. Forces "LISTS ▼" to perfectly match Welcome, Leaderboard, and Roulette fonts and weights */
-.dropdown-trigger, .nav__tab, .nav a, nav ul li a {
-    font-size: 13.33px !important; /* Identical structural typography scale across all menu items */
+/* 3. Forces "LISTS ▼" to perfectly match Welcome, Leaderboard, and Roulette fonts and weights */
+.dropdown-trigger {
+    color: rgba(255, 255, 255, 0.7) !important; /* Standard template unselected tab text wash */
+    font-size: 13.33px !important; /* Identical typography scale match across all menu items */
     font-weight: 700 !important;
     text-transform: uppercase !important; /* Enforces clean capitalization consistency across all words */
     letter-spacing: 0.5px !important;
-    color: rgba(255, 255, 255, 0.75) !important;
-    height: 32px !important; /* Compact button heights for the second row layout */
-    display: inline-flex !important;
-    align-items: center !important;
-    padding: 0 14px !important;
-    border: none !important;
     background: transparent !important;
+    border: none !important;
     cursor: pointer !important;
     font-family: inherit !important;
+    height: 46px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    padding: 0 12px !important;
 }
 
-/* Highlight states on menu pointers */
-.dropdown-trigger:hover, .nav__tab:hover, .nav a:hover {
+.dropdown-trigger:hover {
     color: #ffffff !important;
 }
 
-/* 6. Fix the right-side statistics blocks alignment layout rules */
-.nav__right, [class*="right"], #meta, .nav__right * {
+/* 4. Fixes the right side container so hits, discord, and submit fit inside the 46px bar bounds */
+.nav__right, [class*="right"], #meta {
     display: inline-flex !important;
     flex-direction: row !important;
     align-items: center !important;
+    height: 46px !important;
+    max-height: 46px !important;
     gap: 12px !important;
     margin: 0 !important;
     white-space: nowrap !important;
