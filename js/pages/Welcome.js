@@ -24,9 +24,9 @@ export default {
                     </p>
                 </div>
 
-                <!-- First Video Player (Using the template method) -->
+                <!-- First Video Player (Introduction Video) -->
                 <div class="video-container" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 8px; margin-bottom: 25px;">
-                    <iframe class="video" id="videoframe" :src="embed(introVideo)" frameborder="0" allowfullscreen></iframe>
+                    <iframe class="video" id="videoframe" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;" src="https://www.youtube.com/watch?v=S7BtDDTYVLM" frameborder="0" allowfullscreen></iframe>
                 </div>
 
                 <!-- Submission Requirements Box -->
@@ -45,9 +45,9 @@ export default {
                         Origins
                     </h2>
 
-                    <!-- Second Video Player (Using the template method) -->
+                    <!-- Second Video Player (Origins Video) -->
                     <div class="video-container" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 8px; margin-bottom: 20px;">
-                        <iframe class="video" id="videoframe" :src="embed(originsVideo)" frameborder="0" allowfullscreen></iframe>
+                        <iframe class="video" id="videoframe" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;" src="https://www.youtube.com/watch?v=S7BtDDTYVLM" frameborder="0" allowfullscreen></iframe>
                     </div>
 
                     <!-- Origins Paragraph Text -->
@@ -58,23 +58,5 @@ export default {
 
             </div>
         </div>
-    `,
-    // Define the string links
-    data() {
-        return {
-            introVideo: "https://www.youtube.com/watch?v=S7BtDDTYVLM",
-            originsVideo: "https://www.youtube.com/watch?v=S7BtDDTYVLM"
-        };
-    },
-    // The exact same link formatting helper used by List.js to bypass proxy blocks
-    methods: {
-        embed(url) {
-            if (!url) return "";
-            // Safely extracts the ID and returns a clean embed string
-            const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
-            const match = url.match(regExp);
-            const id = (match && match[2].length === 11) ? match[2] : null;
-            return id ? `https://youtube.com{id}` : url;
-        }
-    }
+    `
 };
