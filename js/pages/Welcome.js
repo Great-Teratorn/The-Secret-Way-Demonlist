@@ -1,7 +1,8 @@
 export default {
     template: `
-        <div style="padding: 40px 20px; max-width: 900px; margin: 0 auto; color: #fff; font-family: sans-serif; height: 100%; overflow-y: auto;">
-            
+        <div style="width: 100%; height: calc(100vh - 56px); overflow-y: auto; color: #fff; font-family: sans-serif;">
+    <div style="padding: 40px 20px; max-width: 900px; margin: 0 auto;">
+
             <!-- Main Title Header -->
             <div style="margin-bottom: 30px;">
                 <h1 style="font-size: 2.2rem; margin: 0 0 5px 0; font-weight: bold; text-transform: uppercase; color: #fff;">
@@ -53,11 +54,12 @@ export default {
 
                 <!-- Second Embedded Player (Replicates your first video layout exactly) -->
                 <div class="video-container" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 8px; margin-bottom: 20px;">
-                    <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;" src="https://youtu.be/S7BtDDTYVLM?si=ykySW6CdVkVGJeka" title="TSWD Origins Video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;" src="https://www.youtube.com/watch?v=S7BtDDTYVLM" title="TSWD Origins Video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
                 </div>
 
                 <p style="line-height: 1.6; font-size: 0.95rem; color: #cbd5e1; margin: 0;">
-                    This was the beginning of our project, a great one. We wanted to challenge people in a unique and benefitting way. What started as a basic Google site has now been transformed into an incredible community. Before all the details, the submissions, the multitude of levels - it was just a List. But now it is so much more, and we are so proud. 
+                    This was the beginning of our project, a great one. We wanted to challenge people in a unique and benefitting way. What started as a basic Google site and Discord server has now been transformed into an incredible community. Before all the details, the submissions, the multitude of levels - it was just a List. But now it is so much more, and we are so proud. We are happy you have joined us here :)
                 </p>
             </div>
 
