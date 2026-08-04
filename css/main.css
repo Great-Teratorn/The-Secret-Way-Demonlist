@@ -258,7 +258,7 @@ main+aside ul li:nth-child(1) img,.editors li:nth-child(1) img,aside ul li:nth-c
 
 
 /* =======================================================
-   🏁 FINAL EXACT STRUCTURAL ALIGNMENT & COLOR FORCE 🏁
+   🏁 COMPLETE FIXED NAVBAR: PERFECT LINE-ALIGNMENT 🏁
    ======================================================= */
 
 /* 1. Ensure the overall bar background is clean vibrant purple */
@@ -267,7 +267,7 @@ header, nav, .nav, .nav-container, .nav__container, [class*="nav"] {
     background: #6200ea !important;
 }
 
-/* 2. Nudge "LISTS ▼" slightly higher up to perfectly align with Welcome and Leaderboard */
+/* 2. PERFECT STRIP ALIGNMENT FOR THE "LISTS ▼" DROPDOWN TAB */
 .dropdown-trigger {
     color: rgba(255, 255, 255, 0.7) !important;
     background: transparent !important;
@@ -282,7 +282,7 @@ header, nav, .nav, .nav-container, .nav__container, [class*="nav"] {
     gap: 4px !important;
     padding: 0 14px !important;
     height: 100% !important;
-    transform: translateY(-4px) !important; /* Raised slightly more to force straight alignment */
+    transform: translateY(-6px) !important; /* Nudges Lists slightly higher to lock into a straight line with Welcome */
 }
 
 .dropdown-trigger:hover {
@@ -290,7 +290,6 @@ header, nav, .nav, .nav-container, .nav__container, [class*="nav"] {
 }
 
 /* 3. ULTRASONIC FORCE FOR THE SOLID WHITE SUBMIT RECORD BUTTON */
-/* Targets every possible anchor/button variation on the right side to guarantee it turns white with visible text */
 nav a:last-of-type, 
 .nav a:last-of-type, 
 .nav__right a, 
@@ -313,22 +312,29 @@ nav a:last-of-type,
     box-sizing: border-box !important;
 }
 
-/* 4. PERFECT POSITION FOR THE TSWD IMAGE ACCENT */
-/* Targets the last image in the navigation layout to nudge it up and space it cleanly away from edges */
-nav img:last-of-type, 
-.nav img:last-of-type, 
+/* 4. BALANCED COOLDOWN ALIGNMENT FOR DISCORD GRAPHIC VECTOR */
+.nav__right a[href*="discord"], .nav__right svg, nav a svg {
+    transform: translateY(2px) !important; /* Lowers the Discord icon slightly so it sits dead-center */
+    display: inline-flex !important;
+    align-items: center !important;
+}
+
+/* 5. PERFECT POSITION FOR THE TSWD IMAGE ACCENT WITH SAFETY GAP */
 .nav__right img, 
-[class*="submit"] img {
+[class*="submit"] img, 
+img[src*="TSWD"], 
+nav a img,
+.nav img:last-child {
     position: relative !important;
     top: auto !important;
     right: auto !important;
-    transform: translateY(-4px) !important; /* Nudges the TSWD icon up so it never hits the bottom edge */
-    height: 22px !important;
+    transform: translateY(-3px) !important; /* Vertically levels your TSWD brand icon inline with the row text */
+    height: 20px !important;
     width: auto !important;
-    max-height: 22px !important;
+    max-height: 20px !important;
     object-fit: contain !important;
     display: inline-block !important;
     vertical-align: middle !important;
-    margin-left: 24px !important; /* Clean separate horizontal distance from the white button */
-    margin-right: 15px !important; /* Pulls it safely away from the right-hand monitor bezel frame */
+    margin-left: 24px !important; /* Forces a crisp horizontal separation gap from your white button */
+    margin-right: 15px !important; /* Safely anchors it away from the right monitor screen bezel */
 }
