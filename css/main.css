@@ -323,36 +323,42 @@ nav a:last-of-type,
    5. PERFECT POSITION FOR THE TSWD IMAGE ACCENT WITH SAFETY GAP 
    ========================================================================== */
 
-img[src*="TSWD"] {
+/* Targets the last container inside the right navbar to erase the white box */
+.nav_right > *:last-child,
+.nav_right a:last-child {
+    background: transparent !important;
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    height: 100% !important;
+}
+
+/* Targets the actual image inside that container to make it big */
+.nav_right > *:last-child img,
+.nav_right a:last-child img,
+img[src*="tswd" i] {
     position: relative !important;
     top: auto !important;
     right: auto !important;
     border: none !important;
     box-shadow: none !important;
-    transform: translateY(-2px) !important; /* Vertically balances the logo centered in the bar */
     
-    /* NEW LARGE DIMENSIONS TO EXPAND AND COVER THE BACKGROUND BOX */
-    height: 95% !important;       /* Expands vertically to fill 95% of the navbar height */
-    max-height: 95% !important;   /* Prevents template limits from capping the height */
-    width: 250px !important;      /* Widened proportionally so the image text doesn't look squished */
-    object-fit: fill !important;  /* Forces the image to stretch flush to its borders, masking the box */
+    /* Forces the image to take up the full available height of the purple bar */
+    height: 45px !important;       
+    max-height: 45px !important;   
+    width: auto !important;         /* Allows width to scale naturally without squishing */
+    object-fit: contain !important; 
     
     display: inline-block !important;
-    vertical-align: middle !important;
-    margin-left: 24px !important;  /* Keeps separation distance away from the white submit button */
-    margin-right: 25px !important; /* Tucks it safely inward away from the right screen monitor edge */
+    margin-left: 20px !important;  /* Space away from SUBMIT RECORD button */
+    margin-right: 15px !important; /* Space away from the very edge of the screen */
     
-    /* REMOVES BACKGROUND AND PADDING FROM THE IMAGE ITSELF */
     background: transparent !important;
     background-color: transparent !important;
-    padding: 0 !important;
-}
-
-/* REMOVES BACKGROUND BOX & PADDING FROM THE LINK WRAPPER HOLDING THE IMAGE */
-a:has(img[src*="TSWD"]) {
-    background: transparent !important;
-    background-color: transparent !important;
-    border: none !important;
-    box-shadow: none !important;
     padding: 0 !important;
 }
