@@ -258,13 +258,14 @@ main+aside ul li:nth-child(1) img,.editors li:nth-child(1) img,aside ul li:nth-c
 
 
 /* =======================================================
-   🔮 FINAL COSMETIC FIX: RICH PURPLE & COMPACT ALIGNMENTS
+   🔮 FINAL CORRECTED NAVBAR: LIGHT VIBRANT PURPLE & COMPACT
    ======================================================= */
 
-.nav, header, nav, .nav__container {
-    background-color: #2b0054 !important; /* Rich, dark, highly saturated royal purple */
-    background: #2b0054 !important;
-    height: 46px !important; /* Reverts top panel height to original compact scale */
+/* Force all top structural level wrappers to adopt a beautiful, vibrant medium-royal purple */
+.nav, header, nav, [class*="nav"], [id*="nav"] {
+    background-color: #6200ea !important; /* Slightly lighter, highly vibrant rich purple */
+    background: #6200ea !important;
+    height: 46px !important; /* Forces the bar back down to original tight compact dimensions */
     max-height: 46px !important;
     width: 100% !important;
     max-width: 100% !important;
@@ -276,25 +277,28 @@ main+aside ul li:nth-child(1) img,.editors li:nth-child(1) img,aside ul li:nth-c
     box-sizing: border-box !important;
 }
 
-/* Reduces "Lists" text formatting to perfectly balance with standard menu elements */
+/* Fixes typography scaling issues on your custom Lists drawer trigger */
 .dropdown-trigger {
-    color: rgba(255, 255, 255, 0.7) !important;
-    font-size: 13.33px !important; /* Exact standard template scale match */
+    color: rgba(255, 255, 255, 0.85) !important;
+    font-size: 13.33px !important; /* Matches standard template fonts exactly */
     font-weight: 700 !important;
-    text-transform: uppercase !important; /* Clear capitalization tracking */
+    text-transform: uppercase !important; /* Aligns with all-caps clean text look */
     letter-spacing: 0.5px !important;
     background: transparent !important;
     border: none !important;
     cursor: pointer !important;
     height: 46px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 4px !important;
 }
 
 .dropdown-trigger:hover {
     color: #ffffff !important;
 }
 
-/* Controls the right stats buttons to prevent layout overflow tracking errors */
-.nav__right, [class*="right"], #meta {
+/* Compresses the right side statistics container elements to drop down into row limits */
+.nav__right, [class*="right"], #meta, .nav__right * {
     display: inline-flex !important;
     flex-direction: row !important;
     align-items: center !important;
