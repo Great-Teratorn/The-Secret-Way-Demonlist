@@ -258,16 +258,16 @@ main+aside ul li:nth-child(1) img,.editors li:nth-child(1) img,aside ul li:nth-c
 
 
 /* =======================================================
-   🏁 FINAL EXACT TOUCH-UP: PERFECTION LOCK-IN 🏁
+   🏁 FINAL EXACT STRUCTURAL ALIGNMENT & COLOR FORCE 🏁
    ======================================================= */
 
-/* 1. Sets the vibrant purple background across the navbar */
-header, nav, .nav, .nav-container, .nav__container, [class*="nav"], [id*="nav"] {
+/* 1. Ensure the overall bar background is clean vibrant purple */
+header, nav, .nav, .nav-container, .nav__container, [class*="nav"] {
     background-color: #6200ea !important;
     background: #6200ea !important;
 }
 
-/* 2. Style "LISTS ▼" to match original fonts and align it perfectly with the other tabs */
+/* 2. Nudge "LISTS ▼" slightly higher up to perfectly align with Welcome and Leaderboard */
 .dropdown-trigger {
     color: rgba(255, 255, 255, 0.7) !important;
     background: transparent !important;
@@ -282,32 +282,25 @@ header, nav, .nav, .nav-container, .nav__container, [class*="nav"], [id*="nav"] 
     gap: 4px !important;
     padding: 0 14px !important;
     height: 100% !important;
-    transform: translateY(-2px) !important; /* 👈 Nudges the Lists text slightly up to be inline with Welcome */
+    transform: translateY(-4px) !important; /* Raised slightly more to force straight alignment */
 }
 
 .dropdown-trigger:hover {
     color: #ffffff !important;
 }
 
-/* 3. Align right side container items horizontally */
-.nav__right, [class*="right"], nav > div:last-child {
-    display: inline-flex !important;
-    flex-direction: row !important;
-    align-items: center !important;
-    justify-content: flex-end !important;
-    gap: 16px !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    position: relative !important;
-}
-
-/* 4. FORCES THE SUBMIT RECORD BUTTON TO BE SOLID WHITE AND MAKES THE TEXT VISIBLE */
-/* This directly overrides the template's internal .nav__button class which was hiding the text */
-.nav__right a, .nav__right .nav__button, .nav__right [class*="submit"], .nav__right #submit-btn {
-    background-color: #ffffff !important; /* Pure clean solid white background */
+/* 3. ULTRASONIC FORCE FOR THE SOLID WHITE SUBMIT RECORD BUTTON */
+/* Targets every possible anchor/button variation on the right side to guarantee it turns white with visible text */
+nav a:last-of-type, 
+.nav a:last-of-type, 
+.nav__right a, 
+[class*="submit"], 
+.nav__button, 
+.btn {
+    background-color: #ffffff !important; /* Forces solid white background */
     background: #ffffff !important;
-    color: #4A148C !important; /* 👈 Forces a rich dark purple text color so it is bright and clear */
-    padding: 6px 14px !important;
+    color: #4A148C !important; /* Forces rich dark purple text color so it is 100% visible */
+    padding: 5px 14px !important;
     border-radius: 4px !important;
     font-weight: 700 !important;
     text-transform: uppercase !important;
@@ -318,21 +311,24 @@ header, nav, .nav, .nav-container, .nav__container, [class*="nav"], [id*="nav"] 
     white-space: nowrap !important;
     height: 28px !important;
     box-sizing: border-box !important;
-    position: relative !important;
 }
 
-/* 5. FIX AND POSITION THE TSWD IMAGE LOGO OUT OF THE BOTTOM BORDER */
-.nav__right img, .nav__right a img, .nav__right [class*="submit"] img, .nav__right img:last-child {
+/* 4. PERFECT POSITION FOR THE TSWD IMAGE ACCENT */
+/* Targets the last image in the navigation layout to nudge it up and space it cleanly away from edges */
+nav img:last-of-type, 
+.nav img:last-of-type, 
+.nav__right img, 
+[class*="submit"] img {
     position: relative !important;
     top: auto !important;
     right: auto !important;
-    transform: translateY(-2px) !important; /* 👈 Nudges the TSWD icon slightly up away from the bottom edge */
-    height: 20px !important;
+    transform: translateY(-4px) !important; /* Nudges the TSWD icon up so it never hits the bottom edge */
+    height: 22px !important;
     width: auto !important;
-    max-height: 20px !important;
+    max-height: 22px !important;
     object-fit: contain !important;
     display: inline-block !important;
     vertical-align: middle !important;
-    margin-left: 20px !important; /* Keeps the strict separation distance away from the white button */
-    margin-right: 15px !important; /* Keeps it safely away from the right screen monitor edge */
+    margin-left: 24px !important; /* Clean separate horizontal distance from the white button */
+    margin-right: 15px !important; /* Pulls it safely away from the right-hand monitor bezel frame */
 }
