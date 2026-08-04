@@ -32,7 +32,8 @@ export default {
                                 </td>
                                 <td class="level" :class="{ 'active': selected == i, 'error': !level }">
                                     <button @click="selected = i" style="display: flex; align-items: center; gap: 15px; width: 100%; text-align: left;">
-                                        <span class="type-label-lg">{{ level?.name || 'Error (\$' + err + ')' }}</span>
+                                        <span class="type-label-lg">{{ level?.name || ($route.path === '/unverified' ? level?.name || 'Loading...' : 'Error (' + err + ')') }}</span>
+
                                         <!-- Added: Shows the fallback date next to the name on the legacy list -->
                                         <span v-if="$route.path === '/legacy' && level?.dateFallen" class="type-label-sm" style="color: #94a3b8; font-style: italic; margin-left: auto; padding-right: 15px;">
                                             Fell off: {{ level.dateFallen }}

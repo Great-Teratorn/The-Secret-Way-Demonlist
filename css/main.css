@@ -258,31 +258,30 @@ main+aside ul li:nth-child(1) img,.editors li:nth-child(1) img,aside ul li:nth-c
 
 
 /* =======================================================
-   🔮 FINAL CORRECTED NAVBAR: LIGHT VIBRANT PURPLE & COMPACT
+   🔮 FINAL CORRECTED NAVBAR: RICH DEEP PURPLE & COMPACT 46PX
    ======================================================= */
 
-/* Force all top structural level wrappers to adopt a beautiful, vibrant medium-royal purple */
-.nav, header, nav, [class*="nav"], [id*="nav"] {
-    background-color: #6200ea !important; /* Slightly lighter, highly vibrant rich purple */
-    background: #6200ea !important;
-    height: 46px !important; /* Forces the bar back down to original tight compact dimensions */
+header, nav, .nav, .nav-container, .nav__container, [class*="nav"], [id*="nav"] {
+    background-color: #3f0080 !important; /* Premium rich, highly vibrant dark royal purple */
+    background: #3f0080 !important;
+    height: 46px !important; /* Forces the bar back down to standard tight dimensions */
     max-height: 46px !important;
+    min-height: 46px !important;
     width: 100% !important;
     max-width: 100% !important;
     display: flex !important;
     flex-direction: row !important;
     justify-content: space-between !important;
     align-items: center !important;
-    padding: 0 24px !important;
+    padding: 0 20px !important;
     box-sizing: border-box !important;
 }
 
-/* Fixes typography scaling issues on your custom Lists drawer trigger */
 .dropdown-trigger {
-    color: rgba(255, 255, 255, 0.85) !important;
-    font-size: 13.33px !important; /* Matches standard template fonts exactly */
+    color: rgba(255, 255, 255, 0.7) !important;
+    font-size: 13.33px !important; /* Standard typography scale match */
     font-weight: 700 !important;
-    text-transform: uppercase !important; /* Aligns with all-caps clean text look */
+    text-transform: uppercase !important; /* Capital case alignment matching neighboring tabs */
     letter-spacing: 0.5px !important;
     background: transparent !important;
     border: none !important;
@@ -297,7 +296,6 @@ main+aside ul li:nth-child(1) img,.editors li:nth-child(1) img,aside ul li:nth-c
     color: #ffffff !important;
 }
 
-/* Compresses the right side statistics container elements to drop down into row limits */
 .nav__right, [class*="right"], #meta, .nav__right * {
     display: inline-flex !important;
     flex-direction: row !important;
