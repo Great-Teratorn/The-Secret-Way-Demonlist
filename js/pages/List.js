@@ -153,6 +153,17 @@ export default {
             );
         },
     },
+   
+    
+    // 🆕 ADD THIS WATCHER BLOCK: Forces Vue to reload data when switching tabs
+    watch: {
+        async $route() {
+            this.list = await fetchList();
+        }
+    },
+
+    
+
     async mounted() {
         // Hide loading spinner
         this.list = await fetchList();

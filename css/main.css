@@ -254,3 +254,40 @@ main+aside ul li:nth-child(1) img,.editors li:nth-child(1) img,aside ul li:nth-c
 .lists-dropdown:hover .dropdown-trigger .arrow {
     transform: rotate(180deg);
 }
+
+
+
+.nav {
+    width: 100% !important;
+    max-width: 100% !important;
+    background-color: #8c52ff !important;
+    background: #8c52ff !important;
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    padding: 0 30px !important;
+    box-sizing: border-box !important;
+    height: 65px !important;
+}
+
+header {
+    background-color: #8c52ff !important;
+    background: #8c52ff !important;
+}
+
+.dropdown-trigger {
+    color: #ffffff !important;
+    font-weight: bold !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 4px !important;
+}
+
+.nav__right {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 15px !important;
+    margin: 0 !important;
+}
