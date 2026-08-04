@@ -320,26 +320,33 @@ nav a:last-of-type,
 }
 
 /* 5. PERFECT POSITION FOR THE TSWD IMAGE ACCENT WITH SAFETY GAP */
-/* Targets the layout container holding the image to expand it and prevent it from clipping */
-.nav__right img, 
-[class*="submit"] img, 
-img[src*="TSWD"], 
-nav a img,
-.nav img:last-child,
-.nav__right > a:last-child {
+img[src*="TSWD"] {
     position: relative !important;
     top: auto !important;
     right: auto !important;
-    background: transparent !important; /* Removes any template background coloring on the icon wrapper */
     border: none !important;
     box-shadow: none !important;
-    transform: translateY(-2px) !important; /* Vertically balances the logo centered in the bar */
-    height: 52px !important; /* Crisp vertical scale height */
+    transform: translateY(-2px) !important; 
+    height: 52px !important; 
     width: 140px !important;
     max-height: 52px !important;
     object-fit: contain !important;
     display: inline-block !important;
     vertical-align: middle !important;
-    margin-left: 24px !important; /* Keeps the strict separation distance away from the white button */
-    margin-right: 25px !important; /* Tucks it safely inward away from the right screen monitor edge */
+    margin-left: 24px !important; 
+    margin-right: 25px !important; 
+    
+    /* REMOVES BACKGROUND BOX & PADDING FROM THE IMAGE ITSELF */
+    background: transparent !important;
+    background-color: transparent !important;
+    padding: 0 !important;
+}
+
+/* REMOVES BACKGROUND BOX & PADDING FROM THE LINK WRAPPER IF IT EXISTS */
+a:has(img[src*="TSWD"]) {
+    background: transparent !important;
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
 }
