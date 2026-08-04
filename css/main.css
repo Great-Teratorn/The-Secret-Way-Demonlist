@@ -257,37 +257,58 @@ main+aside ul li:nth-child(1) img,.editors li:nth-child(1) img,aside ul li:nth-c
 
 
 
-.nav {
+/* =======================================================
+   🔮 FINAL POLISH: VIBRANT DARK PURPLE & COMPACT HEIGHT
+   ======================================================= */
+
+/* 1. Sets the exact compact native height and rich, vibrant dark purple */
+.nav, header, nav {
+    background-color: #4A148C !important; /* Deep, vibrant royal purple */
+    background: #4A148C !important;
+    height: 46px !important; /* Original tight template height */
     width: 100% !important;
     max-width: 100% !important;
-    background-color: #8c52ff !important;
-    background: #8c52ff !important;
     display: flex !important;
     flex-direction: row !important;
     justify-content: space-between !important;
     align-items: center !important;
-    padding: 0 30px !important;
+    padding: 0 24px !important;
     box-sizing: border-box !important;
-    height: 65px !important;
 }
 
-header {
-    background-color: #8c52ff !important;
-    background: #8c52ff !important;
-}
-
+/* 2. Matches the "Lists" font size exactly to Welcome, Leaderboard, and Roulette */
 .dropdown-trigger {
-    color: #ffffff !important;
-    font-weight: bold !important;
-    display: flex !important;
+    color: rgba(255, 255, 255, 0.7) !important; /* Matches template font color */
+    font-size: 13.33px !important; /* Standard template typography scale */
+    font-weight: 700 !important;
+    text-transform: uppercase !important; /* Matches the clean look of the other tabs */
+    letter-spacing: 0.5px !important;
+    background: transparent !important;
+    border: none !important;
+    cursor: pointer !important;
+    display: inline-flex !important;
     align-items: center !important;
     gap: 4px !important;
+    padding: 0 12px !important;
+    height: 46px !important;
 }
 
-.nav__right {
+.dropdown-trigger:hover {
+    color: #ffffff !important;
+}
+
+/* 3. Dropdown arrow custom alignment tune-up */
+.dropdown-trigger .arrow {
+    font-size: 0.65rem !important;
+    vertical-align: middle !important;
+}
+
+/* 4. Ensures the right side items align tightly inside the compact 46px bar */
+.nav__right, [class*="right"] {
     display: flex !important;
     flex-direction: row !important;
     align-items: center !important;
-    gap: 15px !important;
+    height: 46px !important;
+    gap: 12px !important;
     margin: 0 !important;
 }
