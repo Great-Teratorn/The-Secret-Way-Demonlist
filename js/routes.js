@@ -5,7 +5,7 @@ import Welcome from './pages/Welcome.js';
 
 export default [
     { path: '/welcome', component: Welcome },
-    { path: '/main', component: List },
+    { path: '/list', component: List },
     { path: '/', component: Welcome },
     { path: '/extended', component: List },
     { path: '/legacy', component: List },
