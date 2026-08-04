@@ -258,14 +258,14 @@ main+aside ul li:nth-child(1) img,.editors li:nth-child(1) img,aside ul li:nth-c
 
 
 /* =======================================================
-   🔮 FINAL POLISH: VIBRANT DARK PURPLE & COMPACT HEIGHT
+   🔮 FINAL COSMETIC FIX: RICH PURPLE & COMPACT ALIGNMENTS
    ======================================================= */
 
-/* 1. Sets the exact compact native height and rich, vibrant dark purple */
-.nav, header, nav {
-    background-color: #4A148C !important; /* Deep, vibrant royal purple */
-    background: #4A148C !important;
-    height: 46px !important; /* Original tight template height */
+.nav, header, nav, .nav__container {
+    background-color: #2b0054 !important; /* Rich, dark, highly saturated royal purple */
+    background: #2b0054 !important;
+    height: 46px !important; /* Reverts top panel height to original compact scale */
+    max-height: 46px !important;
     width: 100% !important;
     max-width: 100% !important;
     display: flex !important;
@@ -276,20 +276,16 @@ main+aside ul li:nth-child(1) img,.editors li:nth-child(1) img,aside ul li:nth-c
     box-sizing: border-box !important;
 }
 
-/* 2. Matches the "Lists" font size exactly to Welcome, Leaderboard, and Roulette */
+/* Reduces "Lists" text formatting to perfectly balance with standard menu elements */
 .dropdown-trigger {
-    color: rgba(255, 255, 255, 0.7) !important; /* Matches template font color */
-    font-size: 13.33px !important; /* Standard template typography scale */
+    color: rgba(255, 255, 255, 0.7) !important;
+    font-size: 13.33px !important; /* Exact standard template scale match */
     font-weight: 700 !important;
-    text-transform: uppercase !important; /* Matches the clean look of the other tabs */
+    text-transform: uppercase !important; /* Clear capitalization tracking */
     letter-spacing: 0.5px !important;
     background: transparent !important;
     border: none !important;
     cursor: pointer !important;
-    display: inline-flex !important;
-    align-items: center !important;
-    gap: 4px !important;
-    padding: 0 12px !important;
     height: 46px !important;
 }
 
@@ -297,18 +293,13 @@ main+aside ul li:nth-child(1) img,.editors li:nth-child(1) img,aside ul li:nth-c
     color: #ffffff !important;
 }
 
-/* 3. Dropdown arrow custom alignment tune-up */
-.dropdown-trigger .arrow {
-    font-size: 0.65rem !important;
-    vertical-align: middle !important;
-}
-
-/* 4. Ensures the right side items align tightly inside the compact 46px bar */
-.nav__right, [class*="right"] {
-    display: flex !important;
+/* Controls the right stats buttons to prevent layout overflow tracking errors */
+.nav__right, [class*="right"], #meta {
+    display: inline-flex !important;
     flex-direction: row !important;
     align-items: center !important;
     height: 46px !important;
+    max-height: 46px !important;
     gap: 12px !important;
     margin: 0 !important;
 }

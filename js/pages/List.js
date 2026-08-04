@@ -24,10 +24,10 @@ export default {
             <div class="list-container">
                                     <table class="list" v-if="list">
                         <template v-for="([level, err], i) in list">
-                            <tr :key="i" v-if="($route.path === '/' && i < 150) || ($route.path === '/extended' && i >= 150) || ($route.path === '/legacy' && level && level.dateFallen)">
+                            <tr :key="i" v-if="($route.path === '/' && i < 150) || ($route.path === '/extended' && i >= 150) || ($route.path === '/legacy' && level && level.dateFallen) || ($route.path === '/unverified')">
                                 <td class="rank">
                                     <!-- Show rank number on Main and Extended, show text on Legacy -->
-                                    <p v-if="$route.path !== '/legacy'" class="type-label-lg">#{{ i + 1 }}</p>
+                                    <p v-if="$route.path !== '/legacy' && $route.path !== '/unverified'" class="type-label-lg">#{{ i + 1 }}</p>
                                     <p v-else class="type-label-lg" style="color: #a29bfe; font-size: 0.9rem; font-weight: bold; text-transform: uppercase;">Fallen</p>
                                 </td>
                                 <td class="level" :class="{ 'active': selected == i, 'error': !level }">
