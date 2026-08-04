@@ -290,8 +290,8 @@ header, nav, .nav, .nav-container, .nav__container, [class*="nav"] {
 }
 
 /* 3. ULTRASONIC FORCE FOR THE SOLID WHITE SUBMIT RECORD BUTTON */
-.nav_actions button,
-.nav_actions a,
+a[to="/submit"],
+a[href*="submit"],
 [class*="submit"], 
 .btn {
     background-color: #ffffff !important; /* Forces solid white background */
