@@ -334,9 +334,9 @@ nav a img,
     border: none !important;
     box-shadow: none !important;
     transform: translateY(-2px) !important; /* Vertically balances the logo centered in the bar */
-    height: 22px !important; /* Crisp vertical scale height */
-    width: auto !important;
-    max-height: 22px !important;
+    height: 52px !important; /* Crisp vertical scale height */
+    width: 140 !important;
+    max-height: 52px !important;
     object-fit: contain !important;
     display: inline-block !important;
     vertical-align: middle !important;
