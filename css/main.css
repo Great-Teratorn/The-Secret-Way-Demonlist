@@ -258,101 +258,64 @@ main+aside ul li:nth-child(1) img,.editors li:nth-child(1) img,aside ul li:nth-c
 
 
 /* =======================================================
-   🏁 FINAL PRECISION POLISH: SAFE GRID & ALIGNED ELEMENTS
+   🔮 NATIVE COLOR MATCH & SAFE BUTTON ALIGNMENT
    ======================================================= */
 
-/* 1. Base Navbar color and height rules */
-header, nav, .nav, .nav-container, .nav__container, #navbar, [class*="nav"] {
-    background-color: #6200ea !important; /* Vibrant royal purple theme */
+/* 1. Sets the vibrant purple background across the navbar without touching heights or fonts */
+header, nav, .nav, .nav-container, .nav__container, [class*="nav"], [id*="nav"] {
+    background-color: #6200ea !important;
     background: #6200ea !important;
-    height: 46px !important;
-    max-height: 46px !important;
-    min-height: 46px !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    display: flex !important;
-    flex-direction: row !important;
-    justify-content: space-between !important;
-    align-items: center !important;
-    padding: 0 25px !important;
-    box-sizing: border-box !important;
 }
 
-/* 2. MATCH ALL TABS: Forces Welcome, Leaderboard, and Roulette to perfectly match Lists */
-.nav__tab, .nav__tab span, .nav a, nav ul li a, .nav__actions a {
-    font-size: 13.33px !important; /* Perfect uniform size match */
-    font-weight: 700 !important; /* Clean bold weight match */
-    text-transform: uppercase !important; /* All-caps appearance */
-    letter-spacing: 0.5px !important;
-    color: rgba(255, 255, 255, 0.75) !important;
-}
-
-/* 3. Style rules for your Lists trigger to stay synchronized */
+/* 2. Style your "LISTS ▼" dropdown trigger to look exactly like the native unselected tabs */
 .dropdown-trigger {
-    font-size: 13.33px !important;
-    font-weight: 700 !important;
-    text-transform: uppercase !important;
-    letter-spacing: 0.5px !important;
-    color: rgba(255, 255, 255, 0.75) !important;
+    color: rgba(255, 255, 255, 0.7) !important;
     background: transparent !important;
     border: none !important;
     cursor: pointer !important;
-    height: 46px !important;
+    font-family: inherit !important;
+    font-size: inherit !important; /* Forces it to use the template's native font size scale */
+    font-weight: inherit !important; /* Forces it to use the template's native font weight scale */
     display: inline-flex !important;
     align-items: center !important;
-    padding: 0 14px !important;
+    gap: 4px !important;
+    padding: 0 12px !important;
 }
 
-.dropdown-trigger:hover, .nav__tab:hover, .nav__tab:hover span {
+.dropdown-trigger:hover {
     color: #ffffff !important;
 }
 
-/* 4. SAFE POSITION FIX FOR THE RIGHT PANEL WIDGETS */
-/* Using flex spacing without static rules so your info column stays perfectly visible on grid */
+/* 3. Pulls the right-side actions apart cleanly so they don't clip */
 .nav__right {
-    display: inline-flex !important;
+    display: flex !important;
     flex-direction: row !important;
     align-items: center !important;
-    justify-content: flex-end !important;
-    height: 46px !important;
-    gap: 16px !important; /* Clean layout space between elements */
+    gap: 16px !important; /* Creates a clean horizontal gap between Discord and the button */
 }
 
-/* Puts the Total Site Visits text labels cleanly side-by-side */
-.nav__right .meta, .nav__right #meta {
-    display: inline-flex !important;
-    flex-direction: row !important;
-    align-items: center !important;
-    gap: 6px !important;
-    white-space: nowrap !important;
-}
-
-/* 5. SPECIFIC SUBMIT RECORD BUTTON DESIGN: WHITE & SEPARATED ICON */
+/* 4. Restores a clean white layout background for the Submit Record button container */
 .nav__right a.btn, .nav__right [class*="submit"], .nav__right #submit-btn {
     background-color: #ffffff !important; /* Pure clean white background */
     background: #ffffff !important;
-    color: #6200ea !important; /* Rich purple font match */
-    padding: 5px 12px !important;
+    color: #6200ea !important; /* Purple text match */
+    padding: 6px 14px !important;
     border-radius: 4px !important;
     font-weight: 700 !important;
-    font-size: 11px !important;
-    text-transform: uppercase !important;
     text-decoration: none !important;
     display: inline-flex !important;
     align-items: center !important;
-    gap: 8px !important; /* Pushes the text away from the TSWD icon */
-    height: 28px !important;
-    box-sizing: border-box !important;
+    gap: 8px !important; /* Separate button text from the icon image */
 }
 
-/* Scales the right-side TSWD image logo vector inside the bounds of the white button */
+/* Scales the TSWD image logo vector inside the white submit button perfectly */
 .nav__right a.btn img, .nav__right [class*="submit"] img {
-    height: 16px !important;
+    height: 18px !important;
     width: auto !important;
-    max-height: 16px !important;
+    max-height: 18px !important;
     object-fit: contain !important;
     display: inline-block !important;
     margin: 0 !important;
+    position: static !important;
+    transform: none !important;
 }
-
-
