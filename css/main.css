@@ -258,92 +258,72 @@ main+aside ul li:nth-child(1) img,.editors li:nth-child(1) img,aside ul li:nth-c
 
 
 /* =======================================================
-   🏁 FINAL PRECISION NAVBAR FIX: ALIGNED ROWS & WHITE BUTTON
+   🏁 FINAL EXACT FIXED BAR: ORIGINAL FONTS & WHITE BUTTON
    ======================================================= */
 
-/* 1. Reset the outer header layout row to be completely straight and uniform */
-header, nav, .nav, .nav-container, .nav__container, #navbar, [class*="nav"] {
-    background-color: #6200ea !important; /* Rich vibrant royal purple background */
+/* 1. Sets the vibrant purple background across the navbar without forcing heavy custom row heights */
+header, nav, .nav, .nav-container, .nav__container, [class*="nav"], [id*="nav"] {
+    background-color: #6200ea !important;
     background: #6200ea !important;
-    height: 46px !important; /* Lowers and locks the bar to its native tight height scale */
-    max-height: 46px !important;
-    min-height: 46px !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    display: flex !important;
-    flex-direction: row !important;
-    justify-content: space-between !important;
-    align-items: center !important;
-    padding: 0 25px !important; /* Comfortably forces both side edges inward away from margins */
-    box-sizing: border-box !important;
 }
 
-/* 2. MATCH LISTS TAB: Forces the custom Lists dropdown trigger to adopt the native font family, size, and style */
+/* 2. Format your "LISTS ▼" trigger button to perfectly match your original font styling layout */
 .dropdown-trigger {
     color: rgba(255, 255, 255, 0.7) !important;
     background: transparent !important;
     border: none !important;
     cursor: pointer !important;
     font-family: inherit !important;
-    font-size: 13.33px !important; /* Matches template native typography size precisely */
-    font-weight: 700 !important; /* Fits your bold font weight choices for tabs */
-    text-transform: uppercase !important; /* Forces uniform capitalized alignment tracking */
-    letter-spacing: 0.5px !important;
-    height: 46px !important;
+    font-size: inherit !important; /* Reverts size completely back to the template original scale */
+    font-weight: inherit !important; /* Reverts weight completely back to the template original scale */
     display: inline-flex !important;
     align-items: center !important;
-    padding: 0 12px !important;
-    margin: 0 !important;
+    gap: 4px !important;
+    padding: 0 14px !important;
+    height: 100% !important;
 }
 
 .dropdown-trigger:hover {
     color: #ffffff !important;
 }
 
-/* 3. ALIGN RIGHT CONTAINER ROW Elements */
-/* Wipes out any template absolute positioning tracking rules so things line up straight */
+/* 3. Pulls the right action items cleanly apart horizontally and keeps them away from edges */
 .nav__right, [class*="right"], nav > div:last-child {
-    display: inline-flex !important;
+    display: flex !important;
     flex-direction: row !important;
     align-items: center !important;
     justify-content: flex-end !important;
-    height: 46px !important;
-    gap: 15px !important; /* Creates distinct breathing room between elements */
-    margin: 0 !important;
-    padding: 0 !important;
+    gap: 16px !important; /* Creates explicit separation distance between widgets */
+    padding: 0 10px !important; /* Pulls the far right icon smoothly inward away from screen borders */
     position: relative !important;
 }
 
-/* 4. PREMIUM WHITE SUBMIT RECORD BUTTON CONFIGURATION */
-/* Safely formats your submit button as a white link card that will not hover wrap or overflow */
-.nav__right a, .nav__right [class*="submit"], .nav__right #submit-btn {
-    background-color: #ffffff !important; /* Pure clean solid white block */
+/* 4. DESIGN FOR THE PURE WHITE SUBMIT RECORD LINK CONTAINER */
+.nav__right a.btn, .nav__right [class*="submit"], .nav__right #submit-btn, [class*="submit"] {
+    background-color: #ffffff !important; /* Forces solid white button drawer layout */
     background: #ffffff !important;
-    color: #6200ea !important; /* Saturated purple label fonts color match */
-    padding: 5px 12px !important; /* Tight internal sizing padding box limits */
+    color: #6200ea !important; /* Vibrant background matched purple text fill font */
+    padding: 6px 14px !important;
     border-radius: 4px !important;
     font-weight: 700 !important;
-    font-size: 11px !important;
-    text-transform: uppercase !important;
     text-decoration: none !important;
     display: inline-flex !important;
     align-items: center !important;
-    gap: 8px !important; /* Creates space between Submit Record text label and TSWD logo icon */
-    height: 28px !important; /* Keeps the button neatly sized inside the 46px top navbar row */
-    box-sizing: border-box !important;
+    justify-content: center !important;
+    gap: 8px !important; /* Clean margin padding between button label and icon vector */
     white-space: nowrap !important;
+    height: auto !important;
     position: relative !important;
 }
 
-/* 5. FINALLY FIX AND ALIGN THE TSWD IMAGE ACCENT ICON inside the button */
-/* Pulls your graphic logo asset vector image out of floating layout frames */
-.nav__right img, .nav__right a img, .nav__right [class*="submit"] img {
-    position: static !important; /* Completely strips overlapping layout bugs */
-    height: 16px !important; /* Scales image vertically to seat perfectly inside padding box */
-    width: auto !important; /* Dynamically calculates width parameters so it doesn't squish */
-    max-height: 16px !important;
+/* 5. FINALLY FIX AND SEPARATE THE TSWD IMAGE LOGO VECTOR inside the button padding wrapper */
+.nav__right a.btn img, .nav__right [class*="submit"] img, .nav__right img {
+    position: static !important; /* Neutralizes clipping layout overlays */
+    height: 18px !important; /* Proportional vertical thickness scale */
+    width: auto !important; /* Balances aspect parameters naturally */
+    max-height: 18px !important;
     object-fit: contain !important;
     display: inline-block !important;
-    margin: 0 !important; /* Removes margins so it stops colliding or sticking to outer window edge frame */
+    margin: 0 !important; /* Stops it from pinning directly onto the top screen frame border */
     transform: none !important;
 }
