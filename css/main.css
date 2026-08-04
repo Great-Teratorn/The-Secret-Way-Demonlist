@@ -258,12 +258,12 @@ main+aside ul li:nth-child(1) img,.editors li:nth-child(1) img,aside ul li:nth-c
 
 
 /* =======================================================
-   🏁 FINAL POLISH: ALIGN FONTS & SEPARATE RIGHT BUTTONS 🏁
+   🏁 FINAL PRECISION POLISH: SAFE GRID & ALIGNED ELEMENTS
    ======================================================= */
 
-/* 1. Base top bar layout - Clean horizontal row alignment bounds */
+/* 1. Base Navbar color and height rules */
 header, nav, .nav, .nav-container, .nav__container, #navbar, [class*="nav"] {
-    background-color: #6200ea !important;
+    background-color: #6200ea !important; /* Vibrant royal purple theme */
     background: #6200ea !important;
     height: 46px !important;
     max-height: 46px !important;
@@ -278,94 +278,81 @@ header, nav, .nav, .nav-container, .nav__container, #navbar, [class*="nav"] {
     box-sizing: border-box !important;
 }
 
-.nav__logo, .logo, nav h2, nav > a:first-child {
-    font-size: 13.33px !important;
-    font-weight: 700 !important;
-    white-space: nowrap !important;
-    margin: 0 !important;
-    display: inline-flex !important;
-    align-items: center;
-}
-
-/* 2. FORCES ALL 4 TABS TO BE THE EXACT SAME HIGHER WEIGHT AND SIZE AS LISTS */
-.dropdown-trigger, .nav__tab, .nav a, nav ul li a, .nav__actions a, .nav__tab span {
-    font-size: 14px !important; /* Slightly bumped size to perfectly balance elements */
-    font-weight: 700 !important; /* Heavy font weight applied to all tabs */
-    text-transform: uppercase !important; 
+/* 2. MATCH ALL TABS: Forces Welcome, Leaderboard, and Roulette to perfectly match Lists */
+.nav__tab, .nav__tab span, .nav a, nav ul li a, .nav__actions a {
+    font-size: 13.33px !important; /* Perfect uniform size match */
+    font-weight: 700 !important; /* Clean bold weight match */
+    text-transform: uppercase !important; /* All-caps appearance */
     letter-spacing: 0.5px !important;
     color: rgba(255, 255, 255, 0.75) !important;
+}
+
+/* 3. Style rules for your Lists trigger to stay synchronized */
+.dropdown-trigger {
+    font-size: 13.33px !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+    color: rgba(255, 255, 255, 0.75) !important;
+    background: transparent !important;
+    border: none !important;
+    cursor: pointer !important;
     height: 46px !important;
     display: inline-flex !important;
     align-items: center !important;
     padding: 0 14px !important;
-    border: none !important;
-    background: transparent !important;
-    cursor: pointer !important;
-    font-family: inherit !important;
 }
 
-.dropdown-trigger:hover, .nav__tab:hover, .nav a:hover, .nav__tab:hover span {
+.dropdown-trigger:hover, .nav__tab:hover, .nav__tab:hover span {
     color: #ffffff !important;
 }
 
-/* 3. FIX FOR THE RIGHT WIDGET OVERLAPS */
-/* Strips absolute floats and maps them as sequential side-by-side items */
-.nav__right, [class*="right"], nav > div:last-child {
-    position: relative !important;
+/* 4. SAFE POSITION FIX FOR THE RIGHT PANEL WIDGETS */
+/* Using flex spacing without static rules so your info column stays perfectly visible on grid */
+.nav__right {
     display: inline-flex !important;
     flex-direction: row !important;
     align-items: center !important;
     justify-content: flex-end !important;
     height: 46px !important;
-    gap: 16px !important; /* Forces a clear horizontal separation gap */
-    margin: 0 !important;
-    white-space: nowrap !important;
+    gap: 16px !important; /* Clean layout space between elements */
 }
 
-/* Stops items inside the right container from floating over each other */
-.nav__right *, [class*="right"] * {
-    position: static !important; /* Drops absolute positioning bugs */
-    float: none !important;
-}
-
-#meta, .meta, [class*="counter"] {
+/* Puts the Total Site Visits text labels cleanly side-by-side */
+.nav__right .meta, .nav__right #meta {
     display: inline-flex !important;
     flex-direction: row !important;
     align-items: center !important;
     gap: 6px !important;
-}
-
-#meta *, .meta *, .nav__right span {
-    font-size: 0.8rem !important;
-    display: inline-block !important;
     white-space: nowrap !important;
-    color: #ffffff !important;
 }
 
-/* 4. RESTORES CLEAN WHITE SUBMIT BUTTON LOOK WITH TSWD ICON */
-.nav__right a:last-child, [class*="submit"], #submit-btn {
-    background: #ffffff !important; /* Pure white button background color */
-    color: #6200ea !important; /* Purple text color matching your layout background */
-    padding: 6px 14px !important;
+/* 5. SPECIFIC SUBMIT RECORD BUTTON DESIGN: WHITE & SEPARATED ICON */
+.nav__right a.btn, .nav__right [class*="submit"], .nav__right #submit-btn {
+    background-color: #ffffff !important; /* Pure clean white background */
+    background: #ffffff !important;
+    color: #6200ea !important; /* Rich purple font match */
+    padding: 5px 12px !important;
     border-radius: 4px !important;
     font-weight: 700 !important;
-    font-size: 0.85rem !important;
+    font-size: 11px !important;
     text-transform: uppercase !important;
     text-decoration: none !important;
     display: inline-flex !important;
     align-items: center !important;
-    gap: 8px !important; /* Clean internal spacing separating text from icon */
-    height: auto !important;
+    gap: 8px !important; /* Pushes the text away from the TSWD icon */
+    height: 28px !important;
+    box-sizing: border-box !important;
 }
 
-/* Properly fits and resizes your TSWD image asset vector directly inside the white button */
-.nav__right a:last-child img, [class*="submit"] img, nav img {
-    position: static !important;
-    height: 20px !important; /* Balances size cleanly inside button padding wrapper */
+/* Scales the right-side TSWD image logo vector inside the bounds of the white button */
+.nav__right a.btn img, .nav__right [class*="submit"] img {
+    height: 16px !important;
     width: auto !important;
-    max-height: 20px !important;
+    max-height: 16px !important;
     object-fit: contain !important;
     display: inline-block !important;
     margin: 0 !important;
-    transform: none !important;
 }
+
+
