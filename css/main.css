@@ -323,14 +323,16 @@ nav a:last-of-type,
    5. PERFECT POSITION FOR THE TSWD IMAGE ACCENT WITH SAFETY GAP 
    ========================================================================== */
 
-/* Targets the last container inside the right navbar to erase the white box */
+/* FORCES THE WHITE BUTTON WRAPPER TO BECOME COMPLETELY INVISIBLE */
 .nav_right > *:last-child,
 .nav_right a:last-child {
     background: transparent !important;
     background-color: transparent !important;
+    background-image: none !important;
     border: none !important;
     box-shadow: none !important;
-    padding: 0 !important;
+    outline: none !important;
+    padding: 0 !important; /* Wipes out the internal padding crushing the image */
     margin: 0 !important;
     display: inline-flex !important;
     align-items: center !important;
@@ -338,7 +340,7 @@ nav a:last-of-type,
     height: 100% !important;
 }
 
-/* Targets the actual image inside that container to make it big */
+/* TARGETS THE IMAGE INSIDE TO LET IT GROW NATURALLY WITHOUT SQUISHING */
 .nav_right > *:last-child img,
 .nav_right a:last-child img,
 img[src*="tswd" i] {
@@ -348,15 +350,15 @@ img[src*="tswd" i] {
     border: none !important;
     box-shadow: none !important;
     
-    /* Forces the image to take up the full available height of the purple bar */
-    height: 54px !important;       
-    max-height: 54px !important;   
-    width: 145px !important;         /* Allows width to scale naturally without squishing */
+    /* Natural proportional scaling */
+    height: 48px !important; /* Matches standard navbar accent heights */
+    max-height: 48px !important;   
+    width: auto !important; /* Let the width scale normally so your logo looks crisp */
     object-fit: contain !important; 
     
     display: inline-block !important;
-    margin-left: 20px !important;  /* Space away from SUBMIT RECORD button */
-    margin-right: 15px !important; /* Space away from the very edge of the screen */
+    margin-left: 25px !important; /* Gap away from SUBMIT RECORD button */
+    margin-right: 15px !important; /* Gap away from the right screen monitor edge */
     
     background: transparent !important;
     background-color: transparent !important;
