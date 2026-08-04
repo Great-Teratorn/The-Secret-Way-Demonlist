@@ -61,8 +61,8 @@ export default {
     `,
     data() {
         return {
-            introVideo: "https://www.youtube.com/watch?v=S7BtDDTYVLM",
-            originsVideo: "https://www.youtube.com/watch?v=S7BtDDTYVLM"
+            introVideo: "https://www.youtube-nocookie.com/watch?v=S7BtDDTYVLM",
+            originsVideo: "https://www.youtube-nocookie.com/watch?v=S7BtDDTYVLM"
         }
     }
 };
