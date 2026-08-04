@@ -350,3 +350,12 @@ a:has(img[src*="TSWD"]) {
     box-shadow: none !important;
     padding: 0 !important;
 }
+
+/* Removes the box formatting from the link wrapper holding the TSWD image */
+a:has(img[src*="TSWD"]) {
+    background: transparent !important;
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+}
