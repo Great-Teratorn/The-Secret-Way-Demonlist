@@ -258,12 +258,12 @@ main+aside ul li:nth-child(1) img,.editors li:nth-child(1) img,aside ul li:nth-c
 
 
 /* =======================================================
-   🏁 FINAL TOUCH: TSWD ICON RESIZE & NAV LINK BALANCE 🏁
+   🏁 FINAL POLISH: ALIGN FONTS & SEPARATE RIGHT BUTTONS 🏁
    ======================================================= */
 
-/* 1. Base top bar layout - Sets the tight horizontal bar dimensions and rich purple */
+/* 1. Base top bar layout - Clean horizontal row alignment bounds */
 header, nav, .nav, .nav-container, .nav__container, #navbar, [class*="nav"] {
-    background-color: #6200ea !important; /* Vibrant royal purple theme */
+    background-color: #6200ea !important;
     background: #6200ea !important;
     height: 46px !important;
     max-height: 46px !important;
@@ -278,21 +278,20 @@ header, nav, .nav, .nav-container, .nav__container, #navbar, [class*="nav"] {
     box-sizing: border-box !important;
 }
 
-/* 2. Format the title logo and version counter text so they stay cleanly grouped */
 .nav__logo, .logo, nav h2, nav > a:first-child {
     font-size: 13.33px !important;
     font-weight: 700 !important;
     white-space: nowrap !important;
     margin: 0 !important;
     display: inline-flex !important;
-    align-items: center !important;
+    align-items: center;
 }
 
-/* 3. SYNC TABS: Forces Welcome, Lists, Leaderboard, and Roulette to have the exact same font parameters */
-.dropdown-trigger, .nav__tab, .nav a, nav ul li a, .nav__actions a {
-    font-size: 13.33px !important; /* Perfect uniform size match */
-    font-weight: 700 !important; /* Balanced font weight across all items */
-    text-transform: uppercase !important; /* Enforces uniform ALL-CAPS uppercase look */
+/* 2. FORCES ALL 4 TABS TO BE THE EXACT SAME HIGHER WEIGHT AND SIZE AS LISTS */
+.dropdown-trigger, .nav__tab, .nav a, nav ul li a, .nav__actions a, .nav__tab span {
+    font-size: 14px !important; /* Slightly bumped size to perfectly balance elements */
+    font-weight: 700 !important; /* Heavy font weight applied to all tabs */
+    text-transform: uppercase !important; 
     letter-spacing: 0.5px !important;
     color: rgba(255, 255, 255, 0.75) !important;
     height: 46px !important;
@@ -305,54 +304,68 @@ header, nav, .nav, .nav-container, .nav__container, #navbar, [class*="nav"] {
     font-family: inherit !important;
 }
 
-/* Highlight hover color for all navbar text links */
-.dropdown-trigger:hover, .nav__tab:hover, .nav a:hover, .nav__actions a:hover {
+.dropdown-trigger:hover, .nav__tab:hover, .nav a:hover, .nav__tab:hover span {
     color: #ffffff !important;
 }
 
-/* 4. FIX FOR THE RIGHT SIDE OVERFLOW AND VERTICAL COUNTER SQUISHING */
-/* Neutralizes the vertical stack and forces hits, discord, and submit to line up side-by-side */
+/* 3. FIX FOR THE RIGHT WIDGET OVERLAPS */
+/* Strips absolute floats and maps them as sequential side-by-side items */
 .nav__right, [class*="right"], nav > div:last-child {
+    position: relative !important;
     display: inline-flex !important;
     flex-direction: row !important;
     align-items: center !important;
     justify-content: flex-end !important;
     height: 46px !important;
-    max-height: 46px !important;
-    gap: 15px !important; /* Clean physical spacing between right side widgets */
+    gap: 16px !important; /* Forces a clear horizontal separation gap */
     margin: 0 !important;
     white-space: nowrap !important;
 }
 
-/* Forces the Total Site Visits text label and number badge to sit straight side-by-side */
-#meta, .meta, [class*="counter"], .nav__right > div:first-child {
+/* Stops items inside the right container from floating over each other */
+.nav__right *, [class*="right"] * {
+    position: static !important; /* Drops absolute positioning bugs */
+    float: none !important;
+}
+
+#meta, .meta, [class*="counter"] {
     display: inline-flex !important;
     flex-direction: row !important;
     align-items: center !important;
     gap: 6px !important;
-    white-space: nowrap !important;
-    height: 46px !important;
 }
 
-/* Un-squishes the "Total Site Visits" label text formatting inside the row */
 #meta *, .meta *, .nav__right span {
     font-size: 0.8rem !important;
     display: inline-block !important;
-    line-height: 1 !important;
     white-space: nowrap !important;
+    color: #ffffff !important;
 }
 
-/* 5. FIX FOR THE OVERSIZED TSWD IMAGE VECTOR BANNER */
-/* Pulls the image out of absolute clipping bounds and forces it to fit inside the 46px bar height */
-.nav__right img, nav img, [class*="submit"] img, .nav__right a img {
-    position: relative !important;
-    top: auto !important;
-    right: auto !important;
-    transform: none !important;
-    height: 24px !important; /* Proportional image height to sit cleanly within the 46px row */
+/* 4. RESTORES CLEAN WHITE SUBMIT BUTTON LOOK WITH TSWD ICON */
+.nav__right a:last-child, [class*="submit"], #submit-btn {
+    background: #ffffff !important; /* Pure white button background color */
+    color: #6200ea !important; /* Purple text color matching your layout background */
+    padding: 6px 14px !important;
+    border-radius: 4px !important;
+    font-weight: 700 !important;
+    font-size: 0.85rem !important;
+    text-transform: uppercase !important;
+    text-decoration: none !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 8px !important; /* Clean internal spacing separating text from icon */
+    height: auto !important;
+}
+
+/* Properly fits and resizes your TSWD image asset vector directly inside the white button */
+.nav__right a:last-child img, [class*="submit"] img, nav img {
+    position: static !important;
+    height: 20px !important; /* Balances size cleanly inside button padding wrapper */
     width: auto !important;
-    max-height: 24px !important;
+    max-height: 20px !important;
     object-fit: contain !important;
     display: inline-block !important;
-    margin: 0 4px !important;
+    margin: 0 !important;
+    transform: none !important;
 }
