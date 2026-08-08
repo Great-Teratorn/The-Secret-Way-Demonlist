@@ -1,3 +1,5 @@
+import { embed } from "../util.js";
+
 export default {
     template: `
         <div style="width: 100%; height: calc(100vh - 56px); overflow-y: auto; color: #fff; font-family: sans-serif;">
@@ -26,7 +28,7 @@ export default {
 
                 <!-- First Video Player (Introduction Video) -->
                 <div class="video-container" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 8px; margin-bottom: 25px;">
-                    <iframe class="video" id="videoframe" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;" :src="introVideo" frameborder="0" allowfullscreen></iframe>
+                    <iframe class="video" id="videoframe1" :src="video1" frameborder="0"></iframe>
                 </div>
 
                 <!-- Submission Requirements Box -->
@@ -47,7 +49,7 @@ export default {
 
                     <!-- Second Video Player (Origins Video) -->
                     <div class="video-container" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 8px; margin-bottom: 20px;">
-                        <iframe class="video" id="videoframe" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;" :src="originsVideo" frameborder="0" allowfullscreen></iframe>
+                        <iframe class="video" id="videoframe2" :src="video2" frameborder="0"></iframe>
                     </div>
 
                     <!-- Origins Paragraph Text -->
@@ -59,10 +61,13 @@ export default {
             </div>
         </div>
     `,
-    data() {
-        return {
-            introVideo: "https://www.youtube-nocookie.com/watch?v=S7BtDDTYVLM",
-            originsVideo: "https://www.youtube-nocookie.com/watch?v=S7BtDDTYVLM"
-        }
+    computed: {
+    video1() {
+        return embed("https://www.youtube.com/watch?v=S7BtDDTYVLM");
+    },
+    video2() {
+        return embed("https://www.youtube.com/watch?v=S7BtDDTYVLM");
     }
+}
+
 };
