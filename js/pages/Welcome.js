@@ -28,8 +28,9 @@ export default {
 
                 <!-- First Video Player (Introduction Video) -->
                 <div class="video-container" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 8px; margin-bottom: 25px;">
-                    <iframe class="video" id="videoframe1" :src="video1" frameborder="0"></iframe>
+                    <iframe class="video" id="videoframe1" :src="video1" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;" frameborder="0" allowfullscreen></iframe>
                 </div>
+
 
                 <!-- Submission Requirements Box -->
                 <div style="background: rgba(15, 10, 25, 0.6); padding: 25px; border-radius: 8px; border-left: 4px solid #8a2be2; margin-bottom: 35px;">
@@ -48,9 +49,10 @@ export default {
                     </h2>
 
                     <!-- Second Video Player (Origins Video) -->
-                    <div class="video-container" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 8px; margin-bottom: 20px;">
-                        <iframe class="video" id="videoframe2" :src="video2" frameborder="0"></iframe>
-                    </div>
+                    <div class="video-container" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 8px; margin-bottom: 25px;">
+                    <iframe class="video" id="videoframe2" :src="video2" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;" frameborder="0" allowfullscreen></iframe>
+                </div>
+
 
                     <!-- Origins Paragraph Text -->
                     <p style="line-height: 1.6; font-size: 0.95rem; color: #cbd5e1; margin: 0;">
