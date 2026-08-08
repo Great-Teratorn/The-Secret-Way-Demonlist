@@ -118,13 +118,18 @@ export default {
                         The secret way(s) must be used correctly as shown in the video. Otherwise, the record is invalid. 
                     </p>
                     <p>
+                        Clicks or taps must be clearly visible in the recording to reinforce legitimacy. Audible clicks are preferred but not compulsory. 
+                    </p>
+                    <p>
                         The recording must show the player hit the endwall, or the completion will be invalidated.
                     </p>
                     
                     <p>
                         Do not use easy modes, only a record of the unmodified level qualifies. LDM/ULDM is allowed - only if part of the level. Custom version will lead to the record being invalidated.  
                     </p>
-                    
+                    <p>
+                    A raw, unedited footage link must be provided upon request.
+                    </p>
                 </div>
             </div>
         </main>
