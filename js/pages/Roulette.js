@@ -156,16 +156,12 @@ export default {
         currentPercentage() {
             return this.progression[this.progression.length - 1] || 0;
         },
-                    placeholder() {
+                            placeholder() {
             if (this.gameMode === 'survival') {
-                const currentLevel = this.levels[this.progression.length];
-                // Check if secret_way_at exists directly, or check if it's nested inside a level details object
-                if (currentLevel) {
-                    return currentLevel.secret_way_at || (currentLevel.level && currentLevel.level.secret_way_at) || 1;
-                }
-                return 1;
+                // Survival Mode: Output the active requirement loaded from your JSON
+                return this.percentage || 1;
             }
-            // Classic & Linear fix: Check last logged score and add 1
+            // Classic & Linear fix: Check last logged score history and add 1
             if (this.progression.length > 0) {
                 return this.progression[this.progression.length - 1] + 1;
             }
@@ -173,8 +169,7 @@ export default {
         },
 
 
-
-
+        
         hasCompleted() {
             return (
                 this.progression[this.progression.length - 1] >= 100 ||
@@ -240,18 +235,24 @@ export default {
 
 
 
-        this.showRemaining = false;
+                this.showRemaining = false;
         this.givenUp = false;
         this.progression = [];
 
-        // Setup target percentage
+        // Setup initial target percentage
         if (this.gameMode === 'survival') {
-            // Mode 3: Requires reaching the first level's secret way entrance percent
-            this.percentage = this.levels[0].secret_way_at || 1;
+            try {
+                // Fetch the very first level's JSON file to boot up the requirements
+                const response = await fetch(`data/${this.levels[0].name}.json`);
+                const firstLevelData = await response.json();
+                this.percentage = firstLevelData.secret_way_at || 1;
+            } catch (err) {
+                this.percentage = 1;
+            }
         } else {
-            // Mode 1 & 2: Traditional incremental tracking starts at 1%
             this.percentage = 1;
         }
+
 
 
             this.loading = false;
@@ -265,53 +266,55 @@ export default {
                 }),
             );
         },
-        onDone() {
-                        if (!this.percentage) {
-                return;
-            }
-
-            // Syncs the verification rules to match whatever is showing in the placeholder box
-            let requiredPercentage = this.placeholder;
-
-            if (
-                this.percentage < requiredPercentage || 
-                this.percentage > 100
-            ) {
-                this.showToast(`Invalid percentage. You must reach at least ${requiredPercentage}%!`);
-                return;
-            }
-
-
-
-                            // 1. Log the percentage they just successfully scored
-        this.progression.push(this.percentage);
         
-        // Save the score they just beat into a temp variable before resetting
+            async onDone() {
+        if (!this.percentage) {
+            return;
+        }
+
+        let requiredPercentage = this.placeholder;
+
+        if (
+            this.percentage < requiredPercentage || 
+            this.percentage > 100
+        ) {
+            this.showToast(`Invalid percentage. You must reach at least ${requiredPercentage}%!`);
+            return;
+        }
+
+        this.progression.push(this.percentage);
         let lastBeatenScore = this.percentage;
 
-        // 2. Calculate the next target percentage criteria
+        // Calculate the next target percentage criteria
         if (this.gameMode === 'survival') {
-            // Secret Way Survival: Grab the next level array object based on progress counter
-            const nextLevel = this.levels[this.progression.length];
-            if (nextLevel) {
-                this.percentage = nextLevel.secret_way_at || 1;
+            const nextLevelData = this.levels[this.progression.length];
+            if (nextLevelData) {
+                try {
+                    // Peek into the specific level file (e.g. data/xo.json) right on the fly!
+                    const response = await fetch(`data/${nextLevelData.name}.json`);
+                    const detailedLevel = await response.json();
+                    
+                    // Force the background requirements tracker to update to your exact custom JSON property
+                    this.percentage = detailedLevel.secret_way_at || 1;
+                } catch (err) {
+                    console.error("Error fetching level details:", err);
+                    this.percentage = 1; // Safety fallback
+                }
             } else {
                 this.percentage = undefined; // Game completely finished!
             }
         } else {
-            // Classic & Linear Mode: Incremental format looks at your last score and adds 1!
-            // E.g., if you scored 5%, the next minimum goal instantly becomes 6%
+            // Classic & Linear Mode: Incremental format looks at your last score and adds 1
             if (lastBeatenScore >= 100) {
-                this.percentage = undefined; // Hit 100%, game finished!
+                this.percentage = undefined; 
             } else {
                 this.percentage = lastBeatenScore + 1;
             }
         }
 
         this.save();
+    },
 
-
-        },
         onGiveUp() {
             this.givenUp = true;
 
