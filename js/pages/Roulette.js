@@ -224,14 +224,28 @@ export default {
             }
 
             // random 100 levels
-                 // Setup levels based on chosen game mode
+                // 1. Arrange the level list structure first
+        let chosenList = [];
         if (this.gameMode === 'linear') {
-            // Mode 2: Standard Progression (Start at #150 and climb up to #1)
-            this.levels = list.slice().reverse(); 
+            chosenList = list.slice().reverse(); 
         } else {
-            // Mode 1 & 3: Classic Random & Secret Way Survival remain fully randomized
-            this.levels = shuffle(list).slice(0, 100);
+            chosenList = shuffle(list).slice(0, 100);
         }
+
+        // 2. Fetch the full detailed data for each level to unlock 'secret_way_at' properties
+        this.levels = await Promise.all(
+            chosenList.map(async (levelName) => {
+                try {
+                    // Pulls the real data file (like data/xo.json) right into your game memory
+                    const response = await fetch(`data/${levelName}.json`);
+                    return await response.json();
+                } catch (err) {
+                    console.error("Error loading level details:", err);
+                    return { name: levelName, secret_way_at: 1 }; // Fallback safety
+                }
+            })
+        );
+
 
 
         this.showRemaining = false;
