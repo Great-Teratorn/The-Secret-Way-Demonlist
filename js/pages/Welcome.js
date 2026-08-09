@@ -36,7 +36,7 @@ export default {
                 <!-- Information Box -->
                 <div style="background: rgba(15, 10, 25, 0.6); padding: 25px; border-radius: 8px; border-left: 4px solid #8a2be2; margin-bottom: 35px;">
                     <h3 style="font-size: 1.2rem; margin: 0 0 12px 0; color: #fff;">General Information</h3>
-                    <ul style="padding-left: 20px; margin: 0; line-height: 1.7; color: #cbd5e1; font-size: 1rem; font-weight: 500;">
+                    <ul style="padding-left: 20px; margin: 0; line-height: 1.7; color: #cbd5e1; font-size: 1rem; font-weight: 600;">
                         <li style="margin-bottom: 8px;">The Main List contains the top 150 hardest secret way demon levels. The top 1 level is worth 150 points, and the points decrease by 1 with each level going down. So the top 2 level will be worth 149 points, and so on.</li>
                         <li>The Extended List contains all the secret way demons which are easier than the top 150. They are not worth any points.</li>
                         <li>The Legacy List is reserved solely for the levels which have fallen off the Main List, including the date which they lost their mightiness. So some levels will be both in the Extended and Legacy Lists. Legacy List levels are also not worth any points.</li>
@@ -67,12 +67,7 @@ export default {
                     <p style="line-height: 1.6; font-size: 0.95rem; color: #cbd5e1; margin: 0 0 15px 0;">
                         This was where it all began. It was an idea in Jackypoo's mind, and together with our moderators we made it a reality. What began as a simple Discord server and a simplistic Google Site evolved into this. Before the details, the submissions, the designs - it was just a List. And we are all so happy this idea was brought to life. We hope you enjoy your time here as much as us :)
                     </p>
-                    <p style="display: flex; align-items: center; flex-wrap: wrap; gap: 10px; margin: 20px 0; color: #ffffff; font-size: 1rem;">
-                        Click here to check out our original Google Site:
-                        <a href="https://sites.google.com/view/the-secret-way-demonlist/demonlist" target="_blank" style="display: inline-block; padding: 6px 14px; background-color: #2563eb; color: #ffffff; font-weight: bold; border-radius: 4px; text-decoration: none; font-size: 0.9rem; transition: opacity 0.2s;">
-                            Google Site
-                        </a>
-                    </p>
+                    <p style="margin: 20px 0 0 0; padding: 0; color: #ffffff; font-size: 1rem; line-height: 1.7;">Click here to check out our original Google Site:<a href="https://sites.google.com/view/the-secret-way-demonlist/demonlist" target="_blank" style="display: inline-block; padding: 6px 14px; background-color: #2563eb; color: #ffffff; font-weight: bold; border-radius: 4px; text-decoration: none; font-size: 0.9rem; margin-left: 8px; vertical-align: middle; transition: opacity 0.2s;">Google Site</a></p>
                 </div>
 
 <!-- CONTACT WRAPPER BOX -->
