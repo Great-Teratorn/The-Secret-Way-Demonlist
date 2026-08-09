@@ -158,7 +158,9 @@ export default {
             return this.progression[this.progression.length - 1] || 0;
         },
                                     placeholder() {
-            if (this.gameMode === 'survival') {
+                        if (!this.gameMode) return this.progression ? this.progression.length + 1 : 1;
+
+                                        if (this.gameMode === 'survival') {
                 // Locks the UI and constraint boundaries strictly to your active data fetch file rule
                 return this.survivalTarget || 1;
             }
