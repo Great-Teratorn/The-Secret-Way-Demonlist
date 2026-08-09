@@ -194,130 +194,55 @@
         transform: none !important;
     }
 
-        /* Force the header background to grow dynamically and clear the space below */
-    header, .header, .nav, nav {
-        height: auto !important;
-        background: #1c2331 !important; /* Matches your header color */
-        position: relative !important;
-        z-index: 10 !important;
-        margin-bottom: 15px !important;
-    }
-
-    /* Move the welcome title container down so the menu buttons never hit it */
-    .main-content, main, #main-content, div[style*="max-width: 1000px"] {
-        margin-top: 20px !important;
-    }
-
-    /* Shrink the TSWD logo/banner slightly on phone viewports */
-    [class*="logo"], [class*="title"] img, img[alt*="TSWD"], .nav__logo {
-        max-width: 120px !important;
-        height: auto !important;
-        margin: 5px auto !important;
-    }
-
-        /* The Ultimate Override: Shrink and force-flatten that huge floating box */
-    div[style*="background-color"], 
-    div[style*="background:#"], 
-    header div, 
-    nav div {
-        position: relative !important;
-        top: 0 !important;
-        left: 0 !important;
-        transform: none !important;
-        width: auto !important;
-        max-width: 100% !important;
-        height: auto !important;
-        min-height: unset !important;
-        background-color: transparent !important;
-        background: transparent !important;
-        box-shadow: none !important;
-        display: inline-flex !important;
-        flex-direction: row !important;
-        justify-content: center !important;
-        align-items: center !important;
-    }
-
-    /* Force the Discord link container to behave like a normal tiny button */
-    header a[href*="discord"], 
-    nav a[href*="discord"],
-    .nav__actions a {
-        background-color: #5865F2 !important; /* Discord Blue */
-        border-radius: 4px !important;
-        padding: 6px 12px !important;
-        height: auto !important;
-        width: auto !important;
-        display: inline-flex !important;
-    }
-
-        /* The Ultimate Override: Shrink and force-flatten that huge floating box */
-    div[style*="background-color"], 
-    div[style*="background:#"], 
-    header div, 
-    nav div {
-        position: relative !important;
-        top: 0 !important;
-        left: 0 !important;
-        transform: none !important;
-        width: auto !important;
-        max-width: 100% !important;
-        height: auto !important;
-        min-height: unset !important;
-        background-color: transparent !important;
-        background: transparent !important;
-        box-shadow: none !important;
-        display: inline-flex !important;
-        flex-direction: row !important;
-        justify-content: center !important;
-        align-items: center !important;
-    }
-
-    /* Force the Discord link container to behave like a normal tiny button */
-    header a[href*="discord"], 
-    nav a[href*="discord"],
-    .nav__actions a {
-        background-color: #5865F2 !important; /* Discord Blue */
-        border-radius: 4px !important;
-        padding: 6px 12px !important;
-        height: auto !important;
-        width: auto !important;
-        display: inline-flex !important;
-    }
-
-        /* Nuclear fix for the absolute positioning on the right panel elements */
-    .nav *, nav *, header * {
-        position: relative !important;
-        top: auto !important;
-        right: auto !important;
-        bottom: auto !important;
-        left: auto !important;
-        transform: none !important;
-        float: none !important;
-        max-width: 100% !important;
-    }
-
-    /* Force the entire header/nav wrapper area to layout cleanly */
-    .nav, nav, header {
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: center !important;
-        justify-content: center !important;
-        height: auto !important;
-        padding: 15px 5px !important;
-        width: 100% !important;
-        box-sizing: border-box !important;
-    }
-
-    /* Stack your menu links panel and the side action panel into clean rows */
-    .nav > div, nav > div, header > div {
+    /* Fix the overlapping lists sub-menu buttons */
+    .nav nav, 
+    .nav__sub, 
+    div[style*="grid"], 
+    .nav-bar ul {
         display: flex !important;
         flex-direction: row !important;
         flex-wrap: wrap !important;
+        gap: 8px !important;
         justify-content: center !important;
         align-items: center !important;
-        width: 100% !important;
-        margin: 5px 0 !important;
+        margin: 10px 0 !important;
+        padding: 0 !important;
+        position: relative !important;
+        height: auto !important;
     }
 
+    /* Ensure individual sub-menu buttons have breathing room */
+    .nav nav a, 
+    .nav__sub a {
+        margin: 4px !important;
+        font-size: 0.75rem !important;
+        z-index: 5 !important;
+    }
+
+    /* Un-fix the desktop header tracking block so it flows normally and frees the viewport scroll gestures */
+    header, .header, nav, .nav, .nav-bar, .nav-container {
+        position: relative !important;
+        position: static !important; /* Forces it to fall completely out of fixed/sticky mode */
+        height: auto !important;
+        max-height: unset !important;
+        min-height: unset !important;
+        pointer-events: auto !important; /* Ensures buttons stay clickable */
+    }
+
+    /* Target the main content layout scroll panel wrapper */
+    .root, #app, main, .page-list, .main-content, .content, .g-layout {
+        position: relative !important;
+        height: auto !important;
+        min-height: 100vh !important;
+        overflow-y: visible !important; /* Explicitly grants permission to scroll normally anywhere */
+    }
+
+    /* Strip any full-screen overlay behavior that prevents touching the page */
+    div[style*="position: fixed"], 
+    div[style*="position: absolute"] {
+        position: relative !important;
+        height: auto !important;
+    }
 
     /* Force global horizontal overflow protection */
     body, html {
