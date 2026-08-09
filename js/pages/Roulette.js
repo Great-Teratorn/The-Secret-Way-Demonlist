@@ -156,13 +156,19 @@ export default {
         currentPercentage() {
             return this.progression[this.progression.length - 1] || 0;
         },
-                placeholder() {
+                    placeholder() {
             if (this.gameMode === 'survival') {
                 const currentLevel = this.levels[this.progression.length];
                 return currentLevel ? (currentLevel.secret_way_at || 1) : 1;
             }
-            return this.progression.length + 1;
+            // Classic & Linear fix: If you have beaten levels, check your last logged score and add 1!
+            if (this.progression.length > 0) {
+                return this.progression[this.progression.length - 1] + 1;
+            }
+            // Fallback for the very first level of the run
+            return 1;
         },
+
 
 
         hasCompleted() {
@@ -254,20 +260,21 @@ export default {
             );
         },
         onDone() {
-            if (!this.percentage) {
+                        if (!this.percentage) {
                 return;
             }
 
-                    let requiredPercentage = this.placeholder; 
-            
+            // Syncs the verification rules to match whatever is showing in the placeholder box
+            let requiredPercentage = this.placeholder;
 
-        if (
-            this.percentage < requiredPercentage || 
-            this.percentage > 100
-        ) {
-            this.showToast('Invalid percentage. You must reach the Secret Way entrance threshold!');
-            return;
-        }
+            if (
+                this.percentage < requiredPercentage || 
+                this.percentage > 100
+            ) {
+                this.showToast(`Invalid percentage. You must reach at least ${requiredPercentage}%!`);
+                return;
+            }
+
 
 
                             // 1. Log the percentage they just successfully scored
