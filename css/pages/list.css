@@ -244,6 +244,34 @@
         height: auto !important;
     }
 
+        /* LEADERBOARD MOBILE PANEL FIX */
+    .page-leaderboard, 
+    div[v-if="selected !== null"],
+    .player-container {
+        display: flex !important;
+        flex-direction: column !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        height: auto !important;
+        min-height: unset !important;
+        margin: 15px 0 !important;
+        box-sizing: border-box !important;
+    }
+
+    /* Force the right-hand level list panel to be completely visible when stacked below */
+    .player-details, 
+    .right-panel,
+    div[style*="flex-grow"] {
+        width: 100% !important;
+        max-width: 100% !important;
+        display: block !important;
+        margin-top: 25px !important; /* Adds breathing room right above the player stats */
+        padding: 15px !important;
+        box-sizing: border-box !important;
+        height: auto !important;
+    }
+
+    
     /* Force global horizontal overflow protection */
     body, html {
         overflow-x: hidden !important;
