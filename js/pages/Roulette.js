@@ -156,15 +156,14 @@ export default {
         currentPercentage() {
             return this.progression[this.progression.length - 1] || 0;
         },
-            placeholder() {
-        if (this.gameMode === 'survival') {
-            // Secret Way Survival: Grab the next level object in line from your active game array
-            const currentLevel = this.levels[this.progression.length];
-            return currentLevel ? (currentLevel.secret_way_at || 1) : 1;
-        }
-        // Classic & Linear: Keep standard incrementing tracker (1%, 2%, 3%...)
-        return this.progression.length + 1;
-    },
+                placeholder() {
+            if (this.gameMode === 'survival') {
+                const currentLevel = this.levels[this.progression.length];
+                return currentLevel ? (currentLevel.secret_way_at || 1) : 1;
+            }
+            return this.progression.length + 1;
+        },
+
 
         hasCompleted() {
             return (
