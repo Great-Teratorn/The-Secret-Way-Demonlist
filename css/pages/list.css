@@ -129,78 +129,48 @@
 
 
 
-/* GLOBAL MOBILE RESPONSIVENESS FIX */
+/* MASTER DEMONLIST MOBILE RESPONSIVENESS FIX */
 @media (max-width: 768px) {
-    /* 1. Force the main layout columns to stack on top of each other */
-    .page-list, 
-    main, 
-    .list-container,
-    #app {
+    /* Fix the layout wrapper so things stack vertically */
+    .root, #app, main, .page-list {
         display: flex !important;
         flex-direction: column !important;
+        padding: 5px !important;
         width: 100% !important;
-        padding: 10px !important;
         box-sizing: border-box !important;
     }
 
-    /* 2. Prevent panels or sidebars from clipping off screen edges */
-    .page-list > div,
-    .main-content,
-    .sidebar,
-    .level-panel,
-    ul[style*="background"] {
+    /* Force the main welcome/level panels to expand to full phone width */
+    .g-layout, .panel, .surface, .main-content, div[style*="max-width: 1000px"] {
         width: 100% !important;
         max-width: 100% !important;
-        margin-left: 0 !important;
-        margin-right: 0 !important;
-        margin-bottom: 20px !important;
+        margin: 10px 0 !important;
+        padding: 12px !important;
+        box-sizing: border-box !important;
     }
 
-    /* 3. Handle specific text list structures */
-    ul {
-        padding-left: 15px !important;
+    /* Fix the squished top navigation header panel */
+    .nav, nav, .header, .nav-bar {
+        display: flex !important;
+        flex-wrap: wrap !important;
+        gap: 8px !important;
+        height: auto !important;
+        padding: 10px !important;
+        justify-content: center !important;
+        width: 100% !important;
     }
 
-    /* 4. Force global horizontal overflow protection */
+    /* Keep the nav buttons clean and stop them from overflowing */
+    .nav a, nav a, .nav__link, .button, .submit-record-btn {
+        font-size: 0.75rem !important;
+        padding: 6px 10px !important;
+        white-space: nowrap !important;
+        display: inline-block !important;
+    }
+
+    /* Force global horizontal overflow protection */
     body, html {
         overflow-x: hidden !important;
         width: 100% !important;
     }
-
-        /* 5. Fix the top blue navigation bar */
-    nav, 
-    .nav-bar, 
-    header,
-    div[style*="background-color: #2563eb"] {
-        display: flex !important;
-        flex-wrap: wrap !important;
-        gap: 10px !important;
-        height: auto !important;
-        padding: 10px !important;
-        justify-content: center !important;
-    }
-
-    /* 6. Stop navigation links from overlapping or clipping */
-    nav a, 
-    header a, 
-    .nav-link,
-    .submit-record-btn {
-        font-size: 0.8rem !important;
-        padding: 6px 12px !important;
-        white-space: nowrap !important;
-    }
-
-    /* 7. Force the main panel container to fill the screen properly */
-    #main-content,
-    .content,
-    div[style*="max-width: 1000px"],
-    div[style*="background: rgba(15, 10, 25"] {
-        width: 100% !important;
-        max-width: 100% !important;
-        padding: 15px !important;
-        margin: 10px 0 !important;
-        box-sizing: border-box !important;
-    }
-
-
 }
