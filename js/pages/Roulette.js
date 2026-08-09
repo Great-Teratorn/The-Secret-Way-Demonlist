@@ -80,7 +80,7 @@ export default {
                                 <p>{{ currentLevel.id }}</p>
                             </div>
                             <form class="actions" v-if="!givenUp">
-                                <input type="number" v-model="percentage" :placeholder="gameMode === 'survival' ? (currentLevel.secret_way_at || 1) : (progression.length + 1)" :min="gameMode === 'survival' ? (currentLevel.secret_way_at || 1) : (progression.length + 1)" max="100">
+                                <<input type="number" v-model="percentage" :placeholder="gameMode === 'survival' ? (currentLevel.secret_way_at || 1) : percentage" :min="gameMode === 'survival' ? (currentLevel.secret_way_at || 1) : percentage" max="100">
                                 <Btn @click.native.prevent="onDone">Done</Btn>
                                 <Btn @click.native.prevent="onGiveUp" style="background-color: #e91e63;">Give Up</Btn>
                             </form>
@@ -264,11 +264,15 @@ export default {
         }
 
 
-                    this.progression.push(this.percentage);
+                            // 1. Log the percentage they just successfully scored
+        this.progression.push(this.percentage);
         
-        // Calculate the next target percentage criteria
+        // Save the score they just beat into a temp variable before resetting
+        let lastBeatenScore = this.percentage;
+
+        // 2. Calculate the next target percentage criteria
         if (this.gameMode === 'survival') {
-            // Secret Way Survival: Grab the next level array object based on current progress length
+            // Secret Way Survival: Grab the next level array object based on progress counter
             const nextLevel = this.levels[this.progression.length];
             if (nextLevel) {
                 this.percentage = nextLevel.secret_way_at || 1;
@@ -276,11 +280,17 @@ export default {
                 this.percentage = undefined; // Game completely finished!
             }
         } else {
-            // Classic & Linear Mode: Incremental format standard reset
-            this.percentage = undefined; 
+            // Classic & Linear Mode: Incremental format looks at your last score and adds 1!
+            // E.g., if you scored 5%, the next minimum goal instantly becomes 6%
+            if (lastBeatenScore >= 100) {
+                this.percentage = undefined; // Hit 100%, game finished!
+            } else {
+                this.percentage = lastBeatenScore + 1;
+            }
         }
 
         this.save();
+
 
         },
         onGiveUp() {
