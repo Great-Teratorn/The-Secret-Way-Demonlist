@@ -36,7 +36,7 @@ export default {
                 <!-- Information Box -->
                 <div style="background: rgba(15, 10, 25, 0.6); padding: 25px; border-radius: 8px; border-left: 4px solid #8a2be2; margin-bottom: 35px;">
                     <h3 style="font-size: 1.2rem; margin: 0 0 12px 0; color: #fff;">General Information</h3>
-                    <ul style="padding-left: 20px; margin: 0; line-height: 1.7; color: #cbd5e1; font-size: 0.95rem;">
+                    <ul style="padding-left: 20px; margin: 0; line-height: 1.7; color: #cbd5e1; font-size: 1rem; font-weight: 500;">
                         <li style="margin-bottom: 8px;">The Main List contains the top 150 hardest secret way demon levels. The top 1 level is worth 150 points, and the points decrease by 1 with each level going down. So the top 2 level will be worth 149 points, and so on.</li>
                         <li>The Extended List contains all the secret way demons which are easier than the top 150. They are not worth any points.</li>
                         <li>The Legacy List is reserved solely for the levels which have fallen off the Main List, including the date which they lost their mightiness. So some levels will be both in the Extended and Legacy Lists. Legacy List levels are also not worth any points.</li>
