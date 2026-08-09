@@ -241,18 +241,27 @@ export default {
         this.givenUp = false;
         this.progression = [];
 
-        // Setup initial target percentage
+                // Setup initial target percentage
         if (this.gameMode === 'survival') {
             try {
-                const response = await fetch(`data/${this.levels[0].name || this.levels[0].level}.json`);
+                let firstLevelName = this.levels[0].name || this.levels[0].level || "";
+                
+                // Clean up casing and spaces for the first level
+                firstLevelName = firstLevelName.toLowerCase().replace(/\s+/g, '-');
+
+                const response = await fetch(`data/${firstLevelName}.json`);
                 const firstLevelData = await response.json();
                 this.survivalTarget = firstLevelData.secret_way_at || 1;
-                this.percentage = undefined; // Clears the player text box for a fresh entry
+                this.percentage = undefined;
             } catch (err) {
                 this.survivalTarget = 1;
                 this.percentage = undefined;
             }
-        } else {
+        }
+
+        
+        
+        else {
             this.percentage = undefined;
         }
 
@@ -313,6 +322,12 @@ export default {
 
                     // Log to browser console just so you can inspect if a filename breaks
                     console.log("Fetching next survival level data for:", levelName);
+
+                                        // Force the level name to all-lowercase to match your filenames
+                    levelName = levelName.toLowerCase();
+
+                    // Replace any empty spaces with a clean dash marker (-)
+                    levelName = levelName.replace(/\s+/g, '-');
 
                     const response = await fetch(`data/${levelName}.json`);
                     const detailedLevel = await response.json();
