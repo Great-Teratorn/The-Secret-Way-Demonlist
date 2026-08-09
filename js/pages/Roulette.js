@@ -80,7 +80,7 @@ export default {
                                 <p>{{ currentLevel.id }}</p>
                             </div>
                             <form class="actions" v-if="!givenUp">
-                                <input type="number" v-model="percentage" :placeholder="gameMode === 'survival' ? percentage : placeholder" :min="gameMode === 'survival' ? percentage : placeholder" max="100">
+                                <input type="number" v-model="percentage" :placeholder="placeholder" :min="placeholder" max="100">
 
                                 <Btn @click.native.prevent="onDone">Done</Btn>
                                 <Btn @click.native.prevent="onGiveUp" style="background-color: #e91e63;">Give Up</Btn>
@@ -128,6 +128,7 @@ export default {
         useMainList: true,
         useExtendedList: true,
         gameMode: 'classic',
+        survivalTarget: 1,
         toasts: [],
         fileInput: undefined,
     }),
@@ -156,17 +157,18 @@ export default {
         currentPercentage() {
             return this.progression[this.progression.length - 1] || 0;
         },
-                            placeholder() {
+                                    placeholder() {
             if (this.gameMode === 'survival') {
-                // Survival Mode: Output the active requirement loaded from your JSON
-                return this.percentage || 1;
+                // Locks the UI and constraint boundaries strictly to your active data fetch file rule
+                return this.survivalTarget || 1;
             }
-            // Classic & Linear fix: Check last logged score history and add 1
+            // Classic & Linear: Looks at your last logged array score history and adds 1
             if (this.progression.length > 0) {
                 return this.progression[this.progression.length - 1] + 1;
             }
             return 1;
         },
+
 
 
 
@@ -235,22 +237,23 @@ export default {
 
 
 
-                this.showRemaining = false;
+                        this.showRemaining = false;
         this.givenUp = false;
         this.progression = [];
 
         // Setup initial target percentage
         if (this.gameMode === 'survival') {
             try {
-                // Fetch the very first level's JSON file to boot up the requirements
-                const response = await fetch(`data/${this.levels[0].name}.json`);
+                const response = await fetch(`data/${this.levels[0].name || this.levels[0].level}.json`);
                 const firstLevelData = await response.json();
-                this.percentage = firstLevelData.secret_way_at || 1;
+                this.survivalTarget = firstLevelData.secret_way_at || 1;
+                this.percentage = undefined; // Clears the player text box for a fresh entry
             } catch (err) {
-                this.percentage = 1;
+                this.survivalTarget = 1;
+                this.percentage = undefined;
             }
         } else {
-            this.percentage = 1;
+            this.percentage = undefined;
         }
 
 
@@ -267,13 +270,15 @@ export default {
             );
         },
         
-            async onDone() {
+                async onDone() {
         if (!this.percentage) {
             return;
         }
 
-        let requiredPercentage = this.gameMode === 'survival' ? this.percentage : this.placeholder;
+        // Pull active required threshold constraint
+        let requiredPercentage = this.placeholder;
 
+        // Strictly block inputs lower than the required threshold
         if (
             this.percentage < requiredPercentage || 
             this.percentage > 100
@@ -284,46 +289,32 @@ export default {
 
         this.progression.push(this.percentage);
         let lastBeatenScore = this.percentage;
+        this.percentage = undefined; // Safely clears the text field container for the next level
 
         // Calculate the next target percentage criteria
         if (this.gameMode === 'survival') {
             const nextLevelData = this.levels[this.progression.length];
             if (nextLevelData) {
                 try {
-                    // BULLETPROOF DETECTION: Check all possible places for the clean level filename string
-                    let levelName = "";
-                    if (typeof nextLevelData === 'string') {
-                        levelName = nextLevelData;
-                    } else if (nextLevelData.level && typeof nextLevelData.level === 'string') {
-                        levelName = nextLevelData.level;
-                    } else {
-                        levelName = nextLevelData.name || nextLevelData.level?.name || "";
-                    }
-
-                    // Fetch the specific level file on the fly
+                    let levelName = typeof nextLevelData === 'string' ? nextLevelData : (nextLevelData.name || nextLevelData.level);
+                    
                     const response = await fetch(`data/${levelName}.json`);
                     const detailedLevel = await response.json();
                     
-                    // Update your active condition criteria
-                    this.percentage = detailedLevel.secret_way_at || 1;
+                    // Route the next level's requirement into your separate storage rule tracker
+                    this.survivalTarget = detailedLevel.secret_way_at || 1;
                 } catch (err) {
                     console.error("Error fetching next level details:", err);
-                    this.percentage = 1;
+                    this.survivalTarget = 1;
                 }
             } else {
-                this.percentage = undefined; // Game completely finished!
-            }
-        } else {
-            // Classic & Linear Mode: Incremental format looks at your last score and adds 1
-            if (lastBeatenScore >= 100) {
-                this.percentage = undefined; 
-            } else {
-                this.percentage = lastBeatenScore + 1;
+                this.survivalTarget = 1; // Game completely finished!
             }
         }
 
         this.save();
     },
+
 
 
         onGiveUp() {
