@@ -12,9 +12,7 @@ export default {
         </main>
         <main v-else class="page-roulette">
             <div class="sidebar">
-                <p class="type-label-md" style="color: #aaa">
-                    Shameless copy of the Extreme Demon Roulette by <a href="https://matcool.github.io/extreme-demon-roulette/" target="_blank">matcool</a>.
-                </p>
+                
                 <form class="options">
                     <div class="check">
                         <input type="checkbox" id="main" value="Main List" v-model="useMainList">
@@ -24,6 +22,26 @@ export default {
                         <input type="checkbox" id="extended" value="Extended List" v-model="useExtendedList">
                         <label for="extended">Extended List</label>
                     </div>
+                    
+                            <div style="margin: 15px 0 20px 0; display: flex; flex-direction: column; gap: 8px;">
+            <p style="margin: 0 0 4px 0; font-weight: bold; color: #39ff14; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px;">
+                Choose Game Mode:
+            </p>
+            <div class="check" style="margin-bottom: 2px;">
+                <input type="radio" id="classic" name="roulette-mode" value="classic" v-model="gameMode" style="cursor: pointer; accent-color: #39ff14;">
+                <label for="classic" style="padding-left: 8px; cursor: pointer;">Classic Random Roulette (1% to 100%)</label>
+            </div>
+            <div class="check" style="margin-bottom: 2px;">
+                <input type="radio" id="linear" name="roulette-mode" value="linear" v-model="gameMode" style="cursor: pointer; accent-color: #39ff14;">
+                <label for="linear" style="padding-left: 8px; cursor: pointer;">Standard Progression (#150 to #1)</label>
+            </div>
+            <div class="check" style="margin-bottom: 2px;">
+                <input type="radio" id="survival" name="roulette-mode" value="survival" v-model="gameMode" style="cursor: pointer; accent-color: #39ff14;">
+                <label for="survival" style="padding-left: 8px; cursor: pointer;">Secret Way Survival (Entry %)</label>
+            </div>
+        </div>
+
+                    
                     <Btn @click.native.prevent="onStart">{{ levels.length === 0 ? 'Start' : 'Restart'}}</Btn>
                 </form>
                 <p class="type-label-md" style="color: #aaa">
@@ -108,6 +126,7 @@ export default {
         showRemaining: false,
         useMainList: true,
         useExtendedList: true,
+        gameMode: 'classic',
         toasts: [],
         fileInput: undefined,
     }),
@@ -192,11 +211,28 @@ export default {
             }
 
             // random 100 levels
+                    // Setup levels based on chosen game mode
+        if (this.gameMode === 'linear') {
+            // Mode 2: Standard Progression (Easiest to Hardest, un-shuffled)
+            this.levels = list; 
+        } else {
+            // Mode 1 & 3: Random Roulette pools
             this.levels = shuffle(list).slice(0, 100);
-            this.showRemaining = false;
-            this.givenUp = false;
-            this.progression = [];
-            this.percentage = undefined;
+        }
+
+        this.showRemaining = false;
+        this.givenUp = false;
+        this.progression = [];
+
+        // Setup target percentage
+        if (this.gameMode === 'survival') {
+            // Mode 3: Requires reaching the first level's secret way entrance percent
+            this.percentage = this.levels[0].secret_way_at || 1;
+        } else {
+            // Mode 1 & 2: Traditional incremental tracking starts at 1%
+            this.percentage = 1;
+        }
+
 
             this.loading = false;
         },
@@ -222,10 +258,24 @@ export default {
                 return;
             }
 
-            this.progression.push(this.percentage);
-            this.percentage = undefined;
+                    this.progression.push(this.percentage);
+        
+        // Calculate the next target percentage criteria
+        if (this.gameMode === 'survival') {
+            // Secret Way Survival: Grab the next level array object based on current progress length
+            const nextLevel = this.levels[this.progression.length];
+            if (nextLevel) {
+                this.percentage = nextLevel.secret_way_at || 1;
+            } else {
+                this.percentage = undefined; // Game completely finished!
+            }
+        } else {
+            // Classic & Linear Mode: Incremental format standard reset
+            this.percentage = undefined; 
+        }
 
-            this.save();
+        this.save();
+
         },
         onGiveUp() {
             this.givenUp = true;

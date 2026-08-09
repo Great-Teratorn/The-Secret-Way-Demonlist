@@ -272,6 +272,42 @@
     }
 
     
+        /* ROULETTE MOBILE PANEL FIX */
+    .page-roulette,
+    div[v-if="view == 'roulette'"],
+    div[style*="grid-template-columns"],
+    .roulette-container {
+        display: flex !important;
+        flex-direction: column !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        height: auto !important;
+        box-sizing: border-box !important;
+    }
+
+    /* Force the active level guessing card to open wide below your buttons */
+    .roulette-card,
+    .level-card,
+    div[v-if="started"] {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin-top: 30px !important; /* Pushes card cleanly below Import/Export */
+        padding: 15px !important;
+        box-sizing: border-box !important;
+        height: auto !important;
+    }
+
+    /* Keep the roulette input text boxes and buttons neatly stacked on phone screens */
+    .roulette-buttons, 
+    .roulette-inputs {
+        display: flex !important;
+        flex-wrap: wrap !important;
+        gap: 8px !important;
+        justify-content: center !important;
+        width: 100% !important;
+    }
+
+    
     /* Force global horizontal overflow protection */
     body, html {
         overflow-x: hidden !important;
