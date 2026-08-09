@@ -159,15 +159,19 @@ export default {
                     placeholder() {
             if (this.gameMode === 'survival') {
                 const currentLevel = this.levels[this.progression.length];
-                return currentLevel ? (currentLevel.secret_way_at || 1) : 1;
+                // Check if secret_way_at exists directly, or check if it's nested inside a level details object
+                if (currentLevel) {
+                    return currentLevel.secret_way_at || (currentLevel.level && currentLevel.level.secret_way_at) || 1;
+                }
+                return 1;
             }
-            // Classic & Linear fix: If you have beaten levels, check your last logged score and add 1!
+            // Classic & Linear fix: Check last logged score and add 1
             if (this.progression.length > 0) {
                 return this.progression[this.progression.length - 1] + 1;
             }
-            // Fallback for the very first level of the run
             return 1;
         },
+
 
 
 
@@ -224,27 +228,15 @@ export default {
             }
 
             // random 100 levels
-                // 1. Arrange the level list structure first
-        let chosenList = [];
+                        // Setup levels based on chosen game mode using the pre-loaded data
         if (this.gameMode === 'linear') {
-            chosenList = list.slice().reverse(); 
+            // Mode 2: Standard Progression (Start at #150 and climb up to #1)
+            this.levels = list.slice().reverse(); 
         } else {
-            chosenList = shuffle(list).slice(0, 100);
+            // Mode 1 & 3: Classic Random & Secret Way Survival remain fully randomized
+            this.levels = shuffle(list).slice(0, 100);
         }
 
-        // 2. Fetch the full detailed data for each level to unlock 'secret_way_at' properties
-        this.levels = await Promise.all(
-            chosenList.map(async (levelName) => {
-                try {
-                    // Pulls the real data file (like data/xo.json) right into your game memory
-                    const response = await fetch(`data/${levelName}.json`);
-                    return await response.json();
-                } catch (err) {
-                    console.error("Error loading level details:", err);
-                    return { name: levelName, secret_way_at: 1 }; // Fallback safety
-                }
-            })
-        );
 
 
 
