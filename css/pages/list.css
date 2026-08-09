@@ -283,7 +283,42 @@
         display: inline-flex !important;
     }
 
-    
+        /* Nuclear fix for the absolute positioning on the right panel elements */
+    .nav *, nav *, header * {
+        position: relative !important;
+        top: auto !important;
+        right: auto !important;
+        bottom: auto !important;
+        left: auto !important;
+        transform: none !important;
+        float: none !important;
+        max-width: 100% !important;
+    }
+
+    /* Force the entire header/nav wrapper area to layout cleanly */
+    .nav, nav, header {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+        height: auto !important;
+        padding: 15px 5px !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    /* Stack your menu links panel and the side action panel into clean rows */
+    .nav > div, nav > div, header > div {
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: wrap !important;
+        justify-content: center !important;
+        align-items: center !important;
+        width: 100% !important;
+        margin: 5px 0 !important;
+    }
+
+
     /* Force global horizontal overflow protection */
     body, html {
         overflow-x: hidden !important;
