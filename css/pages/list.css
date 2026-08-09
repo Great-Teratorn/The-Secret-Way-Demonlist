@@ -149,25 +149,38 @@
         box-sizing: border-box !important;
     }
 
-        /* Fix the squished top navigation header panel */
-    .nav, nav, .header, .nav-bar, .nav__actions {
+    /* Complete mobile navigation layout override */
+    .nav, nav, .header, .nav-bar, .nav__actions, .nav-content, [class*="nav"] {
         display: flex !important;
         flex-direction: row !important;
         flex-wrap: wrap !important;
         gap: 6px !important;
         height: auto !important;
-        padding: 8px !important;
+        min-height: unset !important;
+        max-height: unset !important;
+        padding: 10px 5px !important;
         justify-content: center !important;
         align-items: center !important;
         width: 100% !important;
         position: relative !important;
+        top: 0 !important;
         left: 0 !important;
         transform: none !important;
+        float: none !important;
     }
 
-    /* Keep the nav buttons clean and stop them from overflowing */
-    .nav a, nav a, .nav__link, .button, .submit-record-btn {
-        font-size: 0.72rem !important;
+    /* Force the list title and buttons to sit inside the row flow */
+    .nav__title, .nav__logo, [class*="logo"], [class*="title"] {
+        position: relative !important;
+        margin: 5px auto !important;
+        text-align: center !important;
+        width: 100% !important;
+        display: block !important;
+    }
+
+    /* Clean uniform sizing for all menu and action buttons */
+    .nav a, nav a, .nav__link, .button, .submit-record-btn, [class*="link"], [class*="btn"] {
+        font-size: 0.7rem !important;
         padding: 5px 8px !important;
         white-space: nowrap !important;
         display: inline-flex !important;
@@ -175,8 +188,11 @@
         justify-content: center !important;
         margin: 2px !important;
         border-radius: 4px !important;
+        height: auto !important;
+        width: auto !important;
+        position: relative !important;
+        transform: none !important;
     }
-
 
     /* Force global horizontal overflow protection */
     body, html {
