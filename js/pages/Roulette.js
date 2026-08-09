@@ -80,7 +80,7 @@ export default {
                                 <p>{{ currentLevel.id }}</p>
                             </div>
                             <form class="actions" v-if="!givenUp">
-                                <input type="number" v-model="percentage" :placeholder="placeholder" :min="placeholder" max="100">
+                                <input type="number" v-model="percentage" :placeholder="gameMode === 'survival' ? percentage : placeholder" :min="gameMode === 'survival' ? percentage : placeholder" max="100">
 
                                 <Btn @click.native.prevent="onDone">Done</Btn>
                                 <Btn @click.native.prevent="onGiveUp" style="background-color: #e91e63;">Give Up</Btn>
@@ -169,7 +169,7 @@ export default {
         },
 
 
-        
+
         hasCompleted() {
             return (
                 this.progression[this.progression.length - 1] >= 100 ||
@@ -272,7 +272,8 @@ export default {
             return;
         }
 
-        let requiredPercentage = this.placeholder;
+                // Pull active requirements
+        let requiredPercentage = this.gameMode === 'survival' ? this.percentage : this.placeholder;
 
         if (
             this.percentage < requiredPercentage || 
@@ -282,28 +283,35 @@ export default {
             return;
         }
 
+
         this.progression.push(this.percentage);
         let lastBeatenScore = this.percentage;
 
-        // Calculate the next target percentage criteria
+                // Calculate the next target percentage criteria
         if (this.gameMode === 'survival') {
             const nextLevelData = this.levels[this.progression.length];
             if (nextLevelData) {
                 try {
-                    // Peek into the specific level file (e.g. data/xo.json) right on the fly!
-                    const response = await fetch(`data/${nextLevelData.name}.json`);
+                    // Extract the clean string name whether it's a direct string or a nested object
+                    let levelName = typeof nextLevelData === 'string' ? nextLevelData : (nextLevelData.name || nextLevelData.level);
+                    
+                    // Fetch the specific level file on the fly
+                    const response = await fetch(`data/${levelName}.json`);
                     const detailedLevel = await response.json();
                     
-                    // Force the background requirements tracker to update to your exact custom JSON property
+                    // Update your active condition criteria
                     this.percentage = detailedLevel.secret_way_at || 1;
                 } catch (err) {
-                    console.error("Error fetching level details:", err);
-                    this.percentage = 1; // Safety fallback
+                    console.error("Error fetching next level details:", err);
+                    this.percentage = 1;
                 }
             } else {
                 this.percentage = undefined; // Game completely finished!
             }
-        } else {
+        }
+
+        
+        else {
             // Classic & Linear Mode: Incremental format looks at your last score and adds 1
             if (lastBeatenScore >= 100) {
                 this.percentage = undefined; 
