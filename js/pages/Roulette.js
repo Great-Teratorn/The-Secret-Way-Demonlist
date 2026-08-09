@@ -291,13 +291,29 @@ export default {
         let lastBeatenScore = this.percentage;
         this.percentage = undefined; // Safely clears the text field container for the next level
 
-        // Calculate the next target percentage criteria
+                // Calculate the next target percentage criteria
         if (this.gameMode === 'survival') {
             const nextLevelData = this.levels[this.progression.length];
             if (nextLevelData) {
                 try {
-                    let levelName = typeof nextLevelData === 'string' ? nextLevelData : (nextLevelData.name || nextLevelData.level);
+                    // Look through every single possible property where the template stores the level filename
+                    let levelName = "";
                     
+                    if (typeof nextLevelData === 'string') {
+                        levelName = nextLevelData;
+                    } else if (nextLevelData && typeof nextLevelData === 'object') {
+                        // Checks standard template layouts like nextLevelData.level or nextLevelData.name
+                        levelName = nextLevelData.level || nextLevelData.name || (nextLevelData.level && nextLevelData.level.name) || "";
+                    }
+
+                    // Fallback check: If the extraction returned empty or an unexpected object layout, clean it up
+                    if (typeof levelName === 'object' && levelName !== null) {
+                        levelName = levelName.name || levelName.level || "";
+                    }
+
+                    // Log to browser console just so you can inspect if a filename breaks
+                    console.log("Fetching next survival level data for:", levelName);
+
                     const response = await fetch(`data/${levelName}.json`);
                     const detailedLevel = await response.json();
                     
@@ -311,6 +327,7 @@ export default {
                 this.survivalTarget = 1; // Game completely finished!
             }
         }
+
 
         this.save();
     },
