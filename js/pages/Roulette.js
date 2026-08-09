@@ -95,7 +95,7 @@ export default {
                         </div>
                         <!-- Remaining Levels -->
                         <template v-if="givenUp && showRemaining">
-                            <div class="level" v-for="(level, i) in levels.slice(progression.length + 1, levels.length - currentPercentage + progression.length)">
+                            <div class="level" v-for="(level, i) in remaining">
                                 <a :href="level.video" target="_blank" class="video">
                                     <img :src="getThumbnailFromId(getYoutubeIdFromUrl(level.video))" alt="">
                                 </a>
@@ -178,6 +178,13 @@ export default {
                 this.progression.length === this.levels.length
             );
         },
+        
+                remaining() {
+            if (!this.levels || this.levels.length === 0) return [];
+            return this.levels.slice(this.progression.length);
+        },
+
+        
         isActive() {
             return (
                 this.progression.length > 0 &&
