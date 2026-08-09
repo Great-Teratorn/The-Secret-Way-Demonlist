@@ -272,7 +272,6 @@ export default {
             return;
         }
 
-                // Pull active requirements
         let requiredPercentage = this.gameMode === 'survival' ? this.percentage : this.placeholder;
 
         if (
@@ -283,18 +282,24 @@ export default {
             return;
         }
 
-
         this.progression.push(this.percentage);
         let lastBeatenScore = this.percentage;
 
-                // Calculate the next target percentage criteria
+        // Calculate the next target percentage criteria
         if (this.gameMode === 'survival') {
             const nextLevelData = this.levels[this.progression.length];
             if (nextLevelData) {
                 try {
-                    // Extract the clean string name whether it's a direct string or a nested object
-                    let levelName = typeof nextLevelData === 'string' ? nextLevelData : (nextLevelData.name || nextLevelData.level);
-                    
+                    // BULLETPROOF DETECTION: Check all possible places for the clean level filename string
+                    let levelName = "";
+                    if (typeof nextLevelData === 'string') {
+                        levelName = nextLevelData;
+                    } else if (nextLevelData.level && typeof nextLevelData.level === 'string') {
+                        levelName = nextLevelData.level;
+                    } else {
+                        levelName = nextLevelData.name || nextLevelData.level?.name || "";
+                    }
+
                     // Fetch the specific level file on the fly
                     const response = await fetch(`data/${levelName}.json`);
                     const detailedLevel = await response.json();
@@ -308,10 +313,7 @@ export default {
             } else {
                 this.percentage = undefined; // Game completely finished!
             }
-        }
-
-        
-        else {
+        } else {
             // Classic & Linear Mode: Incremental format looks at your last score and adds 1
             if (lastBeatenScore >= 100) {
                 this.percentage = undefined; 
@@ -322,6 +324,7 @@ export default {
 
         this.save();
     },
+
 
         onGiveUp() {
             this.givenUp = true;
