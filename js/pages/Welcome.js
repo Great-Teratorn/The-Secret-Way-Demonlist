@@ -43,8 +43,8 @@ export default {
                         <li>The Unverified List contains showcases of secret way levels which have not been verified yet. Any player can beat those secret way levels so that they can get added to the Main/Extended List.</li>
                         <li>The Leaderboard contains the best secret way players out there! It includes their rank, their points and which levels they have beaten.</li>
                         <li>For the Roulette: players are assigned a random secret way demon and must get at least 1%. For each next random level, the required score goes up by 1%, repeating until they reach a goal of 100%. If you achieve a higher percentage than the required, you just continue from then on.</li>
-                        <li>Clicking the Discord logo in the top purple bar leads you to our Discord Server - please join, there is genuinely so much to do there! If you want to questions answered or want to offer something to our community, this is the place :D</li>
-                        <li>If you want to submit a completion or a verification of a secret way level: clicking the 'Submit Record' button opens up a form where you can fill out your secret way request so a new level potentially can get added to the Demonlist, or so you can receive points if the level is already on there. The form provides a guide. </li>
+                        <li>Clicking the Discord logo in the top purple bar leads you to our Discord Server - please join, there is genuinely so much to do there! If you want any questions answered or want to offer something to our community, this is the place :D</li>
+                        <li>If you want to submit a completion or a verification of a secret way level: clicking the 'Submit Record' button opens up a form where you can fill out your secret way request, so that a new level can potentially get added to the Demonlist, or so that you can receive points if the level is already on there. The form provides a guide. </li>
                         <li>But most importantly, have fun and enjoy your time here!</li>
                     </ul>
                 </div>
@@ -75,23 +75,28 @@ export default {
                     </p>
                 </div>
 
-                <!-- FINAL CONTACT NOTE -->
-<hr style="border: 0; height: 1px; background: linear-gradient(to right, rgba(255,255,255,0), rgba(255,255,255,0.15), rgba(255,255,255,0)); margin: 30px 0;">
+<!-- CONTACT WRAPPER BOX -->
+<div style="background: rgba(10, 10, 10, 0.75); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 12px; padding: 25px; margin-top: 40px; margin-bottom: 30px; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5); backdrop-filter: blur(4px);">
+    
+    <!-- Contact Note Content -->
+    <p style="text-align: center; color: #ffffff; font-size: 0.95rem; line-height: 1.6; margin: 0 0 25px 0;">
+        <strong style="color: #39ff14; font-size: 1.05rem; text-shadow: 0 0 8px rgba(57,255,20,0.3);">Have any questions or need to reach out to us?</strong><br>
+        If you need to contact us regarding submissions, list issues, or feedback, please message us directly through our official Discord Server.
+    </p>
 
-<p style="text-align: center; color: #94a3b8; font-size: 0.9rem; line-height: 1.6; margin-bottom: 20px;">
-    <strong>Have any questions or need to reach out to us?</strong><br>
-    If you need to contact us regarding submissions, list issues, or feedback, please message us directly through our official Discord Server.
-</p>
+ <div class="site-counter" style="margin-top: 40px; margin-bottom: 20px; text-align: center;">
+                    <p style="font-size: 0.8rem; color: #39ff14; margin-bottom: 5px;">Total Site Visits</p>
+                    <img src="https://hits.sh/great-teratorn.github.io/The-Secret-Way-Demonlist.svg?label=Views&color=1D6847&labelColor=1a1a1a&style=flat-square" alt="Total Site Visits"/>
+                    </div>
+    </div>
+
 
                     </div>
 
             </div>
-        </div>
-    
-    <div class="site-counter" style="margin-top: 40px; margin-bottom: 20px; text-align: center;">
-                    <p style="font-size: 0.8rem; color: #39ff14; margin-bottom: 5px;">Total Site Visits</p>
-                    <img src="https://hits.sh/great-teratorn.github.io/The-Secret-Way-Demonlist.svg?label=Views&color=1D6847&labelColor=1a1a1a&style=flat-square" alt="Total Site Visits"/>
-                    </div>
+       
+        
+            </div>
 
     
         `,
