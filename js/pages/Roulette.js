@@ -80,7 +80,8 @@ export default {
                                 <p>{{ currentLevel.id }}</p>
                             </div>
                             <form class="actions" v-if="!givenUp">
-                                <<input type="number" v-model="percentage" :placeholder="gameMode === 'survival' ? (currentLevel.secret_way_at || 1) : percentage" :min="gameMode === 'survival' ? (currentLevel.secret_way_at || 1) : percentage" max="100">
+                                <input type="number" v-model="percentage" :placeholder="placeholder" :min="placeholder" max="100">
+
                                 <Btn @click.native.prevent="onDone">Done</Btn>
                                 <Btn @click.native.prevent="onGiveUp" style="background-color: #e91e63;">Give Up</Btn>
                             </form>
@@ -155,9 +156,16 @@ export default {
         currentPercentage() {
             return this.progression[this.progression.length - 1] || 0;
         },
-        placeholder() {
-            return `At least ${this.currentPercentage + 1}%`;
-        },
+            placeholder() {
+        if (this.gameMode === 'survival') {
+            // Secret Way Survival: Grab the next level object in line from your active game array
+            const currentLevel = this.levels[this.progression.length];
+            return currentLevel ? (currentLevel.secret_way_at || 1) : 1;
+        }
+        // Classic & Linear: Keep standard incrementing tracker (1%, 2%, 3%...)
+        return this.progression.length + 1;
+    },
+
         hasCompleted() {
             return (
                 this.progression[this.progression.length - 1] >= 100 ||
@@ -251,9 +259,8 @@ export default {
                 return;
             }
 
-                    let requiredPercentage = this.gameMode === 'survival' 
-            ? (this.currentLevel.secret_way_at || 1)
-            : (this.progression.length + 1);
+                    let requiredPercentage = this.placeholder; 
+            
 
         if (
             this.percentage < requiredPercentage || 
