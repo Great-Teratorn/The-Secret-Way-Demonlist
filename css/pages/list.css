@@ -194,6 +194,29 @@
         transform: none !important;
     }
 
+        /* Force the header background to grow dynamically and clear the space below */
+    header, .header, .nav, nav {
+        height: auto !important;
+        background: #1c2331 !important; /* Matches your header color */
+        position: relative !important;
+        z-index: 10 !important;
+        margin-bottom: 15px !important;
+    }
+
+    /* Move the welcome title container down so the menu buttons never hit it */
+    .main-content, main, #main-content, div[style*="max-width: 1000px"] {
+        margin-top: 20px !important;
+    }
+
+    /* Shrink the TSWD logo/banner slightly on phone viewports */
+    [class*="logo"], [class*="title"] img, img[alt*="TSWD"], .nav__logo {
+        max-width: 120px !important;
+        height: auto !important;
+        margin: 5px auto !important;
+    }
+
+    
+    
     /* Force global horizontal overflow protection */
     body, html {
         overflow-x: hidden !important;
