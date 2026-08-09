@@ -84,10 +84,12 @@ export default {
         If you need to contact us regarding submissions, list issues, or feedback, please message us directly through our official Discord Server.
     </p>
 
- <div class="site-counter" style="margin-top: 40px; margin-bottom: 20px; text-align: center;">
-                    <p style="font-size: 0.8rem; color: #39ff14; margin-bottom: 5px;">Total Site Visits</p>
-                    <img src="https://hits.sh/great-teratorn.github.io/The-Secret-Way-Demonlist.svg?label=Views&color=1D6847&labelColor=1a1a1a&style=flat-square" alt="Total Site Visits"/>
-                    </div>
+     <!-- Site Counter -->
+    <div class="site-counter" style="display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; text-align: center;">
+        <p style="font-size: 0.8rem; color: #39ff14; margin-bottom: 8px; width: 100%;">Total Site Visits</p>
+        <img src="https://hits.sh/great-teratorn.github.io/The-Secret-Way-Demonlist.svg?label=Views&color=1D6847&labelColor=1a1a1a&style=flat-square" alt="Total Site Visits" style="display: block; margin: 0 auto; max-width: fit-content;"/>
+    </div>
+
     </div>
 
 
