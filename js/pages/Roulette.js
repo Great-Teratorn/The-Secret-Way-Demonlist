@@ -80,7 +80,7 @@ export default {
                                 <p>{{ currentLevel.id }}</p>
                             </div>
                             <form class="actions" v-if="!givenUp">
-                                <input type="number" v-model="percentage" :placeholder="placeholder" :min="currentPercentage + 1" max=100>
+                                <input type="number" v-model="percentage" :placeholder="gameMode === 'survival' ? (currentLevel.secret_way_at || 1) : (progression.length + 1)" :min="gameMode === 'survival' ? (currentLevel.secret_way_at || 1) : (progression.length + 1)" max="100">
                                 <Btn @click.native.prevent="onDone">Done</Btn>
                                 <Btn @click.native.prevent="onGiveUp" style="background-color: #e91e63;">Give Up</Btn>
                             </form>
@@ -211,14 +211,15 @@ export default {
             }
 
             // random 100 levels
-                    // Setup levels based on chosen game mode
+                 // Setup levels based on chosen game mode
         if (this.gameMode === 'linear') {
-            // Mode 2: Standard Progression (Easiest to Hardest, un-shuffled)
-            this.levels = list; 
+            // Mode 2: Standard Progression (Start at #150 and climb up to #1)
+            this.levels = list.slice().reverse(); 
         } else {
-            // Mode 1 & 3: Random Roulette pools
+            // Mode 1 & 3: Classic Random & Secret Way Survival remain fully randomized
             this.levels = shuffle(list).slice(0, 100);
         }
+
 
         this.showRemaining = false;
         this.givenUp = false;
@@ -250,13 +251,18 @@ export default {
                 return;
             }
 
-            if (
-                this.percentage <= this.currentPercentage ||
-                this.percentage > 100
-            ) {
-                this.showToast('Invalid percentage.');
-                return;
-            }
+                    let requiredPercentage = this.gameMode === 'survival' 
+            ? (this.currentLevel.secret_way_at || 1)
+            : (this.progression.length + 1);
+
+        if (
+            this.percentage < requiredPercentage || 
+            this.percentage > 100
+        ) {
+            this.showToast('Invalid percentage. You must reach the Secret Way entrance threshold!');
+            return;
+        }
+
 
                     this.progression.push(this.percentage);
         
