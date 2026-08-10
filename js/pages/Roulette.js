@@ -102,7 +102,7 @@ export default {
                                 <div class="meta">
                                     <p>#{{ level.rank }}</p>
                                     <h2>{{ level.name }}</h2>
-                                                        <p style="color: #d50000; font-weight: 700">Secret Way</p>
+                                                        <p style="color: #d50000; font-weight: 700">{{ gameMode === 'survival' ? (level?.secret_way_at ? level.secret_way_at + '%' : 'Secret Way') : (progression.length + i + 1) + '%' }}</p>
 
 
                                 </div>
@@ -127,9 +127,9 @@ export default {
         percentage: undefined,
         givenUp: false,
         showRemaining: false,
-        useMainList: false,
-        useExtendedList: false,
-        gameMode: '',
+        useMainList: true,
+        useExtendedList: true,
+        gameMode: 'classic',
         survivalTarget: 1,
         toasts: [],
         fileInput: undefined,
@@ -271,7 +271,8 @@ if (this.gameMode === 'linear') {
         this.givenUp = false;
         this.progression = [];
 
-                // Setup initial target percentage
+        if (this.gameMode === 'survival') {            await Promise.all(                this.levels.map(async (lvl) => {                    try {                        let lvlName = lvl.name || '';                        lvlName = lvlName.toLowerCase().replace(/\s+/g, '-');                        const res = await fetch(`data/${lvlName}.json`);                        if (res.ok) {                            const data = await res.json();                            lvl.secret_way_at = data.secret_way_at || 1;                        } else {                            lvl.secret_way_at = 1;                        }                    } catch (e) {                        lvl.secret_way_at = 1;                    }                })            );        }
+        // Setup initial target percentage
         if (this.gameMode === 'survival') {
             try {
                 let firstLevelName = this.levels[0].name || this.levels[0].level || "";
