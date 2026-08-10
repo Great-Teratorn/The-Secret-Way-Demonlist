@@ -126,14 +126,16 @@ export default {
         percentage: undefined,
         givenUp: false,
         showRemaining: false,
-        useMainList: true,
-        useExtendedList: true,
+        useMainList: false,
+        useExtendedList: false,
         gameMode: '',
         survivalTarget: 1,
         toasts: [],
         fileInput: undefined,
     }),
     mounted() {
+        useMainList: true;
+        useExtendedList: true;
         this.gameMode = 'classic';
         // Create File Input
         this.fileInput = document.createElement('input');
