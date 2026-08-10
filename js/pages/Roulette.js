@@ -149,7 +149,8 @@ export default {
             return;
         }
 
-        this.levels = roulette.levels;
+        this.levels = JSON.parse(JSON.stringify(roulette.levels || []));
+
         this.progression = roulette.progression;
     },
     computed: {
