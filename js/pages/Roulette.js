@@ -162,9 +162,9 @@ export default {
         currentPercentage() {
             return this.progression[this.progression.length - 1] || 0;
         },
-                                            placeholder() {
-            if (!this.gameMode || !this.progression) {
-                return 1;
+                                                    placeholder() {
+            if (!this.gameMode) {
+                return 1; // Instantly safe fallback on application boot
             }
             if (this.gameMode === 'survival') {
                 return this.survivalTarget || 1;
@@ -174,6 +174,7 @@ export default {
             }
             return 1;
         },
+
 
 
 
