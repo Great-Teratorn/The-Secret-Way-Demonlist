@@ -202,8 +202,10 @@ export default {
                 id: i,
                 verification: ""
             }));
+            this.loading = false;
         } catch (err) {
             this.list = null;
+            this.loading = false;
         }
 
         this.editors = await fetchEditors();
