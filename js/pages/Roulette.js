@@ -223,17 +223,21 @@ export default {
                 return;
             }
 
-            const fullListMapped = fullList.map(([lvl, _], i) => ({
-                rank: i + 1,
-                id: lvl.id,
-                name: lvl.name,
-                video: lvl.verification,
-            }));
-            const list = [];
-            if (this.useMainList) list.push(...fullListMapped.slice(0, 75));
-            if (this.useExtendedList) {
-                list.push(...fullListMapped.slice(75, 150));
-            }
+            const fullListMapped = (fullList || []).map(([lvl, _], i) => ({
+    rank: i + 1,
+    id: lvl?.id || '',
+    name: lvl?.name || 'Unknown Level',
+    video: lvl?.verification || '',
+}));
+
+const list = [];
+if (this.useMainList && fullListMapped.length > 0) {
+    list.push(...fullListMapped.slice(0, 75));
+}
+if (this.useExtendedList && fullListMapped.length > 75) {
+    list.push(...fullListMapped.slice(75, 150));
+}
+
 
             // random 100 levels
         // Create a deep copy to isolate memory references completely
@@ -345,10 +349,13 @@ if (this.gameMode === 'linear') {
                     levelName = levelName.replace(/\s+/g, '-');
 
                     const response = await fetch(`data/${levelName}.json`);
-                    const detailedLevel = await response.json();
-                    
-                    // Route the next level's requirement into your separate storage rule tracker
-                    this.survivalTarget = detailedLevel.secret_way_at || 1;
+if (!response.ok) {
+    this.survivalTarget = 1;
+    return;
+}
+const detailedLevel = await response.json();
+this.survivalTarget = detailedLevel.secret_way_at || 1;
+
                 } catch (err) {
                     console.error("Error fetching next level details:", err);
                     this.survivalTarget = 1;
