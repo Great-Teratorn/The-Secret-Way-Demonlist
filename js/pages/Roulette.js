@@ -159,19 +159,19 @@ export default {
         currentPercentage() {
             return this.progression[this.progression.length - 1] || 0;
         },
-                                    placeholder() {
-                        if (!this.gameMode) return this.progression ? this.progression.length + 1 : 1;
-
-                                        if (this.gameMode === 'survival') {
-                // Locks the UI and constraint boundaries strictly to your active data fetch file rule
+                                            placeholder() {
+            if (!this.gameMode || !this.progression) {
+                return 1;
+            }
+            if (this.gameMode === 'survival') {
                 return this.survivalTarget || 1;
             }
-            // Classic & Linear: Looks at your last logged array score history and adds 1
-            if (this.progression.length > 0) {
+            if (this.progression && this.progression.length > 0) {
                 return this.progression[this.progression.length - 1] + 1;
             }
             return 1;
         },
+
 
 
 
