@@ -102,7 +102,8 @@ export default {
                                 <div class="meta">
                                     <p>#{{ level.rank }}</p>
                                     <h2>{{ level.name }}</h2>
-                                                        <p style="color: #d50000; font-weight: 700">{{ gameMode === 'survival' ? (level.secret_way_at ? level.secret_way_at + '%' : 'Secret Way') : (progression.length + i + 1) + '%' }}</p>
+                                                        <p style="color: #d50000; font-weight: 700">Secret Way</p>
+
 
                                 </div>
                             </div>
