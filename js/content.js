@@ -3,7 +3,7 @@ import { round, score } from './score.js';
 /**
  * Path to directory containing `_list.json` and all levels
  */
-const dir = '/The-Secret-Way-Demonlist/data';
+const dir = './data';
 
 export async function fetchList() {
     
