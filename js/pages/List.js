@@ -168,17 +168,44 @@ export default {
    
     
     // 🆕 ADD THIS WATCHER BLOCK: Forces Vue to reload data when switching tabs
-    watch: {
-        async $route() {
-            this.list = await fetchList();
-        }
-    },
+            watch: {
+            async $route() {
+                try {
+                    const response = await fetch('./data/_list.json');
+                    const rawData = await response.json();
+                    
+                    // Maps your unified data items into objects the layout template expects
+                    this.list = rawData.map((lvlName, i) => ({
+                        rank: i + 1,
+                        name: lvlName,
+                        id: i,
+                        verification: ""
+                    }));
+                    this.loading = false;
+                } catch (err) {
+                    this.list = [];
+                    this.loading = false;
+                }
+            }
+        },
 
     
 
     async mounted() {
         // Hide loading spinner
-        this.list = await fetchList();
+                try {
+            const response = await fetch('./data/_list.json');
+            const rawData = await response.json();
+            this.list = rawData.map((lvlName, i) => ({
+                rank: i + 1,
+                name: lvlName,
+                id: i,
+                verification: ""
+            }));
+        } catch (err) {
+            this.list = null;
+        }
+
         this.editors = await fetchEditors();
 
         // Error handling
