@@ -144,15 +144,9 @@ export default {
         store
     }),
     computed: {
-                        level() {
-            // Protects the UI engine by validating data arrays exist before reading index 0
-            if (this.list && this.list.length > 0) {
-                return this.list[this.selected] || {};
-            }
-            return {}; // Feeds a safe empty object instead of null to prevent downstream crashes
+        level() {
+            return this.list[this.selected][0];
         },
-
-
         video() {
             if (!this.level.showcase) {
                 return embed(this.level.verification);
@@ -168,46 +162,17 @@ export default {
    
     
     // 🆕 ADD THIS WATCHER BLOCK: Forces Vue to reload data when switching tabs
-            watch: {
-            async $route() {
-                try {
-                    const response = await fetch('./data/_list.json');
-                    const rawData = await response.json();
-                    
-                    // Maps your unified data items into objects the layout template expects
-                    this.list = rawData.map((lvlName, i) => ({
-                        rank: i + 1,
-                        name: lvlName,
-                        id: i,
-                        verification: ""
-                    }));
-                    this.loading = false;
-                } catch (err) {
-                    this.list = [];
-                    this.loading = false;
-                }
-            }
-        },
+    watch: {
+        async $route() {
+            this.list = await fetchList();
+        }
+    },
 
     
 
     async mounted() {
         // Hide loading spinner
-                try {
-            const response = await fetch('./data/_list.json');
-            const rawData = await response.json();
-            this.list = rawData.map((lvlName, i) => ({
-                rank: i + 1,
-                name: lvlName,
-                id: i,
-                verification: ""
-            }));
-            this.loading = false;
-        } catch (err) {
-            this.list = null;
-            this.loading = false;
-        }
-
+        this.list = await fetchList();
         this.editors = await fetchEditors();
 
         // Error handling
