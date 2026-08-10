@@ -236,14 +236,18 @@ export default {
             }
 
             // random 100 levels
-                        // Setup levels based on chosen game mode using the pre-loaded data
-        if (this.gameMode === 'linear') {
-            // Mode 2: Standard Progression (Start at #150 and climb up to #1)
-            this.levels = list.slice().reverse(); 
-        } else {
-            // Mode 1 & 3: Classic Random & Secret Way Survival remain fully randomized
-            this.levels = shuffle(list).slice(0, 100);
-        }
+        // Create a deep copy to isolate memory references completely
+const safeListCopy = JSON.parse(JSON.stringify(list));
+
+// Setup levels based on chosen game mode using the safely copied data
+if (this.gameMode === 'linear') {
+    // Mode 2: Standard Progression (Start at #150 and climb up to #1)
+    this.levels = safeListCopy.reverse(); 
+} else {
+    // Mode 1 & 3: Classic Random & Secret Way Survival remain fully randomized
+    this.levels = shuffle([...safeListCopy]).slice(0, 100);
+}
+
 
 
 
