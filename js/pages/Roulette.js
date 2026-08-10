@@ -128,12 +128,13 @@ export default {
         showRemaining: false,
         useMainList: true,
         useExtendedList: true,
-        gameMode: 'classic',
+        gameMode: '',
         survivalTarget: 1,
         toasts: [],
         fileInput: undefined,
     }),
     mounted() {
+        this.gameMode = 'classic';
         // Create File Input
         this.fileInput = document.createElement('input');
         this.fileInput.type = 'file';
