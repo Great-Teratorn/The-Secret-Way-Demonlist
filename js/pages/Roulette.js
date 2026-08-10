@@ -230,15 +230,16 @@ export default {
                 return;
             }
 
-                        const fullListMapped = (fullList || []).map((item, i) => {
+                                    const fullListMapped = (fullList || []).map((item, i) => {
                 const lvl = Array.isArray(item) ? item[0] : item;
                 return {
                     rank: i + 1,
-                    id: lvl?.id || i,
-                    name: typeof lvl === 'string' ? lvl : (lvl?.name || 'Unknown Level'),
-                    video: lvl?.verification || lvl?.video || '',
+                    id: lvl && typeof lvl === 'object' ? (lvl.id || i) : i,
+                    name: lvl && typeof lvl === 'object' ? (lvl.name || 'Unknown Level') : (lvl || 'Unknown Level'),
+                    video: lvl && typeof lvl === 'object' ? (lvl.verification || lvl.video || '') : '',
                 };
             });
+
 
 
 const list = [];
