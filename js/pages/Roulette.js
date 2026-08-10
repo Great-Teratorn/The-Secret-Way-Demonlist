@@ -213,7 +213,9 @@ export default {
 
             this.loading = true;
 
-            const fullList = await fetchList();
+                        const fullListRaw = await fetchList();
+            const fullList = JSON.parse(JSON.stringify(fullListRaw || []));
+
 
             if (fullList.filter(([_, err]) => err).length > 0) {
                 this.loading = false;
