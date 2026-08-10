@@ -144,13 +144,14 @@ export default {
         store
     }),
     computed: {
-                level() {
+                        level() {
             // Protects the UI engine by validating data arrays exist before reading index 0
             if (this.list && this.list.length > 0) {
-                return this.list[this.selected];
+                return this.list[this.selected] || {};
             }
-            return null; // Feeds a safe null state baseline if files are loading
+            return {}; // Feeds a safe empty object instead of null to prevent downstream crashes
         },
+
 
         video() {
             if (!this.level.showcase) {
