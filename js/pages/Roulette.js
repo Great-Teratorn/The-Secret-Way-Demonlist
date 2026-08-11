@@ -1,4 +1,4 @@
-import { fetchList } from '../content.js';
+/*import { fetchList } from '../content.js';
 import { getThumbnailFromId, getYoutubeIdFromUrl, shuffle } from '../util.js';
 
 import Spinner from '../components/Spinner.js';
@@ -453,4 +453,4 @@ this.survivalTarget = detailedLevel.secret_way_at || 1;
             }, 3000);
         },
     },
-};
+};*/
