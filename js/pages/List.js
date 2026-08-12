@@ -144,13 +144,9 @@ export default {
         store
     }),
     computed: {
-            level() {
-        if (!this.list || !this.list[this.selected]) {
-            return null;
-        }
-        return this.list[this.selected];
-    },
-
+        level() {
+            return this.list[this.selected][0];
+        },
         video() {
             if (!this.level.showcase) {
                 return embed(this.level.verification);
@@ -193,7 +189,7 @@ export default {
                     })
             );
             
-            this.list = this.list.filter(([_, err]) => !err).map(([data, _]) => data);
+            //this.list = this.list.filter(([_, err]) => !err).map(([data, _]) => data);
             
             if (!this.editors) {
                 this.errors.push("Failed to load list editors.");
