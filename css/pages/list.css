@@ -229,21 +229,13 @@
         pointer-events: auto !important; /* Ensures buttons stay clickable */
     }
 
-        /* Target the main content layout scroll panel wrapper */
-    .root, #app, main, .page-list, .main-content, .content {
+    /* Target the main content layout scroll panel wrapper */
+    .root, #app, main, .page-list, .main-content, .content, .g-layout {
         position: relative !important;
         height: auto !important;
         min-height: 100vh !important;
-        overflow-y: visible !important;
+        overflow-y: visible !important; /* Explicitly grants permission to scroll normally anywhere */
     }
-    
-    .g-layout {
-        display: flex !important;
-        flex-direction: column !important;
-        height: auto !important;
-        width: 100% !important;
-    }
-
 
     /* Strip any full-screen overlay behavior that prevents touching the page */
     div[style*="position: fixed"], 
@@ -321,23 +313,127 @@
         overflow-x: hidden !important;
         width: 100% !important;
     }
-
 }
 
-/* FORCE DESKTOP ROW FLOW OVERRIDE */
-@media (min-width: 769px) {
-    .page-list, .g-layout {
+
+
+/* ========================================================
+   REWRITTEN SIDEBAR COMPONENT STRUCTURAL LAYOUT
+   ======================================================== */
+.sidebar-wrapper {
+    width: 320px;
+    min-width: 320px;
+    height: calc(100vh - 80px);
+    position: sticky;
+    top: 80px;
+    background: rgba(0, 0, 0, 0.2);
+    border-right: 1px solid rgba(255, 255, 255, 0.05);
+    box-sizing: border-box;
+    z-index: 10;
+}
+
+.sidebar-scroll-box {
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+/* Individual Row Card Item Styles */
+.sidebar-row-card {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    padding: 10px 14px;
+    margin-bottom: 6px;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.1s ease;
+    box-sizing: border-box;
+}
+
+.sidebar-row-card:hover {
+    background: rgba(255, 255, 255, 0.07);
+}
+
+/* Selected Active Level Highlight Layer */
+.sidebar-active-row {
+    background: rgba(255, 255, 255, 0.15) !important;
+    border-left: 4px solid #a29bfe;
+}
+
+/* Sub-Cell Layout Containers */
+.sidebar-rank-cell {
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: rgba(255, 255, 255, 0.7);
+    min-width: 45px;
+}
+
+.legacy-fallen-tag {
+    color: #a29bfe;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.sidebar-info-cell {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    overflow: hidden;
+    text-align: left;
+    width: 100%;
+}
+
+.sidebar-level-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #ffffff;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.sidebar-level-author {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.sidebar-legacy-date {
+    font-size: 0.75rem;
+    font-style: italic;
+    color: #94a3b8;
+    margin-top: 2px;
+}
+
+.sidebar-loading-fallback {
+    width: 320px;
+    padding: 40px;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+/* ========================================================
+   RESPONSIVE COMPATIBILITY OVERRIDE RULES (MOBILE FLOW)
+   ======================================================== */
+@media (max-width: 768px) {
+    .page-list {
         display: flex !important;
-        flex-direction: row !important; /* Forces the layout to be side-by-side on computers */
+        flex-direction: column !important;
     }
-    
-    .list-container, .list, table.list {
-        display: block !important;
-        width: 320px !important; /* Restores standard template sidebar width sizing */
-        min-width: 320px !important;
-        height: 100% !important;
-        visibility: visible !important;
-        opacity: 1 !important;
+
+    .sidebar-wrapper, .sidebar-loading-fallback {
+        width: 100% !important;
+        min-width: 100% !important;
+        height: auto !important;
+        max-height: 400px; /* Limits size on mobile phones so details fit below */
+        position: relative !important;
+        top: 0 !important;
+        border-right: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     }
 }
-
