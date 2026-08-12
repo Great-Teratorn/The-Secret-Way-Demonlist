@@ -448,3 +448,14 @@
         width: 100% !important;
     }
 }
+
+
+@media (min-width: 769px) {
+    .page-list {
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: flex-start !important;
+        width: 100% !important;
+    }
+}
+

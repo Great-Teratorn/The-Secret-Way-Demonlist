@@ -21,13 +21,12 @@ export default {
             <Spinner></Spinner>
         </main>
         <main v-else class="page-list">
-                                                <!-- REWRITTEN SIDEBAR LEVEL LIST -->
+                                                            <!-- REWRITTEN SIDEBAR LEVEL LIST -->
             <div class="sidebar-wrapper" v-if="list && list.length > 0">
                 <div class="sidebar-scroll-box">
                     <div 
-                        v-for="(item, i) in list" 
+                        v-for="([level, err], i) in list" 
                         :key="i"
-                        v-init="level = Array.isArray(item) ? item[0] : item"
                         v-if="level && (($route.path === '/' && i < 150) || ($route.path === '/extended' && i >= 150) || ($route.path === '/legacy' && level.dateFallen) || ($route.path === '/unverified'))"
                         :class="['sidebar-row-card', { 'sidebar-active-row': selected === i }]"
                         @click="selected = i"
@@ -54,6 +53,7 @@ export default {
                     </div>
                 </div>
             </div>
+
 
 
             <div class="level-container">
