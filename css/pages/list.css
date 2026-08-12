@@ -229,13 +229,21 @@
         pointer-events: auto !important; /* Ensures buttons stay clickable */
     }
 
-    /* Target the main content layout scroll panel wrapper */
-    .root, #app, main, .page-list, .main-content, .content, .g-layout {
+        /* Target the main content layout scroll panel wrapper */
+    .root, #app, main, .page-list, .main-content, .content {
         position: relative !important;
         height: auto !important;
         min-height: 100vh !important;
-        overflow-y: visible !important; /* Explicitly grants permission to scroll normally anywhere */
+        overflow-y: visible !important;
     }
+    
+    .g-layout {
+        display: flex !important;
+        flex-direction: column !important;
+        height: auto !important;
+        width: 100% !important;
+    }
+
 
     /* Strip any full-screen overlay behavior that prevents touching the page */
     div[style*="position: fixed"], 
