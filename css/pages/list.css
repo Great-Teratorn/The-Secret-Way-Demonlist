@@ -16,9 +16,11 @@
 .page-list .list .rank {
     text-align: start;
     padding-right: 1rem;
+    vertical-align: middle;
 }
 .page-list .list .level {
     width: 100%;
+    vertical-align: middle;
 }
 .page-list .list .level button {
     background-color: var(--color-background);
