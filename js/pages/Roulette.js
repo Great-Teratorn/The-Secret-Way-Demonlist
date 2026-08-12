@@ -1,5 +1,139 @@
 import { fetchList } from '../content.js';import { getThumbnailFromId, getYoutubeIdFromUrl, shuffle } from '../util.js';import Spinner from '../components/Spinner.js';import Btn from '../components/Btn.js';
-export default {    components: { Spinner, Btn },    template: `        <main v-if="loading"><Spinner></Spinner></main>        <main v-else class="page-roulette">            <div class="sidebar">                <form class="options">                    <div class="check">                        <input type="checkbox" id="main" value="Main List" v-model="useMainList">                        <label for="main">Main List</label>                    </div>                    <div class="check">                        <input type="checkbox" id="extended" value="Extended List" v-model="useExtendedList">                        <label for="extended">Extended List</label>                    </div>                    <div style="margin: 15px 0; display: flex; flex-direction: column; gap: 8px;">                        <p style="font-weight: bold; color: #39ff14; font-size: 0.85rem;">CHOOSE MODE:</p>                        <div class="check">                            <input type="radio" id="classic" value="classic" v-model="gameMode">                            <label for="classic">Classic Random Roulette</label>                        </div>                        <div class="check">                            <input type="radio" id="linear" value="linear" v-model="gameMode">                            <label for="linear">Standard Progression</label>                        </div>                        <div class="check">                            <input type="radio" id="survival" value="survival" v-model="gameMode">                            <label for="survival">Secret Way Survival</label>                        </div>                    </div>                    <div style="margin-bottom: 20px; border-top: 1px solid #333; padding-top: 15px; display: flex; flex-direction: column; gap: 12px;">                        <div style="display: flex; gap: 10px;">                            <div style="flex: 1;">                                <label style="font-size: 0.75rem; color: #888;">Min Rank</label>                                <input type="number" v-model.number="minRank" min="1" max="150" style="width:100%; background:#111; color:#fff; border:1px solid #333; padding:6px;">                            </div>                            <div style="flex: 1;">                                <label style="font-size: 0.75rem; color: #888;">Max Rank</label>                                <input type="number" v-model.number="maxRank" min="1" max="150" style="width:100%; background:#111; color:#fff; border:1px solid #333; padding:6px;">                            </div>                        </div>                        <div v-if="gameMode === 'linear'">                            <label style="font-size: 0.75rem; color: #888;">Progression Order</label>                            <select v-model="progressionOrder" style="width:100%; background:#111; color:#fff; border:1px solid #333; padding:6px;">                                <option value="descending">Descending (#1 to #150)</option>                                <option value="ascending">Ascending (#150 to #1)</option>                            </select>                        </div>                    </div>                    <Btn @click.native.prevent="onStart">{{ levels.length === 0 ? 'Start' : 'Restart' }}</Btn>                </form>                <p style="color: #aaa; font-size:0.85rem; margin-top:10px;">Saves automatically.</p>                <form class="save">                    <div class="btns">                        <Btn @click.native.prevent="onImport">Import</Btn>                        <Btn :disabled="!isActive" @click.native.prevent="onExport">Export</Btn>                    </div>                </form>            </div>            <section class="levels-container">                <div class="levels">                    <template v-if="levels.length > 0">                        <div class="level" v-for="(level, i) in levels.slice(0, progression.length)">                            <a :href="level.video" class="video"><img :src="getThumbnailFromId(getYoutubeIdFromUrl(level.video))"></a>                            <div class="meta">                                <p>#{{ level.rank }}</p><h2>{{ level.name }}</h2>                                <p style="color: #00b54b; font-weight: 700">{{ progression[i] }}%</p>                            </div>                        </div>                        <div class="level" v-if="!hasCompleted">                            <a :href="currentLevel.video" target="_blank" class="video"><img :src="getThumbnailFromId(getYoutubeIdFromUrl(currentLevel.video))"></a>                            <div class="meta">                                <p>#{{ currentLevel.rank }}</p><h2>{{ currentLevel.name }}</h2>                            </div>                            <form class="actions" v-if="!givenUp">                                <input type="number" v-model="percentage" :placeholder="placeholder" :min="placeholder" max="100">                                <Btn @click.native.prevent="onDone">Done</Btn>                                <Btn @click.native.prevent="onGiveUp" style="background-color: #e91e63;">Give Up</Btn>                            </form>                        </div>                        <div v-if="givenUp || hasCompleted" class="results">                            <h1>Results</h1>                            <p>Levels beaten: {{ progression.length }}</p>                            <Btn v-if="currentPercentage < 99 && !hasCompleted" @click.native.prevent="showRemaining = true">Show remaining</Btn>                        </div>                        <template v-if="givenUp && showRemaining">                            <div class="level" v-for="(level, i) in remaining">                                <a :href="level.video" target="_blank" class="video"><img :src="getThumbnailFromId(getYoutubeIdFromUrl(level.video))"></a>                                <div class="meta">                                    <p>#{{ level.rank }}</p><h2>{{ level.name }}</h2>                                    <p style="color: #d50000; font-weight: 700">{{ gameMode === 'survival' ? (level?.secret_way_at ? level.secret_way_at + '%' : 'Secret Way') : ((currentPercentage || progression.length) + i + 1) + '%' }}</p>                                </div>                            </div>                        </template>                    </template>                </div>            </section>            <div class="toasts-container"><div class="toasts"><div v-for="toast in toasts" class="toast"><p>{{ toast }}</p></div></div></div>        </main>    `,    data: () => ({        loading: false, levels: [], progression: [], percentage: undefined,        givenUp: false, showRemaining: false, useMainList: true, useExtendedList: true,        gameMode: 'classic', survivalTarget: 1, toasts: [], fileInput: undefined,        minRank: 1, maxRank: 150, progressionOrder: 'descending'    }),
+export default {    components: { Spinner, Btn },        template: `
+        <main v-if="loading">
+            <Spinner></Spinner>
+        </main>
+        <main v-else class="page-roulette">
+            <div class="sidebar">
+                
+                <form class="options">
+                    <div class="check">
+                        <input type="checkbox" id="main" value="Main List" v-model="useMainList">
+                        <label for="main">Main List</label>
+                    </div>
+                    <div class="check">
+                        <input type="checkbox" id="extended" value="Extended List" v-model="useExtendedList">
+                        <label for="extended">Extended List</label>
+                    </div>
+                    
+                    <div style="margin: 15px 0 20px 0; display: flex; flex-direction: column; gap: 8px;">
+                        <p style="margin: 0 0 4px 0; font-weight: bold; color: #39ff14; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px;">
+                            Choose Game Mode:
+                        </p>
+                        <div class="check" style="margin-bottom: 2px;">
+                            <input type="radio" id="classic" name="roulette-mode" value="classic" v-model="gameMode" style="cursor: pointer; accent-color: #39ff14;">
+                            <label for="classic" style="padding-left: 8px; cursor: pointer;">Classic Random Roulette (1% to 100%)</label>
+                        </div>
+                        <div class="check" style="margin-bottom: 2px;">
+                            <input type="radio" id="linear" name="roulette-mode" value="linear" v-model="gameMode" style="cursor: pointer; accent-color: #39ff14;">
+                            <label for="linear" style="padding-left: 8px; cursor: pointer;">Standard Progression (Custom Range)</label>
+                        </div>
+                        <div class="check" style="margin-bottom: 2px;">
+                            <input type="radio" id="survival" name="roulette-mode" value="survival" v-model="gameMode" style="cursor: pointer; accent-color: #39ff14;">
+                            <label for="survival" style="padding-left: 8px; cursor: pointer;">Secret Way Survival (Entry %)</label>
+                        </div>
+                    </div>
+
+                    <!-- Custom Range Controls (Clean inline structure matching native look) -->
+                    <div style="margin: 0 0 20px 0; border-top: 1px solid #333; padding-top: 15px;">
+                        <div style="display: flex; gap: 10px; margin-bottom: 12px;">
+                            <div style="flex: 1;">
+                                <label style="display: block; font-size: 0.75rem; color: #aaa; margin-bottom: 4px;">Min Rank</label>
+                                <input type="number" v-model.number="minRank" min="1" max="150" style="width: 100%; padding: 6px; background: rgba(0,0,0,0.3); border: 1px solid #444; color: #fff; border-radius: 4px;">
+                            </div>
+                            <div style="flex: 1;">
+                                <label style="display: block; font-size: 0.75rem; color: #aaa; margin-bottom: 4px;">Max Rank</label>
+                                <input type="number" v-model.number="maxRank" min="1" max="150" style="width: 100%; padding: 6px; background: rgba(0,0,0,0.3); border: 1px solid #444; color: #fff; border-radius: 4px;">
+                            </div>
+                        </div>
+
+                        <!-- Direction Selector for Standard Progression -->
+                        <div v-if="gameMode === 'linear'">
+                            <label style="display: block; font-size: 0.75rem; color: #aaa; margin-bottom: 4px;">Progression Order</label>
+                            <select v-model="progressionOrder" style="width: 100%; padding: 6px; background: #111; border: 1px solid #444; color: #fff; border-radius: 4px; cursor: pointer;">
+                                <option value="descending">Descending (#1 to #150)</option>
+                                <option value="ascending">Ascending (#150 to #1)</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <Btn @click.native.prevent="onStart">{{ levels.length === 0 ? 'Start' : 'Restart'}}</Btn>
+                </form>
+                <p class="type-label-md" style="color: #aaa">
+                    The roulette saves automatically.
+                </p>
+                <form class="save">
+                    <p>Manual Load/Save</p>
+                    <div class="btns">
+                        <Btn @click.native.prevent="onImport">Import</Btn>
+                        <Btn :disabled="!isActive" @click.native.prevent="onExport">Export</Btn>
+                    </div>
+                </form>
+            </div>
+            <section class="levels-container">
+                <div class="levels">
+                    <template v-if="levels.length > 0">
+                        <!-- Completed Levels -->
+                        <div class="level" v-for="(level, i) in levels.slice(0, progression.length)">
+                            <a :href="level.video" class="video">
+                                <img :src="getThumbnailFromId(getYoutubeIdFromUrl(level.video))" alt="">
+                            </a>
+                            <div class="meta">
+                                <p>#{{ level.rank }}</p>
+                                <h2>{{ level.name }}</h2>
+                                <p style="color: #00b54b; font-weight: 700">{{ progression[i] }}%</p>
+                            </div>
+                        </div>
+                        <!-- Current Level -->
+                        <div class="level" v-if="!hasCompleted">
+                            <a :href="currentLevel.video" target="_blank" class="video">
+                                <img :src="getThumbnailFromId(getYoutubeIdFromUrl(currentLevel.video))" alt="">
+                            </a>
+                            <div class="meta">
+                                <p>#{{ currentLevel.rank }}</p>
+                                <h2>{{ currentLevel.name }}</h2>
+                                <p>{{ currentLevel.id }}</p>
+                            </div>
+                            <form class="actions" v-if="!givenUp">
+                                <input type="number" v-model="percentage" :placeholder="placeholder" :min="placeholder" max="100">
+
+                                <Btn @click.native.prevent="onDone">Done</Btn>
+                                <Btn @click.native.prevent="onGiveUp" style="background-color: #e91e63;">Give Up</Btn>
+                            </form>
+                        </div>
+                        <!-- Results -->
+                        <div v-if="givenUp || hasCompleted" class="results">
+                            <h1>Results</h1>
+                            <p>Number of levels: {{ progression.length }}</p>
+                            <p>Highest percent: {{ currentPercentage }}%</p>
+                            <Btn v-if="currentPercentage < 99 && !hasCompleted" @click.native.prevent="showRemaining = true">Show remaining levels</Btn>
+                        </div>
+                        <!-- Remaining Levels -->
+                        <template v-if="givenUp && showRemaining">
+                            <div class="level" v-for="(level, i) in remaining">
+                                <a :href="level.video" target="_blank" class="video">
+                                    <img :src="getThumbnailFromId(getYoutubeIdFromUrl(level.video))" alt="">
+                                </a>
+                                <div class="meta">
+                                    <p>#{{ level.rank }}</p>
+                                    <h2>{{ level.name }}</h2>
+                                    <p style="color: #d50000; font-weight: 700">{{ gameMode === 'survival' ? (level?.secret_way_at ? level.secret_way_at + '%' : 'Secret Way') : ((currentPercentage || progression.length) + i + 1) + '%' }}</p>
+                                </div>
+                            </div>
+                        </template>
+                    </template>
+                </div>
+            </section>
+            <div class="toasts-container">
+                <div class="toasts">
+                    <div v-for="toast in toasts" class="toast">
+                        <p>{{ toast }}</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    `,
+    data: () => ({        loading: false, levels: [], progression: [], percentage: undefined,        givenUp: false, showRemaining: false, useMainList: true, useExtendedList: true,        gameMode: 'classic', survivalTarget: 1, toasts: [], fileInput: undefined,        minRank: 1, maxRank: 150, progressionOrder: 'descending'    }),
     mounted() {
         this.useMainList = true;
         this.useExtendedList = true;
