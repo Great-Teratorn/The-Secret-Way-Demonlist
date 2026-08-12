@@ -21,7 +21,7 @@ export default {
                         <label for="extended">Extended List</label>
                     </div>
                     
-                    <div style="margin: 15px 0 20px 0; display: flex; flex-direction: column; gap: 8px;">
+                                        <div style="margin: 15px 0 20px 0; display: flex; flex-direction: column; gap: 8px;">
                         <p style="margin: 0 0 4px 0; font-weight: bold; color: #39ff14; font-size: 0.85rem; text-transform: uppercase;">
                             Choose Game Mode:
                         </p>
@@ -35,7 +35,11 @@ export default {
                         </div>
                         <div class="check">
                             <input type="radio" id="survival" name="roulette-mode" value="survival" v-model="gameMode">
-                            <label for="survival">Secret Way Survival</label>
+                            <label for="survival">Secret Way Survival (Random)</label>
+                        </div>
+                        <div class="check">
+                            <input type="radio" id="secret-progression" name="roulette-mode" value="secret-progression" v-model="gameMode">
+                            <label for="secret-progression">Secret Way Progression (Sequential)</label>
                         </div>
                     </div>
 
@@ -51,14 +55,16 @@ export default {
                             </div>
                         </div>
 
-                        <div v-if="gameMode === 'linear'">
+                        <!-- Visible for BOTH linear and secret progression modes -->
+                        <div v-if="gameMode === 'linear' || gameMode === 'secret-progression'">
                             <label style="display: block; font-size: 0.75rem; color: #aaa; margin-bottom: 4px;">Progression Order</label>
                             <select v-model="progressionOrder" style="width: 100%; padding: 6px; background: #111; border: 1px solid #444; color: #fff;">
-                                <option value="descending">Descending (#1 to #150)</option>
-                                <option value="ascending">Ascending (#150 to #1)</option>
+                                <option value="descending">Descending</option>
+                                <option value="ascending">Ascending</option>
                             </select>
                         </div>
                     </div>
+
                     
                     <Btn @click.native.prevent="onStart">{{ levels.length === 0 ? 'Start' : 'Restart'}}</Btn>
                 </form>
@@ -175,14 +181,18 @@ export default {
         currentPercentage() {
             return this.progression[this.progression.length - 1] || 0;
         },
-        placeholder() {
+                placeholder() {
             if (!this.gameMode) return 1;
-            if (this.gameMode === 'survival') return this.survivalTarget || 1;
+            // Both secret way modes require hitting the specific entry percent threshold
+            if (this.gameMode === 'survival' || this.gameMode === 'secret-progression') {
+                return this.survivalTarget || 1;
+            }
             if (this.progression && this.progression.length > 0) {
                 return this.progression[this.progression.length - 1] + 1;
             }
             return 1;
         },
+
         hasCompleted() {
             return (
                 this.progression[this.progression.length - 1] >= 100 ||
@@ -204,29 +214,58 @@ export default {
 methods: {        shuffle,        getThumbnailFromId,        getYoutubeIdFromUrl,        async onStart() {            if (this.isActive) {                this.showToast('Give up before starting a new roulette.');                return;            }            if (!this.useMainList && !this.useExtendedList) return;
             this.loading = true;            const fullListRaw = await fetchList();            const fullList = JSON.parse(JSON.stringify(fullListRaw || []));
             if (fullList.filter(([_, err]) => err).length > 0) {                this.loading = false;                this.showToast("List is broken. Wait until it's fixed to start.");                return;            }
-                        const fullListMapped = (fullList || []).map((item, i) => {
-                // Restores your exact, working array extraction structure
-                const lvl = Array.isArray(item) ? item[0] : item;
-                return {
-                    rank: i + 1,
-                    id: lvl?.id || i,
-                    name: typeof lvl === 'string' ? lvl : (lvl?.name || 'Unknown Level'),
-                    video: lvl?.verification || lvl?.video || '',
-                };
-            });
-
+            const fullListMapped = (fullList || []).map((item, i) => {                const lvl = Array.isArray(item) ? item : item;                return {                    rank: i + 1,                    id: lvl?.id || i,                    name: typeof lvl === 'string' ? lvl : (lvl?.name || 'Unknown Level'),                    video: lvl?.verification || lvl?.video || '',                };            });
             const absoluteMax = fullListMapped.length;            const min = Math.max(1, parseInt(this.minRank) || 1);            const max = Math.min(absoluteMax, parseInt(this.maxRank) || absoluteMax);
             const targetedPool = [];            fullListMapped.forEach(lvl => {                if (lvl.rank <= 150 && this.useMainList) {                    targetedPool.push(lvl);                } else if (lvl.rank > 150 && this.useExtendedList) {                    targetedPool.push(lvl);                }            });
             const list = targetedPool.filter(lvl => lvl.rank >= min && lvl.rank <= max);
             if (list.length === 0) {                this.loading = false;                this.showToast("No levels found within your chosen settings and ranges.");                return;            }
             const safeListCopy = JSON.parse(JSON.stringify(list));
-            if (this.gameMode === 'linear') {                if (this.progressionOrder === 'ascending') {                    this.levels = safeListCopy.sort((a, b) => b.rank - a.rank);                } else {                    this.levels = safeListCopy.sort((a, b) => a.rank - b.rank);                }            } else {                this.levels = shuffle([...safeListCopy]).slice(0, 100);            }
+            // Handles sequence sorting for BOTH linear progression and secret progression modes            if (this.gameMode === 'linear' || this.gameMode === 'secret-progression') {                if (this.progressionOrder === 'ascending') {                    this.levels = safeListCopy.sort((a, b) => b.rank - a.rank);                } else {                    this.levels = safeListCopy.sort((a, b) => a.rank - b.rank);                }            } else {                this.levels = shuffle([...safeListCopy]).slice(0, 100);            }
             this.showRemaining = false;            this.givenUp = false;            this.progression = [];
-            if (this.gameMode === 'survival') {                await Promise.all(                    this.levels.map(async (lvl) => {                        try {                            let lvlName = lvl.name || '';                            lvlName = lvlName.toLowerCase().replace(/\s+/g, '-');                            const res = await fetch(`data/${lvlName}.json`);                            if (res.ok) {                                const data = await res.json();                                lvl.secret_way_at = data.secret_way_at || 1;                            } else {                                lvl.secret_way_at = 1;                            }                        } catch (e) {                            lvl.secret_way_at = 1;                        }                    })                );            }
-            if (this.gameMode === 'survival' && this.levels.length > 0) {                try {                    let firstLevelName = this.levels[0].name || '';                    firstLevelName = firstLevelName.toLowerCase().replace(/\s+/g, '-');                    const response = await fetch(`data/${firstLevelName}.json`);                    if (response.ok) {                        const firstLevelData = await response.json();                        this.survivalTarget = firstLevelData.secret_way_at || 1;                    } else {                        this.survivalTarget = 1;                    }                    this.percentage = undefined;                } catch (err) {                    this.survivalTarget = 1;                    this.percentage = undefined;                }            } else {                this.percentage = undefined;            }
-            this.save();            this.loading = false;        },        save() {            localStorage.setItem(                'roulette',                JSON.stringify({                    levels: this.levels,                    progression: this.progression,                    minRank: this.minRank,                    maxRank: this.maxRank,                    progressionOrder: this.progressionOrder                }),            );        },        async onDone() {            if (!this.percentage) return;            let requiredPercentage = this.placeholder;
-            if (this.percentage < requiredPercentage || this.percentage > 100) {                this.showToast(`Invalid percentage. Reach at least ${requiredPercentage}%!`);                return;            }
-            this.progression.push(this.percentage);            this.percentage = undefined;
-            if (this.gameMode === 'survival') {                const nextLevelData = this.levels[this.progression.length];                if (nextLevelData) {                    try {                        let levelName = "";                        if (typeof nextLevelData === 'string') {                            levelName = nextLevelData;                        } else if (nextLevelData && typeof nextLevelData === 'object') {                            levelName = nextLevelData.level || nextLevelData.name || "";                        }
-                        levelName = levelName.toLowerCase().replace(/\s+/g, '-');                        const response = await fetch(`data/${levelName}.json`);                        if (!response.ok) {                            this.survivalTarget = 1;                            this.save();                            return;                        }                        const detailedLevel = await response.json();                        this.survivalTarget = detailedLevel.secret_way_at || 1;                    } catch (err) {                        this.survivalTarget = 1;                    }                } else {                    this.survivalTarget = 1;                }            }            this.save();        },        onGiveUp() {            this.givenUp = true;            localStorage.removeItem('roulette');        },        onImport() {            if (this.isActive && !window.confirm('Overwrite current running roulette?')) return;            this.fileInput.showPicker();        },        async onImportUpload() {            if (this.fileInput.files.length === 0) return;            const file = this.fileInput.files[0];            try {                const roulette = JSON.parse(await file.text());                if (!roulette.levels || !roulette.progression) {                    this.showToast('Invalid file structure.');                    return;                }                this.levels = roulette.levels;                this.progression = roulette.progression;                if (roulette.minRank !== undefined) this.minRank = roulette.minRank;                if (roulette.maxRank !== undefined) this.maxRank = roulette.maxRank;                if (roulette.progressionOrder !== undefined) this.progressionOrder = roulette.progressionOrder;
+            // Pre-fetch secret way percentage numbers for either secret way game style            if (this.gameMode === 'survival' || this.gameMode === 'secret-progression') {                await Promise.all(                    this.levels.map(async (lvl) => {                        try {                            let lvlName = lvl.name || '';                            lvlName = lvlName.toLowerCase().replace(/\s+/g, '-');                            const res = await fetch(`data/${lvlName}.json`);                            if (res.ok) {                                const data = await res.json();                                lvl.secret_way_at = data.secret_way_at || 1;                            } else {                                lvl.secret_way_at = 1;                            }                        } catch (e) {                            lvl.secret_way_at = 1;                        }                    })                );            }
+            // Set up the first active level percentage objective target            if ((this.gameMode === 'survival' || this.gameMode === 'secret-progression') && this.levels.length > 0) {                try {                    let firstLevelName = this.levels[0].name || '';                    firstLevelName = firstLevelName.toLowerCase().replace(/\s+/g, '-');                    const response = await fetch(`data/${firstLevelName}.json`);                    if (response.ok) {                        const firstLevelData = await response.json();                        this.survivalTarget = firstLevelData.secret_way_at || 1;                    } else {                        this.survivalTarget = 1;                    }                    this.percentage = undefined;                } catch (err) {                    this.survivalTarget = 1;                    this.percentage = undefined;                }            } else {                this.percentage = undefined;            }
+            this.save();            this.loading = false;        },        save() {            localStorage.setItem(                'roulette',                JSON.stringify({                    levels: this.levels,                    progression: this.progression,                    minRank: this.minRank,                    maxRank: this.maxRank,                    progressionOrder: this.progressionOrder                }),            );        },        
+        async onDone() {
+            if (!this.percentage) return;
+            let requiredPercentage = this.placeholder;
+
+            if (this.percentage < requiredPercentage || this.percentage > 100) {
+                this.showToast(`Invalid percentage. Reach at least ${requiredPercentage}%!`);
+                return;
+            }
+
+            this.progression.push(this.percentage);
+            this.percentage = undefined;
+
+            // Calculates targets dynamically as players advance through secret slots
+            if (this.gameMode === 'survival' || this.gameMode === 'secret-progression') {
+                const nextLevelData = this.levels[this.progression.length];
+                if (nextLevelData) {
+                    try {
+                        let levelName = "";
+                        if (typeof nextLevelData === 'string') {
+                            levelName = nextLevelData;
+                        } else if (nextLevelData && typeof nextLevelData === 'object') {
+                            levelName = nextLevelData.level || nextLevelData.name || "";
+                        }
+
+                        levelName = levelName.toLowerCase().replace(/\s+/g, '-');
+                        const response = await fetch(`data/${levelName}.json`);
+                        if (!response.ok) {
+                            this.survivalTarget = 1;
+                            this.save();
+                            return;
+                        }
+                        const detailedLevel = await response.json();
+                        this.survivalTarget = detailedLevel.secret_way_at || 1;
+                    } catch (err) {
+                        this.survivalTarget = 1;
+                    }
+                } else {
+                    this.survivalTarget = 1; // Completed!
+                }
+            }
+            this.save();
+        },
+        onGiveUp() {            this.givenUp = true;            localStorage.removeItem('roulette');        },        onImport() {            if (this.isActive && !window.confirm('Overwrite current running roulette?')) return;            this.fileInput.showPicker();        },        async onImportUpload() {            if (this.fileInput.files.length === 0) return;            const file = this.fileInput.files[0];            try {                const roulette = JSON.parse(await file.text());                if (!roulette.levels || !roulette.progression) {                    this.showToast('Invalid file structure.');                    return;                }                this.levels = roulette.levels;                this.progression = roulette.progression;                if (roulette.minRank !== undefined) this.minRank = roulette.minRank;                if (roulette.maxRank !== undefined) this.maxRank = roulette.maxRank;                if (roulette.progressionOrder !== undefined) this.progressionOrder = roulette.progressionOrder;
                 this.save();                this.givenUp = false;                this.showRemaining = false;                this.percentage = undefined;            } catch {                this.showToast('Invalid file parsing error.');            }        },        onExport() {            const file = new Blob(                [JSON.stringify({                    levels: this.levels,                    progression: this.progression,                    minRank: this.minRank,                    maxRank: this.maxRank,                    progressionOrder: this.progressionOrder                })],                { type: 'application/json' },            );            const a = document.createElement('a');            a.href = URL.createObjectURL(file);            a.download = 'tsl_roulette';            a.click();            URL.revokeObjectURL(a.href);        },        showToast(msg) {            this.toasts.push(msg);            setTimeout(() => { this.toasts.shift(); }, 3000);        },    },};
