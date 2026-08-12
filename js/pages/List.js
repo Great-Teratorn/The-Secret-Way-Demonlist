@@ -144,10 +144,13 @@ export default {
         store
     }),
     computed: {
-        level() {
-            return this.list[this.selected]?.[0] || this.list[this.selected];
+            level() {
+        if (!this.list || !this.list[this.selected]) {
+            return null;
+        }
+        return this.list[this.selected];
+    },
 
-        },
         video() {
             if (!this.level.showcase) {
                 return embed(this.level.verification);
