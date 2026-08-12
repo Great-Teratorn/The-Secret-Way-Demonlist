@@ -204,7 +204,17 @@ export default {
 methods: {        shuffle,        getThumbnailFromId,        getYoutubeIdFromUrl,        async onStart() {            if (this.isActive) {                this.showToast('Give up before starting a new roulette.');                return;            }            if (!this.useMainList && !this.useExtendedList) return;
             this.loading = true;            const fullListRaw = await fetchList();            const fullList = JSON.parse(JSON.stringify(fullListRaw || []));
             if (fullList.filter(([_, err]) => err).length > 0) {                this.loading = false;                this.showToast("List is broken. Wait until it's fixed to start.");                return;            }
-            const fullListMapped = (fullList || []).map((item, i) => {                const lvl = Array.isArray(item) ? item : item;                return {                    rank: i + 1,                    id: lvl?.id || i,                    name: typeof lvl === 'string' ? lvl : (lvl?.name || 'Unknown Level'),                    video: lvl?.verification || lvl?.video || '',                };            });
+                        const fullListMapped = (fullList || []).map((item, i) => {
+                // Restores your exact, working array extraction structure
+                const lvl = Array.isArray(item) ? item[0] : item;
+                return {
+                    rank: i + 1,
+                    id: lvl?.id || i,
+                    name: typeof lvl === 'string' ? lvl : (lvl?.name || 'Unknown Level'),
+                    video: lvl?.verification || lvl?.video || '',
+                };
+            });
+
             const absoluteMax = fullListMapped.length;            const min = Math.max(1, parseInt(this.minRank) || 1);            const max = Math.min(absoluteMax, parseInt(this.maxRank) || absoluteMax);
             const targetedPool = [];            fullListMapped.forEach(lvl => {                if (lvl.rank <= 150 && this.useMainList) {                    targetedPool.push(lvl);                } else if (lvl.rank > 150 && this.useExtendedList) {                    targetedPool.push(lvl);                }            });
             const list = targetedPool.filter(lvl => lvl.rank >= min && lvl.rank <= max);
