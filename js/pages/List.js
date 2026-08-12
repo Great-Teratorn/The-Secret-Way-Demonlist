@@ -188,6 +188,9 @@ export default {
                         return `Failed to load level. (${err}.json)`;
                     })
             );
+            
+            this.list = this.list.filter(([_, err]) => !err).map(([data, _]) => data);
+            
             if (!this.editors) {
                 this.errors.push("Failed to load list editors.");
             }
