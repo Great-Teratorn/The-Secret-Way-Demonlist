@@ -21,13 +21,14 @@ export default {
             <Spinner></Spinner>
         </main>
         <main v-else class="page-list">
-                                    <!-- REWRITTEN SIDEBAR LEVEL LIST -->
+                                                <!-- REWRITTEN SIDEBAR LEVEL LIST -->
             <div class="sidebar-wrapper" v-if="list && list.length > 0">
                 <div class="sidebar-scroll-box">
                     <div 
                         v-for="(item, i) in list" 
                         :key="i"
-                        v-if="(Array.isArray(item) ? item[0] : item) && (($route.path === '/' && i < 150) || ($route.path === '/extended' && i >= 150) || ($route.path === '/legacy' && (Array.isArray(item) ? item[0] : item).dateFallen) || ($route.path === '/unverified'))"
+                        v-init="level = Array.isArray(item) ? item[0] : item"
+                        v-if="level && (($route.path === '/' && i < 150) || ($route.path === '/extended' && i >= 150) || ($route.path === '/legacy' && level.dateFallen) || ($route.path === '/unverified'))"
                         :class="['sidebar-row-card', { 'sidebar-active-row': selected === i }]"
                         @click="selected = i"
                     >
@@ -41,18 +42,19 @@ export default {
                         <!-- Level Info Text Box -->
                         <div class="sidebar-info-cell">
                             <span class="sidebar-level-title">
-                                {{ (Array.isArray(item) ? item[0] : item)?.name || 'Loading...' }}
+                                {{ level?.name || 'Loading...' }}
                             </span>
-                            <span class="sidebar-level-author" v-if="(Array.isArray(item) ? item[0] : item)?.author">
-                                by {{ (Array.isArray(item) ? item[0] : item).author }}
+                            <span class="sidebar-level-author" v-if="level?.author">
+                                by {{ level.author }}
                             </span>
-                            <span class="sidebar-legacy-date" v-if="$route.path === '/legacy' && (Array.isArray(item) ? item[0] : item)?.dateFallen">
-                                Fell off: {{ (Array.isArray(item) ? item[0] : item).dateFallen }}
+                            <span class="sidebar-legacy-date" v-if="$route.path === '/legacy' && level?.dateFallen">
+                                Fell off: {{ level.dateFallen }}
                             </span>
                         </div>
                     </div>
                 </div>
             </div>
+
 
             <div class="level-container">
                 <div class="level" v-if="level">
