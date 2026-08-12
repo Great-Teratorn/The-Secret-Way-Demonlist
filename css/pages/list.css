@@ -14,7 +14,7 @@
     table-layout: auto;
 }
 .page-list .list .rank {
-    text-align: end;
+    text-align: start;
     padding-right: 1rem;
 }
 .page-list .list .level {
