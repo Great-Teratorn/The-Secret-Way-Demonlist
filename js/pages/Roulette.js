@@ -1,4 +1,4 @@
-/*import { fetchList } from '../content.js';
+import { fetchList } from '../content.js';
 import { getThumbnailFromId, getYoutubeIdFromUrl, shuffle } from '../util.js';
 
 import Spinner from '../components/Spinner.js';
@@ -12,7 +12,9 @@ export default {
         </main>
         <main v-else class="page-roulette">
             <div class="sidebar">
-                
+                <p class="type-label-md" style="color: #aaa">
+                    Shameless copy of the Extreme Demon Roulette by <a href="https://matcool.github.io/extreme-demon-roulette/" target="_blank">matcool</a>.
+                </p>
                 <form class="options">
                     <div class="check">
                         <input type="checkbox" id="main" value="Main List" v-model="useMainList">
@@ -22,26 +24,6 @@ export default {
                         <input type="checkbox" id="extended" value="Extended List" v-model="useExtendedList">
                         <label for="extended">Extended List</label>
                     </div>
-                    
-                            <div style="margin: 15px 0 20px 0; display: flex; flex-direction: column; gap: 8px;">
-            <p style="margin: 0 0 4px 0; font-weight: bold; color: #39ff14; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px;">
-                Choose Game Mode:
-            </p>
-            <div class="check" style="margin-bottom: 2px;">
-                <input type="radio" id="classic" name="roulette-mode" value="classic" v-model="gameMode" style="cursor: pointer; accent-color: #39ff14;">
-                <label for="classic" style="padding-left: 8px; cursor: pointer;">Classic Random Roulette (1% to 100%)</label>
-            </div>
-            <div class="check" style="margin-bottom: 2px;">
-                <input type="radio" id="linear" name="roulette-mode" value="linear" v-model="gameMode" style="cursor: pointer; accent-color: #39ff14;">
-                <label for="linear" style="padding-left: 8px; cursor: pointer;">Standard Progression (#150 to #1)</label>
-            </div>
-            <div class="check" style="margin-bottom: 2px;">
-                <input type="radio" id="survival" name="roulette-mode" value="survival" v-model="gameMode" style="cursor: pointer; accent-color: #39ff14;">
-                <label for="survival" style="padding-left: 8px; cursor: pointer;">Secret Way Survival (Entry %)</label>
-            </div>
-        </div>
-
-                    
                     <Btn @click.native.prevent="onStart">{{ levels.length === 0 ? 'Start' : 'Restart'}}</Btn>
                 </form>
                 <p class="type-label-md" style="color: #aaa">
@@ -80,8 +62,7 @@ export default {
                                 <p>{{ currentLevel.id }}</p>
                             </div>
                             <form class="actions" v-if="!givenUp">
-                                <input type="number" v-model="percentage" :placeholder="placeholder" :min="placeholder" max="100">
-
+                                <input type="number" v-model="percentage" :placeholder="placeholder" :min="currentPercentage + 1" max=100>
                                 <Btn @click.native.prevent="onDone">Done</Btn>
                                 <Btn @click.native.prevent="onGiveUp" style="background-color: #e91e63;">Give Up</Btn>
                             </form>
@@ -95,17 +76,14 @@ export default {
                         </div>
                         <!-- Remaining Levels -->
                         <template v-if="givenUp && showRemaining">
-                            <div class="level" v-for="(level, i) in remaining">
+                            <div class="level" v-for="(level, i) in levels.slice(progression.length + 1, levels.length - currentPercentage + progression.length)">
                                 <a :href="level.video" target="_blank" class="video">
                                     <img :src="getThumbnailFromId(getYoutubeIdFromUrl(level.video))" alt="">
                                 </a>
                                 <div class="meta">
                                     <p>#{{ level.rank }}</p>
                                     <h2>{{ level.name }}</h2>
-                                                        <p style="color: #d50000; font-weight: 700">{{ gameMode === 'survival' ? (level?.secret_way_at ? level.secret_way_at + '%' : 'Secret Way') : ((currentPercentage || progression.length) + i + 1) + '%' }}
-
-
-
+                                    <p style="color: #d50000; font-weight: 700">{{ currentPercentage + 2 + i }}%</p>
                                 </div>
                             </div>
                         </template>
@@ -130,15 +108,10 @@ export default {
         showRemaining: false,
         useMainList: true,
         useExtendedList: true,
-        gameMode: 'classic',
-        survivalTarget: 1,
         toasts: [],
         fileInput: undefined,
     }),
     mounted() {
-        useMainList: true;
-        useExtendedList: true;
-        this.gameMode = 'classic';
         // Create File Input
         this.fileInput = document.createElement('input');
         this.fileInput.type = 'file';
@@ -153,8 +126,7 @@ export default {
             return;
         }
 
-        this.levels = JSON.parse(JSON.stringify(roulette.levels || []));
-
+        this.levels = roulette.levels;
         this.progression = roulette.progression;
     },
     computed: {
@@ -164,37 +136,15 @@ export default {
         currentPercentage() {
             return this.progression[this.progression.length - 1] || 0;
         },
-                                                    placeholder() {
-            if (!this.gameMode) {
-                return 1; // Instantly safe fallback on application boot
-            }
-            if (this.gameMode === 'survival') {
-                return this.survivalTarget || 1;
-            }
-            if (this.progression && this.progression.length > 0) {
-                return this.progression[this.progression.length - 1] + 1;
-            }
-            return 1;
+        placeholder() {
+            return `At least ${this.currentPercentage + 1}%`;
         },
-
-
-
-
-
-
         hasCompleted() {
             return (
                 this.progression[this.progression.length - 1] >= 100 ||
                 this.progression.length === this.levels.length
             );
         },
-        
-                remaining() {
-            if (!this.levels || this.levels.length === 0) return [];
-            return this.levels.slice(this.progression.length);
-        },
-
-        
         isActive() {
             return (
                 this.progression.length > 0 &&
@@ -219,9 +169,7 @@ export default {
 
             this.loading = true;
 
-                        const fullListRaw = await fetchList();
-            const fullList = JSON.parse(JSON.stringify(fullListRaw || []));
-
+            const fullList = await fetchList();
 
             if (fullList.filter(([_, err]) => err).length > 0) {
                 this.loading = false;
@@ -231,76 +179,24 @@ export default {
                 return;
             }
 
-                                         const fullListMapped = (fullList || []).map((item, i) => {
-                const lvl = Array.isArray(item) ? item[0] : item;
-                return {
-                    rank: i + 1,
-                    id: lvl?.id || i,
-                    name: typeof lvl === 'string' ? lvl : (lvl?.name || 'Unknown Level'),
-                    video: lvl?.verification || lvl?.video || '',
-                };
-            });
-
-
-
-
-
-const list = [];
-if (this.useMainList && fullListMapped.length > 0) {
-    list.push(...fullListMapped.slice(0, 75));
-}
-if (this.useExtendedList && fullListMapped.length > 75) {
-    list.push(...fullListMapped.slice(75, 150));
-}
-
+            const fullListMapped = fullList.map(([lvl, _], i) => ({
+                rank: i + 1,
+                id: lvl.id,
+                name: lvl.name,
+                video: lvl.verification,
+            }));
+            const list = [];
+            if (this.useMainList) list.push(...fullListMapped.slice(0, 75));
+            if (this.useExtendedList) {
+                list.push(...fullListMapped.slice(75, 150));
+            }
 
             // random 100 levels
-        // Create a deep copy to isolate memory references completely
-const safeListCopy = JSON.parse(JSON.stringify(list));
-
-// Setup levels based on chosen game mode using the safely copied data
-if (this.gameMode === 'linear') {
-    // Mode 2: Standard Progression (Start at #150 and climb up to #1)
-    this.levels = safeListCopy.reverse(); 
-} else {
-    // Mode 1 & 3: Classic Random & Secret Way Survival remain fully randomized
-    this.levels = shuffle([...safeListCopy]).slice(0, 100);
-}
-
-
-
-
-
-                        this.showRemaining = false;
-        this.givenUp = false;
-        this.progression = [];
-
-        if (this.gameMode === 'survival') {            await Promise.all(                this.levels.map(async (lvl) => {                    try {                        let lvlName = lvl.name || '';                        lvlName = lvlName.toLowerCase().replace(/\s+/g, '-');                        const res = await fetch(`data/${lvlName}.json`);                        if (res.ok) {                            const data = await res.json();                            lvl.secret_way_at = data.secret_way_at || 1;                        } else {                            lvl.secret_way_at = 1;                        }                    } catch (e) {                        lvl.secret_way_at = 1;                    }                })            );        }
-        // Setup initial target percentage
-        if (this.gameMode === 'survival') {
-            try {
-                let firstLevelName = this.levels[0].name || this.levels[0].level || "";
-                
-                // Clean up casing and spaces for the first level
-                firstLevelName = firstLevelName.toLowerCase().replace(/\s+/g, '-');
-
-                const response = await fetch(`data/${firstLevelName}.json`);
-                const firstLevelData = await response.json();
-                this.survivalTarget = firstLevelData.secret_way_at || 1;
-                this.percentage = undefined;
-            } catch (err) {
-                this.survivalTarget = 1;
-                this.percentage = undefined;
-            }
-        }
-
-        
-        
-        else {
+            this.levels = shuffle(list).slice(0, 100);
+            this.showRemaining = false;
+            this.givenUp = false;
+            this.progression = [];
             this.percentage = undefined;
-        }
-
-
 
             this.loading = false;
         },
@@ -313,80 +209,24 @@ if (this.gameMode === 'linear') {
                 }),
             );
         },
-        
-                async onDone() {
-        if (!this.percentage) {
-            return;
-        }
-
-        // Pull active required threshold constraint
-        let requiredPercentage = this.placeholder;
-
-        // Strictly block inputs lower than the required threshold
-        if (
-            this.percentage < requiredPercentage || 
-            this.percentage > 100
-        ) {
-            this.showToast(`Invalid percentage. You must reach at least ${requiredPercentage}%!`);
-            return;
-        }
-
-        this.progression.push(this.percentage);
-        let lastBeatenScore = this.percentage;
-        this.percentage = undefined; // Safely clears the text field container for the next level
-
-                // Calculate the next target percentage criteria
-        if (this.gameMode === 'survival') {
-            const nextLevelData = this.levels[this.progression.length];
-            if (nextLevelData) {
-                try {
-                    // Look through every single possible property where the template stores the level filename
-                    let levelName = "";
-                    
-                    if (typeof nextLevelData === 'string') {
-                        levelName = nextLevelData;
-                    } else if (nextLevelData && typeof nextLevelData === 'object') {
-                        // Checks standard template layouts like nextLevelData.level or nextLevelData.name
-                        levelName = nextLevelData.level || nextLevelData.name || (nextLevelData.level && nextLevelData.level.name) || "";
-                    }
-
-                    // Fallback check: If the extraction returned empty or an unexpected object layout, clean it up
-                    if (typeof levelName === 'object' && levelName !== null) {
-                        levelName = levelName.name || levelName.level || "";
-                    }
-
-                    // Log to browser console just so you can inspect if a filename breaks
-                    console.log("Fetching next survival level data for:", levelName);
-
-                                        // Force the level name to all-lowercase to match your filenames
-                    levelName = levelName.toLowerCase();
-
-                    // Replace any empty spaces with a clean dash marker (-)
-                    levelName = levelName.replace(/\s+/g, '-');
-
-                    const response = await fetch(`data/${levelName}.json`);
-if (!response.ok) {
-    this.survivalTarget = 1;
-    return;
-}
-const detailedLevel = await response.json();
-this.survivalTarget = detailedLevel.secret_way_at || 1;
-
-                } catch (err) {
-                    console.error("Error fetching next level details:", err);
-                    this.survivalTarget = 1;
-                }
-            } else {
-                this.survivalTarget = 1; // Game completely finished!
+        onDone() {
+            if (!this.percentage) {
+                return;
             }
-        }
 
+            if (
+                this.percentage <= this.currentPercentage ||
+                this.percentage > 100
+            ) {
+                this.showToast('Invalid percentage.');
+                return;
+            }
 
-        this.save();
-    },
+            this.progression.push(this.percentage);
+            this.percentage = undefined;
 
-
-
+            this.save();
+        },
         onGiveUp() {
             this.givenUp = true;
 
@@ -453,4 +293,4 @@ this.survivalTarget = detailedLevel.secret_way_at || 1;
             }, 3000);
         },
     },
-};*/
+};
