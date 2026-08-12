@@ -194,6 +194,12 @@ export default {
         }
 
         this.loading = false;
+console.log("=== DEBUG LIST ACTIVE STATE ===");
+    console.log("Raw list array:", this.list);
+    console.log("Errors array:", this.errors);
+        
+    
+    
     },
     methods: {
         embed,
