@@ -23,30 +23,26 @@ export default {
         <main v-else class="page-list">
             <div class="list-container">
                                     <table class="list" v-if="list">
-    <!-- FIXED: Added safety fallback layer to handle both raw objects and packed pairs -->
-    <template v-for="(item, i) in list">
-        <tr v-init="level = Array.isArray(item) ? item[0] : item; err = Array.isArray(item) ? item[1] : null"
-            :key="i" 
-            v-if="level && (($route.path === '/' && i < 150) || ($route.path === '/extended' && i >= 150) || ($route.path === '/legacy' && level.dateFallen) || ($route.path === '/unverified'))">
-            <td class="rank">
-                <!-- Show rank number on Main and Extended, show text on Legacy -->
-                <p v-if="$route.path !== '/legacy' && $route.path !== '/unverified'" class="type-label-lg">#{{ i + 1 }}</p>
-                <p v-else-if="$route.path === '/legacy'" class="type-label-lg" style="color: #a29bfe; font-size: 0.9rem; font-weight: bold; text-transform: uppercase;">Fallen</p>
-            </td>
-            <td class="level" :class="{ 'active': selected == i, 'error': !level }">
-                <button @click="selected = i" style="display: flex; align-items: center; gap: 15px; width: 100%; text-align: left;">
-                    <span class="type-label-lg">{{ level?.name || ($route.path === '/unverified' ? level?.name || 'Loading...' : 'Error (' + (err || 'Unknown') + ')') }}</span>
+                        <template v-for="([level, err], i) in list">
+                            <tr :key="i" v-if="($route.path === '/' && i < 150) || ($route.path === '/extended' && i >= 150) || ($route.path === '/legacy' && level && level.dateFallen) || ($route.path === '/unverified')">
+                                <td class="rank">
+                                    <!-- Show rank number on Main and Extended, show text on Legacy -->
+                                    <p v-if="$route.path !== '/legacy' && $route.path !== '/unverified'" class="type-label-lg">#{{ i + 1 }}</p>
+                                    <p v-else-if="$route.path === '/legacy'" class="type-label-lg" style="color: #a29bfe; font-size: 0.9rem; font-weight: bold; text-transform: uppercase;">Fallen</p>
+                                </td>
+                                <td class="level" :class="{ 'active': selected == i, 'error': !level }">
+                                    <button @click="selected = i" style="display: flex; align-items: center; gap: 15px; width: 100%; text-align: left;">
+                                        <span class="type-label-lg">{{ level?.name || ($route.path === '/unverified' ? level?.name || 'Loading...' : 'Error (' + err + ')') }}</span>
 
-                    <!-- Added: Shows the fallback date next to the name on the legacy list -->
-                    <span v-if="$route.path === '/legacy' && level?.dateFallen" class="type-label-sm" style="color: #94a3b8; font-style: italic; margin-left: auto; padding-right: 15px;">
-                        Fell off: {{ level.dateFallen }}
-                    </span>
-                </button>
-            </td>
-        </tr>
-    </template>
-</table>
-
+                                        <!-- Added: Shows the fallback date next to the name on the legacy list -->
+                                        <span v-if="$route.path === '/legacy' && level?.dateFallen" class="type-label-sm" style="color: #94a3b8; font-style: italic; margin-left: auto; padding-right: 15px;">
+                                            Fell off: {{ level.dateFallen }}
+                                        </span>
+                                    </button>
+                                </td>
+                            </tr>
+                        </template>
+                    </table>
 
             </div>
             <div class="level-container">

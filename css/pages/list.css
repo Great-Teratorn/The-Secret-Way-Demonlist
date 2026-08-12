@@ -321,4 +321,23 @@
         overflow-x: hidden !important;
         width: 100% !important;
     }
+
 }
+
+/* FORCE DESKTOP ROW FLOW OVERRIDE */
+@media (min-width: 769px) {
+    .page-list, .g-layout {
+        display: flex !important;
+        flex-direction: row !important; /* Forces the layout to be side-by-side on computers */
+    }
+    
+    .list-container, .list, table.list {
+        display: block !important;
+        width: 320px !important; /* Restores standard template sidebar width sizing */
+        min-width: 320px !important;
+        height: 100% !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+}
+
