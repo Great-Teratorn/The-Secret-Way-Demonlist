@@ -21,41 +21,30 @@ export default {
             <Spinner></Spinner>
         </main>
         <main v-else class="page-list">
-                                                            <!-- REWRITTEN SIDEBAR LEVEL LIST -->
-            <div class="sidebar-wrapper" v-if="list && list.length > 0">
-                <div class="sidebar-scroll-box">
-                    <div 
-                        v-for="([level, err], i) in list" 
-                        :key="i"
-                        v-if="level && (($route.path === '/' && i < 150) || ($route.path === '/extended' && i >= 150) || ($route.path === '/legacy' && level.dateFallen) || ($route.path === '/unverified'))"
-                        :class="['sidebar-row-card', { 'sidebar-active-row': selected === i }]"
-                        @click="selected = i"
-                    >
-                        <!-- Rank Indicator -->
-                        <div class="sidebar-rank-cell">
-                            <span v-if="$route.path !== '/legacy' && $route.path !== '/unverified'">#{{ i + 1 }}</span>
-                            <span v-else-if="$route.path === '/legacy'" class="legacy-fallen-tag">Fallen</span>
-                            <span v-else>•</span>
-                        </div>
+            <div class="list-container">
+                                    <table class="list" v-if="list">
+                        <template v-for="([level, err], i) in list">
+                            <tr :key="i" v-if="($route.path === '/' && i < 150) || ($route.path === '/extended' && i >= 150) || ($route.path === '/legacy' && level && level.dateFallen) || ($route.path === '/unverified')">
+                                <td class="rank">
+                                    <!-- Show rank number on Main and Extended, show text on Legacy -->
+                                    <p v-if="$route.path !== '/legacy' && $route.path !== '/unverified'" class="type-label-lg">#{{ i + 1 }}</p>
+                                    <p v-else-if="$route.path === '/legacy'" class="type-label-lg" style="color: #a29bfe; font-size: 0.9rem; font-weight: bold; text-transform: uppercase;">Fallen</p>
+                                </td>
+                                <td class="level" :class="{ 'active': selected == i, 'error': !level }">
+                                    <button @click="selected = i" style="display: flex; align-items: center; gap: 15px; width: 100%; text-align: left;">
+                                        <span class="type-label-lg">{{ level?.name || ($route.path === '/unverified' ? level?.name || 'Loading...' : 'Error (' + err + ')') }}</span>
 
-                        <!-- Level Info Text Box -->
-                        <div class="sidebar-info-cell">
-                            <span class="sidebar-level-title">
-                                {{ level?.name || 'Loading...' }}
-                            </span>
-                            <span class="sidebar-level-author" v-if="level?.author">
-                                by {{ level.author }}
-                            </span>
-                            <span class="sidebar-legacy-date" v-if="$route.path === '/legacy' && level?.dateFallen">
-                                Fell off: {{ level.dateFallen }}
-                            </span>
-                        </div>
-                    </div>
-                </div>
+                                        <!-- Added: Shows the fallback date next to the name on the legacy list -->
+                                        <span v-if="$route.path === '/legacy' && level?.dateFallen" class="type-label-sm" style="color: #94a3b8; font-style: italic; margin-left: auto; padding-right: 15px;">
+                                            Fell off: {{ level.dateFallen }}
+                                        </span>
+                                    </button>
+                                </td>
+                            </tr>
+                        </template>
+                    </table>
+
             </div>
-
-
-
             <div class="level-container">
                 <div class="level" v-if="level">
                     <h1>{{ level.name }}</h1>
@@ -199,21 +188,12 @@ export default {
                         return `Failed to load level. (${err}.json)`;
                     })
             );
-            
-            this.list = this.list.filter(([_, err]) => !err).map(([data, _]) => data);
-            
             if (!this.editors) {
                 this.errors.push("Failed to load list editors.");
             }
         }
 
         this.loading = false;
-console.log("=== DEBUG LIST ACTIVE STATE ===");
-    console.log("Raw list array:", this.list);
-    console.log("Errors array:", this.errors);
-        
-    
-    
     },
     methods: {
         embed,
