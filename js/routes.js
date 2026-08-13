@@ -12,6 +12,6 @@ export default [
     { path: '/unverified', component: List},
     { path: '/leaderboard', component: Leaderboard },
     { path: '/roulette', component: Roulette },
-    { path: '/anomalies', component: Anomalies },
-    { path: '/weekly', component: WeeklyDemon },
+    { path: '/anomalies', component: List },
+    { path: '/weekly', component: List },
 ];
