@@ -139,3 +139,88 @@ export async function fetchLeaderboard() {
     // Sort by total score
     return [res.sort((a, b) => b.total - a.total), errs];
 }
+
+
+
+export async function fetchWeeklyLeaderboard() {
+    // 1. Fetch the master weekly list array
+    const listFile = await fetch('/data/_weekly.json').then(res => res.json());
+    
+    // 2. Fetch all individual level data files inside data/weekly/
+    const list = await Promise.all(
+        listFile.map(async (path) => {
+            try {
+                const level = await fetch(`/data/${path}.json`).then(res => res.json());
+                return [level, null];
+            } catch (err) {
+                return [null, path];
+            }
+        })
+    );
+
+    const scoreMap = {};
+    const errs = [];
+    
+    list.forEach(([level, err]) => {
+        if (err) {
+            errs.push(err);
+            return;
+        }
+
+        // Verification (Give the verifier 1 point)
+        const verifier = Object.keys(scoreMap).find(
+            (u) => u.toLowerCase() === level.verifier.toLowerCase(),
+        ) || level.verifier;
+        scoreMap[verifier] ??= {
+            verified: [],
+            completed: [],
+            progressed: [],
+        };
+        const { verified } = scoreMap[verifier];
+        verified.push({
+            level: level.name,
+            weeklyDate: level.weeklyDate,
+            score: 1, // Flat 1 point instead of score function
+            link: level.verification,
+        });
+
+        // Player Records
+        level.records.forEach((record) => {
+            const user = Object.keys(scoreMap).find(
+                (u) => u.toLowerCase() === record.user.toLowerCase(),
+            ) || record.user;
+            scoreMap[user] ??= {
+                verified: [],
+                completed: [],
+                progressed: [],
+            };
+            const { completed } = scoreMap[user];
+            
+            // Only award points for 100% completions on weekly demons
+            if (record.percent === 100) {
+                completed.push({
+                    level: level.name,
+                    weeklyDate: level.weeklyDate,
+                    score: 1, // Flat 1 point
+                    link: record.link,
+                });
+            }
+        });
+    });
+
+    // Aggregate totals
+    const res = Object.entries(scoreMap).map(([user, scores]) => {
+        const { verified, completed } = scores;
+        const total = [verified, completed].flat().length; // Counts total entries
+
+        return {
+            user,
+            total,
+            ...scores,
+        };
+    });
+
+    // Sort by who has the most weekly completions
+    return [res.sort((a, b) => b.total - a.total), errs];
+}
+

@@ -1,4 +1,4 @@
-import { fetchLeaderboard } from '../content.js';
+import { fetchLeaderboard, fetchWeeklyLeaderboard } from '../content.js';
 import { localize } from '../util.js';
 
 import Spinner from '../components/Spinner.js';
@@ -9,6 +9,8 @@ export default {
     },
     data: () => ({
         leaderboard: [],
+        mainLeaderboardCache: [],
+        weeklyLeaderboardCache: [],
         loading: true,
         selected: 0,
         err: [],
@@ -24,8 +26,15 @@ export default {
                         Leaderboard may be incorrect, as the following levels could not be loaded: {{ err.join(', ') }}
                     </p>
                 </div>
-                <div class="board-container">
-                    <table class="board">
+                                        <div class="board-container">
+                            <!-- Toggle Buttons Inserted Here -->
+                            <div style="display: flex; gap: 15px; margin-bottom: 20px;">
+                                <button @click="toggleLeaderboard(false)" :style="{ 'font-weight': !isWeekly ? 'bold' : 'normal', 'color': !isWeekly ? '#fff' : '#94a3b8' }">Main Leaderboard</button>
+                                <button @click="toggleLeaderboard(true)" :style="{ 'font-weight': isWeekly ? 'bold' : 'normal', 'color': isWeekly ? '#fff' : '#94a3b8' }">Weekly Leaderboard</button>
+                            </div>
+                            
+                            <table class="board">
+
                         <tr v-for="(ientry, i) in leaderboard">
                             <td class="rank">
                                 <p class="type-label-lg">#{{ i + 1 }}</p>
@@ -49,10 +58,16 @@ export default {
                         <table class="table">
                             <tr v-for="score in entry.verified">
                                 <td class="rank">
-                                    <p>#{{ score.rank }}</p>
+                                    <p>{{ isWeekly ? '' : '#' + score.rank }}</p>
+
                                 </td>
                                 <td class="level">
-                                    <a class="type-label-lg" target="_blank" :href="score.link">{{ score.level }}</a>
+                                    <a class="type-label-lg" target="_blank" :href="score.link">{{ score.level }}
+                                    <!-- Added: Shows the weekly date right next to the level name -->
+                                    <span v-if="isWeekly && score.weeklyDate" style="color: #a29bfe; font-size: 0.85rem; font-style: italic; margin-left: 10px;">
+                                        ({{ score.weeklyDate }})
+                                    </span>
+                                    </a>
                                 </td>
                                 <td class="score">
                                     <p>+{{ localize(score.score) }}</p>
@@ -98,13 +113,25 @@ export default {
         },
     },
     async mounted() {
-        const [leaderboard, err] = await fetchLeaderboard();
-        this.leaderboard = leaderboard;
-        this.err = err;
-        // Hide loading spinner
-        this.loading = false;
-    },
-    methods: {
+    const [mainList, mainErrs] = await fetchLeaderboard();
+    const [weeklyList, weeklyErrs] = await fetchWeeklyLeaderboard();
+
+    this.mainLeaderboardCache = mainList;
+    this.weeklyLeaderboardCache = weeklyList;
+
+    // Default state loads main list onto the screen
+    this.leaderboard = this.mainLeaderboardCache;
+    this.err = mainErrs;
+    this.loading = false;
+},
+
+        methods: {
         localize,
+        toggleLeaderboard(showWeekly) {
+            this.isWeekly = showWeekly;
+            this.leaderboard = showWeekly ? this.weeklyLeaderboardCache : this.mainLeaderboardCache;
+            this.selected = 0;
+        }
     },
+
 };
