@@ -28,9 +28,10 @@ export default {
 
                                 <td class="rank">
                                     <!-- Show rank number on Main and Extended, show text on Legacy -->
-                                    <p v-if="$route.path !== '/legacy' && $route.path !== '/unverified'" class="type-label-lg">#{{ i + 1 }}</p>
+                                    <p v-if="$route.path !== '/legacy' && $route.path !== '/unverified' $route.path !== '/anomalies' && $route.path !== '/weekly'" class="type-label-lg">#{{ i + 1 }}</p>
                                     <p v-else-if="$route.path === '/legacy'" class="type-label-lg" style="color: #a29bfe; font-size: 0.9rem; font-weight: bold; text-transform: uppercase;">Fallen</p>
-                                </td>
+                                    <p v-else-if="$route.path === '/weekly' && level?.weeklyDate" class="type-label-lg" style="color: #a29bfe; font-size: 0.9rem; font-weight: bold;">{{ level.weeklyDate }}</p>
+                                    </td>
                                 <td class="level" :class="{ 'active': selected == i, 'error': !level }">
                                     <button @click="selected = i" style="display: flex; align-items: center; gap: 15px; width: 100%; text-align: left;">
                                         <span class="type-label-lg">{{ level?.name || ($route.path === '/unverified' ? level?.name || 'Loading...' : 'Error (' + err + ')') }}</span>

@@ -16,6 +16,10 @@ export async function fetchList() {
         listFile = '_legacy.json';
     } else if (hash.includes('/unverified')) {
         listFile = '_unverified.json';
+    } else if (hash.includes('/anomalies')) {
+        listFile = '_anomalies.json';
+    } else if (hash.includes('/weekly')) {
+        listFile = '_weekly.json';
     }
     
     const listResult = await fetch(`${dir}/${listFile}`);
