@@ -10,6 +10,13 @@
     "password": "Password Required",
     "weeklyDate": "10/08/26",
     "secret_way_at": 47, 
-    "records": []
+    "records": [
+        {"user": "Liverlan",
+            "link": "https://youtu.be/JoGv0_l6nRA?si=dmImhIswgopmBkgP",
+            "percent": 100,
+            "hz": 60
+        }
+        ]
+        
 
    }
