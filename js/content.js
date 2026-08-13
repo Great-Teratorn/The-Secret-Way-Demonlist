@@ -167,22 +167,7 @@ export async function fetchWeeklyLeaderboard() {
             return;
         }
 
-        // Verification (Give the verifier 1 point)
-        const verifier = Object.keys(scoreMap).find(
-            (u) => u.toLowerCase() === level.verifier.toLowerCase(),
-        ) || level.verifier;
-        scoreMap[verifier] ??= {
-            verified: [],
-            completed: [],
-            progressed: [],
-        };
-        const { verified } = scoreMap[verifier];
-        verified.push({
-            level: level.name,
-            weeklyDate: level.weeklyDate,
-            score: 1, // Flat 1 point instead of score function
-            link: level.verification,
-        });
+        
 
         // Player Records
         level.records.forEach((record) => {

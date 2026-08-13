@@ -28,10 +28,38 @@ export default {
                 </div>
                                         <div class="board-container">
                             <!-- Toggle Buttons Inserted Here -->
-                            <div style="display: flex; gap: 15px; margin-bottom: 20px;">
-                                <button @click="toggleLeaderboard(false)" :style="{ 'font-weight': !isWeekly ? 'bold' : 'normal', 'color': !isWeekly ? '#fff' : '#94a3b8' }">Main Leaderboard</button>
-                                <button @click="toggleLeaderboard(true)" :style="{ 'font-weight': isWeekly ? 'bold' : 'normal', 'color': isWeekly ? '#fff' : '#94a3b8' }">Weekly Leaderboard</button>
-                            </div>
+                            <div class="leaderboard-toggle" style="display: flex; gap: 12px; margin-bottom: 25px;">
+    <!-- Main Leaderboard Button -->
+    <button @click="toggleLeaderboard(false)" 
+            :style="{ 
+                'background-color': !isWeekly ? '#22c55e' : '#1e1b4b', 
+                'color': !isWeekly ? '#000' : '#a29bfe',
+                'border': !isWeekly ? '2px solid #4ade80' : '2px solid #4338ca',
+                'font-weight': 'bold',
+                'padding': '10px 20px',
+                'border-radius': '8px',
+                'cursor': 'pointer',
+                'transition': 'all 0.2s ease'
+            }">
+        Main Standings
+    </button>
+
+    <!-- Weekly Leaderboard Button -->
+    <button @click="toggleLeaderboard(true)" 
+            :style="{ 
+                'background-color': isWeekly ? '#22c55e' : '#1e1b4b', 
+                'color': isWeekly ? '#000' : '#a29bfe',
+                'border': isWeekly ? '2px solid #4ade80' : '2px solid #4338ca',
+                'font-weight': 'bold',
+                'padding': '10px 20px',
+                'border-radius': '8px',
+                'cursor': 'pointer',
+                'transition': 'all 0.2s ease'
+            }">
+        Weekly Demons
+    </button>
+</div>
+
                             
                             <table class="board">
 
