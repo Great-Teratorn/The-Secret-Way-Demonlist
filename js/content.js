@@ -144,13 +144,13 @@ export async function fetchLeaderboard() {
 
 export async function fetchWeeklyLeaderboard() {
     // 1. Fetch the master weekly list array
-    const listFile = await fetch('/data/_weekly.json').then(res => res.json());
+    const listFile = await fetch('data/_weekly.json').then(res => res.json());
     
     // 2. Fetch all individual level data files inside data/weekly/
     const list = await Promise.all(
         listFile.map(async (path) => {
             try {
-                const level = await fetch(`/data/${path}.json`).then(res => res.json());
+                const level = await fetch(`data/${path}.json`).then(res => res.json());
                 return [level, null];
             } catch (err) {
                 return [null, path];
