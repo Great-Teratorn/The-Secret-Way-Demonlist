@@ -3,10 +3,35 @@ import { embed } from "../util.js";
 export default {
     template: `
         <div style="width: 100%; height: calc(100vh - 56px); overflow-y: auto; color: #fff; font-family: sans-serif;">
-            <div style="padding: 40px 20px; max-width: 900px; margin: 0 auto;">
+                    <div style="padding: 40px 20px; max-width: 900px; margin: 0 auto;">
 
-                <!-- Main Title Header -->
-                <div style="margin-bottom: 30px;">
+            <!-- WELCOME PAGE UTILITY WIDGETS HOLDER -->
+            <div class="welcome-widgets-grid">
+                
+                <!-- LEFT SIDE: EXPANDABLE SEARCH BAR -->
+                <div class="search-widget-column">
+                    <div class="search-box">
+                        <input type="text" id="levelSearch" placeholder="Type level or rank, then press Enter..." onkeydown="handleWelcomeSearch(event)">
+                        <button class="search-btn" onclick="toggleSearch()">
+                            <!-- SVG Magnifying Glass Icon -->
+                            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- RIGHT SIDE: RESERVED SPACE FOR WAYBACK MACHINE -->
+                <div class="wayback-widget-column">
+                    <div class="wayback-placeholder-text">Wayback Archive Coming Soon...</div>
+                </div>
+
+            </div>
+
+            <!-- Main Title Header -->
+            <div style="margin-bottom: 30px;">
+
                     <h1 style="font-size: 2.2rem; margin: 0 0 5px 0; font-weight: bold; text-transform: uppercase; color: #fff;">
                         Welcome to The Secret Way Demonlist!
                     </h1>
@@ -120,7 +145,7 @@ export default {
             <p style="font-size: 0.85rem; color: #94a3b8; margin: 0 0 6px 0; letter-spacing: 0.5px; text-transform: uppercase; font-weight: bold;">Website Credits</p>
             <p style="font-size: 0.95rem; color: #cbd5e1; margin: 0; line-height: 1.6;">
                 Original Idea by <span style="color: #a29bfe; font-weight: bold;">Jackypoo</span> • 
-                Entire Website Development and Roulette Gamemodes by <span style="color: #b120f0; font-weight: bold;">Great Teratorn</span> • 
+                Entire Website Development and Roulette Gamemodes by <span style="color: #8115af; font-weight: bold;">Great Teratorn</span> • 
                 Template by <span style="color: #94a3b8; font-style: italic;">TheShittyList</span> •
                 Classic Roulette by <span style="color: #94a3b8; font-style: italic;">matcool</span>
             </p>
