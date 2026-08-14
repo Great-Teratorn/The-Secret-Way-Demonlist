@@ -143,6 +143,7 @@ export default {
         editors: [],
         loading: true,
         selected: 0,
+        isWeekly: false,
         errors: [],
         roleIconMap,
         store
