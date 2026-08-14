@@ -306,7 +306,7 @@
         height: auto !important;
     }
 
-    /* Keep the roulette input text boxes and buttons neatly stacked on phone screens */
+        /* Keep the roulette input text boxes and buttons neatly stacked on phone screens */
     .roulette-buttons, 
     .roulette-inputs {
         display: flex !important;
@@ -321,5 +321,29 @@
     body, html {
         overflow-x: hidden !important;
         width: 100% !important;
+    }
+
+    /* ======================================================= */
+    /* INSERTED HERE: CONSTRAIN LEVEL LIST TO A SCROLLABLE BOX */
+    /* ======================================================= */
+    .g-layout > div:first-child, 
+    .list-container, 
+    .list {
+        max-height: 35vh !important;
+        overflow-y: auto !important;
+        border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+        padding-right: 5px !important;
+    }
+
+    .g-layout > div:first-child::-webkit-scrollbar,
+    .list-container::-webkit-scrollbar,
+    .list::-webkit-scrollbar {
+        width: 6px;
+    }
+    .g-layout > div:first-child::-webkit-scrollbar-thumb,
+    .list-container::-webkit-scrollbar-thumb,
+    .list::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 4px;
     }
 }
