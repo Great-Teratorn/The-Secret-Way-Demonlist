@@ -19,10 +19,10 @@ export default {
                 <div style="background: rgba(20, 15, 35, 0.8); padding: 25px; border-radius: 8px; border: 1px solid #4a3f75; margin-bottom: 25px;">
                     <h2 style="font-size: 1.5rem; margin: 0 0 12px 0; color: #e0d4ff;">Introduction - TSWD was Jackypoo's idea!</h2>
                     <p style="line-height: 1.6; font-size: 0.95rem; color: #cbd5e1; margin: 0 0 15px 0;">
-                        Hi everyone! This demonlist ranks the most difficult secret way levels within our community. Submissions are thoroughly inspected based on verification validity, mechanical difficulty, and strict submission guidelines. Secret ways must skip at least 30% of the level, however we have 'Cool Secret Ways' which only require 20% - if you deem your secret way to be 'cool', request it in our <a href="https://discord.gg/rCEZZA9kZD" target="_blank" style="color: #5c0099; text-decoration: underline; font-weight: bold;">Discord Server</a> and through polls, the community will decide if it should get added or not!
+                        Hi everyone! This demonlist ranks the most difficult secret way levels within our community. Submissions are thoroughly inspected based on verification validity, mechanical difficulty, and strict submission guidelines. Secret ways must skip at least 30% of the level, however we do have 'Cool Secret Ways' which only require 20% - if you deem your secret way to be 'cool', request it in our <a href="https://discord.gg/rCEZZA9kZD" target="_blank" style="color: #9023d8; text-decoration: underline; font-weight: bold;">Discord Server</a>, and through polls, the community will decide if it should get added to the Demonlist or not!
                     </p>
                     <p style="line-height: 1.6; font-size: 0.95rem; color: #cbd5e1; margin: 0;">
-                        Navigate using the top tabs to check out the Main Demonlist, Extended List, historic levels preserved in the Legacy List, the Unverified List which simply awaits new players to challenge and conquer its undefeated levels, our weekly demon challenge - and so much more!. What will you choose to do here? Scroll down for more info and check us out!            ~Great Teratorn
+                        Navigate using the top tabs to check out the Main Demonlist, Extended List, historic levels preserved in the Legacy List, the Unverified List which simply awaits new players to challenge and conquer its undefeated levels, our weekly demon challenge - and so much more! What will you choose to do here? Scroll down for more info and check us out!            ~Great Teratorn
                     </p>
                     
                 </div>
@@ -42,9 +42,9 @@ export default {
                         <li>The Legacy List is reserved solely for the levels which have fallen off the Main List, including the date which they lost their mightiness. So some levels will be both in the Extended and Legacy Lists. Legacy List levels are also not worth any points.</li>
                         <li>The Unverified List contains showcases of secret way levels which have not been verified yet. Any player can beat those secret way levels so that they can get added to the Main/Extended List.</li>
                         <li>The Anomalies List contains secret ways which are not accessible to all players, for instance a specific FPS being required to beat them. While they are not worth any points, they are there to check out and have fun with, so that they are not lost to history.</li>
-                        <li>The Weekly Demon List is a weekly challenge where a level out of the top 150 is randomly selected and chosen for that week. Submit a record beating it and gain points on the Weekly Demons Leaderboard! Each week is worth 1 point, so every time you play, your points will accumulate - who are you going to compete with? Note: if you have already beaten that level, you must re-beat it for the Weekly Points. Each weekly demon is also declared in our <a href="https://discord.gg/rCEZZA9kZD" target="_blank" style="color: #5c0099; text-decoration: underline; font-weight: bold;">Discord Server</a>.</li>
-                        <li>The Leaderboard presents the best secret way players out there! It includes their rank, their points and which levels they have verified or completed. It is split into the Main Leaderboard (Main Demonlist) and the Weekly Demons Leaderboard. Compete with other players in both to attempt to become the #1 Secret Way Player - unlocks a special role in our <a href="https://discord.gg/rCEZZA9kZD" target="_blank" style="color: #5c0099; text-decoration: underline; font-weight: bold;">Discord Server</a>!</li>
-                        <li>Clicking the Discord logo in the top purple bar leads you to our <a href="https://discord.gg/rCEZZA9kZD" target="_blank" style="color: #5c0099; text-decoration: underline; font-weight: bold;">Discord Server</a> - please join, there is genuinely so much to do there! If you want any questions answered or want to offer something to our community, this is the place to do so :D</li>
+                        <li>The Weekly Demon List is a weekly challenge where a level out of the top 150 is randomly selected and chosen for that week. Submit a record beating it and gain points on the Weekly Demons Leaderboard! Each week is worth 1 point, so every time you play, your points will accumulate - who are you going to compete with? NOTE: if you have already beaten that level, you must re-beat it for the Weekly Points. Each weekly demon is also declared in our <a href="https://discord.gg/rCEZZA9kZD" target="_blank" style="color: #9023d8; text-decoration: underline; font-weight: bold;">Discord Server</a>.</li>
+                        <li>The Leaderboard presents the best secret way players out there! It includes their rank, their points and which levels they have verified or completed. It is split into the Main Leaderboard (Main Demonlist) and the Weekly Demons Leaderboard. Compete with other players in both to attempt to become the #1 Secret Way Player - unlocks a special role in our <a href="https://discord.gg/rCEZZA9kZD" target="_blank" style="color: #9023d8; text-decoration: underline; font-weight: bold;">Discord Server</a>!</li>
+                        <li>Clicking the Discord logo in the top purple bar leads you to our <a href="https://discord.gg/rCEZZA9kZD" target="_blank" style="color: #9023d8; text-decoration: underline; font-weight: bold;">Discord Server</a> - please join, there is genuinely so much to do there! If you want any questions answered or want to offer something to our community, this is the place to do so :D</li>
                         <li>If you want to submit a completion or a verification of a secret way level, or a weekly demon completion: clicking the 'Submit Record' button in the top navbar opens up a form where you can fill out your secret way request, so that a new level can potentially get added to the Demonlist, or so that you can receive points if the level is already on there. The form provides a guide. </li>
                         <li>But most importantly, have fun and enjoy your time here! We can't wait for you to contribute!</li>
                     </ul>
@@ -55,16 +55,22 @@ export default {
                 <div style="background: rgba(20, 15, 35, 0.8); padding: 25px; border-radius: 8px; border: 1px solid #4a3f75; margin-bottom: 25px;">
                     <h2 style="font-size: 1.5rem; margin: 0 0 12px 0; color: #e0d4ff;">Roulette</h2>
                     <p style="line-height: 1.6; font-size: 0.95rem; color: #cbd5e1; margin: 0 0 15px 0;">
-                        For the Classic Random Roulette: players are assigned a random secret way demon and must get at least 1% on it. For each next random level, the required score goes up by 1%, repeating until they reach a goal of 100%. If you achieve a higher percentage than the required, you just continue from that percentage.
+                        For the Classic Random Roulette: players are assigned a random secret way demon and must get at least 1% on it. For each next random level, the required score goes up by 1%, repeating until they reach a goal of 100%. If you achieve a higher percentage than the required, you just continue on from that percentage.
                     </p>
                     <p style="line-height: 1.6; font-size: 0.95rem; color: #cbd5e1; margin: 0 0 16px 0;">
                         For Standard Progression: same principle as the Classic Roulette, but it is no longer random. The levels go in order, so you can work your way through the levels consistently. 
                     </p>
                     <p style="line-height: 1.6; font-size: 0.95rem; color: #cbd5e1; margin: 0 0 16px 0;">
-                        For Secret Way Survival (Random): a secret way demon is randomly selected but each time, you have to meet the required percentage given - it is the first percentage of the secret way in that level. This allows you to actually reach the secret way and experience it. 
+                        For Secret Way Survival (Random): a secret way demon is randomly selected but each time, you have to meet the required percentage given - it is the first percentage of the secret way in that level. This allows you to actually reach the secret way i that level and experience it. 
                     </p>
                     <p style="line-height: 1.6; font-size: 0.95rem; color: #cbd5e1; margin: 0 0 16px 0;">
-                        For Secret Way Progression (Sequential): same as Secret Way Survival, but the secret ways are in order. This can motivate you to beat every secret way as you play every single level. After all, you are competing with others, providing a proper way of reaching the top!
+                        For Secret Way Progression (Sequential): same as Secret Way Survival, but the secret ways are in order. This can motivate you to beat every secret way as you play every single level. After all, you are competing with others - don't you want to reach the top?
+                    </p>
+                    <p style="line-height: 1.6; font-size: 0.95rem; color: #cbd5e1; margin: 0 0 16px 0;">
+                        NOTE: additional features include a range - you can pick between which levels you want to play with in the roulette e.g. top 25 to top 75. The default is top 1 to top 150 - but you can also play with levels in the Extended List, and still customise your range!
+                    </p>
+                    <p style="line-height: 1.6; font-size: 0.95rem; color: #cbd5e1; margin: 0 0 16px 0;">
+                        NOTE: the Progression gamemodes also have a feature where you can pick what direction the level order goes - ascending or descending, depending on your difficulty preferences. Give the Roulette a go, and have fun!
                     </p>
                     
                 </div>
@@ -84,7 +90,7 @@ export default {
                     <!-- Origins Box -->
                 <div style="background: rgba(20, 15, 35, 0.8); padding: 25px; border-radius: 8px; border: 1px solid #4a3f75; margin-bottom: 25px;">
                     <p style="line-height: 1.6; font-size: 0.95rem; color: #cbd5e1; margin: 0 0 15px 0;">
-                        This was where it all began. It was an idea in Jackypoo's mind, and together with our moderators we made it a reality. What began as a simple Discord server and a simplistic Google Site evolved into this. Before the details, the submissions, the designs - it was just a List. And we are all so happy this idea was brought to life, and the opportunities that are yet to come. We hope you enjoy your time here as much as us :)
+                        This was where it all began. It was an idea in Jackypoo's mind, and together with our moderators, we made it a reality. What began as a simple Discord server and a simplistic Google Site evolved into this. Before the details, the submissions, the designs - it was just a List. And we are all so happy this idea was brought to life, and the opportunities that are yet to come. We hope you enjoy your time here as much as us :)
                     </p>
                     <p style="margin: 20px 0 0 0; padding: 0; color: #ffffff; font-size: 1rem; line-height: 1.7;">Click here to check out our original Google Site:<a href="https://sites.google.com/view/the-secret-way-demonlist/demonlist" target="_blank" style="display: inline-block; padding: 6px 14px; background-color: #2563eb; color: #ffffff; font-weight: bold; border-radius: 4px; text-decoration: none; font-size: 0.9rem; margin-left: 8px; vertical-align: middle; transition: opacity 0.2s;">Google Site</a></p>
                 </div>
@@ -107,9 +113,21 @@ export default {
     </div>
 
 
-                    </div>
+                            </div> <!-- Line 116: Closes the main description container box -->
 
-            </div>
+        <!-- PASTE HERE -->
+        <div class="site-credits" style="margin-top: 50px; margin-bottom: 30px; padding-top: 20px; text-align: center; width: 100%;">
+            <p style="font-size: 0.85rem; color: #94a3b8; margin: 0 0 6px 0; letter-spacing: 0.5px; text-transform: uppercase; font-weight: bold;">Website Credits</p>
+            <p style="font-size: 0.95rem; color: #cbd5e1; margin: 0; line-height: 1.6;">
+                Original Idea by <span style="color: #a29bfe; font-weight: bold;">Jackypoo</span> • 
+                Entire Website Development and Roulette Gamemodes by <span style="color: #4ade80; font-weight: bold;">Great Teratorn</span> • 
+                Template by <span style="color: #94a3b8; font-style: italic;">TheShittyList</span>
+                Classic Roulette by <span style="color: #94a3b8; font-style: italic;">matcool</span>
+            </p>
+        </div>
+
+    </div> <!-- Line 118: Closes the absolute main outer wrapper -->
+
        
         
             </div>
