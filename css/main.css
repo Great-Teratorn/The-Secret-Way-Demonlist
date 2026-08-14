@@ -321,21 +321,25 @@ header, nav, .nav, .nav-container, .nav__container, [class*="nav"] {
 
 
 
-/* WELCOME WIDGET GRID LAYOUT */
+/* ========================================== */
+/*   WELCOME PAGE UTILITY WIDGETS SYSTEM       */
+/* ========================================== */
+
 .welcome-widgets-grid {
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100%;
     max-width: 1000px;
-    margin: 0 auto 30px auto; /* Adds clean separation space above the main title text */
+    margin: 0 auto 30px auto; 
     padding: 0 15px;
     box-sizing: border-box;
     gap: 20px;
-
+    
+    /* Layer protection against template overlays */
     position: relative !important;
-    z-index: 9999 !important;
-
+    z-index: 999999 !important;
+    pointer-events: auto !important; 
 }
 
 /* Left side alignment box */
@@ -343,6 +347,9 @@ header, nav, .nav, .nav-container, .nav__container, [class*="nav"] {
     flex: 1;
     display: flex;
     justify-content: flex-start;
+    position: relative !important;
+    z-index: 999999 !important;
+    pointer-events: auto !important;
 }
 
 /* Right side alignment box (Reserved for Wayback Machine) */
@@ -350,6 +357,9 @@ header, nav, .nav, .nav-container, .nav__container, [class*="nav"] {
     flex: 1;
     display: flex;
     justify-content: flex-end;
+    position: relative !important;
+    z-index: 999999 !important;
+    pointer-events: auto !important;
 }
 
 /* Elegant low-opacity placeholder style */
@@ -370,6 +380,8 @@ header, nav, .nav, .nav-container, .nav__container, [class*="nav"] {
     border-radius: 20px;
     background: transparent;
     width: 40px; /* Collapsed circle state */
+    z-index: 999999 !important;
+    pointer-events: auto !important;
 }
 
 /* Expands smoothly outward on toggle activation */
@@ -397,7 +409,7 @@ header, nav, .nav, .nav-container, .nav__container, [class*="nav"] {
 
 .search-box.active input {
     opacity: 1;
-    pointer-events: auto;
+    pointer-events: auto !important;
 }
 
 .search-btn {
@@ -414,8 +426,8 @@ header, nav, .nav, .nav-container, .nav__container, [class*="nav"] {
     align-items: center;
     justify-content: center;
     transition: background 0.2s ease;
-
-    pointer-events: auto !important;
+    z-index: 1000000 !important; /* Higher than input layer */
+    pointer-events: auto !important; 
 }
 
 .search-box.active .search-btn {
