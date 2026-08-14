@@ -145,7 +145,7 @@ export default {
             <p style="font-size: 0.85rem; color: #94a3b8; margin: 0 0 6px 0; letter-spacing: 0.5px; text-transform: uppercase; font-weight: bold;">Website Credits</p>
             <p style="font-size: 0.95rem; color: #cbd5e1; margin: 0; line-height: 1.6;">
                 Original Idea by <span style="color: #a29bfe; font-weight: bold;">Jackypoo</span> • 
-                Entire Website Development and Roulette Gamemodes by <span style="color: #8115af; font-weight: bold;">Great Teratorn</span> • 
+                Entire Website Development and Roulette Gamemodes by <span style="color: #2563eb; font-weight: bold;">Great Teratorn</span> • 
                 Template by <span style="color: #94a3b8; font-style: italic;">TheShittyList</span> •
                 Classic Roulette by <span style="color: #94a3b8; font-style: italic;">matcool</span>
             </p>

@@ -332,6 +332,10 @@ header, nav, .nav, .nav-container, .nav__container, [class*="nav"] {
     padding: 0 15px;
     box-sizing: border-box;
     gap: 20px;
+
+    position: relative !important;
+    z-index: 9999 !important;
+
 }
 
 /* Left side alignment box */
@@ -405,11 +409,13 @@ header, nav, .nav, .nav-container, .nav__container, [class*="nav"] {
     background: rgba(255, 255, 255, 0.05);
     border: none;
     color: #fff;
-    cursor: pointer;
+    cursor: pointer !important;
     display: flex;
     align-items: center;
     justify-content: center;
     transition: background 0.2s ease;
+
+    pointer-events: auto !important;
 }
 
 .search-box.active .search-btn {
