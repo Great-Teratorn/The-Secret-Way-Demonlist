@@ -5,7 +5,7 @@ export default {
         <div style="width: 100%; height: calc(100vh - 56px); overflow-y: auto; color: #fff; font-family: sans-serif;">
                                     <div style="padding: 40px 20px; max-width: 900px; margin: 0 auto;">
 
-                                                                        <!-- WELCOME PAGE UTILITY WIDGETS HOLDER -->
+                                                                                    <!-- WELCOME PAGE UTILITY WIDGETS HOLDER -->
             <div class="welcome-widgets-grid">
                 
                 <!-- LEFT SIDE: EXPANDABLE SEARCH BAR WITH LIVE RESULTS FEED -->
@@ -23,8 +23,8 @@ export default {
                             </svg>
                         </button>
                         
-                        <!-- DROP MENU ELEMENT ARCHED HERE -->
-                        <div id="searchDropdownMenu" class="search-suggestions-dropdown" style="display: none !important;"></div>
+                        <!-- PURE LAYOUT DROP MENU SLOT -->
+                        <div id="searchDropdownMenu" class="search-suggestions-dropdown"></div>
                     </div>
                 </div>
 
@@ -34,8 +34,6 @@ export default {
                 </div>
 
             </div>
-
-
 
 
 
