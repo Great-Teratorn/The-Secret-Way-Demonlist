@@ -6,12 +6,20 @@ export default {
                                     <div style="padding: 40px 20px; max-width: 900px; margin: 0 auto;">
 
                                                                                                 <!-- WELCOME PAGE UTILITY WIDGETS HOLDER -->
+                        <!-- WELCOME PAGE UTILITY WIDGETS HOLDER -->
             <div class="welcome-widgets-grid">
                 
                 <!-- LEFT SIDE: EXPANDABLE SEARCH BAR WITH LIVE RESULTS FEED -->
                 <div class="search-widget-column">
                     <div class="search-box" id="welcomeSearchBox">
-                        <input type="text" id="levelSearch" placeholder="Search levels, creators, or players..." autocomplete="off">
+                        <input 
+                            type="text" 
+                            id="levelSearch" 
+                            placeholder="Search levels, creators, or players..."
+                            autocomplete="off"
+                            oninput="if(window.handleSearchTyping) window.handleSearchTyping(this.value)"
+                            onkeydown="if(event.key==='Enter' && window.handleSearchEnter) window.handleSearchEnter(this.value)"
+                        >
                         <button class="search-btn" id="welcomeSearchBtn">
                             <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                                 <circle cx="11" cy="11" r="8"></circle>
@@ -28,6 +36,7 @@ export default {
                 </div>
 
             </div>
+
 
 
 
