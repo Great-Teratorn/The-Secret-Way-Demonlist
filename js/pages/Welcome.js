@@ -5,14 +5,20 @@ export default {
         <div style="width: 100%; height: calc(100vh - 56px); overflow-y: auto; color: #fff; font-family: sans-serif;">
                                     <div style="padding: 40px 20px; max-width: 900px; margin: 0 auto;">
 
-            <!-- WELCOME PAGE UTILITY WIDGETS HOLDER -->
+                        <!-- WELCOME PAGE UTILITY WIDGETS HOLDER -->
             <div class="welcome-widgets-grid">
                 
                 <!-- LEFT SIDE: EXPANDABLE SEARCH BAR -->
                 <div class="search-widget-column">
-                    <div class="search-box" id="welcomeSearchBox">
-                        <input type="text" id="levelSearch" placeholder="Type level or rank, then press Enter...">
-                        <button class="search-btn" id="welcomeSearchBtn">
+                    <div class="search-box" :class="{ active: isSearchActive }">
+                        <input 
+                            type="text" 
+                            v-model="searchQuery" 
+                            placeholder="Type level name, then press Enter..." 
+                            @keydown.enter="triggerSearch"
+                            ref="searchInput"
+                        >
+                        <button class="search-btn" @click="toggleSearchBox">
                             <!-- SVG Magnifying Glass Icon -->
                             <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                                 <circle cx="11" cy="11" r="8"></circle>
@@ -28,6 +34,7 @@ export default {
                 </div>
 
             </div>
+
 
 
 
@@ -168,6 +175,31 @@ export default {
     video2() {
         return embed("https://www.youtube.com/watch?v=S7BtDDTYVLM");
     }
-}
+},
 
+    data() {
+        return {
+            isSearchActive: false,
+            searchQuery: ''
+        };
+    },
+    methods: {
+        toggleSearchBox() {
+            this.isSearchActive = !this.isSearchActive;
+            if (this.isSearchActive) {
+                this.$nextTick(() => {
+                    if (this.$refs.searchInput) this.$refs.searchInput.focus();
+                });
+            } else {
+                this.searchQuery = '';
+            }
+        },
+        triggerSearch() {
+            const query = this.searchQuery.trim();
+            if (query.length > 0) {
+                localStorage.setItem('pendingListSearch', query);
+                window.location.hash = '/list';
+            }
+        }
+    }
 };
