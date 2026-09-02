@@ -121,7 +121,6 @@
                     elements.forEach(function(el) {                        if (el.textContent.toLowerCase().indexOf(query) !== -1) {                            el.style.setProperty('border', '2px dashed #00e676', 'important');                            el.style.setProperty('background', 'rgba(0, 230, 118, 0.15)', 'important');                            el.scrollIntoView({ behavior: 'smooth', block: 'center' });                            if (typeof el.click === 'function') { el.click(); }                        }                    });                }                if (attempts > 20) { clearInterval(loop); }            }, 150);        };
         window.addEventListener('hashchange', function() { window.processSearchHighlight(); });        window.addEventListener('load', function() { window.processSearchHighlight(); });    </script>
 
-
 </body>
 </html>
 
