@@ -20,12 +20,7 @@ export default {
                             oninput="if(window.nativeSearchTyping) window.nativeSearchTyping(this.value)"
                             onkeydown="if(event.key==='Enter' && window.nativeSearchEnter) window.nativeSearchEnter(this.value)"
                         >
-                        <button class="search-btn" id="welcomeSearchBtn">
-                            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                                <circle cx="11" cy="11" r="8"></circle>
-                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                            </svg>
-                        </button>
+                        <button class="search-btn" id="welcomeSearchBtn" onclick="var b=document.getElementById('welcomeSearchBox'); var i=document.getElementById('levelSearch'); if(b&&i){b.classList.toggle('active'); if(b.classList.contains('active')){i.focus();}else{i.value=''; var d=document.getElementById('searchDropdownMenu'); if(d)d.style.display='none';}}">                            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">                                <circle cx="11" cy="11" r="8"></circle>                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>                            </svg>                        </button>
                         
                         <!-- SAFE OVERLAY PANEL SLOT -->
                         <div id="searchDropdownMenu" class="search-suggestions-dropdown" style="display: none;"></div>
