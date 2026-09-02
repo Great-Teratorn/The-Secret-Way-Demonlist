@@ -194,80 +194,91 @@ export default {
     }
 },
 
-        data() {
+        
+    data: function() {
         return {
             isSearchActive: false,
             searchQuery: '',
             suggestions: [],
             highlightIndex: -1,
-            // Universal Search Index Repository
             searchDatabase: []
         };
     },
-    mounted() {
+    mounted: function() {
         this.buildSearchDatabase();
     },
     methods: {
-        async buildSearchDatabase() {
-            try {
-                // Fetch official list content directly to index levels and creators dynamically
-                const resList = await fetch('./data/list.json');
-                if (resList.ok) {
-                    const data = await resList.json();
-                    data.forEach(lvl => {
-                        this.searchDatabase.push({ name: lvl.name, type: 'Level', route: '/list' });
-                        if (lvl.author) this.searchDatabase.push({ name: lvl.author, type: 'Creator', route: '/list' });
-                        if (lvl.verifier) this.searchDatabase.push({ name: lvl.verifier, type: 'Verifier', route: '/list' });
-                    });
+        buildSearchDatabase: function() {
+            var self = this;
+            var xhrList = new XMLHttpRequest();
+            xhrList.open('GET', './data/list.json', true);
+            xhrList.onload = function() {
+                if (xhrList.status === 200) {
+                    try {
+                        var data = JSON.parse(xhrList.responseText);
+                        data.forEach(function(lvl, idx) {
+                            self.searchDatabase.push({ name: lvl.name, type: 'Level', route: '/list', index: idx });
+                            if (lvl.author) self.searchDatabase.push({ name: lvl.author, type: 'Creator', route: '/list', index: idx });
+                            if (lvl.verifier) self.searchDatabase.push({ name: lvl.verifier, type: 'Verifier', route: '/list', index: idx });
+                        });
+                    } catch (e) {}
                 }
-                // Fetch leaderboard profile rows
-                const resBoard = await fetch('./data/leaderboard.json');
-                if (resBoard.ok) {
-                    const data = await resBoard.json();
-                    data.forEach(player => {
-                        this.searchDatabase.push({ name: player.name, type: 'Player', route: '/leaderboard' });
-                    });
+            };
+            xhrList.send();
+
+            var xhrBoard = new XMLHttpRequest();
+            xhrBoard.open('GET', './data/leaderboard.json', true);
+            xhrBoard.onload = function() {
+                if (xhrBoard.status === 200) {
+                    try {
+                        var data = JSON.parse(xhrBoard.responseText);
+                        data.forEach(function(player, idx) {
+                            self.searchDatabase.push({ name: player.name, type: 'Player', route: '/leaderboard', index: idx });
+                        });
+                    } catch (e) {}
                 }
-                // Deduplicate repeating item rows smoothly
-                this.searchDatabase = this.searchDatabase.filter((v, i, a) => a.findIndex(t => t.name === v.name && t.type === v.type) === i);
-            } catch (e) { console.error("Database indexing skipped:", e); }
+            };
+            xhrBoard.send();
         },
-        toggleSearchBox() {
+        toggleSearchBox: function() {
             this.isSearchActive = !this.isSearchActive;
             if (this.isSearchActive) {
-                this.$nextTick(() => { if (this.$refs.searchInput) this.$refs.searchInput.focus(); });
+                var self = this;
+                setTimeout(function() {
+                    if (self.$refs.searchInput) self.$refs.searchInput.focus();
+                }, 50);
             } else {
                 this.searchQuery = '';
                 this.suggestions = [];
             }
         },
-        // Fuzzy String Matcher Strategy (Levenshtein Distance Approximation)
-        fuzzyMatch(str, search) {
-            if (str.includes(search)) return true;
-            let editDistance = 0;
-            let i = 0, j = 0;
+        fuzzyMatch: function(str, search) {
+            if (str.indexOf(search) !== -1) return true;
+            var editDistance = 0, i = 0, j = 0;
             while (i < search.length && j < str.length) {
-                if (search[i] === str[j]) { i++; } else { editDistance++; }
+                if (search[i] === search[j]) { i++; } else { editDistance++; }
                 j++;
             }
-            editDistance += (search.length - i);
-            return editDistance <= 2; // Allows up to 2 misspellings/missing letters cleanly
+            return (editDistance + (search.length - i)) <= 2;
         },
-        handleLiveTyping() {
-            const raw = this.searchQuery.toLowerCase().trim();
+        handleLiveTyping: function() {
+            var raw = this.searchQuery.toLowerCase().trim();
             this.highlightIndex = -1;
             if (raw.length < 2) { this.suggestions = []; return; }
-            
-            // Filter database via exact text inclusions OR fuzzy spelling approximations
-            this.suggestions = this.searchDatabase.filter(item => {
-                const name = item.name.toLowerCase();
-                return name.includes(raw) || this.fuzzyMatch(name, raw);
-            }).slice(0, 6); // Cap drop panel viewport items at 6 entries max for perfect mobile compliance
+            var self = this;
+            var matches = this.searchDatabase.filter(function(item) {
+                var name = item.name.toLowerCase();
+                return name.indexOf(raw) !== -1 || self.fuzzyMatch(name, raw);
+            });
+            this.suggestions = matches.filter(function(v, i, a) {
+                return a.findIndex(function(t) { return t.name === v.name && t.type === v.type; }) === i;
+            }).slice(0, 6);
         },
-        moveHighlight(dir) {
+        moveHighlight: function(dir) {
+            if (!this.suggestions.length) return;
             this.highlightIndex = (this.highlightIndex + dir + this.suggestions.length) % this.suggestions.length;
         },
-        selectHighlighted() {
+        selectHighlighted: function() {
             if (this.highlightIndex >= 0 && this.highlightIndex < this.suggestions.length) {
                 this.clickSuggestion(this.suggestions[this.highlightIndex]);
             } else if (this.searchQuery.trim().length > 0) {
@@ -275,7 +286,7 @@ export default {
                 window.location.hash = '/list';
             }
         },
-        clickSuggestion(item) {
+        clickSuggestion: function(item) {
             localStorage.setItem('pendingListSearch', item.name);
             this.suggestions = [];
             this.searchQuery = '';
