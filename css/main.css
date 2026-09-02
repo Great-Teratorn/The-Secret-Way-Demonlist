@@ -450,3 +450,49 @@ header, nav, .nav, .nav-container, .nav__container, [class*="nav"] {
         max-width: 100%;
     }
 }
+
+
+
+/* DROPDOWN POPUP CONTAINER STYLE */
+.search-suggestions-dropdown {
+    position: absolute;
+    top: 45px;
+    left: 0;
+    width: 100%;
+    background: #111116 !important;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+    overflow: hidden;
+    z-index: 9999999 !important;
+}
+
+.suggestion-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 14px;
+    cursor: pointer;
+    border-bottom: 1px solid rgba(255,255,255,0.03);
+    transition: background 0.2s ease;
+}
+
+.suggestion-row:hover, .highlighted-row {
+    background: rgba(0, 230, 118, 0.15) !important;
+}
+
+.suggestion-name {
+    color: #fff;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.suggestion-type {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    background: rgba(255,255,255,0.1);
+    color: rgba(255,255,255,0.7);
+    padding: 2px 6px;
+    border-radius: 4px;
+    letter-spacing: 0.5px;
+}

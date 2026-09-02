@@ -5,26 +5,42 @@ export default {
         <div style="width: 100%; height: calc(100vh - 56px); overflow-y: auto; color: #fff; font-family: sans-serif;">
                                     <div style="padding: 40px 20px; max-width: 900px; margin: 0 auto;">
 
-                        <!-- WELCOME PAGE UTILITY WIDGETS HOLDER -->
+                                    <!-- WELCOME PAGE UTILITY WIDGETS HOLDER -->
             <div class="welcome-widgets-grid">
                 
-                <!-- LEFT SIDE: EXPANDABLE SEARCH BAR -->
+                <!-- LEFT SIDE: EXPANDABLE SEARCH BAR WITH LIVE RESULTS FEED -->
                 <div class="search-widget-column">
                     <div class="search-box" :class="{ active: isSearchActive }">
                         <input 
                             type="text" 
                             v-model="searchQuery" 
-                            placeholder="Type level name, then press Enter..." 
-                            @keydown.enter="triggerSearch"
+                            placeholder="Search levels, creators, or players..." 
+                            @input="handleLiveTyping"
+                            @keydown.down.prevent="moveHighlight(1)"
+                            @keydown.up.prevent="moveHighlight(-1)"
+                            @keydown.enter="selectHighlighted"
                             ref="searchInput"
                         >
                         <button class="search-btn" @click="toggleSearchBox">
-                            <!-- SVG Magnifying Glass Icon -->
                             <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                                 <circle cx="11" cy="11" r="8"></circle>
                                 <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                             </svg>
                         </button>
+
+                        <!-- DROPDOWN POPUP FEED -->
+                        <div v-if="suggestions.length > 0 && isSearchActive" class="search-suggestions-dropdown">
+                            <div 
+                                v-for="(item, idx) in suggestions" 
+                                :key="idx" 
+                                class="suggestion-row"
+                                :class="{ 'highlighted-row': idx === highlightIndex }"
+                                @click="clickSuggestion(item)"
+                            >
+                                <span class="suggestion-name">{{ item.name }}</span>
+                                <span class="suggestion-type">{{ item.type }}</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -34,6 +50,7 @@ export default {
                 </div>
 
             </div>
+
 
 
 
@@ -177,29 +194,92 @@ export default {
     }
 },
 
-    data() {
+        data() {
         return {
             isSearchActive: false,
-            searchQuery: ''
+            searchQuery: '',
+            suggestions: [],
+            highlightIndex: -1,
+            // Universal Search Index Repository
+            searchDatabase: []
         };
     },
+    mounted() {
+        this.buildSearchDatabase();
+    },
     methods: {
+        async buildSearchDatabase() {
+            try {
+                // Fetch official list content directly to index levels and creators dynamically
+                const resList = await fetch('./data/list.json');
+                if (resList.ok) {
+                    const data = await resList.json();
+                    data.forEach(lvl => {
+                        this.searchDatabase.push({ name: lvl.name, type: 'Level', route: '/list' });
+                        if (lvl.author) this.searchDatabase.push({ name: lvl.author, type: 'Creator', route: '/list' });
+                        if (lvl.verifier) this.searchDatabase.push({ name: lvl.verifier, type: 'Verifier', route: '/list' });
+                    });
+                }
+                // Fetch leaderboard profile rows
+                const resBoard = await fetch('./data/leaderboard.json');
+                if (resBoard.ok) {
+                    const data = await resBoard.json();
+                    data.forEach(player => {
+                        this.searchDatabase.push({ name: player.name, type: 'Player', route: '/leaderboard' });
+                    });
+                }
+                // Deduplicate repeating item rows smoothly
+                this.searchDatabase = this.searchDatabase.filter((v, i, a) => a.findIndex(t => t.name === v.name && t.type === v.type) === i);
+            } catch (e) { console.error("Database indexing skipped:", e); }
+        },
         toggleSearchBox() {
             this.isSearchActive = !this.isSearchActive;
             if (this.isSearchActive) {
-                this.$nextTick(() => {
-                    if (this.$refs.searchInput) this.$refs.searchInput.focus();
-                });
+                this.$nextTick(() => { if (this.$refs.searchInput) this.$refs.searchInput.focus(); });
             } else {
                 this.searchQuery = '';
+                this.suggestions = [];
             }
         },
-        triggerSearch() {
-            const query = this.searchQuery.trim();
-            if (query.length > 0) {
-                localStorage.setItem('pendingListSearch', query);
+        // Fuzzy String Matcher Strategy (Levenshtein Distance Approximation)
+        fuzzyMatch(str, search) {
+            if (str.includes(search)) return true;
+            let editDistance = 0;
+            let i = 0, j = 0;
+            while (i < search.length && j < str.length) {
+                if (search[i] === str[j]) { i++; } else { editDistance++; }
+                j++;
+            }
+            editDistance += (search.length - i);
+            return editDistance <= 2; // Allows up to 2 misspellings/missing letters cleanly
+        },
+        handleLiveTyping() {
+            const raw = this.searchQuery.toLowerCase().trim();
+            this.highlightIndex = -1;
+            if (raw.length < 2) { this.suggestions = []; return; }
+            
+            // Filter database via exact text inclusions OR fuzzy spelling approximations
+            this.suggestions = this.searchDatabase.filter(item => {
+                const name = item.name.toLowerCase();
+                return name.includes(raw) || this.fuzzyMatch(name, raw);
+            }).slice(0, 6); // Cap drop panel viewport items at 6 entries max for perfect mobile compliance
+        },
+        moveHighlight(dir) {
+            this.highlightIndex = (this.highlightIndex + dir + this.suggestions.length) % this.suggestions.length;
+        },
+        selectHighlighted() {
+            if (this.highlightIndex >= 0 && this.highlightIndex < this.suggestions.length) {
+                this.clickSuggestion(this.suggestions[this.highlightIndex]);
+            } else if (this.searchQuery.trim().length > 0) {
+                localStorage.setItem('pendingListSearch', this.searchQuery.trim());
                 window.location.hash = '/list';
             }
+        },
+        clickSuggestion(item) {
+            localStorage.setItem('pendingListSearch', item.name);
+            this.suggestions = [];
+            this.searchQuery = '';
+            window.location.hash = item.route;
         }
     }
 };
