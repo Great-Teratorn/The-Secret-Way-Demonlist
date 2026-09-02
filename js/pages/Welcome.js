@@ -11,7 +11,7 @@ export default {
                 <!-- LEFT SIDE: EXPANDABLE SEARCH BAR WITH LIVE RESULTS FEED -->
                 <div class="search-widget-column">
                     <div class="search-box" id="welcomeSearchBox">
-                        <input type="text" id="levelSearch" placeholder="Search levels, creators, or players...">
+                        <input type="text" id="levelSearch" placeholder="Search levels, creators, or players..." autocomplete="off">
                         <button class="search-btn" id="welcomeSearchBtn">
                             <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                                 <circle cx="11" cy="11" r="8"></circle>
