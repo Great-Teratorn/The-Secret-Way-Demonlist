@@ -5,9 +5,30 @@ export default {
         <div style="width: 100%; height: calc(100vh - 56px); overflow-y: auto; color: #fff; font-family: sans-serif;">
                                     <div style="padding: 40px 20px; max-width: 900px; margin: 0 auto;">
 
-                                                                                    <!-- WELCOME PAGE UTILITY WIDGETS HOLDER -->            <div class="welcome-widgets-grid">                                <!-- LEFT SIDE: EXPANDABLE SEARCH BAR WITH LIVE RESULTS FEED -->                <div class="search-widget-column">                    <div class="search-box" id="welcomeSearchBox">                        <input                             type="text"                             id="levelSearch"                             placeholder="Search levels, creators, or players..."                            oninput="if(window.handleSearchTyping) window.handleSearchTyping(this.value)"                            onkeydown="if(event.key==='Enter' && window.handleSearchEnter) window.handleSearchEnter(this.value)"                        >                        <button class="search-btn" id="welcomeSearchBtn" onclick="var b=document.getElementById('welcomeSearchBox'); var i=document.getElementById('levelSearch'); if(b&&i){b.classList.toggle('active'); if(b.classList.contains('active')){i.focus();}else{i.value=''; var d=document.getElementById('searchDropdownMenu'); if(d)d.style.display='none';}}">                            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">                                <circle cx="11" cy="11" r="8"></circle>                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>                            </svg>                        </button>                                                <!-- PURE LAYOUT DROP MENU SLOT -->                        <div id="searchDropdownMenu" class="search-suggestions-dropdown" style="display: none;"></div>                    </div>                </div>
-                <!-- RIGHT SIDE: RESERVED SPACE FOR WAYBACK MACHINE -->                <div class="wayback-widget-column">                    <div class="wayback-placeholder-text">Wayback Archive Coming Soon...</div>                </div>
-            </div>
+                                                                                                <!-- WELCOME PAGE UTILITY WIDGETS HOLDER -->
+            <div class="welcome-widgets-grid">
+                
+                <!-- LEFT SIDE: EXPANDABLE SEARCH BAR WITH LIVE RESULTS FEED -->
+                <div class="search-widget-column">
+                    <div class="search-box" id="welcomeSearchBox">
+                        <input type="text" id="levelSearch" placeholder="Search levels, creators, or players...">
+                        <button class="search-btn" id="welcomeSearchBtn">
+                            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                            </svg>
+                        </button>
+                        <div id="searchDropdownMenu" class="search-suggestions-dropdown" style="display: none;"></div>
+                    </div>
+                </div>
+
+                <!-- RIGHT SIDE: RESERVED SPACE FOR WAYBACK MACHINE -->
+                <div class="wayback-widget-column">
+                    <div class="wayback-placeholder-text">Wayback Archive Coming Soon...</div>
+                </div>
+
+            </div>
+
 
 
             <!-- Main Title Header -->
