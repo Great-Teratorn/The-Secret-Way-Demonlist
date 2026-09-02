@@ -322,178 +322,117 @@ header, nav, .nav, .nav-container, .nav__container, [class*="nav"] {
 
 
 /* ========================================== */
-/*   WELCOME PAGE UTILITY WIDGETS SYSTEM       */
+/*   WELCOME PAGE UTILITY WIDGETS SYSTEM      */
 /* ========================================== */
 
 .welcome-widgets-grid {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    max-width: 1000px;
-    margin: 0 auto 30px auto; 
-    padding: 0 15px;
-    box-sizing: border-box;
-    gap: 20px;
-    
-    /* Layer protection against template overlays */
-    position: relative !important;
-    z-index: 999999 !important;
-    pointer-events: auto !important; 
-}
-
-/* Left side alignment box */
-.search-widget-column {
-    flex: 1;
-    display: flex;
-    justify-content: flex-start;
-    position: relative !important;
-    z-index: 999999 !important;
-    pointer-events: auto !important;
-}
-
-/* Right side alignment box (Reserved for Wayback Machine) */
-.wayback-widget-column {
-    flex: 1;
-    display: flex;
-    justify-content: flex-end;
-    position: relative !important;
-    z-index: 999999 !important;
-    pointer-events: auto !important;
-}
-
-/* Elegant low-opacity placeholder style */
-.wayback-placeholder-text {
-    font-size: 0.8rem;
-    color: rgba(255, 255, 255, 0.3);
-    font-style: italic;
-    letter-spacing: 0.5px;
-}
-
-/* SEARCH WIDGET ACTIONS */
-.search-box {
-    position: relative;
-    display: flex;
-    align-items: center;
-    height: 40px;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    border-radius: 20px;
-    background: transparent;
-    width: 40px; /* Collapsed circle state */
-    z-index: 999999 !important;
-    pointer-events: auto !important;
-}
-
-/* Expands smoothly outward on toggle activation */
-.search-box.active {
-    width: 100%;
-    max-width: 320px;
-    background: rgba(255, 255, 255, 0.08);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    padding: 0 12px;
-}
-
-.search-box input {
-    width: 100%;
-    height: 100%;
-    background: transparent;
-    border: none;
-    outline: none;
-    color: #fff;
-    font-size: 0.9rem;
-    padding: 0 40px 0 10px;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.3s ease;
-}
-
-.search-box.active input {
-    opacity: 1;
-    pointer-events: auto !important;
-}
-
-.search-btn {
-    position: absolute;
-    right: 0;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.05);
-    border: none;
-    color: #fff;
-    cursor: pointer !important;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background 0.2s ease;
-    z-index: 1000000 !important; /* Higher than input layer */
-    pointer-events: auto !important; 
-}
-
-.search-box.active .search-btn {
-    background: transparent;
-}
-
-/* RESPONSIVE FIX: Stack cleanly if screens get too narrow */
-@media (max-width: 480px) {
-    .welcome-widgets-grid {
-        flex-direction: column;
-        gap: 15px;
-        align-items: center;
-        margin-bottom: 20px;
-    }
-    .search-widget-column, .wayback-widget-column {
-        width: 100%;
-        justify-content: center;
-    }
-    .search-box.active {
-        max-width: 100%;
-    }
-}
-
-
-
-/* FORCED POSITIONING FOR SEARCH AND POPUP DROPDOWN */
-.search-box {
-    position: relative !important; /* Crucial: This defines the mounting anchor for the dropdown */
-    display: inline-flex !important;
-    align-items: center;
-    height: 40px;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    border-radius: 20px;
-    background: transparent;
-    width: 40px; 
-    z-index: 999999 !important;
-    pointer-events: auto !important;
-}
-
-/* Smooth expansion wrapper */
-.search-box.active {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
     width: 100% !important;
+    max-width: 900px !important;
+    margin: 0 auto 30px auto !important; 
+    padding: 0 15px !important;
+    box-sizing: border-box !important;
+    gap: 20px !important;
+    position: relative !important;
+    z-index: 9999 !important;
+    pointer-events: auto !important; 
+}
+
+.search-widget-column, .wayback-widget-column {
+    flex: 1 !important;
+    display: flex !important;
+    position: relative !important;
+    z-index: 9999 !important;
+    pointer-events: auto !important;
+}
+
+.search-widget-column { justify-content: flex-start !important; }
+.wayback-widget-column { justify-content: flex-end !important; }
+
+.wayback-placeholder-text {
+    font-size: 0.8rem !important;
+    color: rgba(255, 255, 255, 0.3) !important;
+    font-style: italic !important;
+    letter-spacing: 0.5px !important;
+}
+
+/* SEARCH BOX ENCLOSURE ROOT */
+.search-box {
+    position: relative !important; /* Crucial anchor link for dropdown positioning */
+    display: inline-flex !important;
+    align-items: center !important;
+    height: 40px !important;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    border-radius: 20px !important;
+    background: rgba(255, 255, 255, 0.05) !important;
+    width: 40px !important;
+    max-width: 40px !important;
+    z-index: 9999 !important;
+    pointer-events: auto !important;
+}
+
+.search-box.active {
+    width: 320px !important;
     max-width: 320px !important;
     background: rgba(255, 255, 255, 0.08) !important;
     border: 1px solid rgba(255, 255, 255, 0.15) !important;
     padding: 0 12px !important;
 }
 
-/* POPUP RESULTS PANEL POSITION FIX */
+.search-box input {
+    width: 100% !important;
+    height: 100% !important;
+    background: transparent !important;
+    border: none !important;
+    outline: none !important;
+    color: #fff !important;
+    font-size: 0.9rem !important;
+    padding: 0 40px 0 10px !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+    transition: opacity 0.3s ease !important;
+}
+
+.search-box.active input {
+    opacity: 1 !important;
+    pointer-events: auto !important;
+}
+
+.search-btn {
+    position: absolute !important;
+    right: 0 !important;
+    width: 40px !important;
+    height: 40px !important;
+    border-radius: 50% !important;
+    background: rgba(255, 255, 255, 0.1) !important;
+    border: none !important;
+    color: #fff !important;
+    cursor: pointer !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    z-index: 10000 !important; 
+    pointer-events: auto !important; 
+}
+
+/* HIGH-PRIORITY FLOATING DROPDOWN MENU PANEL */
 .search-suggestions-dropdown {
     position: absolute !important;
-    top: 45px !important; /* Sits cleanly right under the input field bar */
+    top: 45px !important; 
     left: 0 !important;
     width: 100% !important;
     min-width: 280px !important;
-    background: #14141c !important; /* Solid dark theme panel color background */
+    background: #14141c !important; 
     border: 1px solid rgba(255, 255, 255, 0.2) !important;
     border-radius: 8px !important;
     box-shadow: 0 12px 36px rgba(0, 0, 0, 0.9) !important;
-    z-index: 100000000 !important; /* Force layer to render on top of all page panels */
-    display: block !important;
-    max-height: 300px !important;
+    z-index: 99999999 !important; /* Forces it over all page layouts */
+    max-height: 250px !important;
     overflow-y: auto !important;
 }
 
-/* Suggestion Feed Grid Item Rows */
 .suggestion-row {
     display: flex !important;
     justify-content: space-between !important;
@@ -503,10 +442,11 @@ header, nav, .nav, .nav-container, .nav__container, [class*="nav"] {
     border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
     background: #14141c !important;
     pointer-events: auto !important;
+    text-align: left !important;
 }
 
-.suggestion-row:hover, .highlighted-row {
-    background: rgba(0, 230, 118, 0.2) !important; /* Bright green highlight on hover */
+.suggestion-row:hover {
+    background: rgba(0, 230, 118, 0.2) !important; 
 }
 
 .suggestion-name {
@@ -519,8 +459,7 @@ header, nav, .nav, .nav-container, .nav__container, [class*="nav"] {
     font-size: 0.7rem !important;
     text-transform: uppercase !important;
     background: rgba(255, 255, 255, 0.15) !important;
-    color: #00e676 !important; /* Green text color labels for 'Level' or 'Player' items */
+    color: #00e676 !important; 
     padding: 2px 8px !important;
     border-radius: 4px !important;
-    letter-spacing: 0.5px !important;
 }
