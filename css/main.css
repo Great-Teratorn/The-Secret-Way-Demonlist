@@ -321,35 +321,44 @@ header, nav, .nav, .nav-container, .nav__container, [class*="nav"] {
 
 
 
-/* ========================================== */
-/*   WELCOME PAGE UTILITY WIDGETS SYSTEM      */
-/* ========================================== */
-
 .welcome-widgets-grid {
     display: flex !important;
     justify-content: space-between !important;
     align-items: center !important;
     width: 100% !important;
     max-width: 900px !important;
-    margin: 0 auto 30px auto !important; 
+    margin: 0 auto 30px auto !important;
     padding: 0 15px !important;
     box-sizing: border-box !important;
     gap: 20px !important;
-    position: relative !important;
-    z-index: 9999 !important;
-    pointer-events: auto !important; 
-}
 
-.search-widget-column, .wayback-widget-column {
-    flex: 1 !important;
-    display: flex !important;
+    /*
+     * IMPORTANT:
+     * Keep the search widget below the navbar/dropdown in the stacking
+     * order. This prevents the invisible/positioned search area from
+     * intercepting clicks on the Lists dropdown.
+     */
     position: relative !important;
-    z-index: 9999 !important;
+    z-index: 1 !important;
     pointer-events: auto !important;
 }
 
-.search-widget-column { justify-content: flex-start !important; }
-.wayback-widget-column { justify-content: flex-end !important; }
+.search-widget-column,
+.wayback-widget-column {
+    flex: 1 !important;
+    display: flex !important;
+    position: relative !important;
+    z-index: 1 !important;
+    pointer-events: auto !important;
+}
+
+.search-widget-column {
+    justify-content: flex-start !important;
+}
+
+.wayback-widget-column {
+    justify-content: flex-end !important;
+}
 
 .wayback-placeholder-text {
     font-size: 0.8rem !important;
@@ -360,7 +369,7 @@ header, nav, .nav, .nav-container, .nav__container, [class*="nav"] {
 
 /* SEARCH BOX ENCLOSURE ROOT */
 .search-box {
-    position: relative !important; /* Crucial anchor link for dropdown positioning */
+    position: relative !important;
     display: inline-flex !important;
     align-items: center !important;
     height: 40px !important;
@@ -369,7 +378,12 @@ header, nav, .nav, .nav-container, .nav__container, [class*="nav"] {
     background: rgba(255, 255, 255, 0.05) !important;
     width: 40px !important;
     max-width: 40px !important;
-    z-index: 9999 !important;
+
+    /*
+     * The search itself stays above the Welcome-page content,
+     * but NOT above the navbar/dropdown.
+     */
+    z-index: 2 !important;
     pointer-events: auto !important;
 }
 
@@ -413,22 +427,33 @@ header, nav, .nav, .nav-container, .nav__container, [class*="nav"] {
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
-    z-index: 10000 !important; 
-    pointer-events: auto !important; 
+
+    /*
+     * Keep this local to the search widget.
+     * Do not use an enormous z-index here.
+     */
+    z-index: 3 !important;
+    pointer-events: auto !important;
 }
 
-/* HIGH-PRIORITY FLOATING DROPDOWN MENU PANEL */
+/* HIGH-PRIORITY SEARCH RESULTS */
 .search-suggestions-dropdown {
     position: absolute !important;
-    top: 45px !important; 
+    top: 45px !important;
     left: 0 !important;
     width: 100% !important;
     min-width: 280px !important;
-    background: #14141c !important; 
+    background: #14141c !important;
     border: 1px solid rgba(255, 255, 255, 0.2) !important;
     border-radius: 8px !important;
     box-shadow: 0 12px 36px rgba(0, 0, 0, 0.9) !important;
-    z-index: 99999999 !important; /* Forces it over all page layouts */
+
+    /*
+     * This only controls the search suggestions relative to the
+     * search box. It cannot jump above the navbar.
+     */
+    z-index: 4 !important;
+
     max-height: 250px !important;
     overflow-y: auto !important;
 }
@@ -446,7 +471,7 @@ header, nav, .nav, .nav-container, .nav__container, [class*="nav"] {
 }
 
 .suggestion-row:hover {
-    background: rgba(0, 230, 118, 0.2) !important; 
+    background: rgba(0, 230, 118, 0.2) !important;
 }
 
 .suggestion-name {
@@ -459,7 +484,7 @@ header, nav, .nav, .nav-container, .nav__container, [class*="nav"] {
     font-size: 0.7rem !important;
     text-transform: uppercase !important;
     background: rgba(255, 255, 255, 0.15) !important;
-    color: #00e676 !important; 
+    color: #00e676 !important;
     padding: 2px 8px !important;
     border-radius: 4px !important;
 }
