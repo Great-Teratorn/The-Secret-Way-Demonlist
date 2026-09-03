@@ -113,7 +113,23 @@
         fetch(base + 'data/list.json')            .then(function(r) {                return r.json();            })            .then(function(data) {                data.forEach(function(lvl) {                    masterSearchRegistry.push({                        name: lvl.name,                        type: 'Level',                        route: '/list'                    });
                     if (lvl.author) {                        masterSearchRegistry.push({                            name: lvl.author,                            type: 'Creator',                            route: '/list'                        });                    }
                     if (lvl.verifier) {                        masterSearchRegistry.push({                            name: lvl.verifier,                            type: 'Verifier',                            route: '/list'                        });                    }                });            })            .catch(function(e) {});
-        fetch(base + 'data/leaderboard.json')            .then(function(r) {                return r.json();            })            .then(function(data) {                data.forEach(function(p) {                    masterSearchRegistry.push({                        name: p.name,                        type: 'Player',                        route: '/leaderboard'                    });                });            })            .catch(function(e) {});    }
+        fetch(base + 'data/leaderboard.json')
+    .then(function(r) {
+        return r.json();
+    })
+    .then(function(data) {
+        data.forEach(function(p) {
+            if (p.user) {
+                masterSearchRegistry.push({
+                    name: p.user,
+                    type: 'Player',
+                    route: '/leaderboard'
+                });
+            }
+        });
+    })
+    .catch(function(e) {});
+    }
     loadIndexRegistry();
 
     /*     * ==========================================================     * SEARCH TYPING / SUGGESTIONS     * ==========================================================     */
