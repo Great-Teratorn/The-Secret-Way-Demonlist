@@ -108,28 +108,84 @@
         <router-view :class="{ dark: store.dark }"></router-view>
     
     <script>    var masterSearchRegistry = [];
-    function loadIndexRegistry() {        masterSearchRegistry = [];
-        var base = window.location.origin + window.location.pathname;        if (base.slice(-1) !== '/') {            base += '/';        }
-        fetch(base + 'data/_list.json')            .then(function(r) {                return r.json();            })            .then(function(data) {                data.forEach(function(lvl) {                    masterSearchRegistry.push({                        name: lvl.name,                        type: 'Level',                        route: '/list'                    });
-                    if (lvl.author) {                        masterSearchRegistry.push({                            name: lvl.author,                            type: 'Creator',                            route: '/list'                        });                    }
-                    if (lvl.verifier) {                        masterSearchRegistry.push({                            name: lvl.verifier,                            type: 'Verifier',                            route: '/list'                        });                    }                });            })            .catch(function(e) {});
-        fetch(base + 'data/leaderboard.json')
-    .then(function(r) {
-        return r.json();
-    })
-    .then(function(data) {
-        data.forEach(function(p) {
-            if (p.user) {
+    function loadIndexRegistry() {
+    masterSearchRegistry = [];
+
+    var base = window.location.origin + window.location.pathname;
+    if (base.slice(-1) !== '/') {
+        base += '/';
+    }
+
+    // Load the main level index.
+    // _list.json contains level FILE NAMES, not level objects,
+    // so we need to load each individual level JSON to get
+    // the name, author and verifier.
+    fetch(base + 'data/_list.json')
+        .then(function(r) {
+            return r.json();
+        })
+        .then(function(paths) {
+            return Promise.all(
+                paths.map(function(path) {
+                    return fetch(base + 'data/' + path + '.json')
+                        .then(function(r) {
+                            return r.json();
+                        })
+                        .then(function(level) {
+                            if (level.name) {
+                                masterSearchRegistry.push({
+                                    name: level.name,
+                                    type: 'Level',
+                                    route: '/list'
+                                });
+                            }
+
+                            if (level.author) {
+                                masterSearchRegistry.push({
+                                    name: level.author,
+                                    type: 'Creator',
+                                    route: '/list'
+                                });
+                            }
+
+                            if (level.verifier) {
+                                masterSearchRegistry.push({
+                                    name: level.verifier,
+                                    type: 'Verifier',
+                                    route: '/list'
+                                });
+                            }
+                        })
+                        .catch(function(e) {
+                            // Ignore individual level files that fail to load.
+                        });
+                })
+            );
+        })
+        .catch(function(e) {
+            console.error('Failed to load search level registry.', e);
+        });
+
+    // Keep the existing leaderboard search source for now.
+    fetch(base + 'data/leaderboard.json')
+        .then(function(r) {
+            return r.json();
+        })
+        .then(function(data) {
+            data.forEach(function(p) {
                 masterSearchRegistry.push({
-                    name: p.user,
+                    name: p.name,
                     type: 'Player',
                     route: '/leaderboard'
                 });
-            }
+            });
+        })
+        .catch(function(e) {
+            // The leaderboard is generated dynamically by content.js,
+            // so this file may not exist. Level search still works.
         });
-    })
-    .catch(function(e) {});
-    }
+}
+
     loadIndexRegistry();
 
     /*     * ==========================================================     * SEARCH TYPING / SUGGESTIONS     * ==========================================================     */
