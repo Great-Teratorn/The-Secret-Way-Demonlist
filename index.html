@@ -110,7 +110,7 @@
     <script>    var masterSearchRegistry = [];
     function loadIndexRegistry() {        masterSearchRegistry = [];
         var base = window.location.origin + window.location.pathname;        if (base.slice(-1) !== '/') {            base += '/';        }
-        fetch(base + 'data/list.json')            .then(function(r) {                return r.json();            })            .then(function(data) {                data.forEach(function(lvl) {                    masterSearchRegistry.push({                        name: lvl.name,                        type: 'Level',                        route: '/list'                    });
+        fetch(base + 'data/_list.json')            .then(function(r) {                return r.json();            })            .then(function(data) {                data.forEach(function(lvl) {                    masterSearchRegistry.push({                        name: lvl.name,                        type: 'Level',                        route: '/list'                    });
                     if (lvl.author) {                        masterSearchRegistry.push({                            name: lvl.author,                            type: 'Creator',                            route: '/list'                        });                    }
                     if (lvl.verifier) {                        masterSearchRegistry.push({                            name: lvl.verifier,                            type: 'Verifier',                            route: '/list'                        });                    }                });            })            .catch(function(e) {});
         fetch(base + 'data/leaderboard.json')
