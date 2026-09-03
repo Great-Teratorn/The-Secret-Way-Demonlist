@@ -148,19 +148,33 @@ export default {
     this.mainLeaderboardCache = mainList;
     this.weeklyLeaderboardCache = weeklyList;
 
-    // Default state loads main list onto the screen
+    // Default state loads the main leaderboard
     this.leaderboard = this.mainLeaderboardCache;
     this.err = mainErrs;
     this.loading = false;
-},
 
-        methods: {
-        localize,
-        toggleLeaderboard(showWeekly) {
-            this.isWeekly = showWeekly;
-            this.leaderboard = showWeekly ? this.weeklyLeaderboardCache : this.mainLeaderboardCache;
-            this.selected = 0;
+    /*
+     * PLAYER SEARCH
+     *
+     * If the user arrived here by searching for a player
+     * on the Welcome page, automatically select that player.
+     */
+    const searchedPlayer = localStorage.getItem('leaderboardPlayerSearch');
+
+    if (searchedPlayer) {
+        localStorage.removeItem('leaderboardPlayerSearch');
+
+        const target = searchedPlayer.toLowerCase().trim();
+
+        const playerIndex = this.leaderboard.findIndex(function(player) {
+            return player.user &&
+                player.user.toLowerCase().trim() === target;
+        });
+
+        if (playerIndex !== -1) {
+            this.selected = playerIndex;
         }
-    },
+    }
+},
 
 };
