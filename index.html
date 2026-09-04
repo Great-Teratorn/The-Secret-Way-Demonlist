@@ -260,8 +260,54 @@ window.selectSearchResult = function(element) {
     var name = element.getAttribute('data-search-name');
     var type = element.getAttribute('data-search-type');
 
+    if (!name || !type) {
+        return;
+    }
+
     console.log('Search result clicked:', name, type);
+
+    /* Find the exact registry entry that was clicked */
+    var matchedItem = masterSearchRegistry.find(function(item) {
+        return item.name.toLowerCase() === name.toLowerCase() &&
+               item.type === type;
+    });
+
+    if (!matchedItem) {
+        console.log('No matching registry item found:', name, type);
+        return;
+    }
+
+    /* Players belong on the leaderboard */
+    if (matchedItem.type === 'Player') {
+        localStorage.setItem('leaderboardPlayerSearch', matchedItem.name);
+
+        if (window.location.hash !== '#/leaderboard') {
+            window.location.hash = '/leaderboard';
+        } else {
+            window.processSearchHighlight();
+        }
+
+        return;
+    }
+
+    /* Levels, creators and verifiers use the existing list-search system */
+    localStorage.setItem('listSearchTarget', matchedItem.name);
+
+    var destinationRoute = matchedItem.route || '/list';
+
+    if (window.location.hash !== '#' + destinationRoute) {
+        window.location.hash = destinationRoute;
+    } else {
+        window.processSearchHighlight();
+    }
+
+    /* Close the search dropdown after selecting a result */
+    var dropdown = document.getElementById('searchDropdownMenu');
+    if (dropdown) {
+        dropdown.style.display = 'none';
+    }
 };
+
 
 
 
