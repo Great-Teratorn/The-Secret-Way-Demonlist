@@ -252,6 +252,19 @@
 };
 
 
+window.selectSearchResult = function(element) {
+    if (!element) {
+        return;
+    }
+
+    var name = element.getAttribute('data-search-name');
+    var type = element.getAttribute('data-search-type');
+
+    console.log('Search result clicked:', name, type);
+};
+
+
+
     /*     * ==========================================================     * SEARCH ENTER / HIGHLIGHT PROCESSING     * ==========================================================     */
     window.processSearchHighlight = function() {
         /*         * PLAYER SEARCH         *         * Player searches are handled directly by leaderboard.js.         * We deliberately do NOT try to search through every record         * on the leaderboard here.         */        var playerTarget = localStorage.getItem('leaderboardPlayerSearch');
