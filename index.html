@@ -306,11 +306,25 @@ window.selectSearchResult = function(element) {
             window.processSearchHighlight();
         }
 
+        var playerDropdown = document.getElementById('searchDropdownMenu');
+        if (playerDropdown) {
+            playerDropdown.style.display = 'none';
+        }
+
         return;
     }
 
-    /* Levels, creators and verifiers use the existing list-search system */
+    /*
+     * Levels and creators belong on the main list.
+     * Store both the search name and the associated level name.
+     */
     localStorage.setItem('listSearchTarget', matchedItem.name);
+
+    if (matchedItem.levelName) {
+        localStorage.setItem('listSearchLevel', matchedItem.levelName);
+    } else {
+        localStorage.removeItem('listSearchLevel');
+    }
 
     var destinationRoute = matchedItem.route || '/list';
 
@@ -320,12 +334,12 @@ window.selectSearchResult = function(element) {
         window.processSearchHighlight();
     }
 
-    /* Close the search dropdown after selecting a result */
     var dropdown = document.getElementById('searchDropdownMenu');
     if (dropdown) {
         dropdown.style.display = 'none';
     }
 };
+
 
 
 
