@@ -117,9 +117,9 @@
     }
 
     // Load the main level index.
-    // _list.json contains level FILE NAMES, not level objects,
-    // so we need to load each individual level JSON to get
-    // the name, author and verifier.
+    // _list.json contains level FILE NAMES, not level objects.
+    // Each individual level JSON contains the level, creator,
+    // verifier and record/player information.
     fetch(base + 'data/_list.json')
         .then(function(r) {
             return r.json();
@@ -132,27 +132,74 @@
                             return r.json();
                         })
                         .then(function(level) {
+
+                            /*
+                             * LEVEL
+                             */
                             if (level.name) {
                                 masterSearchRegistry.push({
                                     name: level.name,
                                     type: 'Level',
-                                    route: '/list'
+                                    route: '/list',
+                                    levelName: level.name
                                 });
                             }
 
-                            if (level.author) {
-                                masterSearchRegistry.push({
-                                    name: level.author,
-                                    type: 'Creator',
-                                    route: '/list'
-                                });
+                            /*
+                             * CREATOR / AUTHOR
+                             *
+                             * Store the level associated with this creator.
+                             * The creators array is used when available because
+                             * a level can have multiple creators.
+                             */
+                            var creators = [];
+
+                            if (Array.isArray(level.creators)) {
+                                creators = level.creators.slice();
+                            } else if (level.author) {
+                                creators = [level.author];
                             }
 
+                            creators.forEach(function(creator) {
+                                if (creator) {
+                                    masterSearchRegistry.push({
+                                        name: creator,
+                                        type: 'Creator',
+                                        route: '/list',
+                                        levelName: level.name
+                                    });
+                                }
+                            });
+
+                            /*
+                             * VERIFIER
+                             */
                             if (level.verifier) {
                                 masterSearchRegistry.push({
                                     name: level.verifier,
                                     type: 'Verifier',
-                                    route: '/list'
+                                    route: '/list',
+                                    levelName: level.name
+                                });
+                            }
+
+                            /*
+                             * PLAYERS
+                             *
+                             * Players are taken directly from the records
+                             * on each level. This means a player does not
+                             * need to be a verifier to appear in search.
+                             */
+                            if (Array.isArray(level.records)) {
+                                level.records.forEach(function(record) {
+                                    if (record && record.user) {
+                                        masterSearchRegistry.push({
+                                            name: record.user,
+                                            type: 'Player',
+                                            route: '/leaderboard',
+                                            levelName: level.name
+                                        });
+                                    }
                                 });
                             }
                         })
@@ -165,26 +212,8 @@
         .catch(function(e) {
             console.error('Failed to load search level registry.', e);
         });
-
-    // Keep the existing leaderboard search source for now.
-    fetch(base + 'data/leaderboard.json')
-        .then(function(r) {
-            return r.json();
-        })
-        .then(function(data) {
-            data.forEach(function(p) {
-                masterSearchRegistry.push({
-                    name: p.name,
-                    type: 'Player',
-                    route: '/leaderboard'
-                });
-            });
-        })
-        .catch(function(e) {
-            // The leaderboard is generated dynamically by content.js,
-            // so this file may not exist. Level search still works.
-        });
 }
+
 
     loadIndexRegistry();
 
