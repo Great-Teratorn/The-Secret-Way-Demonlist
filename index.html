@@ -116,19 +116,27 @@
         base += '/';
     }
 
-    // Load the main level index.
-    // _list.json contains level FILE NAMES, not level objects.
-    // Each individual level JSON contains the level, creator,
-    // verifier and record/player information.
     fetch(base + 'data/_list.json')
         .then(function(r) {
+            if (!r.ok) {
+                throw new Error('Failed to load _list.json: ' + r.status);
+            }
+
             return r.json();
         })
         .then(function(paths) {
+
             return Promise.all(
                 paths.map(function(path) {
+
                     return fetch(base + 'data/' + path + '.json')
                         .then(function(r) {
+                            if (!r.ok) {
+                                throw new Error(
+                                    'Failed to load ' + path + '.json: ' + r.status
+                                );
+                            }
+
                             return r.json();
                         })
                         .then(function(level) {
@@ -146,16 +154,12 @@
                             }
 
                             /*
-                             * CREATOR / AUTHOR
-                             *
-                             * Store the level associated with this creator.
-                             * The creators array is used when available because
-                             * a level can have multiple creators.
+                             * CREATORS
                              */
                             var creators = [];
 
                             if (Array.isArray(level.creators)) {
-                                creators = level.creators.slice();
+                                creators = level.creators;
                             } else if (level.author) {
                                 creators = [level.author];
                             }
@@ -171,14 +175,8 @@
                                 }
                             });
 
-                            
-
                             /*
                              * PLAYERS
-                             *
-                             * Players are taken directly from the records
-                             * on each level. This means a player does not
-                             * need to be a verifier to appear in search.
                              */
                             if (Array.isArray(level.records)) {
                                 level.records.forEach(function(record) {
@@ -192,15 +190,25 @@
                                     }
                                 });
                             }
-                        })
-                        .catch(function(e) {
-                            // Ignore individual level files that fail to load.
+
                         });
                 })
             );
         })
+        .then(function() {
+
+            console.log(
+                'Search registry loaded:',
+                masterSearchRegistry.length,
+                'entries'
+            );
+
+        })
         .catch(function(e) {
-            console.error('Failed to load search level registry.', e);
+            console.error(
+                'Failed to load search level registry:',
+                e
+            );
         });
 }
 
