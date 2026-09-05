@@ -275,8 +275,34 @@ creators.forEach(function(creator) {
     }
 
     var matches = masterSearchRegistry.filter(function(item) {
-        return item.name.toLowerCase().indexOf(query) !== -1;
-    });
+
+    /*
+     * Normal name search
+     */
+    if (
+        item.name &&
+        item.name.toLowerCase().indexOf(query) !== -1
+    ) {
+        return true;
+    }
+
+    /*
+     * Exact Level ID search
+     *
+     * Only Level entries can match by ID.
+     * The entire ID must match the search query.
+     */
+    if (
+        item.type === 'Level' &&
+        item.id !== undefined &&
+        String(item.id) === query
+    ) {
+        return true;
+    }
+
+    return false;
+});
+
 
     var uniqueMatches = matches.filter(function(v, i, a) {
         return a.findIndex(function(t) {
