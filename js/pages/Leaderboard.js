@@ -165,6 +165,21 @@ export default {
 
             if (playerIndex !== -1) {
                 this.selected = playerIndex;
+
+                /*
+                 * Wait for Vue to update the selected row,
+                 * then scroll that player into view.
+                 */
+                this.$nextTick(function() {
+                    const rows = document.querySelectorAll('.board tr');
+
+                    if (rows[playerIndex]) {
+                        rows[playerIndex].scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'center'
+                        });
+                    }
+                });
             }
 
             localStorage.removeItem('leaderboardPlayerSearch');
@@ -172,6 +187,7 @@ export default {
         immediate: true
     }
 },
+
 
     
     
