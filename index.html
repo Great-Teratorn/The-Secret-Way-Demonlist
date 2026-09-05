@@ -311,8 +311,11 @@ creators.forEach(function(creator) {
             '</span>' +
 
             '<span class="suggestion-type" style="color:#00e676 !important; font-size:0.7rem !important; font-weight:bold !important; text-transform:uppercase !important; background:rgba(255,255,255,0.15) !important; padding:2px 8px !important; border-radius:4px !important;">' +
-            item.type +
-            '</span>' +
+(item.type === 'Creator' && item.creatorRole
+    ? item.creatorRole
+    : item.type) +
+'</span>' +
+
 
             '</div>';
 
