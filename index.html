@@ -142,16 +142,21 @@
                         .then(function(level) {
 
                             /*
-                             * LEVEL
-                             */
-                            if (level.name) {
-                                masterSearchRegistry.push({
-                                    name: level.name,
-                                    type: 'Level',
-                                    route: '/list',
-                                    levelName: level.name
-                                });
-                            }
+ * LEVEL
+ *
+ * Store the level ID as well as the level name so
+ * exact Level ID searches can be supported.
+ */
+if (level.name) {
+    masterSearchRegistry.push({
+        name: level.name,
+        type: 'Level',
+        id: level.id,
+        route: '/list',
+        levelName: level.name
+    });
+}
+
 
                             /*
  * CREATORS
