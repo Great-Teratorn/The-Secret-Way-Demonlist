@@ -440,30 +440,24 @@ window.selectSearchResult = function(element) {
 
 
     /*     * ==========================================================     * SEARCH ENTER / HIGHLIGHT PROCESSING     * ==========================================================     */
-    window.processSearchHighlight = function() {
-        /*         * PLAYER SEARCH         *         * Player searches are handled directly by leaderboard.js.         * We deliberately do NOT try to search through every record         * on the leaderboard here.         */        var playerTarget = localStorage.getItem('leaderboardPlayerSearch');
-        if (playerTarget) {            return;        }
-
-        /*         * EXISTING LEVEL / CREATOR / VERIFIER SEARCH         */        var target = localStorage.getItem('listSearchTarget');
-        if (!target) {            return;        }
-        var query = target.toLowerCase().trim();
-        localStorage.removeItem('listSearchTarget');
-        var attempts = 0;
-        var loop = setInterval(function() {
-            attempts++;
-            var isLeaderboard = window.location.hash.includes('/leaderboard');
-            var targetClass = isLeaderboard                ? 'td, th, .player, [class*="player"]'                : '.list button, .list-container a, .list a, [class*="item"] button';
-            var elements = document.querySelectorAll(targetClass);
-            if (elements.length > 0) {
-                clearInterval(loop);
-                elements.forEach(function(el) {
-                    if (                        el.textContent &&                        el.textContent.toLowerCase().indexOf(query) !== -1                    ) {
-                        el.style.setProperty(                            'border',                            '2px dashed #00e676',                            'important'                        );
-                        el.style.setProperty(                            'background',                            'rgba(0, 230, 118, 0.15)',                            'important'                        );
-                        el.scrollIntoView({                            behavior: 'smooth',                            block: 'center'                        });
-                        if (typeof el.click === 'function') {                            el.click();                        }                    }                });            }
-            if (attempts > 20) {                clearInterval(loop);            }
-        }, 150);    };
+    window.processSearchHighlight = function() {    /*     * PLAYER SEARCH     *     * Player searches are handled directly by leaderboard.js.     * We deliberately do NOT try to search through every record     * on the leaderboard here.     */    var playerTarget = localStorage.getItem('leaderboardPlayerSearch');
+    if (playerTarget) {        return;    }
+    /*     * EXISTING LEVEL / CREATOR SEARCH     */    var target = localStorage.getItem('listSearchTarget');
+    if (!target) {        return;    }
+    /*     * If a creator search supplied an associated level,     * use that level as the actual selection target.     *     * Level searches do not need this because their own     * name is already stored as listSearchTarget.     */    var levelTarget = localStorage.getItem('listSearchLevel');
+    var query = (        levelTarget ||        target    ).toLowerCase().trim();
+    localStorage.removeItem('listSearchTarget');    localStorage.removeItem('listSearchLevel');
+    var attempts = 0;
+    var loop = setInterval(function() {        attempts++;
+        var isLeaderboard = window.location.hash.includes('/leaderboard');
+        var targetClass = isLeaderboard            ? 'td, th, .player, [class*="player"]'            : '.list button, .list-container a, .list a, [class*="item"] button';
+        var elements = document.querySelectorAll(targetClass);
+        if (elements.length > 0) {            clearInterval(loop);
+            elements.forEach(function(el) {                if (                    el.textContent &&                    el.textContent.toLowerCase().indexOf(query) !== -1                ) {                    el.style.setProperty(                        'border',                        '2px dashed #00e676',                        'important'                    );
+                    el.style.setProperty(                        'background',                        'rgba(0, 230, 118, 0.15)',                        'important'                    );
+                    el.scrollIntoView({                        behavior: 'smooth',                        block: 'center'                    });
+                    if (typeof el.click === 'function') {                        el.click();                    }                }            });        }
+        if (attempts > 20) {            clearInterval(loop);        }    }, 150);};
 
     /*     * ==========================================================     * SEARCH BUTTON     * ==========================================================     */
     document.addEventListener('click', function(e) {
