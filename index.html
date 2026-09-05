@@ -204,24 +204,17 @@
                                 }
                             });
 
-                            /*
-                             * PLAYERS
-                             *
-                             * Keep existing Player behaviour unchanged.
-                             */
-                            if (Array.isArray(level.records)) {
-                                level.records.forEach(function(record) {
-                                    if (record && record.user) {
-                                        masterSearchRegistry.push({
-                                            name: record.user,
-                                            type: 'Player',
-                                            route: '/leaderboard',
-                                            levelName: level.name
-                                        });
-                                    }
-                                });
-                            }
+                            /* * PLAYERS * * Everyone is treated as a Player for search purposes. * * This includes: * - players appearing in records[].user * - verifiers appearing in level.verifier * * We deliberately do NOT create a separate "Verifier" type. * Players are deduplicated case-insensitively so the same person * only appears once in the search results. */
+/* * Players from records */if (Array.isArray(level.records)) {    level.records.forEach(function(record) {        if (!record || !record.user) {            return;        }
+        var existingPlayer = masterSearchRegistry.find(function(item) {            return item.type === 'Player' &&                   item.name.toLowerCase() ===                   record.user.toLowerCase();        });
+        if (!existingPlayer) {            masterSearchRegistry.push({                name: record.user,                type: 'Player',                route: '/leaderboard',                levelName: level.name            });        }    });}
+/* * Verifiers are also Players. * * Do NOT use type: "Verifier". */if (level.verifier) {
+    var existingVerifierAsPlayer =        masterSearchRegistry.find(function(item) {            return item.type === 'Player' &&                   item.name.toLowerCase() ===                   level.verifier.toLowerCase();        });
+    if (!existingVerifierAsPlayer) {        masterSearchRegistry.push({            name: level.verifier,            type: 'Player',            route: '/leaderboard',            levelName: level.name        });    }}
 
+                        
+                        
+                        
                         });
                 })
             );
