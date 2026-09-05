@@ -154,55 +154,67 @@
                             }
 
                             /*
-                             * CREATORS
-                             *
-                             * Store all levels belonging to each creator
-                             * so Creator search can offer the user a choice.
-                             */
-                            var creators = [];
+ * CREATORS
+ *
+ * Store all levels belonging to each creator
+ * so Creator search can offer the user a choice.
+ *
+ * Also distinguish between:
+ * - Creator = level.author
+ * - Collaborator = someone in level.creators[]
+ */
+var creators = [];
 
-                            if (Array.isArray(level.creators)) {
-                                creators = level.creators;
-                            } else if (level.author) {
-                                creators = [level.author];
-                            }
+if (Array.isArray(level.creators)) {
+    creators = level.creators;
+} else if (level.author) {
+    creators = [level.author];
+}
 
-                            creators.forEach(function(creator) {
-                                if (!creator) {
-                                    return;
-                                }
+creators.forEach(function(creator) {
+    if (!creator) {
+        return;
+    }
 
-                                var existingCreator =
-                                    masterSearchRegistry.find(function(item) {
-                                        return item.type === 'Creator' &&
-                                               item.name.toLowerCase() ===
-                                               creator.toLowerCase();
-                                    });
+    var creatorRole =
+        level.author &&
+        creator.toLowerCase() === level.author.toLowerCase()
+            ? 'Creator'
+            : 'Collaborator';
 
-                                if (existingCreator) {
+    var existingCreator =
+        masterSearchRegistry.find(function(item) {
+            return item.type === 'Creator' &&
+                   item.name.toLowerCase() ===
+                   creator.toLowerCase();
+        });
 
-                                    if (
-                                        existingCreator.levelNames.indexOf(
-                                            level.name
-                                        ) === -1
-                                    ) {
-                                        existingCreator.levelNames.push(
-                                            level.name
-                                        );
-                                    }
+    if (existingCreator) {
 
-                                } else {
+        if (
+            existingCreator.levelNames.indexOf(
+                level.name
+            ) === -1
+        ) {
+            existingCreator.levelNames.push(
+                level.name
+            );
+        }
 
-                                    masterSearchRegistry.push({
-                                        name: creator,
-                                        type: 'Creator',
-                                        route: '/list',
-                                        levelName: level.name,
-                                        levelNames: [level.name]
-                                    });
+    } else {
 
-                                }
-                            });
+        masterSearchRegistry.push({
+            name: creator,
+            type: 'Creator',
+            creatorRole: creatorRole,
+            route: '/list',
+            levelName: level.name,
+            levelNames: [level.name]
+        });
+
+    }
+});
+
 
                             /* * PLAYERS * * Everyone is treated as a Player for search purposes. * * This includes: * - players appearing in records[].user * - verifiers appearing in level.verifier * * We deliberately do NOT create a separate "Verifier" type. * Players are deduplicated case-insensitively so the same person * only appears once in the search results. */
 /* * Players from records */if (Array.isArray(level.records)) {    level.records.forEach(function(record) {        if (!record || !record.user) {            return;        }
