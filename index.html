@@ -116,68 +116,30 @@
         base += '/';
     }
 
-    console.log('SEARCH DEBUG: registry loading from:', base);
-
     fetch(base + 'data/_list.json')
         .then(function(r) {
-            console.log(
-                'SEARCH DEBUG: _list.json response:',
-                r.status,
-                r.ok
-            );
-
             if (!r.ok) {
-                throw new Error(
-                    'Failed to load _list.json: ' + r.status
-                );
+                throw new Error('Failed to load _list.json: ' + r.status);
             }
 
             return r.json();
         })
         .then(function(paths) {
 
-            console.log(
-                'SEARCH DEBUG: _list.json paths:',
-                paths
-            );
-
             return Promise.all(
                 paths.map(function(path) {
 
-                    console.log(
-                        'SEARCH DEBUG: starting level:',
-                        path
-                    );
-
                     return fetch(base + 'data/' + path + '.json')
                         .then(function(r) {
-
-                            console.log(
-                                'SEARCH DEBUG: response for',
-                                path,
-                                ':',
-                                r.status,
-                                r.ok
-                            );
-
                             if (!r.ok) {
                                 throw new Error(
-                                    'Failed to load ' +
-                                    path +
-                                    '.json: ' +
-                                    r.status
+                                    'Failed to load ' + path + '.json: ' + r.status
                                 );
                             }
 
                             return r.json();
                         })
                         .then(function(level) {
-
-                            console.log(
-                                'SEARCH DEBUG: PROCESSING LEVEL:',
-                                path,
-                                level
-                            );
 
                             /*
                              * LEVEL
@@ -189,15 +151,13 @@
                                     route: '/list',
                                     levelName: level.name
                                 });
-
-                                console.log(
-                                    'SEARCH DEBUG: added LEVEL:',
-                                    level.name
-                                );
                             }
 
                             /*
                              * CREATORS
+                             *
+                             * Store all levels belonging to each creator
+                             * so Creator search can offer the user a choice.
                              */
                             var creators = [];
 
@@ -208,43 +168,49 @@
                             }
 
                             creators.forEach(function(creator) {
-                                if (creator) {
+                                if (!creator) {
+                                    return;
+                                }
+
+                                var existingCreator =
+                                    masterSearchRegistry.find(function(item) {
+                                        return item.type === 'Creator' &&
+                                               item.name.toLowerCase() ===
+                                               creator.toLowerCase();
+                                    });
+
+                                if (existingCreator) {
+
+                                    if (
+                                        existingCreator.levelNames.indexOf(
+                                            level.name
+                                        ) === -1
+                                    ) {
+                                        existingCreator.levelNames.push(
+                                            level.name
+                                        );
+                                    }
+
+                                } else {
+
                                     masterSearchRegistry.push({
                                         name: creator,
                                         type: 'Creator',
                                         route: '/list',
-                                        levelName: level.name
+                                        levelName: level.name,
+                                        levelNames: [level.name]
                                     });
 
-                                    console.log(
-                                        'SEARCH DEBUG: added CREATOR:',
-                                        creator,
-                                        '→',
-                                        level.name
-                                    );
                                 }
                             });
 
                             /*
                              * PLAYERS
+                             *
+                             * Keep existing Player behaviour unchanged.
                              */
-                            console.log(
-                                'SEARCH DEBUG: records for',
-                                level.name,
-                                ':',
-                                level.records
-                            );
-
                             if (Array.isArray(level.records)) {
-
                                 level.records.forEach(function(record) {
-
-                                    console.log(
-                                        'SEARCH DEBUG: record:',
-                                        level.name,
-                                        record
-                                    );
-
                                     if (record && record.user) {
                                         masterSearchRegistry.push({
                                             name: record.user,
@@ -252,21 +218,8 @@
                                             route: '/leaderboard',
                                             levelName: level.name
                                         });
-
-                                        console.log(
-                                            'SEARCH DEBUG: added PLAYER:',
-                                            record.user,
-                                            '→',
-                                            level.name
-                                        );
                                     }
                                 });
-
-                            } else {
-                                console.log(
-                                    'SEARCH DEBUG: NO RECORDS ARRAY:',
-                                    level.name
-                                );
                             }
 
                         });
@@ -276,22 +229,15 @@
         .then(function() {
 
             console.log(
-                'SEARCH DEBUG: registry finished:',
+                'Search registry loaded:',
                 masterSearchRegistry.length,
                 'entries'
-            );
-
-            console.log(
-                'SEARCH DEBUG: PLAYERS:',
-                masterSearchRegistry.filter(function(item) {
-                    return item.type === 'Player';
-                })
             );
 
         })
         .catch(function(e) {
             console.error(
-                'SEARCH DEBUG: REGISTRY FAILED:',
+                'Failed to load search level registry:',
                 e
             );
         });
@@ -299,11 +245,13 @@
 
 
 
+
     loadIndexRegistry();
 
     /*     * ==========================================================     * SEARCH TYPING / SUGGESTIONS     * ==========================================================     */
-    window.handleSearchTyping = function(val) {
+   window.handleSearchTyping = function(val) {
     var dropdown = document.getElementById('searchDropdownMenu');
+
     if (!dropdown) {
         return;
     }
@@ -334,6 +282,7 @@
     var html = '';
 
     uniqueMatches.forEach(function(item) {
+
         var safeName = item.name
             .replace(/\\/g, '\\\\')
             .replace(/'/g, "\\'");
@@ -342,6 +291,9 @@
             .replace(/\\/g, '\\\\')
             .replace(/'/g, "\\'");
 
+        /*
+         * MAIN SEARCH RESULT
+         */
         html +=
             '<div class="suggestion-row" ' +
             'data-search-name="' + safeName + '" ' +
@@ -358,11 +310,44 @@
             '</span>' +
 
             '</div>';
+
+        /*
+         * CREATOR LEVEL CHOICES
+         *
+         * Show the creator's associated levels directly underneath
+         * the Creator result.
+         */
+        if (
+            item.type === 'Creator' &&
+            Array.isArray(item.levelNames)
+        ) {
+
+            item.levelNames.forEach(function(levelName) {
+
+                var safeLevelName = levelName
+                    .replace(/\\/g, '\\\\')
+                    .replace(/'/g, "\\'");
+
+                html +=
+                    '<div class="creator-level-row" ' +
+                    'data-search-name="' + safeLevelName + '" ' +
+                    'data-search-type="Level" ' +
+                    'onclick="window.selectSearchResult(this)" ' +
+                    'style="display:flex !important; padding:9px 16px 9px 32px !important; cursor:pointer !important; background:#101018 !important; border-bottom:1px solid rgba(255,255,255,0.03) !important; text-align:left !important;">' +
+
+                    '<span style="color:#fff !important; font-size:0.82rem !important;">' +
+                    levelName +
+                    '</span>' +
+
+                    '</div>';
+            });
+        }
     });
 
     dropdown.innerHTML = html;
     dropdown.style.display = 'block';
 };
+
 
 
 window.selectSearchResult = function(element) {
