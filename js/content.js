@@ -8,19 +8,16 @@ const dir = './data';
 export async function fetchList() {
     
     let listFile = '_list.json';
-    const hash = window.location.hash;
-    
-    if (hash.includes('/extended')) {
-        listFile = '_extended.json';
-    } else if (hash.includes('/legacy')) {
-        listFile = '_legacy.json';
-    } else if (hash.includes('/unverified')) {
-        listFile = '_unverified.json';
-    } else if (hash.includes('/anomalies')) {
-        listFile = '_anomalies.json';
-    } else if (hash.includes('/weekly')) {
-        listFile = '_weekly.json';
-    }
+const hash = window.location.hash;
+
+if (hash.includes('/unverified')) {
+    listFile = '_unverified.json';
+} else if (hash.includes('/anomalies')) {
+    listFile = '_anomalies.json';
+} else if (hash.includes('/weekly')) {
+    listFile = '_weekly.json';
+}
+
     
     const listResult = await fetch(`${dir}/${listFile}`);
     
