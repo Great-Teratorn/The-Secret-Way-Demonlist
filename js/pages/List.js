@@ -175,31 +175,48 @@ export default {
 
     
 
-    async mounted() {
-        // Hide loading spinner
-        this.list = await fetchList();
-        this.editors = await fetchEditors();
+async mounted() {
+    // Load list
+    this.list = await fetchList();
 
-        // Error handling
-        if (!this.list) {
-            this.errors = [
-                "Failed to load list. Retry in a few minutes or notify list staff.",
-            ];
-        } else {
-            this.errors.push(
-                ...this.list
-                    .filter(([_, err]) => err)
-                    .map(([_, err]) => {
-                        return `Failed to load level. (${err}.json)`;
-                    })
-            );
-            if (!this.editors) {
-                this.errors.push("Failed to load list editors.");
-            }
+    // Select the first level appropriate for the current page
+    if (this.$route.path === '/extended' || this.$route.path === '/list/extended') {
+        this.selected = 150;
+    } else if (this.$route.path === '/legacy' || this.$route.path === '/list/legacy') {
+        const index = this.list.findIndex(
+            ([level]) => level && level.dateFallen
+        );
+
+        if (index !== -1) {
+            this.selected = index;
         }
+    }
 
-        this.loading = false;
-    },
+    // Load editors
+    this.editors = await fetchEditors();
+
+    // Error handling
+    if (!this.list) {
+        this.errors = [
+            "Failed to load list. Retry in a few minutes or notify list staff.",
+        ];
+    } else {
+        this.errors.push(
+            ...this.list
+                .filter(([_, err]) => err)
+                .map(([_, err]) => {
+                    return `Failed to load level. (${err}.json)`;
+                })
+        );
+
+        if (!this.editors) {
+            this.errors.push("Failed to load list editors.");
+        }
+    }
+
+    this.loading = false;
+},
+
     methods: {
         embed,
         score,
