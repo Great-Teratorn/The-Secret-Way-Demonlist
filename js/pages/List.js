@@ -168,10 +168,25 @@ export default {
     
     // 🆕 ADD THIS WATCHER BLOCK: Forces Vue to reload data when switching tabs
     watch: {
-        async $route() {
-            this.list = await fetchList();
+    async $route() {
+        this.list = await fetchList();
+
+        if (this.$route.path === '/extended' || this.$route.path === '/list/extended') {
+            this.selected = 150;
+        } else if (this.$route.path === '/legacy' || this.$route.path === '/list/legacy') {
+            const index = this.list.findIndex(
+                ([level]) => level && level.dateFallen
+            );
+
+            if (index !== -1) {
+                this.selected = index;
+            }
+        } else {
+            this.selected = 0;
         }
-    },
+    }
+},
+
 
     
 
