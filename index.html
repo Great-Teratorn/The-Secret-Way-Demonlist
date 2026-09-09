@@ -143,8 +143,11 @@
     Promise.all([
     fetch(base + 'data/_list.json'),
     fetch(base + 'data/_removed.json'),
-    fetch(base + 'data/_weekly.json')
+    fetch(base + 'data/_weekly.json'),
+    fetch(base + 'data/_unverified.json'),
+    fetch(base + 'data/_anomalies.json')
 ])
+
 
         .then(function(responses) {
 
@@ -659,7 +662,7 @@ creators.forEach(function(creator) {
              * PRIMARY LIST LABEL
              */
             '<span class="suggestion-type" style="color:#00e676 !important; font-size:0.7rem !important; font-weight:bold !important; text-transform:uppercase !important; background:rgba(255,255,255,0.15) !important; padding:2px 8px !important; border-radius:4px !important;">' +
-            item.creatorRole || item.primaryType || item.type
+            item.type +
             '</span>' +
 
             /*
