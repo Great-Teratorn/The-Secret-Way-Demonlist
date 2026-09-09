@@ -436,6 +436,13 @@ dateFallen: level.dateFallen || null,
  * The author is a Creator.
  * Other names in level.creators are Collaborators.
  */
+/*
+ * CREATORS / COLLABORATORS
+ *
+ * The author is a Creator.
+ * Other names in level.creators are Collaborators.
+ */
+
 var creators = [];
 
 if (Array.isArray(level.creators)) {
@@ -459,35 +466,27 @@ creators.forEach(function(creator) {
         creator.toLowerCase() ===
         level.author.toLowerCase();
 
-    var creatorRole = isAuthor
+    var creatorType = isAuthor
         ? 'Creator'
         : 'Collaborator';
 
-    var existingCreator =
+    var existingPerson =
         masterSearchRegistry.find(function(item) {
 
-            return item.type === 'Creator' &&
+            return item.type === creatorType &&
                 item.name.toLowerCase() ===
                 creator.toLowerCase();
 
         });
 
-    if (existingCreator) {
-
-        /*
-         * If this person is the actual author on any level,
-         * keep their Creator role.
-         */
-        if (isAuthor) {
-            existingCreator.creatorRole = 'Creator';
-        }
+    if (existingPerson) {
 
         if (
-            Array.isArray(existingCreator.levelNames) &&
-            existingCreator.levelNames.indexOf(level.name) === -1
+            Array.isArray(existingPerson.levelNames) &&
+            existingPerson.levelNames.indexOf(level.name) === -1
         ) {
 
-            existingCreator.levelNames.push(level.name);
+            existingPerson.levelNames.push(level.name);
 
         }
 
@@ -497,9 +496,9 @@ creators.forEach(function(creator) {
 
             name: creator,
 
-            type: 'Creator',
+            type: creatorType,
 
-            creatorRole: creatorRole,
+            creatorRole: creatorType,
 
             route:
                 primaryType === 'Removed'
@@ -517,6 +516,7 @@ creators.forEach(function(creator) {
     }
 
 });
+
 
 
 
