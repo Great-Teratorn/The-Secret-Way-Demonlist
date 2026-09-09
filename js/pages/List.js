@@ -60,11 +60,12 @@ export default {
 
 <p
     v-if="$route.path === '/removed' && level?.removedReason"
-    class="type-label-sm"
+    class="type-label-lg"
     style="color: #94a3b8; font-style: italic; margin-bottom: 10px;"
 >
-    Removed: {{ level.removedReason }}
+    Reason: {{ level.removedReason }}
 </p>
+
 
 <LevelAuthors
     :author="level.author"
