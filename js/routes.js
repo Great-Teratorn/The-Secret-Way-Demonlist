@@ -14,4 +14,6 @@ export default [
     { path: '/roulette', component: Roulette },
     { path: '/anomalies', component: List },
     { path: '/weekly', component: List },
+    { path: '/removed', component: List },
+
 ];

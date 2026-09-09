@@ -16,7 +16,10 @@ if (hash.includes('/unverified')) {
     listFile = '_anomalies.json';
 } else if (hash.includes('/weekly')) {
     listFile = '_weekly.json';
+} else if (hash.includes('/removed')) {
+    listFile = '_removed.json';
 }
+
 
     
     const listResult = await fetch(`${dir}/${listFile}`);
