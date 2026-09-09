@@ -25,11 +25,12 @@ export default {
     <table class="list" v-if="list">
         <template v-for="([level, err], i) in list">
             <!-- FIXED: Added closing bracket and included permissions for anomalies/weekly -->
-            <tr :key="i" v-if="(($route.path === '/' || $route.path === '/list') && i < 150) || (($route.path === '/extended' || $route.path === '/list/extended') && i >= 150) || (($route.path === '/legacy' || $route.path === '/list/legacy') && level && level.dateFallen) || ($route.path === '/unverified') || ($route.path === '/anomalies') || ($route.path === '/weekly')">
+            <tr :key="i" v-if="(($route.path === '/' || $route.path === '/list') && i < 150) || (($route.path === '/extended' || $route.path === '/list/extended') && i >= 150) || (($route.path === '/legacy' || $route.path === '/list/legacy') && level && level.dateFallen) || ($route.path === '/unverified') || ($route.path === '/anomalies') || ($route.path === '/weekly') || ($route.path === '/removed')">
 
                 <td class="rank">
                     <!-- FIXED: Added missing && between unverified and anomalies checks -->
-                    <p v-if="$route.path !== '/legacy' && $route.path !== '/unverified' && $route.path !== '/anomalies' && $route.path !== '/weekly'" class="type-label-lg">#{{ i + 1 }}</p>
+                    <p v-if="$route.path !== '/legacy' && $route.path !== '/removed' && $route.path !== '/unverified' && $route.path !== '/anomalies' && $route.path !== '/weekly'" class="type-label-lg">#{{ i + 1 }}</p>
+                    <p v-else-if="$route.path === '/removed'" class="type-label-lg" style="color: #a29bfe; font-size: 0.9rem; font-weight: bold; text-transform: uppercase;">Removed</p>
                     <p v-else-if="$route.path === '/legacy'" class="type-label-lg" style="color: #a29bfe; font-size: 0.9rem; font-weight: bold; text-transform: uppercase;">Fallen</p>
                     <p v-else-if="$route.path === '/weekly' && level?.weeklyDate" class="type-label-lg" style="color: #a29bfe; font-size: 0.9rem; font-weight: bold;">{{ level.weeklyDate }}</p>
                 </td>
@@ -39,8 +40,13 @@ export default {
 
                         <!-- Added: Shows the fallback date next to the name on the legacy list -->
                         <span v-if="$route.path === '/legacy' && level?.dateFallen" class="type-label-sm" style="color: #94a3b8; font-style: italic; margin-left: auto; padding-right: 15px;">
-                            Fell off: {{ level.dateFallen }}
-                        </span>
+    Fell off: {{ level.dateFallen }}
+</span>
+
+<span v-if="$route.path === '/removed' && level?.dateRemoved" class="type-label-sm" style="color: #94a3b8; font-style: italic; margin-left: auto; padding-right: 15px;">
+    Removed: {{ level.dateRemoved }}
+</span>
+
                     </button>
                 </td>
             </tr>
@@ -51,7 +57,21 @@ export default {
             <div class="level-container">
                 <div class="level" v-if="level">
                     <h1>{{ level.name }}</h1>
-                    <LevelAuthors :author="level.author" :creators="level.creators" :verifier="level.verifier"></LevelAuthors>
+
+<p
+    v-if="$route.path === '/removed' && level?.removedReason"
+    class="type-label-sm"
+    style="color: #94a3b8; font-style: italic; margin-bottom: 10px;"
+>
+    Removed: {{ level.removedReason }}
+</p>
+
+<LevelAuthors
+    :author="level.author"
+    :creators="level.creators"
+    :verifier="level.verifier"
+></LevelAuthors>
+
                     <iframe class="video" id="videoframe" :src="video" frameborder="0"></iframe>
                     <ul class="stats">
                         <li>
