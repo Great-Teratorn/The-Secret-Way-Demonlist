@@ -33,88 +33,10 @@
         <script src="https://unpkg.com/vue@3.2.31/dist/vue.global.js"></script>
         <script src="https://unpkg.com/vue-router@4.0.14/dist/vue-router.global.prod.js"></script>
         <script type="module" src="js/main.js"></script>
-    </head>
-    <body id="app">
-        <header :class="{ dark: store.dark }">
-            <div class="logo">
-                <h2>The Secret Way Demonlist</h2>
-                <p>v1.0.0</p>
-            </div>
-            <nav class="nav" style="position: relative;">
-                <router-link class="nav__tab" to="/welcome">
-                    <span class="type-label-lg">Welcome</span>
-                </router-link>
-                <div class="lists-dropdown">
-    <button class="dropdown-trigger" style="color: #ffffff !important; opacity: 1 !important; background: transparent; border: none;">
-        <span class="type-label-lg">Lists</span>
-        <span class="arrow">▼</span>
-    </button>
-    <div class="dropdown-menu">
-        <router-link class="dropdown-item" to="/list">Main</router-link>
-        <router-link class="dropdown-item" to="/extended">Extended</router-link>
-        <router-link class="dropdown-item" to="/legacy">Legacy</router-link>
-        <router-link class="dropdown-item" to="/unverified">Unverified</router-link>
-        <router-link class="dropdown-item" to="/anomalies">Anomalies</router-link>
-        <router-link class="dropdown-item" to="/weekly">Weekly Demon</router-link>
-        <router-link class="dropdown-item" to="/removed">Removed</router-link>
-
-    </div>
-</div>
-
-                <router-link class="nav__tab" to="/leaderboard">
-                    <span class="type-label-lg">Leaderboard</span>
-                </router-link>
-                <router-link class="nav__tab" to="/roulette">
-                    <span class="type-label-lg">Roulette</span>
-                </router-link>
-                <div class="nav__actions">
-                    <button
-                        class="nav__icon"
-                        @click.prevent="store.toggleDark()"
-                    >
-                        <img
-                            :src="store.dark ? '/assets/light.svg' : '/assets/dark.svg'"
-                            alt=""
-                        />
-                    </button>
-                    
-    
-                    <!-- Replace the '#' with your discord server's invite-->
-                    <a class="nav__icon" href="https://discord.gg/rCEZZA9kZD" target="_blank" rel="noopener noreferrer">
-                        <img src="assets/discord.svg" alt="Discord Logo" />
-                    </a>
-                    <!-- List record submission form, add a link to replace the '#' when putting a link to your list submission form-->
-                    <a
-                        class="nav__cta type-label-lg"
-                        href="https://formcord.app/1497666042116309064/UKZRWM56UK" target="_blank" rel="noopener noreferrer"
-                        target="_blank"
-                        style="background: #ffffff !important; background-color: #ffffff !important; color: #4A148C !important; padding: 6px 14px !important; border-radius: 4px !important; font-weight: 700 !important; text-transform: uppercase !important; text-decoration: none !important; display: inline-flex !important; align-items: center !important; justify-content: center !important; white-space: nowrap !important; height: 28px !important; margin-top: auto !important; margin-bottom: auto !important;">
-                        Submit Record</a
-                    >    
-
-                </div>
-                        <!--<div style="display: inline-flex !important; align-items: center !important; height: 100% !important; margin-left: 20px; margin-right: 10px;">
-    <img src="assets/tswd.jpg" alt="Secret Way Demonlist Logo" style="height: 52px !important; width: 200px !important; object-fit: fill !important; border-radius: 4px;" />
-</div>-->
-<!-- UPDATED CONTAINER: Changed from <div> to <a> to make it a clickable link -->
-<a href="https://www.youtube.com/watch?v=QDia3e12czc" target="_blank" rel="noopener noreferrer" style="display: inline-flex !important; align-items: center !important; height: 100% !important; margin-left: 20px; margin-right: 2px; text-decoration: none !important;">
-    <img src="assets/tswd.jpg" alt="Secret Way Demonlist Logo" style="height: 52px !important; width: 200px !important; object-fit: fill !important; border-radius: 4px;" />
-</a>
-
-
-
-                  
-
-            </nav>
-        </header>
-        <router-view :class="{ dark: store.dark }"></router-view>
     
     
-</body>
-
-
-
-<script>    var masterSearchRegistry = [];
+    
+    <script>    var masterSearchRegistry = [];
                 var weeklySearchRegistry = [];
 
     function loadIndexRegistry() {
@@ -909,7 +831,91 @@ window.selectSearchResult = function(element) {
     /*     * ==========================================================     * INITIAL PAGE LOAD     * ==========================================================     */
     window.addEventListener('load', function() {        window.processSearchHighlight();    });</script>
 
+    
+    
+    
+    
 
 
 
+
+
+</head>
+    <body id="app">
+        <header :class="{ dark: store.dark }">
+            <div class="logo">
+                <h2>The Secret Way Demonlist</h2>
+                <p>v1.0.0</p>
+            </div>
+            <nav class="nav" style="position: relative;">
+                <router-link class="nav__tab" to="/welcome">
+                    <span class="type-label-lg">Welcome</span>
+                </router-link>
+                <div class="lists-dropdown">
+    <button class="dropdown-trigger" style="color: #ffffff !important; opacity: 1 !important; background: transparent; border: none;">
+        <span class="type-label-lg">Lists</span>
+        <span class="arrow">▼</span>
+    </button>
+    <div class="dropdown-menu">
+        <router-link class="dropdown-item" to="/list">Main</router-link>
+        <router-link class="dropdown-item" to="/extended">Extended</router-link>
+        <router-link class="dropdown-item" to="/legacy">Legacy</router-link>
+        <router-link class="dropdown-item" to="/unverified">Unverified</router-link>
+        <router-link class="dropdown-item" to="/anomalies">Anomalies</router-link>
+        <router-link class="dropdown-item" to="/weekly">Weekly Demon</router-link>
+        <router-link class="dropdown-item" to="/removed">Removed</router-link>
+
+    </div>
+</div>
+
+                <router-link class="nav__tab" to="/leaderboard">
+                    <span class="type-label-lg">Leaderboard</span>
+                </router-link>
+                <router-link class="nav__tab" to="/roulette">
+                    <span class="type-label-lg">Roulette</span>
+                </router-link>
+                <div class="nav__actions">
+                    <button
+                        class="nav__icon"
+                        @click.prevent="store.toggleDark()"
+                    >
+                        <img
+                            :src="store.dark ? '/assets/light.svg' : '/assets/dark.svg'"
+                            alt=""
+                        />
+                    </button>
+                    
+    
+                    <!-- Replace the '#' with your discord server's invite-->
+                    <a class="nav__icon" href="https://discord.gg/rCEZZA9kZD" target="_blank" rel="noopener noreferrer">
+                        <img src="assets/discord.svg" alt="Discord Logo" />
+                    </a>
+                    <!-- List record submission form, add a link to replace the '#' when putting a link to your list submission form-->
+                    <a
+                        class="nav__cta type-label-lg"
+                        href="https://formcord.app/1497666042116309064/UKZRWM56UK" target="_blank" rel="noopener noreferrer"
+                        target="_blank"
+                        style="background: #ffffff !important; background-color: #ffffff !important; color: #4A148C !important; padding: 6px 14px !important; border-radius: 4px !important; font-weight: 700 !important; text-transform: uppercase !important; text-decoration: none !important; display: inline-flex !important; align-items: center !important; justify-content: center !important; white-space: nowrap !important; height: 28px !important; margin-top: auto !important; margin-bottom: auto !important;">
+                        Submit Record</a
+                    >    
+
+                </div>
+                        <!--<div style="display: inline-flex !important; align-items: center !important; height: 100% !important; margin-left: 20px; margin-right: 10px;">
+    <img src="assets/tswd.jpg" alt="Secret Way Demonlist Logo" style="height: 52px !important; width: 200px !important; object-fit: fill !important; border-radius: 4px;" />
+</div>-->
+<!-- UPDATED CONTAINER: Changed from <div> to <a> to make it a clickable link -->
+<a href="https://www.youtube.com/watch?v=QDia3e12czc" target="_blank" rel="noopener noreferrer" style="display: inline-flex !important; align-items: center !important; height: 100% !important; margin-left: 20px; margin-right: 2px; text-decoration: none !important;">
+    <img src="assets/tswd.jpg" alt="Secret Way Demonlist Logo" style="height: 52px !important; width: 200px !important; object-fit: fill !important; border-radius: 4px;" />
+</a>
+
+
+
+                  
+
+            </nav>
+        </header>
+        <router-view :class="{ dark: store.dark }"></router-view>
+    
+    
+</body>
 </html>
