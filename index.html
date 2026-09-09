@@ -408,9 +408,12 @@ if (info.isRemoved) {
 
                         isLegacy: isLegacy,
 
-                        isRemoved: primaryType === 'Removed',
+isWeekly: !!info.isWeekly,
 
-                        dateFallen: level.dateFallen || null,
+isRemoved: primaryType === 'Removed',
+
+dateFallen: level.dateFallen || null,
+
 
                         removedDate: level.removedDate || null,
 
