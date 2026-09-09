@@ -125,177 +125,156 @@
      */
     var pathInfo = {};
 
-    listPaths.forEach(function(path, index) {
+/*
+ * MAIN + EXTENDED
+ *
+ * _list.json contains both.
+ * Position 0-149 = Main
+ * Position 150+ = Extended
+ */
+listPaths.forEach(function(path, index) {
 
-        if (!path) {
-            return;
-        }
+    if (!path) {
+        return;
+    }
 
-        pathInfo[path] = {
-            path: path,
-            listIndex: index,
-            isRemoved: false,
-            isWeekly: false,
-            weeklyEntries: []
-        };
+    pathInfo[path] = {
+        path: path,
+        listIndex: index,
+        isRemoved: false,
+        isWeekly: false,
+        isUnverified: false,
+        isAnomaly: false,
+        specialType: null,
+        weeklyEntries: []
+    };
 
-    });
-
-        var pathInfo = {};
-
-    /*
-     * MAIN + EXTENDED
-     *
-     * _list.json contains both.
-     * Position 0-149 = Main
-     * Position 150+ = Extended
-     */
-    listPaths.forEach(function(path, index) {
-
-        if (!path) {
-            return;
-        }
-
-        pathInfo[path] = {
-            path: path,
-            listIndex: index,
-            isRemoved: false,
-            isWeekly: false,
-            isUnverified: false,
-            isAnomaly: false,
-            specialType: null,
-            weeklyEntries: []
-        };
-
-    });
+});
 
 
-    /*
-     * REMOVED
-     */
-    removedPaths.forEach(function(path) {
+/*
+ * REMOVED
+ */
+removedPaths.forEach(function(path) {
 
-        if (!path) {
-            return;
-        }
+    if (!path) {
+        return;
+    }
 
-        if (pathInfo[path]) {
+    if (pathInfo[path]) {
 
-            pathInfo[path].isRemoved = true;
+        pathInfo[path].isRemoved = true;
 
-        } else {
-
-            pathInfo[path] = {
-                path: path,
-                listIndex: -1,
-                isRemoved: true,
-                isWeekly: false,
-                isUnverified: false,
-                isAnomaly: false,
-                specialType: null,
-                weeklyEntries: []
-            };
-
-        }
-
-    });
-
-
-    /*
-     * WEEKLY
-     *
-     * Weekly uses its own folder.
-     * Example:
-     *
-     * weekly/evasion
-     *
-     * This is registered as a SPECIAL occurrence of the
-     * corresponding normal level.
-     */
-    weeklyPaths.forEach(function(path, index) {
-
-        if (!path) {
-            return;
-        }
-
-        var normalPath = path.replace(/^weekly\//, '');
-
-        if (pathInfo[normalPath]) {
-
-            pathInfo[normalPath].isWeekly = true;
-
-            pathInfo[normalPath].weeklyEntries.push(index + 1);
-
-            console.log(
-    'WEEKLY MATCH:',
-    path,
-    '->',
-    normalPath,
-    pathInfo[normalPath]
-);
-
-
-        }
-
-    });
-
-
-    /*
-     * UNVERIFIED
-     *
-     * These are independent searchable levels.
-     *
-     * Example:
-     *
-     * unverified/SampleLevel1
-     */
-    unverifiedPaths.forEach(function(path) {
-
-        if (!path) {
-            return;
-        }
+    } else {
 
         pathInfo[path] = {
             path: path,
             listIndex: -1,
-            isRemoved: false,
-            isWeekly: false,
-            isUnverified: true,
-            isAnomaly: false,
-            specialType: 'Unverified',
-            weeklyEntries: []
-        };
-
-    });
-
-
-    /*
-     * ANOMALIES
-     *
-     * These are independent searchable levels.
-     *
-     * Example:
-     *
-     * anomalies/darnoccant-let-go
-     */
-    anomalyPaths.forEach(function(path) {
-
-        if (!path) {
-            return;
-        }
-
-        pathInfo[path] = {
-            path: path,
-            listIndex: -1,
-            isRemoved: false,
+            isRemoved: true,
             isWeekly: false,
             isUnverified: false,
-            isAnomaly: true,
-            specialType: 'Anomalies',
+            isAnomaly: false,
+            specialType: 'Removed',
             weeklyEntries: []
         };
 
-    });
+    }
+
+});
+
+
+/*
+ * WEEKLY
+ *
+ * Weekly levels live in the weekly/ folder.
+ *
+ * Example:
+ * weekly/evasion
+ *
+ * The normal level remains the same searchable entry,
+ * but receives weekly information.
+ */
+weeklyPaths.forEach(function(path, index) {
+
+    if (!path) {
+        return;
+    }
+
+    var normalPath = path.replace(/^weekly\//, '');
+
+    if (pathInfo[normalPath]) {
+
+        pathInfo[normalPath].isWeekly = true;
+        pathInfo[normalPath].weeklyEntries.push(index + 1);
+
+        console.log(
+            'WEEKLY MATCH:',
+            path,
+            '->',
+            normalPath,
+            pathInfo[normalPath]
+        );
+
+    }
+
+});
+
+
+/*
+ * UNVERIFIED
+ *
+ * These are independent searchable levels.
+ *
+ * Example:
+ * unverified/SampleLevel1
+ */
+unverifiedPaths.forEach(function(path) {
+
+    if (!path) {
+        return;
+    }
+
+    pathInfo[path] = {
+        path: path,
+        listIndex: -1,
+        isRemoved: false,
+        isWeekly: false,
+        isUnverified: true,
+        isAnomaly: false,
+        specialType: 'Unverified',
+        weeklyEntries: []
+    };
+
+});
+
+
+/*
+ * ANOMALIES
+ *
+ * These are independent searchable levels.
+ *
+ * Example:
+ * anomalies/darnoccant-let-go
+ */
+anomalyPaths.forEach(function(path) {
+
+    if (!path) {
+        return;
+    }
+
+    pathInfo[path] = {
+        path: path,
+        listIndex: -1,
+        isRemoved: false,
+        isWeekly: false,
+        isUnverified: false,
+        isAnomaly: true,
+        specialType: 'Anomalies',
+        weeklyEntries: []
+    };
+
+});
+
 
 
     var entries = Object.keys(pathInfo).map(function(key) {
