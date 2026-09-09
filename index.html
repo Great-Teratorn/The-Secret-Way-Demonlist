@@ -143,11 +143,8 @@
     Promise.all([
     fetch(base + 'data/_list.json'),
     fetch(base + 'data/_removed.json'),
-    fetch(base + 'data/_weekly.json'),
-    fetch(base + 'data/_unverified.json'),
-    fetch(base + 'data/_anomalies.json')
+    fetch(base + 'data/_weekly.json')
 ])
-
 
         .then(function(responses) {
 
@@ -205,56 +202,29 @@
 
     });
 
-    var unverifiedPaths = Array.isArray(lists[3])
-    ? lists[3]
-    : [];
+    removedPaths.forEach(function(path) {
 
-var anomaliesPaths = Array.isArray(lists[4])
-    ? lists[4]
-    : [];
+        if (!path) {
+            return;
+        }
 
+        if (pathInfo[path]) {
 
-/*
- * Unverified levels are their own search destination.
- */
-unverifiedPaths.forEach(function(path) {
+            pathInfo[path].isRemoved = true;
 
-    if (!path) {
-        return;
-    }
+        } else {
 
-    pathInfo[path] = {
-        path: path,
-        listIndex: -1,
-        isRemoved: false,
-        isWeekly: false,
-        weeklyEntries: [],
-        isUnverified: true
-    };
+            pathInfo[path] = {
+                path: path,
+                listIndex: -1,
+                isRemoved: true,
+                isWeekly: false,
+                weeklyEntries: []
+            };
 
-});
+        }
 
-
-/*
- * Anomalies are their own search destination.
- */
-anomaliesPaths.forEach(function(path) {
-
-    if (!path) {
-        return;
-    }
-
-    pathInfo[path] = {
-        path: path,
-        listIndex: -1,
-        isRemoved: false,
-        isWeekly: false,
-        weeklyEntries: [],
-        isAnomaly: true
-    };
-
-});
-
+    });
 
 
     /*
@@ -398,34 +368,25 @@ anomaliesPaths.forEach(function(path) {
                     /*
                      * CREATORS
                      */
-                    var creators = [];
+                    /*
+ * CREATORS / COLLABORATORS
+ *
+ * The author is a Creator.
+ * Other names in level.creators are Collaborators.
+ */
+var creators = [];
 
-                    if (Array.isArray(level.creators)) {
+if (Array.isArray(level.creators)) {
 
-                        creators = level.creators;
+    creators = level.creators;
 
-                    } else if (level.author) {
+} else if (level.author) {
 
-                        creators = [level.author];
+    creators = [level.author];
 
-                    }
+}
 
-
-                    creators.forEach(function(creator) {
-
-                        if (!creator) {
-                            return;
-                        }
-
-                        var creatorRole =
-                            level.author &&
-                            creator.toLowerCase() ===
-                            level.author.toLowerCase()
-                                ? 'Creator'
-                                : 'Collaborator';
-
-
-                        creators.forEach(function(creator) {
+creators.forEach(function(creator) {
 
     if (!creator) {
         return;
@@ -433,12 +394,12 @@ anomaliesPaths.forEach(function(path) {
 
     var isAuthor =
         level.author &&
-        creator.toLowerCase() === level.author.toLowerCase();
+        creator.toLowerCase() ===
+        level.author.toLowerCase();
 
     var creatorRole = isAuthor
         ? 'Creator'
         : 'Collaborator';
-
 
     var existingCreator =
         masterSearchRegistry.find(function(item) {
@@ -449,14 +410,11 @@ anomaliesPaths.forEach(function(path) {
 
         });
 
-
     if (existingCreator) {
 
         /*
-         * If this person is the actual author on ANY level,
-         * keep them as a Creator.
-         *
-         * Otherwise they remain a Collaborator.
+         * If this person is the actual author on any level,
+         * keep their Creator role.
          */
         if (isAuthor) {
             existingCreator.creatorRole = 'Creator';
@@ -484,7 +442,9 @@ anomaliesPaths.forEach(function(path) {
             route:
                 primaryType === 'Removed'
                     ? '/removed'
-                    : '/list',
+                    : primaryType === 'Extended'
+                        ? '/extended'
+                        : '/list',
 
             levelName: level.name,
 
@@ -497,46 +457,6 @@ anomaliesPaths.forEach(function(path) {
 });
 
 
-
-                        if (existingCreator) {
-
-                            if (
-                                Array.isArray(existingCreator.levelNames) &&
-                                existingCreator.levelNames.indexOf(
-                                    level.name
-                                ) === -1
-                            ) {
-
-                                existingCreator.levelNames.push(
-                                    level.name
-                                );
-
-                            }
-
-                        } else {
-
-                            masterSearchRegistry.push({
-
-                                name: creator,
-
-                                type: 'Creator',
-
-                                creatorRole: creatorRole,
-
-                                route:
-                                    primaryType === 'Removed'
-                                        ? '/removed'
-                                        : '/list',
-
-                                levelName: level.name,
-
-                                levelNames: [level.name]
-
-                            });
-
-                        }
-
-                    });
 
 
                     /*
