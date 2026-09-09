@@ -738,7 +738,17 @@ creators.forEach(function(creator) {
              * We will populate it once we connect the existing
              * Weekly data source.
              */
-            '' +
+            (
+    item.isWeekly
+        ? '<span class="search-secondary-label search-weekly-label" ' +
+          'data-search-name="' + safeName + '" ' +
+          'data-search-type="Weekly" ' +
+          'style="color:#ffd54f !important; font-size:0.65rem !important; font-weight:bold !important; text-transform:uppercase !important; background:rgba(255,213,79,0.12) !important; padding:2px 6px !important; border-radius:4px !important;">' +
+          'Weekly Demon' +
+          '</span>'
+        : ''
+) +
+
 
             '</span>' +
 
