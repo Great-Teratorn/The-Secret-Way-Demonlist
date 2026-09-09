@@ -61,7 +61,7 @@ export default {
 <p
     v-if="$route.path === '/removed' && level?.removedReason"
     class="type-label-lg"
-    style="color: #94a3b8; font-style: italic; margin-bottom: 10px;"
+    style="color: #3f8fff; font-style: italic; margin-bottom: 10px;"
 >
     Reason: {{ level.removedReason }}
 </p>

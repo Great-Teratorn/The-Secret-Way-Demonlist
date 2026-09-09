@@ -1,4 +1,6 @@
 import { embed } from "../util.js";
+import { fetchSearchData } from "../content.js";
+
 
 export default {
     template: `
@@ -193,38 +195,203 @@ export default {
         this.buildSearchDatabase();
     },
     methods: {
-        buildSearchDatabase: function() {
-            var self = this;
-            var xhrList = new XMLHttpRequest();
-            xhrList.open('GET', './data/list.json', true);
-            xhrList.onload = function() {
-                if (xhrList.status === 200) {
-                    try {
-                        var data = JSON.parse(xhrList.responseText);
-                        data.forEach(function(lvl, idx) {
-                            self.searchDatabase.push({ name: lvl.name, type: 'Level', route: '/list', index: idx });
-                            if (lvl.author) self.searchDatabase.push({ name: lvl.author, type: 'Creator', route: '/list', index: idx });
-                            if (lvl.verifier) self.searchDatabase.push({ name: lvl.verifier, type: 'Verifier', route: '/list', index: idx });
-                        });
-                    } catch (e) {}
-                }
-            };
-            xhrList.send();
+        buildSearchDatabase: async function() {
+    try {
+        var data = await fetchSearchData();
+        var self = this;
 
-            var xhrBoard = new XMLHttpRequest();
-            xhrBoard.open('GET', './data/leaderboard.json', true);
-            xhrBoard.onload = function() {
-                if (xhrBoard.status === 200) {
-                    try {
-                        var data = JSON.parse(xhrBoard.responseText);
-                        data.forEach(function(player, idx) {
-                            self.searchDatabase.push({ name: player.name, type: 'Player', route: '/leaderboard', index: idx });
+        // Main + Extended
+        data.main.forEach(function(lvl, idx) {
+            self.searchDatabase.push({
+                name: lvl.name,
+                type: idx < 150 ? 'Main' : 'Extended',
+                route: '/list',
+                index: idx,
+                path: lvl.path
+            });
+
+            if (lvl.author) {
+                self.searchDatabase.push({
+                    name: lvl.author,
+                    type: 'Creator',
+                    route: '/list',
+                    index: idx,
+                    path: lvl.path
+                });
+            }
+
+            if (lvl.verifier) {
+                self.searchDatabase.push({
+                    name: lvl.verifier,
+                    type: 'Verifier',
+                    route: '/list',
+                    index: idx,
+                    path: lvl.path
+                });
+            }
+        });
+
+        // Unverified
+        data.unverified.forEach(function(lvl, idx) {
+            if (!lvl) return;
+
+            self.searchDatabase.push({
+                name: lvl.name,
+                type: 'Unverified',
+                route: '/unverified',
+                index: idx,
+                path: lvl.path
+            });
+
+            if (lvl.author) {
+                self.searchDatabase.push({
+                    name: lvl.author,
+                    type: 'Creator',
+                    route: '/unverified',
+                    index: idx,
+                    path: lvl.path
+                });
+            }
+
+            if (lvl.verifier) {
+                self.searchDatabase.push({
+                    name: lvl.verifier,
+                    type: 'Verifier',
+                    route: '/unverified',
+                    index: idx,
+                    path: lvl.path
+                });
+            }
+        });
+
+        // Anomalies
+        data.anomalies.forEach(function(lvl, idx) {
+            if (!lvl) return;
+
+            self.searchDatabase.push({
+                name: lvl.name,
+                type: 'Anomaly',
+                route: '/anomalies',
+                index: idx,
+                path: lvl.path
+            });
+
+            if (lvl.author) {
+                self.searchDatabase.push({
+                    name: lvl.author,
+                    type: 'Creator',
+                    route: '/anomalies',
+                    index: idx,
+                    path: lvl.path
+                });
+            }
+
+            if (lvl.verifier) {
+                self.searchDatabase.push({
+                    name: lvl.verifier,
+                    type: 'Verifier',
+                    route: '/anomalies',
+                    index: idx,
+                    path: lvl.path
+                });
+            }
+        });
+
+        // Removed
+        data.removed.forEach(function(lvl, idx) {
+            if (!lvl) return;
+
+            self.searchDatabase.push({
+                name: lvl.name,
+                type: 'Removed',
+                route: '/removed',
+                index: idx,
+                path: lvl.path
+            });
+
+            if (lvl.author) {
+                self.searchDatabase.push({
+                    name: lvl.author,
+                    type: 'Creator',
+                    route: '/removed',
+                    index: idx,
+                    path: lvl.path
+                });
+            }
+
+            if (lvl.verifier) {
+                self.searchDatabase.push({
+                    name: lvl.verifier,
+                    type: 'Verifier',
+                    route: '/removed',
+                    index: idx,
+                    path: lvl.path
+                });
+            }
+        });
+
+        // Keep the existing leaderboard/player search
+        var xhrBoard = new XMLHttpRequest();
+        xhrBoard.open('GET', './data/leaderboard.json', true);
+        xhrBoard.onload = function() {
+            if (xhrBoard.status === 200) {
+                try {
+                    var data = JSON.parse(xhrBoard.responseText);
+                    data.forEach(function(player, idx) {
+                        self.searchDatabase.push({
+                            name: player.name,
+                            type: 'Player',
+                            route: '/leaderboard',
+                            index: idx
                         });
-                    } catch (e) {}
+                    });
+                } catch (e) {}
+            }
+        };
+        xhrBoard.send();
+
+
+                // Weekly
+        data.weekly.forEach(function(lvl, idx) {
+            if (!lvl) return;
+
+            var existing = self.searchDatabase.find(function(item) {
+                return item.name === lvl.name && item.type !== 'Creator' && item.type !== 'Verifier';
+            });
+
+            if (existing) {
+                if (!existing.weekly) {
+                    existing.weekly = [];
                 }
-            };
-            xhrBoard.send();
-        },
+
+                existing.weekly.push({
+                    index: idx,
+                    path: lvl.path,
+                    weeklyDate: lvl.weeklyDate
+                });
+            } else {
+                self.searchDatabase.push({
+                    name: lvl.name,
+                    type: 'Weekly',
+                    route: '/weekly',
+                    index: idx,
+                    path: lvl.path,
+                    weekly: [{
+                        index: idx,
+                        path: lvl.path,
+                        weeklyDate: lvl.weeklyDate
+                    }]
+                });
+            }
+        });
+
+
+
+    } catch (e) {
+        console.error('Failed to build search database.', e);
+    }
+},
+
         toggleSearchBox: function() {
             this.isSearchActive = !this.isSearchActive;
             if (this.isSearchActive) {

@@ -53,6 +53,60 @@ if (hash.includes('/unverified')) {
     }
 }
 
+
+
+export async function fetchSearchData() {
+    const lists = {
+        main: '_list.json',
+        unverified: '_unverified.json',
+        anomalies: '_anomalies.json',
+        weekly: '_weekly.json',
+        removed: '_removed.json',
+    };
+
+    const result = {
+        main: [],
+        unverified: [],
+        anomalies: [],
+        weekly: [],
+        removed: [],
+    };
+
+    for (const [type, file] of Object.entries(lists)) {
+        try {
+            const response = await fetch(`${dir}/${file}`);
+            const paths = await response.json();
+
+            result[type] = await Promise.all(
+                paths.map(async (path) => {
+                    try {
+                        const level = await fetch(`${dir}/${path}.json`).then(
+                            (res) => res.json(),
+                        );
+
+                        return {
+                            ...level,
+                            path,
+                        };
+                    } catch {
+                        return null;
+                    }
+                }),
+            );
+
+            result[type] = result[type].filter(Boolean);
+        } catch {
+            result[type] = [];
+        }
+    }
+
+    return result;
+}
+
+
+
+
+
 export async function fetchEditors() {
     try {
         const editorsResults = await fetch(`${dir}/_editors.json`);
