@@ -109,7 +109,12 @@
         </header>
         <router-view :class="{ dark: store.dark }"></router-view>
     
-    <script>    var masterSearchRegistry = [];
+    
+</body>
+
+
+
+<script>    var masterSearchRegistry = [];
                 var weeklySearchRegistry = [];
 
     function loadIndexRegistry() {
@@ -904,5 +909,7 @@ window.selectSearchResult = function(element) {
     /*     * ==========================================================     * INITIAL PAGE LOAD     * ==========================================================     */
     window.addEventListener('load', function() {        window.processSearchHighlight();    });</script>
 
-</body>
+
+
+
 </html>
