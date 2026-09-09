@@ -143,8 +143,11 @@
     Promise.all([
     fetch(base + 'data/_list.json'),
     fetch(base + 'data/_removed.json'),
-    fetch(base + 'data/_weekly.json')
+    fetch(base + 'data/_weekly.json'),
+    fetch(base + 'data/_unverified.json'),
+    fetch(base + 'data/_anomalies.json')
 ])
+
 
         .then(function(responses) {
 
@@ -202,29 +205,56 @@
 
     });
 
-    removedPaths.forEach(function(path) {
+    var unverifiedPaths = Array.isArray(lists[3])
+    ? lists[3]
+    : [];
 
-        if (!path) {
-            return;
-        }
+var anomaliesPaths = Array.isArray(lists[4])
+    ? lists[4]
+    : [];
 
-        if (pathInfo[path]) {
 
-            pathInfo[path].isRemoved = true;
+/*
+ * Unverified levels are their own search destination.
+ */
+unverifiedPaths.forEach(function(path) {
 
-        } else {
+    if (!path) {
+        return;
+    }
 
-            pathInfo[path] = {
-                path: path,
-                listIndex: -1,
-                isRemoved: true,
-                isWeekly: false,
-                weeklyEntries: []
-            };
+    pathInfo[path] = {
+        path: path,
+        listIndex: -1,
+        isRemoved: false,
+        isWeekly: false,
+        weeklyEntries: [],
+        isUnverified: true
+    };
 
-        }
+});
 
-    });
+
+/*
+ * Anomalies are their own search destination.
+ */
+anomaliesPaths.forEach(function(path) {
+
+    if (!path) {
+        return;
+    }
+
+    pathInfo[path] = {
+        path: path,
+        listIndex: -1,
+        isRemoved: false,
+        isWeekly: false,
+        weeklyEntries: [],
+        isAnomaly: true
+    };
+
+});
+
 
 
     /*
@@ -330,7 +360,9 @@
 
                         name: level.name,
 
-                        type: primaryType,
+                        type: 'Level',
+                        primaryType: primaryType,
+
 
                         id: level.id,
 
@@ -393,14 +425,77 @@
                                 : 'Collaborator';
 
 
-                        var existingCreator =
-                            masterSearchRegistry.find(function(item) {
+                        creators.forEach(function(creator) {
 
-                                return item.type === 'Creator' &&
-                                    item.name.toLowerCase() ===
-                                    creator.toLowerCase();
+    if (!creator) {
+        return;
+    }
 
-                            });
+    var isAuthor =
+        level.author &&
+        creator.toLowerCase() === level.author.toLowerCase();
+
+    var creatorRole = isAuthor
+        ? 'Creator'
+        : 'Collaborator';
+
+
+    var existingCreator =
+        masterSearchRegistry.find(function(item) {
+
+            return item.type === 'Creator' &&
+                item.name.toLowerCase() ===
+                creator.toLowerCase();
+
+        });
+
+
+    if (existingCreator) {
+
+        /*
+         * If this person is the actual author on ANY level,
+         * keep them as a Creator.
+         *
+         * Otherwise they remain a Collaborator.
+         */
+        if (isAuthor) {
+            existingCreator.creatorRole = 'Creator';
+        }
+
+        if (
+            Array.isArray(existingCreator.levelNames) &&
+            existingCreator.levelNames.indexOf(level.name) === -1
+        ) {
+
+            existingCreator.levelNames.push(level.name);
+
+        }
+
+    } else {
+
+        masterSearchRegistry.push({
+
+            name: creator,
+
+            type: 'Creator',
+
+            creatorRole: creatorRole,
+
+            route:
+                primaryType === 'Removed'
+                    ? '/removed'
+                    : '/list',
+
+            levelName: level.name,
+
+            levelNames: [level.name]
+
+        });
+
+    }
+
+});
+
 
 
                         if (existingCreator) {
