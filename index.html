@@ -653,7 +653,12 @@ if (Array.isArray(level.records)) {
   * but verifying an Anomaly/Unverified/Weekly level does
   * NOT automatically make them a global leaderboard player.
   */
-if (level.verifier) {
+if (
+    level.verifier &&
+    level.verifier.toLowerCase() !== 'none' &&
+    level.verifier.toLowerCase() !== 'unknown'
+) {
+
 
     var existingVerifierAsPlayer =
         masterSearchRegistry.find(function(item) {
