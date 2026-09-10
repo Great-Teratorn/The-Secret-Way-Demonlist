@@ -1096,8 +1096,155 @@ window.selectSearchResult = function(element) {
 
 
     /*     * ==========================================================     * SEARCH ENTER / HIGHLIGHT PROCESSING     * ==========================================================     */
-    window.processSearchHighlight = function() {    /*     * PLAYER SEARCH     *     * Player searches are handled directly by leaderboard.js.     * We deliberately do NOT try to search through every record     * on the leaderboard here.     */    var playerTarget = localStorage.getItem('leaderboardPlayerSearch');
-    if (playerTarget) {        return;    }
+    window.processSearchHighlight = function() {    /*
+ * ANOMALY-ONLY PLAYER SEARCH
+ *
+ * Highlight every anomaly level associated with the player.
+ * The first matching row in the rendered Anomalies list
+ * is the highest associated anomaly.
+ */
+var anomalyPlayerTarget =
+    localStorage.getItem('anomalyPlayerSearch');
+
+var anomalyPlayerLevelsRaw =
+    localStorage.getItem('anomalyPlayerLevels');
+
+if (anomalyPlayerTarget && anomalyPlayerLevelsRaw) {
+
+    var anomalyPlayerLevels = [];
+
+    try {
+        anomalyPlayerLevels =
+            JSON.parse(anomalyPlayerLevelsRaw);
+    } catch (e) {
+        anomalyPlayerLevels = [];
+    }
+
+    var attempts = 0;
+
+    var anomalyLoop = setInterval(function() {
+
+        attempts++;
+
+        var rows = document.querySelectorAll('.list tr');
+
+        if (rows.length > 0) {
+
+            var matchedRows = [];
+
+            rows.forEach(function(row) {
+
+                var button = row.querySelector('button');
+
+                if (!button || !button.textContent) {
+                    return;
+                }
+
+                var levelName =
+                    button.textContent.trim().toLowerCase();
+
+                var matched =
+                    anomalyPlayerLevels.some(function(name) {
+
+                        return name &&
+                            levelName ===
+                            name.toLowerCase().trim();
+
+                    });
+
+                if (matched) {
+
+                    button.style.setProperty(
+                        'border',
+                        '2px dashed #00e676',
+                        'important'
+                    );
+
+                    button.style.setProperty(
+                        'background',
+                        'rgba(0, 230, 118, 0.15)',
+                        'important'
+                    );
+
+                    matchedRows.push(row);
+
+                }
+
+            });
+
+
+            /*
+             * The rendered Anomalies list keeps its existing order.
+             * Therefore the first matching row is the highest
+             * associated anomaly.
+             */
+            if (matchedRows.length > 0) {
+
+                var highestRow = matchedRows[0];
+
+                highestRow.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'center'
+                });
+
+                var highestButton =
+                    highestRow.querySelector('button');
+
+                if (
+                    highestButton &&
+                    typeof highestButton.click === 'function'
+                ) {
+                    highestButton.click();
+                }
+
+                clearInterval(anomalyLoop);
+
+                localStorage.removeItem(
+                    'anomalyPlayerSearch'
+                );
+
+                localStorage.removeItem(
+                    'anomalyPlayerLevels'
+                );
+
+                return;
+            }
+
+        }
+
+        if (attempts > 20) {
+
+            clearInterval(anomalyLoop);
+
+            localStorage.removeItem(
+                'anomalyPlayerSearch'
+            );
+
+            localStorage.removeItem(
+                'anomalyPlayerLevels'
+            );
+
+        }
+
+    }, 150);
+
+    return;
+}
+
+
+
+/*
+ * EXISTING PLAYER SEARCH
+ *
+ * Do not alter the existing leaderboard behavior.
+ */
+var playerTarget =
+    localStorage.getItem('leaderboardPlayerSearch');
+
+if (playerTarget) {
+    return;
+}
+
     /*     * EXISTING LEVEL / CREATOR SEARCH     */    var target = localStorage.getItem('listSearchTarget');
     if (!target) {        return;    }
     /*     * If a creator search supplied an associated level,     * use that level as the actual selection target.     *     * Level searches do not need this because their own     * name is already stored as listSearchTarget.     */    var levelTarget = localStorage.getItem('listSearchLevel');
