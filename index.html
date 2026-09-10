@@ -301,7 +301,12 @@ anomalyPaths.forEach(function(path) {
     return Promise.all(
         entries.map(function(info) {
 
-            return fetch(base + 'data/' + info.path + '.json')
+            return fetch(
+    base + 'data/' +
+    (info.isWeekly ? 'weekly/' + info.path : info.path) +
+    '.json'
+)
+
                 .then(function(r) {
 
                     if (!r.ok) {
