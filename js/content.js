@@ -142,7 +142,12 @@ export async function fetchLeaderboard() {
         }
 
         // Verification
-        if (level.verifier) {
+        if (
+    level.verifier &&
+    level.verifier.toLowerCase() !== 'unknown' &&
+    level.verifier.toLowerCase() !== 'none'
+) {
+
             const verifier =
                 Object.keys(scoreMap).find(
                     (u) =>
