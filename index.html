@@ -1096,7 +1096,16 @@ window.selectSearchResult = function(element) {
 
 
     /*     * ==========================================================     * SEARCH ENTER / HIGHLIGHT PROCESSING     * ==========================================================     */
-    window.processSearchHighlight = function() {    /*
+    window.processSearchHighlight = function() {    
+    
+        document.querySelectorAll('.search-highlight-active').forEach(function(el) {
+        el.classList.remove('search-highlight-active');
+        el.style.removeProperty('border');
+        el.style.removeProperty('background');
+    });
+
+    
+    /*
  * ANOMALY-ONLY PLAYER SEARCH
  *
  * Highlight every anomaly level associated with the player.
@@ -1260,7 +1269,10 @@ var targetClass = isLeaderboard
         var elements = document.querySelectorAll(targetClass);
         if (elements.length > 0) {            clearInterval(loop);
             elements.forEach(function(el) {                if (                    el.textContent &&                    el.textContent.toLowerCase().indexOf(query) !== -1                ) {                    el.style.setProperty(                        'border',                        '2px dashed #00e676',                        'important'                    );
+
                     el.style.setProperty(                        'background',                        'rgba(0, 230, 118, 0.15)',                        'important'                    );
+el.classList.add('search-highlight-active');
+
                     el.scrollIntoView({                        behavior: 'smooth',                        block: 'center'                    });
                     if (typeof el.click === 'function') {                        el.click();                    }                }            });        }
         if (attempts > 20) {            clearInterval(loop);        }    }, 150);};
