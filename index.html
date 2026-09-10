@@ -480,11 +480,16 @@ creators.forEach(function(creator) {
             creatorRole: creatorType,
 
             route:
-                primaryType === 'Removed'
-                    ? '/removed'
-                    : primaryType === 'Extended'
-                        ? '/extended'
-                        : '/list',
+    primaryType === 'Removed'
+        ? '/removed'
+        : primaryType === 'Extended'
+            ? '/extended'
+            : primaryType === 'Unverified'
+                ? '/unverified'
+                : primaryType === 'Anomalies'
+                    ? '/anomalies'
+                    : '/list',
+
 
             levelName: level.name,
 
