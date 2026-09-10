@@ -506,46 +506,120 @@ creators.forEach(function(creator) {
 
 
                     /*
-                     * PLAYERS
-                     */
-                    if (Array.isArray(level.records)) {
+ * PLAYERS
+ *
+ * Keep one Player entry per person, but collect the categories
+ * and levels they are associated with.
+ *
+ * IMPORTANT:
+ * This does NOT change player search routing yet.
+ * It only gives the registry the information we will need
+ * for the later routing/highlighting changes.
+ */
+if (Array.isArray(level.records)) {
 
-                        level.records.forEach(function(record) {
+    level.records.forEach(function(record) {
 
-                            if (!record || !record.user) {
-                                return;
-                            }
+        if (!record || !record.user) {
+            return;
+        }
+
+        var existingPlayer =
+            masterSearchRegistry.find(function(item) {
+
+                return item.type === 'Player' &&
+                    item.name.toLowerCase() ===
+                    record.user.toLowerCase();
+
+            });
 
 
-                            var existingPlayer =
-                                masterSearchRegistry.find(function(item) {
+        if (!existingPlayer) {
 
-                                    return item.type === 'Player' &&
-                                        item.name.toLowerCase() ===
-                                        record.user.toLowerCase();
+            existingPlayer = {
 
-                                });
+                name: record.user,
+
+                type: 'Player',
+
+                route: '/leaderboard',
+
+                levelName: level.name,
+
+                hasGlobalRecord: false,
+                hasWeeklyRecord: false,
+                hasAnomalyRecord: false,
+                hasUnverifiedRecord: false,
+
+                globalLevels: [],
+                weeklyLevels: [],
+                anomalyLevels: [],
+                unverifiedLevels: []
+
+            };
+
+            masterSearchRegistry.push(existingPlayer);
+
+        }
 
 
-                            if (!existingPlayer) {
+        /*
+         * Record category
+         */
+        if (primaryType === 'Main' || primaryType === 'Extended') {
 
-                                masterSearchRegistry.push({
+            existingPlayer.hasGlobalRecord = true;
 
-                                    name: record.user,
+            if (
+                existingPlayer.globalLevels.indexOf(level.name) === -1
+            ) {
 
-                                    type: 'Player',
+                existingPlayer.globalLevels.push(level.name);
 
-                                    route: '/leaderboard',
+            }
 
-                                    levelName: level.name
+        } else if (primaryType === 'Weekly') {
 
-                                });
+            existingPlayer.hasWeeklyRecord = true;
 
-                            }
+            if (
+                existingPlayer.weeklyLevels.indexOf(level.name) === -1
+            ) {
 
-                        });
+                existingPlayer.weeklyLevels.push(level.name);
 
-                    }
+            }
+
+        } else if (primaryType === 'Anomalies') {
+
+            existingPlayer.hasAnomalyRecord = true;
+
+            if (
+                existingPlayer.anomalyLevels.indexOf(level.name) === -1
+            ) {
+
+                existingPlayer.anomalyLevels.push(level.name);
+
+            }
+
+        } else if (primaryType === 'Unverified') {
+
+            existingPlayer.hasUnverifiedRecord = true;
+
+            if (
+                existingPlayer.unverifiedLevels.indexOf(level.name) === -1
+            ) {
+
+                existingPlayer.unverifiedLevels.push(level.name);
+
+            }
+
+        }
+
+    });
+
+}
+
 
 
                     /*
