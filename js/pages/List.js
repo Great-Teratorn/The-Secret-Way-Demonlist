@@ -187,7 +187,7 @@ export default {
     },
    
     
-    // 🆕 ADD THIS WATCHER BLOCK: Forces Vue to reload data when switching tabs
+    // ADDED THIS WATCHER BLOCK: Forces Vue to reload data when switching tabs
     watch: {
     async $route() {
         this.list = await fetchList();
@@ -205,8 +205,24 @@ export default {
         } else {
             this.selected = 0;
         }
+
+        // Remove only the green search styling after Vue
+        // has finished rendering the new list.
+        this.$nextTick(() => {
+            document.querySelectorAll('.list button').forEach((button) => {
+                if (
+                    button.style.border.includes('2px dashed') &&
+                    button.style.background.includes('rgba(0, 230, 118')
+                ) {
+                    button.style.removeProperty('border');
+                    button.style.removeProperty('background');
+                    button.classList.remove('search-highlight-active');
+                }
+            });
+        });
     }
 },
+
 
 
     
