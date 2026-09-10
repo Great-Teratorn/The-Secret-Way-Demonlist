@@ -1098,7 +1098,13 @@ window.selectSearchResult = function(element) {
     /*     * ==========================================================     * SEARCH ENTER / HIGHLIGHT PROCESSING     * ==========================================================     */
     window.processSearchHighlight = function() {    
     
-        document.querySelectorAll('.search-highlight-active').forEach(function(el) {
+        console.log(
+    'SEARCH CLEANUP:',
+    document.querySelectorAll('.search-highlight-active').length
+);
+
+    
+    document.querySelectorAll('.search-highlight-active').forEach(function(el) {
         el.classList.remove('search-highlight-active');
         el.style.removeProperty('border');
         el.style.removeProperty('background');
