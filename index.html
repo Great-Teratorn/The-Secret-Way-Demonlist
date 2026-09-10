@@ -37,6 +37,7 @@
     
     
     <script>    var masterSearchRegistry = [];
+                var currentWeeklyDate = null;
                 var weeklySearchRegistry = [];
 
     function loadIndexRegistry() {
@@ -112,6 +113,9 @@
     var anomalyPaths = Array.isArray(lists[4])
         ? lists[4]
         : [];
+
+    var weeklyDates = [];
+
 
 
     /*
@@ -308,9 +312,14 @@ anomalyPaths.forEach(function(path) {
                 })
                 .then(function(level) {
 
-                    if (!level || !level.name) {
-                        return;
-                    }
+    if (!level || !level.name) {
+        return;
+    }
+
+    if (info.isWeekly && level.weeklyDate) {
+        weeklyDates.push(level.weeklyDate);
+    }
+
 
 
                     /*
@@ -737,6 +746,32 @@ if (level.verifier) {
 })
 .then(function() {
 
+    
+    if (weeklyDates.length > 0) {
+    currentWeeklyDate = weeklyDates.reduce(function(latest, date) {
+        var latestParts = latest.split('/');
+        var dateParts = date.split('/');
+
+        var latestValue =
+            new Date(
+                Number(latestParts[2]),
+                Number(latestParts[1]) - 1,
+                Number(latestParts[0])
+            ).getTime();
+
+        var dateValue =
+            new Date(
+                Number(dateParts[2]),
+                Number(dateParts[1]) - 1,
+                Number(dateParts[0])
+            ).getTime();
+
+        return dateValue > latestValue ? date : latest;
+    });
+}
+
+    
+    
     console.log(
         'Search registry loaded:',
         masterSearchRegistry.length,
@@ -884,16 +919,26 @@ if (level.verifier) {
              */
             (
     item.isWeekly
-        ? '<span class="search-secondary-label search-weekly-label" ' +
-          'data-search-name="' + safeName + '" ' +
-          'data-search-type="Weekly" ' +
-          'onclick="event.stopPropagation(); window.selectWeeklySearchResult(this)" ' +
-
-          'style="color:#ffd54f !important; font-size:0.65rem !important; font-weight:bold !important; text-transform:uppercase !important; background:rgba(255,213,79,0.12) !important; padding:2px 6px !important; border-radius:4px !important;">' +
-          'Weekly Demon' +
-          '</span>'
+        ? (
+            item.weeklyDate === currentWeeklyDate
+                ? '<span class="search-secondary-label search-weekly-label" ' +
+                  'data-search-name="' + safeName + '" ' +
+                  'data-search-type="Weekly" ' +
+                  'onclick="event.stopPropagation(); window.selectWeeklySearchResult(this)" ' +
+                  'style="color:#ffd54f !important; font-size:0.65rem !important; font-weight:bold !important; text-transform:uppercase !important; background:rgba(255,213,79,0.12) !important; padding:2px 6px !important; border-radius:4px !important;">' +
+                  'Weekly Demon' +
+                  '</span>'
+                : '<span class="search-secondary-label search-weekly-label" ' +
+                  'data-search-name="' + safeName + '" ' +
+                  'data-search-type="Weekly" ' +
+                  'onclick="event.stopPropagation(); window.selectWeeklySearchResult(this)" ' +
+                  'style="color:#3f8fff !important; font-size:0.65rem !important; font-weight:bold !important; text-transform:uppercase !important; background:rgba(63,143,255,0.12) !important; padding:2px 6px !important; border-radius:4px !important;">' +
+                  'W' +
+                  '</span>'
+          )
         : ''
 ) +
+
 
 
             '</span>' +
