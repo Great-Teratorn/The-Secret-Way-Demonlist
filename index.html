@@ -37,8 +37,9 @@
     
     
     <script>    var masterSearchRegistry = [];
-                var currentWeeklyDate = null;
+                var currentWeeklyPath = null;
                 var weeklySearchRegistry = [];
+
 
     function loadIndexRegistry() {
     masterSearchRegistry = [];
@@ -106,6 +107,11 @@
         ? lists[2]
         : [];
 
+    if (weeklyPaths.length > 0) {
+    currentWeeklyPath = weeklyPaths[0];
+}
+
+
         var unverifiedPaths = Array.isArray(lists[3])
         ? lists[3]
         : [];
@@ -114,7 +120,7 @@
         ? lists[4]
         : [];
 
-    var weeklyDates = [];
+    
 
 
 
@@ -747,28 +753,7 @@ if (level.verifier) {
 .then(function() {
 
     
-    if (weeklyDates.length > 0) {
-    currentWeeklyDate = weeklyDates.reduce(function(latest, date) {
-        var latestParts = latest.split('/');
-        var dateParts = date.split('/');
-
-        var latestValue =
-            new Date(
-                Number(latestParts[2]),
-                Number(latestParts[1]) - 1,
-                Number(latestParts[0])
-            ).getTime();
-
-        var dateValue =
-            new Date(
-                Number(dateParts[2]),
-                Number(dateParts[1]) - 1,
-                Number(dateParts[0])
-            ).getTime();
-
-        return dateValue > latestValue ? date : latest;
-    });
-}
+    
 
     
     
