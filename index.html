@@ -622,38 +622,109 @@ if (Array.isArray(level.records)) {
 
 
 
-                    /*
-                     * VERIFIERS ARE ALSO PLAYERS
-                     */
-                    if (level.verifier) {
+                     /*
+  * VERIFIERS ARE ALSO PLAYERS
+  *
+  * A verifier is associated with the level's category,
+  * but verifying an Anomaly/Unverified/Weekly level does
+  * NOT automatically make them a global leaderboard player.
+  */
+if (level.verifier) {
 
-                        var existingVerifierAsPlayer =
-                            masterSearchRegistry.find(function(item) {
+    var existingVerifierAsPlayer =
+        masterSearchRegistry.find(function(item) {
 
-                                return item.type === 'Player' &&
-                                    item.name.toLowerCase() ===
-                                    level.verifier.toLowerCase();
+            return item.type === 'Player' &&
+                item.name.toLowerCase() ===
+                level.verifier.toLowerCase();
 
-                            });
+        });
 
 
-                        if (!existingVerifierAsPlayer) {
+    if (!existingVerifierAsPlayer) {
 
-                            masterSearchRegistry.push({
+        existingVerifierAsPlayer = {
 
-                                name: level.verifier,
+            name: level.verifier,
 
-                                type: 'Player',
+            type: 'Player',
 
-                                route: '/leaderboard',
+            route: '/leaderboard',
 
-                                levelName: level.name
+            levelName: level.name,
 
-                            });
+            hasGlobalRecord: false,
+            hasWeeklyRecord: false,
+            hasAnomalyRecord: false,
+            hasUnverifiedRecord: false,
 
-                        }
+            globalLevels: [],
+            weeklyLevels: [],
+            anomalyLevels: [],
+            unverifiedLevels: []
 
-                    }
+        };
+
+        masterSearchRegistry.push(existingVerifierAsPlayer);
+
+    }
+
+
+    /*
+     * Verifier category
+     */
+    if (primaryType === 'Main' || primaryType === 'Extended') {
+
+        existingVerifierAsPlayer.hasGlobalRecord = true;
+
+        if (
+            existingVerifierAsPlayer.globalLevels.indexOf(level.name) === -1
+        ) {
+
+            existingVerifierAsPlayer.globalLevels.push(level.name);
+
+        }
+
+    } else if (primaryType === 'Weekly') {
+
+        existingVerifierAsPlayer.hasWeeklyRecord = true;
+
+        if (
+            existingVerifierAsPlayer.weeklyLevels.indexOf(level.name) === -1
+        ) {
+
+            existingVerifierAsPlayer.weeklyLevels.push(level.name);
+
+        }
+
+    } else if (primaryType === 'Anomalies') {
+
+        existingVerifierAsPlayer.hasAnomalyRecord = true;
+
+        if (
+            existingVerifierAsPlayer.anomalyLevels.indexOf(level.name) === -1
+        ) {
+
+            existingVerifierAsPlayer.anomalyLevels.push(level.name);
+
+        }
+
+    } else if (primaryType === 'Unverified') {
+
+        existingVerifierAsPlayer.hasUnverifiedRecord = true;
+
+        if (
+            existingVerifierAsPlayer.unverifiedLevels.indexOf(level.name) === -1
+        ) {
+
+            existingVerifierAsPlayer.unverifiedLevels.push(level.name);
+
+        }
+
+    }
+
+}
+
 
                 });
 
