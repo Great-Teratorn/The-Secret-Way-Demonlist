@@ -994,23 +994,75 @@ window.selectSearchResult = function(element) {
         return;
     }
 
-    /* Players belong on the leaderboard */
+        /*
+     * PLAYERS
+     *
+     * Main/Extended players keep the existing leaderboard behavior.
+     *
+     * Anomalies-only players are sent to the Anomalies list instead.
+     * Their associated anomaly levels will be highlighted there.
+     */
     if (matchedItem.type === 'Player') {
-        localStorage.setItem('leaderboardPlayerSearch', matchedItem.name);
 
-        if (window.location.hash !== '#/leaderboard') {
-            window.location.hash = '/leaderboard';
+        /*
+         * Anomalies-only player
+         */
+        if (
+            matchedItem.hasAnomalyRecord &&
+            !matchedItem.hasGlobalRecord &&
+            !matchedItem.hasWeeklyRecord &&
+            !matchedItem.hasUnverifiedRecord &&
+            Array.isArray(matchedItem.anomalyLevels) &&
+            matchedItem.anomalyLevels.length > 0
+        ) {
+
+            localStorage.setItem(
+                'anomalyPlayerSearch',
+                matchedItem.name
+            );
+
+            localStorage.setItem(
+                'anomalyPlayerLevels',
+                JSON.stringify(matchedItem.anomalyLevels)
+            );
+
+            if (window.location.hash !== '#/anomalies') {
+                window.location.hash = '/anomalies';
+            } else {
+                window.processSearchHighlight();
+            }
+
         } else {
-            window.processSearchHighlight();
+
+            /*
+             * Existing global-player behavior.
+             *
+             * This remains unchanged for Main/Extended players
+             * and mixed players.
+             */
+            localStorage.setItem(
+                'leaderboardPlayerSearch',
+                matchedItem.name
+            );
+
+            if (window.location.hash !== '#/leaderboard') {
+                window.location.hash = '/leaderboard';
+            } else {
+                window.processSearchHighlight();
+            }
+
         }
 
-        var playerDropdown = document.getElementById('searchDropdownMenu');
+        var playerDropdown =
+            document.getElementById('searchDropdownMenu');
+
         if (playerDropdown) {
             playerDropdown.style.display = 'none';
         }
 
         return;
     }
+
 
     /*
      * Levels and creators belong on the main list.
