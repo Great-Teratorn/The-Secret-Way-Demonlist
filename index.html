@@ -909,7 +909,10 @@ window.selectSearchResult = function(element) {
     var attempts = 0;
     var loop = setInterval(function() {        attempts++;
         var isLeaderboard = window.location.hash.includes('/leaderboard');
-        var targetClass = isLeaderboard            ? 'td, th, .player, [class*="player"]'            : '.list button, .list-container a, .list a, [class*="item"] button';
+var targetClass = isLeaderboard
+    ? '.leaderboard-row, .leaderboard-player, .player, [class*="leaderboard"] .player'
+    : '.list button, .list-container a, .list a, [class*="item"] button';
+
         var elements = document.querySelectorAll(targetClass);
         if (elements.length > 0) {            clearInterval(loop);
             elements.forEach(function(el) {                if (                    el.textContent &&                    el.textContent.toLowerCase().indexOf(query) !== -1                ) {                    el.style.setProperty(                        'border',                        '2px dashed #00e676',                        'important'                    );
