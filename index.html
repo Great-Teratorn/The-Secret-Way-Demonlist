@@ -389,7 +389,10 @@ if (info.isRemoved) {
 
 isWeekly: !!info.isWeekly,
 
+weeklyDate: level.weeklyDate || null,
+
 isRemoved: primaryType === 'Removed',
+
 
 dateFallen: level.dateFallen || null,
 
@@ -881,14 +884,24 @@ if (level.verifier) {
              */
             (
     item.isWeekly
-        ? '<span class="search-secondary-label search-weekly-label" ' +
-          'data-search-name="' + safeName + '" ' +
-          'data-search-type="Weekly" ' +
-          'style="color:#ffd54f !important; font-size:0.65rem !important; font-weight:bold !important; text-transform:uppercase !important; background:rgba(255,213,79,0.12) !important; padding:2px 6px !important; border-radius:4px !important;">' +
-          'Weekly Demon' +
-          '</span>'
+        ? (
+            item.weeklyDate === '07/09/2026'
+                ? '<span class="search-secondary-label search-weekly-label" ' +
+                  'data-search-name="' + safeName + '" ' +
+                  'data-search-type="Weekly" ' +
+                  'style="color:#ffd54f !important; font-size:0.65rem !important; font-weight:bold !important; text-transform:uppercase !important; background:rgba(255,213,79,0.12) !important; padding:2px 6px !important; border-radius:4px !important;">' +
+                  'Weekly Demon' +
+                  '</span>'
+                : '<span class="search-secondary-label search-weekly-label" ' +
+                  'data-search-name="' + safeName + '" ' +
+                  'data-search-type="Weekly" ' +
+                  'style="color:#3f8fff !important; font-size:0.65rem !important; font-weight:bold !important; text-transform:uppercase !important; background:rgba(63,143,255,0.12) !important; padding:2px 6px !important; border-radius:4px !important;">' +
+                  'W' +
+                  '</span>'
+          )
         : ''
 ) +
+
 
 
             '</span>' +
