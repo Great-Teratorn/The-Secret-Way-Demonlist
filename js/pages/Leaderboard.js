@@ -8,13 +8,15 @@ export default {
         Spinner,
     },
     data: () => ({
-        leaderboard: [],
-        mainLeaderboardCache: [],
-        weeklyLeaderboardCache: [],
-        loading: true,
-        selected: 0,
-        err: [],
-    }),
+    leaderboard: [],
+    mainLeaderboardCache: [],
+    weeklyLeaderboardCache: [],
+    loading: true,
+    selected: 0,
+    isWeekly: false,
+    err: [],
+}),
+
     template: `
         <main v-if="loading">
             <Spinner></Spinner>
@@ -192,17 +194,109 @@ export default {
     
     
     async mounted() {
-    const [mainList, mainErrs] = await fetchLeaderboard();
-    const [weeklyList, weeklyErrs] = await fetchWeeklyLeaderboard();
+
+    const [mainList, mainErrs] =
+        await fetchLeaderboard();
+
+    const [weeklyList, weeklyErrs] =
+        await fetchWeeklyLeaderboard();
 
     this.mainLeaderboardCache = mainList;
     this.weeklyLeaderboardCache = weeklyList;
 
-    // Default state loads main list onto the screen
-    this.leaderboard = this.mainLeaderboardCache;
-    this.err = mainErrs;
+    const weeklyPlayerSearch =
+        localStorage.getItem(
+            'weeklyLeaderboardPlayerSearch'
+        );
+
+    if (weeklyPlayerSearch) {
+
+        /*
+         * W tag was clicked.
+         *
+         * Open the Weekly Demons leaderboard
+         * instead of the normal leaderboard.
+         */
+        this.isWeekly = true;
+        this.leaderboard =
+            this.weeklyLeaderboardCache;
+        this.err = weeklyErrs;
+
+        const target =
+            weeklyPlayerSearch
+                .toLowerCase()
+                .trim();
+
+        const playerIndex =
+            this.weeklyLeaderboardCache.findIndex(
+                function(player) {
+
+                    return player.user &&
+                        player.user
+                            .toLowerCase()
+                            .trim() === target;
+
+                }
+            );
+
+        if (playerIndex !== -1) {
+
+            this.selected = playerIndex;
+
+            /*
+             * Wait until Vue has rendered the Weekly
+             * leaderboard before scrolling.
+             */
+            this.$nextTick(function() {
+
+                const rows =
+                    document.querySelectorAll(
+                        '.board tr'
+                    );
+
+                if (rows[playerIndex]) {
+
+                    rows[playerIndex].scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'center'
+                    });
+
+                }
+
+            });
+
+        } else {
+
+            /*
+             * Safety fallback.
+             *
+             * The W tag should normally always find a player,
+             * but if the data changed between the search registry
+             * loading and the leaderboard loading, don't crash.
+             */
+            this.selected = 0;
+
+        }
+
+        localStorage.removeItem(
+            'weeklyLeaderboardPlayerSearch'
+        );
+
+    } else {
+
+        /*
+         * Existing default behavior remains exactly the same.
+         */
+        this.leaderboard =
+            this.mainLeaderboardCache;
+
+        this.err = mainErrs;
+
+    }
+
     this.loading = false;
 },
+
 
         methods: {
         localize,

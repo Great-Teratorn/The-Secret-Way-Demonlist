@@ -39,6 +39,8 @@
     <script>    var masterSearchRegistry = [];
                 var currentWeeklyPath = null;
                 var weeklySearchRegistry = [];
+                var weeklyLeaderboardPlayers = {};
+
 
 
     function loadIndexRegistry() {
@@ -876,11 +878,8 @@ if (
 })
 .then(function() {
 
-    
-    
+    applyWeeklyLeaderboardPlayers();
 
-    
-    
     console.log(
         'Search registry loaded:',
         masterSearchRegistry.length,
@@ -888,6 +887,7 @@ if (
     );
 
 })
+
 
         .catch(function(e) {
 
@@ -901,9 +901,82 @@ if (
 
 
 
+function applyWeeklyLeaderboardPlayers() {
+
+    masterSearchRegistry.forEach(function(item) {
+
+        if (
+            item.type === 'Player' &&
+            item.name
+        ) {
+
+            var normalizedName =
+                item.name.toLowerCase().trim();
+
+            item.hasWeeklyLeaderboard =
+                !!weeklyLeaderboardPlayers[normalizedName];
+
+        }
+
+    });
+
+}
+
+
+function loadWeeklyLeaderboardPlayers() {
+
+    import('./js/content.js')
+        .then(function(module) {
+
+            return module.fetchWeeklyLeaderboard();
+
+        })
+        .then(function(result) {
+
+            var weeklyList =
+                result &&
+                Array.isArray(result[0])
+                    ? result[0]
+                    : [];
+
+            weeklyLeaderboardPlayers = {};
+
+            weeklyList.forEach(function(player) {
+
+                if (!player || !player.user) {
+                    return;
+                }
+
+                weeklyLeaderboardPlayers[
+                    player.user.toLowerCase().trim()
+                ] = true;
+
+            });
+
+            applyWeeklyLeaderboardPlayers();
+
+        })
+        .catch(function(error) {
+
+            /*
+             * If the weekly leaderboard cannot be loaded,
+             * do not interfere with the existing search system.
+             */
+            console.error(
+                'Failed to load weekly leaderboard players:',
+                error
+            );
+
+        });
+
+}
+
+
 
 
     loadIndexRegistry();
+    loadWeeklyLeaderboardPlayers();
+
 
     /*     * ==========================================================     * SEARCH TYPING / SUGGESTIONS     * ==========================================================     */
    window.handleSearchTyping = function(val) {
@@ -1005,7 +1078,34 @@ if (
             item.type +
             '</span>' +
 
-                        /*
+                        
+            /*
+ * WEEKLY LEADERBOARD PLAYER TAG
+ *
+ * A player who actually appears in the Weekly Demons
+ * leaderboard gets a compact clickable W tag.
+ *
+ * IMPORTANT:
+ * This is based on the actual weekly leaderboard,
+ * not merely on having a record on a weekly level.
+ */
+(
+    item.type === 'Player' &&
+    item.hasWeeklyLeaderboard
+        ? '<span class="search-secondary-label search-weekly-player-label" ' +
+          'data-search-name="' + safeName + '" ' +
+          'data-search-type="WeeklyLeaderboard" ' +
+          'title="Weekly Demons leaderboard" ' +
+          'onclick="event.stopPropagation(); window.selectWeeklyPlayerSearchResult(this)" ' +
+          'style="color:#3f8fff !important; font-size:0.65rem !important; font-weight:bold !important; text-transform:uppercase !important; background:rgba(63,143,255,0.12) !important; padding:2px 6px !important; border-radius:4px !important; cursor:pointer !important;">' +
+          'W' +
+          '</span>'
+        : ''
+) +
+
+            
+            
+            /*
              * ANOMALIES PLAYER TAG
              *
              * A player who has anomaly records gets a compact
@@ -1232,6 +1332,74 @@ var isExpanded =
 }
 
 };
+
+
+
+window.selectWeeklyPlayerSearchResult = function(element) {
+
+    if (!element) {
+        return;
+    }
+
+    var name =
+        element.getAttribute('data-search-name');
+
+    if (!name) {
+        return;
+    }
+
+    /*
+     * Find the existing Player registry entry.
+     */
+    var player =
+        masterSearchRegistry.find(function(item) {
+
+            return item.type === 'Player' &&
+                item.name.toLowerCase() ===
+                name.toLowerCase();
+
+        });
+
+    if (!player || !player.hasWeeklyLeaderboard) {
+        return;
+    }
+
+    /*
+     * Make sure an older normal-player search cannot
+     * interfere with the Weekly leaderboard selection.
+     */
+    localStorage.removeItem(
+        'leaderboardPlayerSearch'
+    );
+
+    /*
+     * Tell leaderboard.js exactly which player to select
+     * after it switches to Weekly Demons.
+     */
+    localStorage.setItem(
+        'weeklyLeaderboardPlayerSearch',
+        player.name
+    );
+
+    /*
+     * Navigate to the leaderboard page.
+     */
+    if (window.location.hash !== '#/leaderboard') {
+        window.location.hash = '/leaderboard';
+    } else {
+        window.processSearchHighlight();
+    }
+
+    var dropdown =
+        document.getElementById('searchDropdownMenu');
+
+    if (dropdown) {
+        dropdown.style.display = 'none';
+    }
+
+};
+
+
 
 
 window.selectAnomalyPlayerSearchResult = function(element) {
