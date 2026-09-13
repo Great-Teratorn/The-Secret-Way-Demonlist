@@ -97,59 +97,91 @@
 
 
 
-/* LEADERBOARD MOBILE - SCROLLABLE PLAYER LIST */
+/* LEADERBOARD MOBILE - PLAYER LIST CONTAINER */
 @media (max-width: 768px) {
+
     .page-leaderboard {
-        display: block;
-        width: 100%;
-        max-width: 100%;
+        display: flex !important;
+        flex-direction: column !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        height: auto !important;
     }
 
-    /* Player list becomes a short scrollable panel */
+    /*
+     * This is the actual scrollable player-list box.
+     * The player details will sit underneath it.
+     */
     .page-leaderboard .board-container {
-        width: 100%;
-        max-width: 100%;
-        height: 35vh;
-        max-height: 35vh;
+        display: block !important;
+        width: 100% !important;
+        height: 35vh !important;
+        max-height: 35vh !important;
+        min-height: 0 !important;
+
         overflow-y: auto !important;
-        overflow-x: hidden;
-        padding: 0.5rem;
-        box-sizing: border-box;
-        border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+        overflow-x: hidden !important;
+
+        box-sizing: border-box !important;
+
+        padding: 0.75rem !important;
+
+        border: 2px solid rgba(255, 255, 255, 0.12);
+        border-radius: 0.75rem;
+        margin-bottom: 1.5rem;
     }
 
-    /* Keep the leaderboard table inside that panel */
+    /*
+     * Keep the table inside the container.
+     */
     .page-leaderboard .board {
-        width: 100%;
-        margin: 0;
+        display: table !important;
+        width: 100% !important;
+        table-layout: auto !important;
     }
 
-    /* Restore comfortable row sizing */
+    .page-leaderboard .board tr {
+        display: table-row !important;
+    }
+
+    .page-leaderboard .board td {
+        display: table-cell !important;
+    }
+
+    /*
+     * Keep normal comfortable row spacing.
+     */
     .page-leaderboard .board .rank {
-        padding-block: 0.75rem;
-        padding-right: 0.5rem;
+        padding-block: 0.75rem !important;
+        padding-right: 0.5rem !important;
     }
 
     .page-leaderboard .board .total {
-        padding: 0.75rem 0.5rem;
+        padding: 0.75rem 0.5rem !important;
     }
 
     .page-leaderboard .board .user button {
-        padding: 0.75rem;
+        padding: 0.75rem !important;
+        width: 100% !important;
     }
 
-    /* Player details appear underneath the scrollable list */
+    /*
+     * Player details go BELOW the player-list container.
+     */
     .page-leaderboard .player-container {
-        width: 100%;
-        max-width: 100%;
-        padding-block: 1.5rem;
-        box-sizing: border-box;
+        display: block !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        height: auto !important;
         overflow: visible !important;
+        padding: 0.5rem !important;
+        box-sizing: border-box !important;
     }
 
     .page-leaderboard .player {
-        width: 100%;
-        padding-right: 0.5rem;
-        box-sizing: border-box;
+        width: 100% !important;
+        max-width: 100% !important;
+        padding-right: 0 !important;
+        box-sizing: border-box !important;
     }
 }

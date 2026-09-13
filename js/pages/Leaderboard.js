@@ -35,7 +35,7 @@ export default {
     <button @click="toggleLeaderboard(false)" 
             :style="{ 
                 'background-color': !isWeekly ? '#22c55e' : '#1e1b4b', 
-                'color': !isWeekly ? '#000' : '#a29bfe',
+                'color': !isWeekly ? '#000' : '#dedcf9',
                 'border': !isWeekly ? '2px solid #4ade80' : '2px solid #4338ca',
                 'font-weight': 'bold',
                 'padding': '10px 20px',
