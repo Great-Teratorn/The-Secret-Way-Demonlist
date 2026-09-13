@@ -97,7 +97,7 @@
 
 
 
-/* LEADERBOARD MOBILE COMPACT LAYOUT */
+/* LEADERBOARD MOBILE - SCROLLABLE PLAYER LIST */
 @media (max-width: 768px) {
     .page-leaderboard {
         display: block;
@@ -105,37 +105,51 @@
         max-width: 100%;
     }
 
-    .page-leaderboard .board-container,
-    .page-leaderboard .player-container {
-        padding-block: 0.5rem;
-    }
-
+    /* Player list becomes a short scrollable panel */
     .page-leaderboard .board-container {
-        padding-inline: 0.5rem;
+        width: 100%;
+        max-width: 100%;
+        height: 35vh;
+        max-height: 35vh;
+        overflow-y: auto !important;
+        overflow-x: hidden;
+        padding: 0.5rem;
+        box-sizing: border-box;
+        border-bottom: 2px solid rgba(255, 255, 255, 0.1);
     }
 
-    /* Make each player row much shorter */
+    /* Keep the leaderboard table inside that panel */
+    .page-leaderboard .board {
+        width: 100%;
+        margin: 0;
+    }
+
+    /* Restore comfortable row sizing */
     .page-leaderboard .board .rank {
-        padding-block: 0.35rem;
-        padding-right: 0.4rem;
+        padding-block: 0.75rem;
+        padding-right: 0.5rem;
     }
 
     .page-leaderboard .board .total {
-        padding: 0.35rem 0.5rem;
+        padding: 0.75rem 0.5rem;
     }
 
     .page-leaderboard .board .user button {
-        padding: 0.5rem 0.7rem;
+        padding: 0.75rem;
     }
 
-    /* Slightly smaller text so more players fit on screen */
-    .page-leaderboard .board .type-label-lg {
-        font-size: 0.85rem;
-    }
-
-    /* Keep player details below the leaderboard */
+    /* Player details appear underneath the scrollable list */
     .page-leaderboard .player-container {
-        margin-top: 1rem;
+        width: 100%;
+        max-width: 100%;
+        padding-block: 1.5rem;
+        box-sizing: border-box;
+        overflow: visible !important;
+    }
+
+    .page-leaderboard .player {
+        width: 100%;
+        padding-right: 0.5rem;
+        box-sizing: border-box;
     }
 }
-
