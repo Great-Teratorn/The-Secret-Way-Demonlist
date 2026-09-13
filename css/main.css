@@ -988,3 +988,76 @@ nav a svg {
     }
 }
 
+
+@media screen and (min-width: 769px) {
+
+    /* =====================================================
+       NAVBAR: PREVENT CLIPPING
+       ===================================================== */
+
+    header {
+        overflow: visible !important;
+        box-sizing: border-box !important;
+    }
+
+    header .nav {
+        box-sizing: border-box !important;
+        overflow: visible !important;
+    }
+
+    /*
+     * Make the navigation itself sit above page content.
+     * This also gives the dropdown a clean stacking context.
+     */
+    header,
+    header .nav {
+        position: relative !important;
+        z-index: 10000 !important;
+    }
+
+
+    /* =====================================================
+       LISTS DROPDOWN: RESTORE CLICKABILITY
+       ===================================================== */
+
+    header .lists-dropdown {
+        position: relative !important;
+        z-index: 10001 !important;
+        pointer-events: auto !important;
+    }
+
+    header .dropdown-trigger {
+        position: relative !important;
+        z-index: 10002 !important;
+        pointer-events: auto !important;
+    }
+
+    header .dropdown-menu {
+        position: absolute !important;
+        z-index: 10003 !important;
+        pointer-events: auto !important;
+    }
+
+    header .lists-dropdown:hover .dropdown-menu {
+        display: block !important;
+        pointer-events: auto !important;
+    }
+
+
+    /* =====================================================
+       KEEP THE WELCOME SEARCH BELOW THE NAVBAR
+       ===================================================== */
+
+    .welcome-widgets-grid {
+        z-index: 1 !important;
+    }
+
+    .search-box {
+        z-index: 2 !important;
+    }
+
+    .search-suggestions-dropdown {
+        z-index: 4 !important;
+    }
+}
+
