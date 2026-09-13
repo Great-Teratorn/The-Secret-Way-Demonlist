@@ -1163,143 +1163,325 @@ nav a svg {
 
 
 /* =========================================================
-   FINAL NAVBAR COMPRESSION FIX
-   Keeps the entire navbar visible without overlapping items
+   NAVBAR — FINAL STRUCTURAL FIX
+   Works with the actual index.html navbar structure.
    ========================================================= */
 
-header .nav {
+/* Header contains TWO things: logo + nav.
+   Let them share the available width properly. */
+header {
     display: flex !important;
     align-items: center !important;
-    justify-content: space-between !important;
     width: 100% !important;
-    min-width: 0 !important;
-    height: 60px !important;
-    padding: 0 clamp(6px, 1.2vw, 20px) !important;
-    gap: clamp(4px, 0.8vw, 15px) !important;
     box-sizing: border-box !important;
+    min-width: 0 !important;
+    overflow: visible !important;
+
+    gap: 12px !important;
+}
+
+/* ---------------------------------------------------------
+   LEFT: TITLE + VERSION
+   --------------------------------------------------------- */
+
+header .logo {
+    flex: 0 1 auto !important;
+    min-width: 0 !important;
+
+    display: flex !important;
+    align-items: baseline !important;
+
+    gap: 7px !important;
+    white-space: nowrap !important;
+
+    margin: 0 !important;
+}
+
+header .logo h2 {
+    margin: 0 !important;
+    white-space: nowrap !important;
+    overflow: visible !important;
+
+    font-size: clamp(0.85rem, 1.25vw, 1.375rem) !important;
+    line-height: 1 !important;
+}
+
+header .logo p {
+    margin: 0 !important;
+    white-space: nowrap !important;
+
+    font-size: clamp(0.55rem, 0.7vw, 0.8rem) !important;
+    line-height: 1 !important;
+}
+
+
+/* ---------------------------------------------------------
+   RIGHT: NAV
+   --------------------------------------------------------- */
+
+header .nav {
+    flex: 1 1 auto !important;
+    width: auto !important;
+    min-width: 0 !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+
+    gap: clamp(2px, 0.55vw, 10px) !important;
+
+    padding: 0 !important;
+    box-sizing: border-box !important;
+
     overflow: visible !important;
 }
 
-/* Left-side navigation area */
-header .nav > * {
-    min-width: 0 !important;
-}
 
-/* Navigation tabs */
-header .nav__tab {
+/* ---------------------------------------------------------
+   NORMAL NAV TABS
+   --------------------------------------------------------- */
+
+header .nav > .nav__tab {
     flex: 0 1 auto !important;
-    flex-shrink: 1 !important;
     min-width: 0 !important;
+    flex-shrink: 1 !important;
+
+    height: 60px !important;
+
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
 
     padding-left: clamp(4px, 0.7vw, 10px) !important;
     padding-right: clamp(4px, 0.7vw, 10px) !important;
 
     white-space: nowrap !important;
-    overflow: hidden !important;
-    text-overflow: ellipsis !important;
-
-    height: 60px !important;
-    display: inline-flex !important;
-    align-items: center !important;
 }
 
-/* Text inside navigation tabs */
-header .nav__tab span {
-    font-size: clamp(0.68rem, 0.75vw, 1rem) !important;
+header .nav > .nav__tab span {
     white-space: nowrap !important;
-    overflow: hidden !important;
-    text-overflow: ellipsis !important;
+    font-size: clamp(0.68rem, 0.8vw, 1rem) !important;
 }
 
-/* Lists dropdown */
-header .lists-dropdown {
+
+/* ---------------------------------------------------------
+   LISTS DROPDOWN
+   --------------------------------------------------------- */
+
+header .nav .lists-dropdown {
     flex: 0 1 auto !important;
     min-width: 0 !important;
     flex-shrink: 1 !important;
-}
 
-header .dropdown-trigger {
-    padding-left: clamp(4px, 0.7vw, 14px) !important;
-    padding-right: clamp(4px, 0.7vw, 14px) !important;
-    white-space: nowrap !important;
-    flex-shrink: 1 !important;
-}
-
-/* Right-side controls */
-header .nav__actions {
     display: flex !important;
     align-items: center !important;
-    justify-content: flex-end !important;
+}
 
+header .nav .dropdown-trigger {
+    height: 60px !important;
+
+    padding-left: clamp(4px, 0.7vw, 14px) !important;
+    padding-right: clamp(4px, 0.7vw, 14px) !important;
+
+    white-space: nowrap !important;
+    flex-shrink: 1 !important;
+
+    transform: none !important;
+}
+
+header .nav .dropdown-trigger span {
+    white-space: nowrap !important;
+    font-size: clamp(0.68rem, 0.8vw, 1rem) !important;
+}
+
+
+/* ---------------------------------------------------------
+   RIGHT-SIDE ICONS + SUBMIT
+   --------------------------------------------------------- */
+
+header .nav .nav__actions {
+    flex: 0 0 auto !important;
+    flex-shrink: 0 !important;
+
+    display: flex !important;
+    align-items: center !important;
+
+    gap: clamp(4px, 0.6vw, 12px) !important;
+
+    min-width: max-content !important;
+}
+
+
+/* Keep the dark-mode and Discord icons from collapsing */
+header .nav .nav__actions .nav__icon {
+    flex: 0 0 auto !important;
+
+    width: 28px !important;
+    height: 28px !important;
+
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+
+/* Submit button can become slightly smaller */
+header .nav .nav__actions .nav__cta {
     flex: 0 1 auto !important;
     flex-shrink: 1 !important;
-    min-width: 0 !important;
 
-    gap: clamp(5px, 0.8vw, 15px) !important;
-}
+    font-size: clamp(0.6rem, 0.7vw, 1rem) !important;
 
-/* Submit button */
-header .nav__actions .nav_cta,
-header .nav__actions [class*="submit"],
-header .nav__actions .btn {
-    flex-shrink: 1 !important;
-    min-width: 0 !important;
-
-    padding-left: clamp(5px, 0.8vw, 14px) !important;
-    padding-right: clamp(5px, 0.8vw, 14px) !important;
-
-    font-size: clamp(0.62rem, 0.7vw, 1rem) !important;
+    padding-left: clamp(5px, 0.7vw, 14px) !important;
+    padding-right: clamp(5px, 0.7vw, 14px) !important;
 
     white-space: nowrap !important;
 }
 
-/* Discord / other icons */
-header .nav__actions a {
-    flex-shrink: 0 !important;
-}
 
-/* Version / small text */
-header .nav__actions span {
-    white-space: nowrap !important;
+/* ---------------------------------------------------------
+   YOUTUBE / TSWD IMAGE AT THE END OF NAV
+   --------------------------------------------------------- */
+
+header .nav > a[href*="youtube.com"] {
+    flex: 0 1 auto !important;
     flex-shrink: 1 !important;
+
     min-width: 0 !important;
+
+    margin-left: clamp(4px, 1vw, 20px) !important;
+    margin-right: 0 !important;
+
+    display: inline-flex !important;
+    align-items: center !important;
+
+    overflow: hidden !important;
 }
 
-/* Extra-tight desktop/F12 widths */
-@media screen and (min-width: 769px) and (max-width: 1200px) {
-    header .nav {
-        gap: 4px !important;
-        padding-left: 6px !important;
-        padding-right: 6px !important;
-    }
+header .nav > a[href*="youtube.com"] img {
+    width: clamp(75px, 10vw, 200px) !important;
+    height: auto !important;
 
-    header .nav__tab {
-        padding-left: 5px !important;
-        padding-right: 5px !important;
-    }
+    max-width: 100% !important;
 
-    header .dropdown-trigger {
-        padding-left: 5px !important;
-        padding-right: 5px !important;
-    }
+    object-fit: contain !important;
+    flex-shrink: 1 !important;
+}
 
-    header .nav__actions {
+
+/* =========================================================
+   NARROW DESKTOP / F12
+   ========================================================= */
+
+@media screen and (min-width: 769px) and (max-width: 1150px) {
+
+    header {
+        padding-left: 8px !important;
+        padding-right: 8px !important;
+
         gap: 6px !important;
     }
-}
 
-/* Very narrow F12 viewport */
-@media screen and (min-width: 769px) and (max-width: 1000px) {
-    header .nav__tab span {
-        font-size: 0.68rem !important;
+    header .nav {
+        gap: 2px !important;
     }
 
-    header .nav__actions .nav_cta,
-    header .nav__actions [class*="submit"],
-    header .nav__actions .btn {
+    header .logo {
+        gap: 4px !important;
+    }
+
+    header .logo h2 {
+        font-size: 0.9rem !important;
+    }
+
+    header .logo p {
+        font-size: 0.55rem !important;
+    }
+
+    header .nav > .nav__tab,
+    header .nav .dropdown-trigger {
+        padding-left: 4px !important;
+        padding-right: 4px !important;
+    }
+
+    header .nav > .nav__tab span,
+    header .nav .dropdown-trigger span {
+        font-size: 0.7rem !important;
+    }
+
+    header .nav .nav__actions {
+        gap: 4px !important;
+    }
+
+    header .nav .nav__actions .nav__icon {
+        width: 24px !important;
+        height: 24px !important;
+    }
+
+    header .nav .nav__actions .nav__cta {
         font-size: 0.62rem !important;
         padding-left: 6px !important;
         padding-right: 6px !important;
+    }
+
+    header .nav > a[href*="youtube.com"] {
+        margin-left: 5px !important;
+    }
+
+    header .nav > a[href*="youtube.com"] img {
+        width: 110px !important;
+    }
+}
+
+
+/* =========================================================
+   VERY NARROW F12 DESKTOP
+   ========================================================= */
+
+@media screen and (min-width: 769px) and (max-width: 900px) {
+
+    header {
+        gap: 4px !important;
+        padding-left: 5px !important;
+        padding-right: 5px !important;
+    }
+
+    header .logo h2 {
+        font-size: 0.78rem !important;
+    }
+
+    header .logo p {
+        font-size: 0.5rem !important;
+    }
+
+    header .nav > .nav__tab,
+    header .nav .dropdown-trigger {
+        padding-left: 2px !important;
+        padding-right: 2px !important;
+    }
+
+    header .nav > .nav__tab span,
+    header .nav .dropdown-trigger span {
+        font-size: 0.62rem !important;
+    }
+
+    header .nav .nav__actions {
+        gap: 3px !important;
+    }
+
+    header .nav .nav__actions .nav__icon {
+        width: 21px !important;
+        height: 21px !important;
+    }
+
+    header .nav .nav__actions .nav__cta {
+        font-size: 0.55rem !important;
+        padding-left: 4px !important;
+        padding-right: 4px !important;
+    }
+
+    header .nav > a[href*="youtube.com"] img {
+        width: 80px !important;
     }
 }
 
