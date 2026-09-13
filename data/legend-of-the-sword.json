@@ -8,6 +8,7 @@
     "verifier": "Liverlan",
     "verification": "https://youtu.be/IqeGFMreBRg?si=0zbfgO4gaKvnyRi0",
     "percentToQualify": 100,
+    "secret_way_at": 42,
 "password": "Password Required",
     "records": [ ]
 }

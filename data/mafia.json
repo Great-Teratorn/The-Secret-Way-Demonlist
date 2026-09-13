@@ -7,6 +7,6 @@
     ],
     "verifier": "Liverlan",
     "verification": "https://youtu.be/tb0TBjnVWjs",
-    "percentToQualify": 100,
+    "percentToQualify": 100,"secret_way_at": 20,
     "records": [ ]
 }
