@@ -449,6 +449,17 @@ dateFallen: level.dateFallen || null,
  * Other names in level.creators are Collaborators.
  */
 
+/*
+ * CREATORS / COLLABORATORS
+ *
+ * Keep ONE search entry per person.
+ * Each associated level stores its own role.
+ *
+ * IMPORTANT:
+ * This does not change the level JSON structure.
+ * It only changes how the search registry represents
+ * people who are creators and/or collaborators.
+ */
 var creators = [];
 
 if (Array.isArray(level.creators)) {
@@ -476,19 +487,79 @@ creators.forEach(function(creator) {
         ? 'Creator'
         : 'Collaborator';
 
+    /*
+     * Find the person regardless of whether their existing
+     * search entry was originally created as a Creator or
+     * Collaborator.
+     */
     var existingPerson =
         masterSearchRegistry.find(function(item) {
 
-            return item.type === creatorType &&
+            return (
+                (item.type === 'Creator' ||
+                 item.type === 'Collaborator') &&
                 item.name.toLowerCase() ===
-                creator.toLowerCase();
+                creator.toLowerCase()
+            );
 
         });
 
+    /*
+     * Information about this person's relationship with
+     * this particular level.
+     */
+    var levelChoice = {
+        levelName: level.name,
+        role: creatorType,
+        route:
+            primaryType === 'Removed'
+                ? '/removed'
+                : primaryType === 'Extended'
+                    ? '/extended'
+                    : primaryType === 'Unverified'
+                        ? '/unverified'
+                        : primaryType === 'Anomalies'
+                            ? '/anomalies'
+                            : '/list'
+    };
+
     if (existingPerson) {
 
+        /*
+         * Add this level only once.
+         */
+        var alreadyExists =
+            Array.isArray(existingPerson.levelChoices) &&
+            existingPerson.levelChoices.some(function(choice) {
+
+                return (
+                    choice.levelName.toLowerCase() ===
+                    level.name.toLowerCase()
+                );
+
+            });
+
+        if (!alreadyExists) {
+
+            existingPerson.levelChoices.push(levelChoice);
+
+        }
+
+        /*
+         * Keep the existing levelNames array as well.
+         *
+         * This preserves compatibility with the existing
+         * search/navigation behaviour elsewhere in this file.
+         */
         if (
-            Array.isArray(existingPerson.levelNames) &&
+            !Array.isArray(existingPerson.levelNames)
+        ) {
+
+            existingPerson.levelNames = [];
+
+        }
+
+        if (
             existingPerson.levelNames.indexOf(level.name) === -1
         ) {
 
@@ -498,29 +569,31 @@ creators.forEach(function(creator) {
 
     } else {
 
+        /*
+         * The first associated level remains the existing
+         * default navigation target.
+         */
         masterSearchRegistry.push({
 
             name: creator,
 
-            type: creatorType,
+            /*
+             * Keep Creator as the primary search type so
+             * existing creator navigation continues to work.
+             */
+            type: 'Creator',
 
             creatorRole: creatorType,
 
-            route:
-    primaryType === 'Removed'
-        ? '/removed'
-        : primaryType === 'Extended'
-            ? '/extended'
-            : primaryType === 'Unverified'
-                ? '/unverified'
-                : primaryType === 'Anomalies'
-                    ? '/anomalies'
-                    : '/list',
-
+            route: levelChoice.route,
 
             levelName: level.name,
 
-            levelNames: [level.name]
+            levelNames: [level.name],
+
+            levelChoices: [levelChoice],
+
+            creatorLevelDropdownOpen: false
 
         });
 
@@ -946,37 +1019,62 @@ if (
 
 
         /*
-         * CREATOR LEVEL CHOICES
-         *
-         * Show the creator's associated levels directly underneath
-         * the Creator result.
-         */
-        if (
-        (item.type === 'Creator' || item.type === 'Collaborator') &&
-        Array.isArray(item.levelNames)
-        ) {
+ * CREATOR / COLLABORATOR LEVEL CHOICES
+ *
+ * Levels are now hidden by default and can be expanded
+ * using the ▼ / ▲ triangle.
+ *
+ * The person's main row remains responsible for the
+ * existing navigation behaviour.
+ */
+if (
+    (item.type === 'Creator' || item.type === 'Collaborator') &&
+    Array.isArray(item.levelChoices) &&
+    item.levelChoices.length > 0
+) {
 
+    /*
+     * The level choices are deliberately hidden initially.
+     * They are rendered here so the dropdown can be opened
+     * without changing the existing search-result structure.
+     */
+    html +=
+        '<div class="creator-level-dropdown" ' +
+        'data-creator-dropdown="' + safeName + '" ' +
+        'style="display:none !important; background:#101018 !important;">';
 
-            item.levelNames.forEach(function(levelName) {
+    item.levelChoices.forEach(function(choice) {
 
-                var safeLevelName = levelName
-                    .replace(/\\/g, '\\\\')
-                    .replace(/'/g, "\\'");
+        var safeLevelName = choice.levelName
+            .replace(/\\/g, '\\\\')
+            .replace(/'/g, "\\'");
 
-                html +=
-                    '<div class="creator-level-row" ' +
-                    'data-search-name="' + safeLevelName + '" ' +
-                    'data-search-type="Level" ' +
-                    'onclick="window.selectSearchResult(this)" ' +
-                    'style="display:flex !important; padding:9px 16px 9px 32px !important; cursor:pointer !important; background:#101018 !important; border-bottom:1px solid rgba(255,255,255,0.03) !important; text-align:left !important;">' +
+        var safeRole = choice.role
+            .replace(/\\/g, '\\\\')
+            .replace(/'/g, "\\'");
 
-                    '<span style="color:#fff !important; font-size:0.82rem !important;">' +
-                    levelName +
-                    '</span>' +
+        html +=
+            '<div class="creator-level-row" ' +
+            'data-search-name="' + safeLevelName + '" ' +
+            'data-search-type="Level" ' +
+            'onclick="window.selectSearchResult(this)" ' +
+            'style="display:flex !important; align-items:center !important; justify-content:space-between !important; padding:9px 16px 9px 32px !important; cursor:pointer !important; background:#101018 !important; border-bottom:1px solid rgba(255,255,255,0.03) !important; text-align:left !important;">' +
 
-                    '</div>';
-            });
-        }
+            '<span style="color:#fff !important; font-size:0.82rem !important;">' +
+            choice.levelName +
+            '</span>' +
+
+            '<span style="color:#00e676 !important; font-size:0.65rem !important; font-weight:bold !important; text-transform:uppercase !important; background:rgba(0,230,118,0.10) !important; padding:2px 6px !important; border-radius:4px !important;">' +
+            choice.role +
+            '</span>' +
+
+            '</div>';
+
+    });
+
+    html += '</div>';
+}
+
     });
 
     dropdown.innerHTML = html;
