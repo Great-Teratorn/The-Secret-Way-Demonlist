@@ -1748,8 +1748,14 @@ if (removedPlayerTarget && removedPlayerLevelsRaw) {
                     return;
                 }
 
-                var levelName =
-                    button.textContent.trim().toLowerCase();
+                var nameElement =
+    button.querySelector('.type-label-lg');
+
+var levelName =
+    nameElement
+        ? nameElement.textContent.trim().toLowerCase()
+        : button.textContent.trim().toLowerCase();
+
 
                 var matched =
                     removedPlayerLevels.some(function(name) {
