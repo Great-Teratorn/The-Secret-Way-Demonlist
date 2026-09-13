@@ -40,7 +40,7 @@ main {
     color: var(--color-on-background);
     display: grid;
     grid-template-columns: minmax(16rem, 1fr) minmax(16rem, 2fr) minmax(
-            16em,
+            16rem,
             1fr
         );
     column-gap: 2rem;
@@ -53,12 +53,14 @@ header {
     background-color: var(--color-primary);
     color: var(--color-on-primary);
 }
+
 @media screen and (min-width: 1366px) {
     header {
         display: grid;
         padding-inline: 0;
     }
 }
+
 header .logo {
     justify-self: end;
     align-self: center;
@@ -66,10 +68,11 @@ header .logo {
     align-items: flex-end;
     gap: 1rem;
 }
+
 header {
     width: 100% !important;
     height: 60px !important;
-    background-color: #140f23; /* Dark purple base matching your theme */
+    background-color: #140f23;
 }
 
 header .nav {
@@ -82,10 +85,9 @@ header .nav {
     box-sizing: border-box !important;
 }
 
-/* Give the tabs group breathing room and align them perfectly */
 header .nav__tab {
     padding: 0 10px !important;
-    height: 60px !important; /* Force full header height */
+    height: 60px !important;
     display: inline-flex !important;
     align-items: center !important;
     text-decoration: none !important;
@@ -96,7 +98,6 @@ header .nav__tab span {
     white-space: nowrap !important;
 }
 
-/* Fix right-side items (counter, discord, submit button) spacing */
 header .nav__actions {
     display: flex !important;
     align-items: center !important;
@@ -104,17 +105,12 @@ header .nav__actions {
     height: 100% !important;
 }
 
-/* Push the white highlight line to the absolute bottom of the purple bar */
 header .nav__underline {
     position: absolute !important;
-    bottom: 0 !important; /* Locks it to the absolute bottom border */
+    bottom: 0 !important;
     height: 3px !important;
     background-color: #fff !important;
 }
-
-
-
-
 
 main {
     height: 0;
@@ -123,6 +119,7 @@ main {
     grid-template-rows: minmax(0, 1fr);
     column-gap: 2rem;
 }
+
 main > div {
     overflow-y: auto;
 }
@@ -143,56 +140,109 @@ input[type="checkbox"] {
 
 
 /* FULL CUSTOM SPLATTER BACKGROUND */
-body, main, #app, .main, .content, #app-container, .main-panel {
+
+body,
+main,
+#app,
+.main,
+.content,
+#app-container,
+.main-panel {
     background-image: url('../assets/stripes-background.avif') !important;
-    background-size: cover !important; /* Stretches the image to fill the screen */
-    background-position: center !important; /* Centers the paint strokes */
-    background-repeat: no-repeat !important; /* Prevents awkward repeating tiling */
-    background-attachment: fixed !important; /* Keeps the paint static when scrolling the levels list */
-    background-color: #050505 !important; /* Solid black backup color */
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    background-attachment: fixed !important;
+    background-color: #050505 !important;
     color: #ffffff !important;
 }
 
 
+/* TITLE SIZE & SUBMIT BUTTON */
 
-/* ADJUSTED TITLE SIZE & SUBMIT BUTTON RESTORATION */
 header nav > h2:first-of-type,
 header h2:first-child {
     color: #00ff66 !important;
-    font-size: 22px !important; /* Slightly increased size for better visibility */
+    font-size: 22px !important;
     font-weight: bold !important;
     text-shadow: 0 0 10px rgba(0, 255, 102, 0.6) !important;
 }
 
-/* RESTORE BUTTONS AND TABS FROM PREVIOUS CASCADES */
-header nav a, 
-header nav button, 
+header nav a,
+header nav button,
 header nav span {
-    font-size: 1rem !important; /* Keeps links and buttons at normal clean sizing */
+    font-size: 1rem !important;
     text-shadow: none !important;
 }
 
 
+/* STAFF AVATARS */
 
-main+aside ul li:nth-child(1) img,.editors li:nth-child(1) img,aside ul li:nth-child(1) img{content:url('../assets/mybmw.webp')!important;border-radius:50%!important;width:20px!important;height:20px!important;} main+aside ul li:nth-child(2) img,.editors li:nth-child(2) img,aside ul li:nth-child(2) img{content:url('https://cdn.discordapp.com/avatars/619710762436526090/86d787a0df112488216ffeb131ccc45b.webp?size=1280')!important;border-radius:50%!important;width:20px!important;height:20px!important;} main+aside ul li:nth-child(3) img,.editors li:nth-child(3) img,aside ul li:nth-child(3) img{content:url('https://cdn.discordapp.com/avatars/1108998428727464008/649e98aba64bfb939c3f8bf87be37faf.webp?size=1280')!important;border-radius:50%!important;width:20px!important;height:20px!important;} main+aside ul li:nth-child(4) img,.editors li:nth-child(4) img,aside ul li:nth-child(4) img{content:url('https://cdn.discordapp.com/avatars/1273658996611350622/09614e65f006d9dd5b85c4ab5080cd40.webp?size=1280')!important;border-radius:50%!important;width:20px!important;height:20px!important;} main+aside ul li:nth-child(5) img,.editors li:nth-child(5) img,aside ul li:nth-child(5) img{content:url('https://cdn.discordapp.com/avatars/1421471791297331272/552ff00423186e98fa4e107ef8f7180d.webp?size=1280')!important;border-radius:50%!important;width:20px!important;height:20px!important;} main+aside ul li:nth-child(6) img,.editors li:nth-child(6) img,aside ul li:nth-child(6) img{content:url('https://cdn.discordapp.com/avatars/882380867325005895/9779daa7d16a3de8a65bbf7a4ad114da.webp?size=1280')!important;border-radius:50%!important;width:20px!important;height:20px!important;}
+main+aside ul li:nth-child(1) img,
+.editors li:nth-child(1) img,
+aside ul li:nth-child(1) img {
+    content: url('../assets/mybmw.webp') !important;
+    border-radius: 50% !important;
+    width: 20px !important;
+    height: 20px !important;
+}
 
+main+aside ul li:nth-child(2) img,
+.editors li:nth-child(2) img,
+aside ul li:nth-child(2) img {
+    content: url('https://cdn.discordapp.com/avatars/619710762436526090/86d787a0df112488216ffeb131ccc45b.webp?size=1280') !important;
+    border-radius: 50% !important;
+    width: 20px !important;
+    height: 20px !important;
+}
 
+main+aside ul li:nth-child(3) img,
+.editors li:nth-child(3) img,
+aside ul li:nth-child(3) img {
+    content: url('https://cdn.discordapp.com/avatars/1108998428727464008/649e98aba64bfb939c3f8bf87be37faf.webp?size=1280') !important;
+    border-radius: 50% !important;
+    width: 20px !important;
+    height: 20px !important;
+}
 
+main+aside ul li:nth-child(4) img,
+.editors li:nth-child(4) img,
+aside ul li:nth-child(4) img {
+    content: url('https://cdn.discordapp.com/avatars/1273658996611350622/09614e65f006d9dd5b85c4ab5080cd40.webp?size=1280') !important;
+    border-radius: 50% !important;
+    width: 20px !important;
+    height: 20px !important;
+}
 
+main+aside ul li:nth-child(5) img,
+.editors li:nth-child(5) img,
+aside ul li:nth-child(5) img {
+    content: url('https://cdn.discordapp.com/avatars/1421471791297331272/552ff00423186e98fa4e107ef8f7180d.webp?size=1280') !important;
+    border-radius: 50% !important;
+    width: 20px !important;
+    height: 20px !important;
+}
+
+main+aside ul li:nth-child(6) img,
+.editors li:nth-child(6) img,
+aside ul li:nth-child(6) img {
+    content: url('https://cdn.discordapp.com/avatars/882380867325005895/9779daa7d16a3de8a65bbf7a4ad114da.webp?size=1280') !important;
+    border-radius: 50% !important;
+    width: 20px !important;
+    height: 20px !important;
+}
 
 
 /* =======================================================
-   🎨 VUE-ROUTER DROPDOWN HOVER CONTAINER
+   VUE-ROUTER DROPDOWN
    ======================================================= */
 
-/* Position the relative trigger block */
 .lists-dropdown {
     position: relative;
     display: inline-block;
     align-self: center;
 }
 
-/* Style the dropdown trigger to seamlessly look like a native navbar item */
 .dropdown-trigger {
     background: transparent;
     border: none;
@@ -210,24 +260,22 @@ main+aside ul li:nth-child(1) img,.editors li:nth-child(1) img,aside ul li:nth-c
     color: #ffffff;
 }
 
-/* The popup box structure holding your Vue links */
 .dropdown-menu {
-    display: none; /* Invisible by default */
+    display: none;
     position: absolute;
     top: 100%;
     left: 50%;
     transform: translateX(-50%);
-    background-color: #1a0033; /* Dark theme matching background container color */
+    background-color: #1a0033;
     min-width: 150px;
     box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.6);
     border-radius: 6px;
     border: 1px solid rgba(255, 255, 255, 0.1);
-    z-index: 9999 !important; /* Locks the box above video or view panels */
+    z-index: 9999 !important;
     overflow: hidden;
     padding: 4px 0;
 }
 
-/* Format your custom router links inside the menu popup box */
 .dropdown-menu .dropdown-item {
     color: rgba(255, 255, 255, 0.8) !important;
     padding: 10px 16px !important;
@@ -239,35 +287,34 @@ main+aside ul li:nth-child(1) img,.editors li:nth-child(1) img,aside ul li:nth-c
     transition: background-color 0.15s;
 }
 
-/* Highlights the item selection when hovered over */
 .dropdown-menu .dropdown-item:hover {
-    background-color: #5200cc !important; /* Your vibrant deep purple color choice */
+    background-color: #5200cc !important;
     color: #ffffff !important;
 }
 
-/* MAGIC HOVER TRIGGER: Opens the menu immediately on mouse hover */
 .lists-dropdown:hover .dropdown-menu {
     display: block;
 }
 
-/* Rotates the pointer arrow icon vertically on hover */
 .lists-dropdown:hover .dropdown-trigger .arrow {
     transform: rotate(180deg);
 }
 
 
-
 /* =======================================================
-   🏁 COMPLETE FIXED NAVBAR: PERFECT LINE-ALIGNMENT 🏁
+   COMPLETE NAVBAR
    ======================================================= */
 
-/* 1. Ensure the overall bar background is clean vibrant purple */
-header, nav, .nav, .nav-container, .nav__container, [class*="nav"] {
+header,
+nav,
+.nav,
+.nav-container,
+.nav__container,
+[class*="nav"] {
     background-color: #6200ea !important;
     background: #6200ea !important;
 }
 
-/* 2. PERFECT STRIP ALIGNMENT FOR THE "LISTS ▼" DROPDOWN TAB */
 .dropdown-trigger {
     color: rgba(255, 255, 255, 0.7) !important;
     background: transparent !important;
@@ -282,20 +329,19 @@ header, nav, .nav, .nav-container, .nav__container, [class*="nav"] {
     gap: 4px !important;
     padding: 0 14px !important;
     height: 100% !important;
-    transform: translateY(-8px) !important; /* Nudges Lists slightly higher to lock into a straight line with Welcome */
+    transform: translateY(-8px) !important;
 }
 
 .dropdown-trigger:hover {
     color: #ffffff !important;
 }
 
-/* 3. ULTRASONIC FORCE FOR THE SOLID WHITE SUBMIT RECORD BUTTON */
 .nav_cta,
-[class*="submit"], 
+[class*="submit"],
 .btn {
-    background-color: #ffffff !important; /* Forces solid white background */
+    background-color: #ffffff !important;
     background: #ffffff !important;
-    color: #4A148C !important; /* Forces rich dark purple text color so it is 100% visible */
+    color: #4A148C !important;
     padding: 5px 14px !important;
     border-radius: 4px !important;
     font-weight: 700 !important;
@@ -309,17 +355,18 @@ header, nav, .nav, .nav-container, .nav__container, [class*="nav"] {
     box-sizing: border-box !important;
 }
 
-/* 4. BALANCED COOLDOWN ALIGNMENT FOR DISCORD GRAPHIC VECTOR */
-.nav__right a[href*="discord"], .nav__right svg, nav a svg {
-    transform: translateY(2px) !important; /* Lowers the Discord icon slightly so it sits dead-center */
+.nav__right a[href*="discord"],
+.nav__right svg,
+nav a svg {
+    transform: translateY(2px) !important;
     display: inline-flex !important;
     align-items: center !important;
 }
 
 
-
-
-
+/* =======================================================
+   WELCOME PAGE WIDGETS
+   ======================================================= */
 
 .welcome-widgets-grid {
     display: flex !important;
@@ -331,13 +378,6 @@ header, nav, .nav, .nav-container, .nav__container, [class*="nav"] {
     padding: 0 15px !important;
     box-sizing: border-box !important;
     gap: 20px !important;
-
-    /*
-     * IMPORTANT:
-     * Keep the search widget below the navbar/dropdown in the stacking
-     * order. This prevents the invisible/positioned search area from
-     * intercepting clicks on the Lists dropdown.
-     */
     position: relative !important;
     z-index: 1 !important;
     pointer-events: auto !important;
@@ -367,7 +407,11 @@ header, nav, .nav, .nav-container, .nav__container, [class*="nav"] {
     letter-spacing: 0.5px !important;
 }
 
-/* SEARCH BOX ENCLOSURE ROOT */
+
+/* =======================================================
+   SEARCH BOX
+   ======================================================= */
+
 .search-box {
     position: relative !important;
     display: inline-flex !important;
@@ -378,11 +422,6 @@ header, nav, .nav, .nav-container, .nav__container, [class*="nav"] {
     background: rgba(255, 255, 255, 0.05) !important;
     width: 40px !important;
     max-width: 40px !important;
-
-    /*
-     * The search itself stays above the Welcome-page content,
-     * but NOT above the navbar/dropdown.
-     */
     z-index: 2 !important;
     pointer-events: auto !important;
 }
@@ -427,16 +466,13 @@ header, nav, .nav, .nav-container, .nav__container, [class*="nav"] {
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
-
-    /*
-     * Keep this local to the search widget.
-     * Do not use an enormous z-index here.
-     */
     z-index: 3 !important;
     pointer-events: auto !important;
 }
 
-/* HIGH-PRIORITY SEARCH RESULTS */
+
+/* SEARCH RESULTS */
+
 .search-suggestions-dropdown {
     position: absolute !important;
     top: 45px !important;
@@ -447,13 +483,7 @@ header, nav, .nav, .nav-container, .nav__container, [class*="nav"] {
     border: 1px solid rgba(255, 255, 255, 0.2) !important;
     border-radius: 8px !important;
     box-shadow: 0 12px 36px rgba(0, 0, 0, 0.9) !important;
-
-    /*
-     * This only controls the search suggestions relative to the
-     * search box. It cannot jump above the navbar.
-     */
     z-index: 4 !important;
-
     max-height: 250px !important;
     overflow-y: auto !important;
 }
@@ -490,70 +520,13 @@ header, nav, .nav, .nav-container, .nav__container, [class*="nav"] {
 }
 
 
-
-
 /* =======================================================
-   MOBILE SEARCH BAR FIXES
+   NARROW DESKTOP / DEVTOOLS FIX
+   769px - 1100px
    ======================================================= */
-@media (max-width: 768px) {
-
-    /* COLLAPSED SEARCH:
-       Remove the faint background "circle" around the icon */
-    .search-box:not(.active) {
-        background: transparent !important;
-        border: none !important;
-        width: 40px !important;
-        max-width: 40px !important;
-        padding: 0 !important;
-    }
-
-    .search-box:not(.active) input {
-        display: none !important;
-    }
-
-    /* Keep only the actual magnifying-glass button visible */
-    .search-box:not(.active) .search-btn {
-        background: transparent !important;
-        width: 40px !important;
-        height: 40px !important;
-        right: 0 !important;
-    }
-
-    /* EXPANDED SEARCH:
-       Give the text more usable room */
-    .search-box.active {
-        width: min(320px, calc(100vw - 30px)) !important;
-        max-width: calc(100vw - 30px) !important;
-        box-sizing: border-box !important;
-    }
-
-    .search-box.active input {
-        min-width: 0 !important;
-        box-sizing: border-box !important;
-        padding: 0 45px 0 10px !important;
-        font-size: 0.85rem !important;
-    }
-
-    /* Make sure the placeholder can use the available width */
-    .search-box.active input::placeholder {
-        opacity: 1 !important;
-        color: rgba(255, 255, 255, 0.65) !important;
-        white-space: nowrap !important;
-    }
-}
-
-@media (max-width: 768px) {
-    .search-box.active input {
-        font-size: 0.78rem !important;
-        padding-left: 6px !important;
-        padding-right: 42px !important;
-    }
-}
-
 
 @media screen and (max-width: 1100px) and (min-width: 769px) {
 
-    /* Give the navbar a little more usable horizontal space */
     header {
         padding-inline: 10px !important;
         box-sizing: border-box !important;
@@ -561,38 +534,53 @@ header, nav, .nav, .nav-container, .nav__container, [class*="nav"] {
 
     header .nav {
         padding: 0 8px !important;
-        gap: 6px !important;
+        gap: 4px !important;
+        overflow: visible !important;
     }
 
-    /* Stop the site title from wrapping into multiple lines */
+    /* Keep the site title on one line */
     header nav > h2:first-of-type,
     header h2:first-child {
         white-space: nowrap !important;
         font-size: 17px !important;
         line-height: 1 !important;
-    }
-
-    /* Keep the navigation tabs compact */
-    header .nav__tab {
-        padding: 0 6px !important;
-    }
-
-    header .nav__tab span {
-        font-size: 0.78rem !important;
-    }
-
-    /* Reduce spacing between the right-side controls */
-    header .nav__actions {
-        gap: 7px !important;
-    }
-
-    /* Keep the version/counter from being pushed downward */
-    header .nav__actions > * {
-        white-space: nowrap !important;
         flex-shrink: 1 !important;
     }
 
-    /* Compact the submit button slightly */
+    /* Keep navigation buttons separate rather than overlapping */
+    header .nav__tab,
+    .lists-dropdown {
+        flex-shrink: 0 !important;
+        white-space: nowrap !important;
+    }
+
+    header .nav__tab {
+        padding-inline: 5px !important;
+    }
+
+    header .nav__tab span {
+        font-size: 0.72rem !important;
+        white-space: nowrap !important;
+    }
+
+    .dropdown-trigger {
+        padding-inline: 5px !important;
+        font-size: 0.72rem !important;
+        white-space: nowrap !important;
+        transform: translateY(-8px) !important;
+    }
+
+    /* Keep right-side controls visible */
+    header .nav__actions {
+        gap: 5px !important;
+        flex-shrink: 0 !important;
+    }
+
+    header .nav__actions > * {
+        white-space: nowrap !important;
+    }
+
+    /* Compact submit button */
     .nav_cta,
     [class*="submit"],
     .btn {
@@ -600,106 +588,49 @@ header, nav, .nav, .nav-container, .nav__container, [class*="nav"] {
         font-size: 0.72rem !important;
     }
 
-    /* Keep the Lists dropdown compact */
-    .dropdown-trigger {
-        padding: 0 7px !important;
-        font-size: 0.78rem !important;
-        white-space: nowrap !important;
-    }
-}
 
-
-@media screen and (max-width: 1100px) and (min-width: 769px) {
+    /* ===================================================
+       NARROW DESKTOP LEVEL LIST
+       =================================================== */
 
     .page-list .list-container {
         padding-inline: 0.5rem !important;
     }
 
+    .page-list .list tr {
+        min-height: 3rem !important;
+        height: auto !important;
+        align-items: center !important;
+        overflow: visible !important;
+    }
+
     .page-list .list .rank {
         padding-right: 0.5rem !important;
         flex-shrink: 0 !important;
+        line-height: 1.4 !important;
     }
 
     .page-list .list .level {
         min-width: 0 !important;
-        overflow: hidden !important;
+        overflow: visible !important;
     }
 
     .page-list .list .level button {
         min-width: 0 !important;
-        overflow: hidden !important;
-    }
-
-    .page-list .list .level button .type-label-lg {
-        min-width: 0 !important;
-        overflow: hidden !important;
-        text-overflow: ellipsis !important;
-        white-space: nowrap !important;
-    }
-}
-
-
-@media screen and (max-width: 1100px) and (min-width: 769px) {
-
-    header .nav {
-        min-width: 0 !important;
-        overflow: hidden !important;
-    }
-
-    /* Allow the left/centre navigation groups to shrink */
-    header .nav > * {
-        min-width: 0 !important;
-    }
-
-    header .nav__tab,
-    .lists-dropdown {
-        flex-shrink: 1 !important;
-        min-width: 0 !important;
-    }
-
-    /* Slightly tighter spacing */
-    header .nav__tab {
-        padding-inline: 4px !important;
-    }
-
-    header .nav__tab span {
-        font-size: 0.72rem !important;
-    }
-
-    .dropdown-trigger {
-        padding-inline: 5px !important;
-        font-size: 0.72rem !important;
-    }
-
-    /* Keep the site title intact */
-    header nav > h2:first-of-type,
-    header h2:first-child {
-        flex-shrink: 1 !important;
-        min-width: 0 !important;
-        font-size: 16px !important;
-    }
-
-    /* Don't let the right side force the entire navbar wider */
-    header .nav__actions {
-        min-width: 0 !important;
-        flex-shrink: 1 !important;
-        gap: 5px !important;
-    }
-}
-
-
-@media screen and (max-width: 1100px) and (min-width: 769px) {
-
-    .page-list .list .level button {
-        min-width: 0 !important;
-        padding: 0.75rem !important;
+        min-height: 2.75rem !important;
+        height: auto !important;
+        padding: 0.75rem 1rem !important;
+        line-height: 1.4 !important;
+        overflow: visible !important;
+        box-sizing: border-box !important;
     }
 
     .page-list .list .level button > span:first-child {
         min-width: 0 !important;
-        overflow: hidden !important;
-        text-overflow: ellipsis !important;
-        white-space: nowrap !important;
+        line-height: 1.4 !important;
+        overflow: visible !important;
+        white-space: normal !important;
+        overflow-wrap: anywhere !important;
     }
 
     .page-list .list .level button .type-label-sm {
@@ -709,5 +640,299 @@ header, nav, .nav, .nav-container, .nav__container, [class*="nav"] {
 }
 
 
+/* =======================================================
+   MASTER DEMONLIST MOBILE RESPONSIVENESS
+   ======================================================= */
+
+@media (max-width: 768px) {
+
+    /* Layout */
+
+    .root,
+    #app,
+    main,
+    .page-list {
+        display: flex !important;
+        flex-direction: column !important;
+        padding: 5px !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    .g-layout,
+    .panel,
+    .surface,
+    .main-content,
+    div[style*="max-width: 1000px"] {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 10px 0 !important;
+        padding: 12px !important;
+        box-sizing: border-box !important;
+    }
 
 
+    /* Navigation */
+
+    .nav,
+    nav,
+    .header,
+    .nav-bar,
+    .nav__actions,
+    .nav-content,
+    [class*="nav"] {
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: wrap !important;
+        gap: 6px !important;
+        height: auto !important;
+        min-height: unset !important;
+        max-height: unset !important;
+        padding: 10px 5px !important;
+        justify-content: center !important;
+        align-items: center !important;
+        width: 100% !important;
+        position: relative !important;
+        top: 0 !important;
+        left: 0 !important;
+        transform: none !important;
+        float: none !important;
+    }
+
+    .nav__title,
+    .nav__logo,
+    [class*="logo"],
+    [class*="title"] {
+        position: relative !important;
+        margin: 5px auto !important;
+        text-align: center !important;
+        width: 100% !important;
+        display: block !important;
+    }
+
+    .nav a,
+    nav a,
+    .nav__link,
+    .button,
+    .submit-record-btn,
+    [class*="link"],
+    [class*="btn"] {
+        font-size: 0.7rem !important;
+        padding: 5px 8px !important;
+        white-space: nowrap !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        margin: 2px !important;
+        border-radius: 4px !important;
+        height: auto !important;
+        width: auto !important;
+        position: relative !important;
+        transform: none !important;
+    }
+
+    .nav nav,
+    .nav__sub,
+    div[style*="grid"],
+    .nav-bar ul {
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: wrap !important;
+        gap: 8px !important;
+        justify-content: center !important;
+        align-items: center !important;
+        margin: 10px 0 !important;
+        padding: 0 !important;
+        position: relative !important;
+        height: auto !important;
+    }
+
+    .nav nav a,
+    .nav__sub a {
+        margin: 4px !important;
+        font-size: 0.75rem !important;
+        z-index: 5 !important;
+    }
+
+    header,
+    .header,
+    nav,
+    .nav,
+    .nav-bar,
+    .nav-container {
+        position: static !important;
+        height: auto !important;
+        max-height: unset !important;
+        min-height: unset !important;
+        pointer-events: auto !important;
+    }
+
+
+    /* Main content */
+
+    .root,
+    #app,
+    main,
+    .page-list,
+    .main-content,
+    .content,
+    .g-layout {
+        position: relative !important;
+        height: auto !important;
+        min-height: 100vh !important;
+        overflow-y: visible !important;
+    }
+
+
+    /* Remove full-screen overlays */
+
+    div[style*="position: fixed"],
+    div[style*="position: absolute"] {
+        position: relative !important;
+        height: auto !important;
+    }
+
+
+    /* ===================================================
+       LEADERBOARD MOBILE
+       =================================================== */
+
+    .page-leaderboard,
+    div[v-if="selected !== null"],
+    .player-container {
+        display: flex !important;
+        flex-direction: column !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        height: auto !important;
+        min-height: unset !important;
+        margin: 15px 0 !important;
+        box-sizing: border-box !important;
+    }
+
+    .player-details,
+    .right-panel,
+    div[style*="flex-grow"] {
+        width: 100% !important;
+        max-width: 100% !important;
+        display: block !important;
+        margin-top: 25px !important;
+        padding: 15px !important;
+        box-sizing: border-box !important;
+        height: auto !important;
+    }
+
+
+    /* ===================================================
+       ROULETTE MOBILE
+       =================================================== */
+
+    .page-roulette,
+    div[v-if="view == 'roulette'"],
+    div[style*="grid-template-columns"],
+    .roulette-container {
+        display: flex !important;
+        flex-direction: column !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        height: auto !important;
+        box-sizing: border-box !important;
+    }
+
+    .roulette-card,
+    .level-card,
+    div[v-if="started"] {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin-top: 30px !important;
+        padding: 15px !important;
+        box-sizing: border-box !important;
+        height: auto !important;
+    }
+
+    .roulette-buttons,
+    .roulette-inputs {
+        display: flex !important;
+        flex-wrap: wrap !important;
+        gap: 8px !important;
+        justify-content: center !important;
+        width: 100% !important;
+    }
+
+
+    /* ===================================================
+       MOBILE OVERFLOW PROTECTION
+       =================================================== */
+
+    body,
+    html {
+        overflow-x: hidden !important;
+        width: 100% !important;
+    }
+
+
+    /* ===================================================
+       MOBILE LIST CONTAINER
+       =================================================== */
+
+    .g-layout > div:first-child,
+    .list-container,
+    .list {
+        max-height: 35vh !important;
+        overflow-y: auto !important;
+        border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+        padding-right: 5px !important;
+    }
+
+    .g-layout > div:first-child::-webkit-scrollbar,
+    .list-container::-webkit-scrollbar,
+    .list::-webkit-scrollbar {
+        width: 6px;
+    }
+
+    .g-layout > div:first-child::-webkit-scrollbar-thumb,
+    .list-container::-webkit-scrollbar-thumb,
+    .list::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 4px;
+    }
+
+
+    /* ===================================================
+       MOBILE SEARCH
+       =================================================== */
+
+    /* Remove the faint collapsed search background */
+    .search-box:not(.active) {
+        background: transparent !important;
+        border: none !important;
+        width: 40px !important;
+        max-width: 40px !important;
+        padding: 0 !important;
+    }
+
+    /* Hide the invisible input while collapsed */
+    .search-box:not(.active) input {
+        display: none !important;
+    }
+
+    /* Keep only the magnifying glass visible */
+    .search-box:not(.active) .search-btn {
+        background: transparent !important;
+        width: 40px !important;
+        height: 40px !important;
+        right: 0 !important;
+    }
+
+    /* Expanded search remains responsive */
+    .search-box.active {
+        width: min(320px, calc(100vw - 30px)) !important;
+        max-width: calc(100vw - 30px) !important;
+        box-sizing: border-box !important;
+    }
+
+    .search-box.active input {
+        min-width: 0 !important;
+        box-sizing: border-box !important;
+    }
+}
