@@ -10,5 +10,9 @@
     "verification": "https://youtu.be/QBQmS3GKdfg?si=wzoPAMr8kme1l3zi&t=16",
     "percentToQualify": 100,
     "weeklyDate": "31/08/2026",
-    "records": [ ]
+    "records": [{"user": "DariGamer13",
+            "link": "https://youtu.be/JoGv0_l6nRA?si=dmImhIswgopmBkgP",
+            "percent": 100,
+            "hz": 60
+        } ]
 }

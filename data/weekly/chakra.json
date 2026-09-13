@@ -20,5 +20,9 @@
     "percentToQualify": 100,
     "weeklyDate": "07/09/2026",
 "password": "Password Required",
-    "records": [ ]
+    "records": [{"user": "DariGamer13",
+            "link": "https://youtu.be/JoGv0_l6nRA?si=dmImhIswgopmBkgP",
+            "percent": 100,
+            "hz": 60
+        } ]
 }
