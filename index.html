@@ -1708,8 +1708,8 @@ matchedRows.push(row);
  * REMOVED PLAYER SEARCH
  *
  * Highlight every Removed level associated with the player.
- * The first matching row in the rendered Removed list
- * is the highest associated Removed level.
+ * This intentionally mirrors the existing Anomalies player
+ * highlighting system exactly.
  */
 var removedPlayerTarget =
     localStorage.getItem('removedPlayerSearch');
@@ -1779,13 +1779,14 @@ if (removedPlayerTarget && removedPlayerLevelsRaw) {
                     );
 
                     matchedRows.push(row);
+
                 }
 
             });
 
 
             /*
-             * The rendered Removed list keeps its existing order.
+             * The Removed list keeps its existing order.
              * Therefore the first matching row is the highest
              * associated Removed level.
              */
