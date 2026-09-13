@@ -1022,6 +1022,23 @@ if (
 ) +
 
 
+            /*
+ * CREATOR / COLLABORATOR DROPDOWN TRIANGLE
+ */
+(
+    (item.type === 'Creator' || item.type === 'Collaborator') &&
+    Array.isArray(item.levelChoices) &&
+    item.levelChoices.length > 0
+        ? '<span class="creator-dropdown-toggle" ' +
+          'data-creator-toggle="' + safeName + '" ' +
+          'onclick="event.stopPropagation();" ' +
+          'style="color:#ffffff !important; font-size:0.75rem !important; font-weight:bold !important; cursor:pointer !important; padding:2px 4px !important; user-select:none !important;">' +
+          '▼' +
+          '</span>'
+        : ''
+) +
+
+
 
             '</span>' +
 
