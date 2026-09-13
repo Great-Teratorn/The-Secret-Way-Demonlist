@@ -492,12 +492,54 @@ header, nav, .nav, .nav-container, .nav__container, [class*="nav"] {
 
 
 
-/* MOBILE: hide the collapsed search-box background,
-   leaving only the magnifying-glass button visible */
+/* =======================================================
+   MOBILE SEARCH BAR FIXES
+   ======================================================= */
 @media (max-width: 768px) {
+
+    /* COLLAPSED SEARCH:
+       Remove the faint background "circle" around the icon */
     .search-box:not(.active) {
         background: transparent !important;
         border: none !important;
+        width: 40px !important;
+        max-width: 40px !important;
+        padding: 0 !important;
+    }
+
+    .search-box:not(.active) input {
+        display: none !important;
+    }
+
+    /* Keep only the actual magnifying-glass button visible */
+    .search-box:not(.active) .search-btn {
+        background: transparent !important;
+        width: 40px !important;
+        height: 40px !important;
+        right: 0 !important;
+    }
+
+    /* EXPANDED SEARCH:
+       Give the text more usable room */
+    .search-box.active {
+        width: min(320px, calc(100vw - 30px)) !important;
+        max-width: calc(100vw - 30px) !important;
+        box-sizing: border-box !important;
+    }
+
+    .search-box.active input {
+        min-width: 0 !important;
+        box-sizing: border-box !important;
+        padding: 0 45px 0 10px !important;
+        font-size: 0.85rem !important;
+    }
+
+    /* Make sure the placeholder can use the available width */
+    .search-box.active input::placeholder {
+        opacity: 1 !important;
+        color: rgba(255, 255, 255, 0.65) !important;
+        white-space: nowrap !important;
     }
 }
+
 
