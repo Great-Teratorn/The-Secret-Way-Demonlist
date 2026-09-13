@@ -77,7 +77,22 @@ export default {
                     <ul class="stats">
                         <li>
                             <div class="type-title-sm">Points when completed</div>
-                            <p>{{ ($route.path === '/extended' || $route.path === '/list/extended' || $route.path === '/legacy' || $route.path === '/list/legacy' || $route.path === '/unverified' || $route.path === '/anomalies' || $route.path === '/weekly') ? 0 : score(selected + 1, 100, level.percentToQualify) }}</p>
+                            <p>
+    {{
+        ($route.path === '/removed')
+            ? '0 points'
+            : ($route.path === '/weekly'
+                ? '1 WDP'
+                : (($route.path === '/extended' ||
+                    $route.path === '/list/extended' ||
+                    $route.path === '/legacy' ||
+                    $route.path === '/list/legacy' ||
+                    $route.path === '/unverified' ||
+                    $route.path === '/anomalies')
+                    ? 0
+                    : score(selected + 1, 100, level.percentToQualify)))
+    }}
+</p>
 
                         </li>
                         <li>

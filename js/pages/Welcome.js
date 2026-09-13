@@ -34,7 +34,7 @@ export default {
 
                 <!-- RIGHT SIDE: RESERVED SPACE FOR WAYBACK MACHINE -->
                 <div class="wayback-widget-column">
-                    <div class="wayback-placeholder-text">Wayback Archive Coming Soon...</div>
+                    <div class="wayback-placeholder-text">Wayback Machine Coming Soon...</div>
                 </div>
 
             </div>
