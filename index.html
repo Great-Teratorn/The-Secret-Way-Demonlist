@@ -1184,6 +1184,63 @@ var isExpanded =
 };
 
 
+window.selectAnomalyPlayerSearchResult = function(element) {
+
+    if (!element) {
+        return;
+    }
+
+    var name = element.getAttribute('data-search-name');
+
+    if (!name) {
+        return;
+    }
+
+    /*
+     * Find the existing Player registry entry so we can
+     * reuse its already-built anomaly level list.
+     */
+    var player = masterSearchRegistry.find(function(item) {
+
+        return item.type === 'Player' &&
+            item.name.toLowerCase() ===
+            name.toLowerCase();
+
+    });
+
+    if (!player) {
+        return;
+    }
+
+    /*
+     * Reuse the exact same anomaly-player search data
+     * already used by anomaly-only players.
+     */
+    localStorage.setItem(
+        'anomalyPlayerSearch',
+        player.name
+    );
+
+    localStorage.setItem(
+        'anomalyPlayerLevels',
+        JSON.stringify(player.anomalyLevels || [])
+    );
+
+    if (window.location.hash !== '#/anomalies') {
+        window.location.hash = '/anomalies';
+    } else {
+        window.processSearchHighlight();
+    }
+
+    var dropdown =
+        document.getElementById('searchDropdownMenu');
+
+    if (dropdown) {
+        dropdown.style.display = 'none';
+    }
+};
+
+
 
 window.selectWeeklySearchResult = function(element) {
 
