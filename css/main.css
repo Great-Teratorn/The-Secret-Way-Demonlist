@@ -1060,3 +1060,27 @@ nav a svg {
         z-index: 4 !important;
     }
 }
+
+
+@media screen and (min-width: 769px) and (max-width: 1365px) {
+
+    /* Let the TSWD logo automatically shrink when space is tight */
+    header .nav > a[href*="youtube"] {
+        flex: 0 1 200px !important;
+        width: 200px !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+        margin-left: 8px !important;
+        margin-right: 0 !important;
+        overflow: hidden !important;
+        box-sizing: border-box !important;
+    }
+
+    header .nav > a[href*="youtube"] img {
+        display: block !important;
+        width: 100% !important;
+        max-width: 200px !important;
+        height: auto !important;
+        object-fit: contain !important;
+    }
+}
