@@ -488,3 +488,16 @@ header, nav, .nav, .nav-container, .nav__container, [class*="nav"] {
     padding: 2px 8px !important;
     border-radius: 4px !important;
 }
+
+
+
+
+/* MOBILE: hide the collapsed search-box background,
+   leaving only the magnifying-glass button visible */
+@media (max-width: 768px) {
+    .search-box:not(.active) {
+        background: transparent !important;
+        border: none !important;
+    }
+}
+
