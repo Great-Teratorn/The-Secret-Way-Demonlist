@@ -1434,3 +1434,45 @@ header .logo p {
         height: auto !important;
     }
 }
+
+
+/* =========================================================
+   FINAL TINY NAVBAR ADJUSTMENTS
+   ========================================================= */
+
+/* Keep version number vertically aligned with the title */
+header .logo {
+    align-items: center !important;
+}
+
+header .logo h2 {
+    line-height: 1 !important;
+    margin: 0 !important;
+}
+
+header .logo p {
+    line-height: 1 !important;
+    margin: 0 !important;
+    transform: translateY(1px) !important;
+}
+
+
+/* =========================================================
+   NARROW F12 — MAKE TSWD IMAGE FIT
+   ========================================================= */
+
+@media screen and (min-width: 769px) and (max-width: 950px) {
+
+    header .nav > a[href*="youtube.com"] {
+        flex: 0 1 auto !important;
+        min-width: 0 !important;
+        margin-left: 2px !important;
+        overflow: hidden !important;
+    }
+
+    header .nav > a[href*="youtube.com"] img {
+        width: 60px !important;
+        max-width: 60px !important;
+        height: auto !important;
+    }
+}
