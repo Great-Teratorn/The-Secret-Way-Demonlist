@@ -1160,3 +1160,146 @@ nav a svg {
         min-width: 0 !important;
     }
 }
+
+
+/* =========================================================
+   FINAL NAVBAR COMPRESSION FIX
+   Keeps the entire navbar visible without overlapping items
+   ========================================================= */
+
+header .nav {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    height: 60px !important;
+    padding: 0 clamp(6px, 1.2vw, 20px) !important;
+    gap: clamp(4px, 0.8vw, 15px) !important;
+    box-sizing: border-box !important;
+    overflow: visible !important;
+}
+
+/* Left-side navigation area */
+header .nav > * {
+    min-width: 0 !important;
+}
+
+/* Navigation tabs */
+header .nav__tab {
+    flex: 0 1 auto !important;
+    flex-shrink: 1 !important;
+    min-width: 0 !important;
+
+    padding-left: clamp(4px, 0.7vw, 10px) !important;
+    padding-right: clamp(4px, 0.7vw, 10px) !important;
+
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+
+    height: 60px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+}
+
+/* Text inside navigation tabs */
+header .nav__tab span {
+    font-size: clamp(0.68rem, 0.75vw, 1rem) !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+}
+
+/* Lists dropdown */
+header .lists-dropdown {
+    flex: 0 1 auto !important;
+    min-width: 0 !important;
+    flex-shrink: 1 !important;
+}
+
+header .dropdown-trigger {
+    padding-left: clamp(4px, 0.7vw, 14px) !important;
+    padding-right: clamp(4px, 0.7vw, 14px) !important;
+    white-space: nowrap !important;
+    flex-shrink: 1 !important;
+}
+
+/* Right-side controls */
+header .nav__actions {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+
+    flex: 0 1 auto !important;
+    flex-shrink: 1 !important;
+    min-width: 0 !important;
+
+    gap: clamp(5px, 0.8vw, 15px) !important;
+}
+
+/* Submit button */
+header .nav__actions .nav_cta,
+header .nav__actions [class*="submit"],
+header .nav__actions .btn {
+    flex-shrink: 1 !important;
+    min-width: 0 !important;
+
+    padding-left: clamp(5px, 0.8vw, 14px) !important;
+    padding-right: clamp(5px, 0.8vw, 14px) !important;
+
+    font-size: clamp(0.62rem, 0.7vw, 1rem) !important;
+
+    white-space: nowrap !important;
+}
+
+/* Discord / other icons */
+header .nav__actions a {
+    flex-shrink: 0 !important;
+}
+
+/* Version / small text */
+header .nav__actions span {
+    white-space: nowrap !important;
+    flex-shrink: 1 !important;
+    min-width: 0 !important;
+}
+
+/* Extra-tight desktop/F12 widths */
+@media screen and (min-width: 769px) and (max-width: 1200px) {
+    header .nav {
+        gap: 4px !important;
+        padding-left: 6px !important;
+        padding-right: 6px !important;
+    }
+
+    header .nav__tab {
+        padding-left: 5px !important;
+        padding-right: 5px !important;
+    }
+
+    header .dropdown-trigger {
+        padding-left: 5px !important;
+        padding-right: 5px !important;
+    }
+
+    header .nav__actions {
+        gap: 6px !important;
+    }
+}
+
+/* Very narrow F12 viewport */
+@media screen and (min-width: 769px) and (max-width: 1000px) {
+    header .nav__tab span {
+        font-size: 0.68rem !important;
+    }
+
+    header .nav__actions .nav_cta,
+    header .nav__actions [class*="submit"],
+    header .nav__actions .btn {
+        font-size: 0.62rem !important;
+        padding-left: 6px !important;
+        padding-right: 6px !important;
+    }
+}
+
