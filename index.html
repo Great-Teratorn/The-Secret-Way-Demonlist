@@ -949,9 +949,10 @@ if (
          * the Creator result.
          */
         if (
-            item.type === 'Creator' &&
-            Array.isArray(item.levelNames)
+        (item.type === 'Creator' || item.type === 'Collaborator') &&
+        Array.isArray(item.levelNames)
         ) {
+
 
             item.levelNames.forEach(function(levelName) {
 
