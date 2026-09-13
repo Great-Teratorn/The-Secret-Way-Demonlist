@@ -542,4 +542,101 @@ header, nav, .nav, .nav-container, .nav__container, [class*="nav"] {
     }
 }
 
+@media (max-width: 768px) {
+    .search-box.active input {
+        font-size: 0.78rem !important;
+        padding-left: 6px !important;
+        padding-right: 42px !important;
+    }
+}
+
+
+@media screen and (max-width: 1100px) and (min-width: 769px) {
+
+    /* Give the navbar a little more usable horizontal space */
+    header {
+        padding-inline: 10px !important;
+        box-sizing: border-box !important;
+    }
+
+    header .nav {
+        padding: 0 8px !important;
+        gap: 6px !important;
+    }
+
+    /* Stop the site title from wrapping into multiple lines */
+    header nav > h2:first-of-type,
+    header h2:first-child {
+        white-space: nowrap !important;
+        font-size: 17px !important;
+        line-height: 1 !important;
+    }
+
+    /* Keep the navigation tabs compact */
+    header .nav__tab {
+        padding: 0 6px !important;
+    }
+
+    header .nav__tab span {
+        font-size: 0.78rem !important;
+    }
+
+    /* Reduce spacing between the right-side controls */
+    header .nav__actions {
+        gap: 7px !important;
+    }
+
+    /* Keep the version/counter from being pushed downward */
+    header .nav__actions > * {
+        white-space: nowrap !important;
+        flex-shrink: 1 !important;
+    }
+
+    /* Compact the submit button slightly */
+    .nav_cta,
+    [class*="submit"],
+    .btn {
+        padding: 4px 9px !important;
+        font-size: 0.72rem !important;
+    }
+
+    /* Keep the Lists dropdown compact */
+    .dropdown-trigger {
+        padding: 0 7px !important;
+        font-size: 0.78rem !important;
+        white-space: nowrap !important;
+    }
+}
+
+
+@media screen and (max-width: 1100px) and (min-width: 769px) {
+
+    .page-list .list-container {
+        padding-inline: 0.5rem !important;
+    }
+
+    .page-list .list .rank {
+        padding-right: 0.5rem !important;
+        flex-shrink: 0 !important;
+    }
+
+    .page-list .list .level {
+        min-width: 0 !important;
+        overflow: hidden !important;
+    }
+
+    .page-list .list .level button {
+        min-width: 0 !important;
+        overflow: hidden !important;
+    }
+
+    .page-list .list .level button .type-label-lg {
+        min-width: 0 !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        white-space: nowrap !important;
+    }
+}
+
+
 
