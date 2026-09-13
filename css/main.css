@@ -639,4 +639,75 @@ header, nav, .nav, .nav-container, .nav__container, [class*="nav"] {
 }
 
 
+@media screen and (max-width: 1100px) and (min-width: 769px) {
+
+    header .nav {
+        min-width: 0 !important;
+        overflow: hidden !important;
+    }
+
+    /* Allow the left/centre navigation groups to shrink */
+    header .nav > * {
+        min-width: 0 !important;
+    }
+
+    header .nav__tab,
+    .lists-dropdown {
+        flex-shrink: 1 !important;
+        min-width: 0 !important;
+    }
+
+    /* Slightly tighter spacing */
+    header .nav__tab {
+        padding-inline: 4px !important;
+    }
+
+    header .nav__tab span {
+        font-size: 0.72rem !important;
+    }
+
+    .dropdown-trigger {
+        padding-inline: 5px !important;
+        font-size: 0.72rem !important;
+    }
+
+    /* Keep the site title intact */
+    header nav > h2:first-of-type,
+    header h2:first-child {
+        flex-shrink: 1 !important;
+        min-width: 0 !important;
+        font-size: 16px !important;
+    }
+
+    /* Don't let the right side force the entire navbar wider */
+    header .nav__actions {
+        min-width: 0 !important;
+        flex-shrink: 1 !important;
+        gap: 5px !important;
+    }
+}
+
+
+@media screen and (max-width: 1100px) and (min-width: 769px) {
+
+    .page-list .list .level button {
+        min-width: 0 !important;
+        padding: 0.75rem !important;
+    }
+
+    .page-list .list .level button > span:first-child {
+        min-width: 0 !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        white-space: nowrap !important;
+    }
+
+    .page-list .list .level button .type-label-sm {
+        flex-shrink: 0 !important;
+        white-space: nowrap !important;
+    }
+}
+
+
+
 
