@@ -91,3 +91,51 @@
 .page-leaderboard .player .table a:hover {
     text-decoration: underline;
 }
+
+
+
+
+
+
+/* LEADERBOARD MOBILE COMPACT LAYOUT */
+@media (max-width: 768px) {
+    .page-leaderboard {
+        display: block;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .page-leaderboard .board-container,
+    .page-leaderboard .player-container {
+        padding-block: 0.5rem;
+    }
+
+    .page-leaderboard .board-container {
+        padding-inline: 0.5rem;
+    }
+
+    /* Make each player row much shorter */
+    .page-leaderboard .board .rank {
+        padding-block: 0.35rem;
+        padding-right: 0.4rem;
+    }
+
+    .page-leaderboard .board .total {
+        padding: 0.35rem 0.5rem;
+    }
+
+    .page-leaderboard .board .user button {
+        padding: 0.5rem 0.7rem;
+    }
+
+    /* Slightly smaller text so more players fit on screen */
+    .page-leaderboard .board .type-label-lg {
+        font-size: 0.85rem;
+    }
+
+    /* Keep player details below the leaderboard */
+    .page-leaderboard .player-container {
+        margin-top: 1rem;
+    }
+}
+
