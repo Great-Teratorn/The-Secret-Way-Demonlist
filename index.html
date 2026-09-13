@@ -1031,7 +1031,8 @@ if (
     item.levelChoices.length > 0
         ? '<span class="creator-dropdown-toggle" ' +
           'data-creator-toggle="' + safeName + '" ' +
-          'onclick="event.stopPropagation();" ' +
+          'onclick="event.stopPropagation(); window.toggleCreatorSearchDropdown(this);" ' +
+
           'style="color:#ffffff !important; font-size:0.75rem !important; font-weight:bold !important; cursor:pointer !important; padding:2px 4px !important; user-select:none !important;">' +
           '▼' +
           '</span>'
@@ -1109,8 +1110,46 @@ if (
 };
 
 
+window.toggleCreatorSearchDropdown = function(toggle) {
+
+    if (!toggle) {
+        return;
+    }
+
+    var row = toggle.closest('.suggestion-row');
+
+    if (!row) {
+        return;
+    }
+
+    var isExpanded =
+        toggle.getAttribute('data-expanded') === 'true';
+
+    var next = row.nextElementSibling;
+
+    while (
+        next &&
+        next.classList.contains('creator-level-row')
+    ) {
+
+        next.style.display =
+            isExpanded ? 'none' : 'flex';
+
+        next = next.nextElementSibling;
+    }
+
+    toggle.setAttribute(
+        'data-expanded',
+        isExpanded ? 'false' : 'true'
+    );
+
+    toggle.textContent =
+        isExpanded ? '▼' : '▲';
+};
+
 
 window.selectWeeklySearchResult = function(element) {
+
     if (!element) {
         return;
     }
