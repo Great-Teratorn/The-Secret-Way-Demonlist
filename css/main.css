@@ -1061,3 +1061,25 @@ nav a svg {
     }
 }
 
+
+@media screen and (min-width: 769px) and (max-width: 1365px) {
+
+    header .nav {
+        padding-left: 4px !important;
+        padding-right: 2px !important;
+    }
+
+    header .nav__tab {
+        padding-left: 4px !important;
+        padding-right: 4px !important;
+    }
+
+    header .dropdown-trigger {
+        padding-left: 4px !important;
+        padding-right: 4px !important;
+    }
+
+    header .nav__actions {
+        gap: 5px !important;
+    }
+}
