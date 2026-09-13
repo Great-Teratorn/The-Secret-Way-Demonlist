@@ -978,6 +978,31 @@ if (
             '</span>' +
 
             /*
+ * ANOMALIES PLAYER TAG
+ *
+ * A player who has both global and anomaly records keeps
+ * their normal Leaderboard result, but also gets a separate
+ * clickable Anomalies tag.
+ */
+(
+    item.type === 'Player' &&
+    item.hasAnomalyRecord &&
+    item.hasGlobalRecord &&
+    Array.isArray(item.anomalyLevels) &&
+    item.anomalyLevels.length > 0
+        ? '<span class="search-secondary-label search-anomalies-label" ' +
+          'data-search-name="' + safeName + '" ' +
+          'data-search-type="Anomalies" ' +
+          'onclick="event.stopPropagation(); window.selectAnomalyPlayerSearchResult(this)" ' +
+          'style="color:#ff6b6b !important; font-size:0.65rem !important; font-weight:bold !important; text-transform:uppercase !important; background:rgba(255,107,107,0.12) !important; padding:2px 6px !important; border-radius:4px !important; cursor:pointer !important;">' +
+          'Anomalies' +
+          '</span>'
+        : ''
+) +
+
+            
+            
+            /*
              * LEGACY LABEL
              *
              * This is intentionally NOT part of the primary result
