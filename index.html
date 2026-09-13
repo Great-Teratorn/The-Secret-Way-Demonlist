@@ -433,16 +433,16 @@ dateFallen: level.dateFallen || null,
                     /*
                      * CREATORS
                      */
-                    /*
+                    
+                    
+                    
+                     /*
  * CREATORS / COLLABORATORS
  *
- * The author is a Creator.
- * Other names in level.creators are Collaborators.
- */
-/*
- * CREATORS / COLLABORATORS
+ * Keep one person entry regardless of whether they are
+ * a Creator, Collaborator, or both across different levels.
  *
- * The author is a Creator.
+ * The author is always the Creator for that level.
  * Other names in level.creators are Collaborators.
  */
 
@@ -473,17 +473,42 @@ creators.forEach(function(creator) {
         ? 'Creator'
         : 'Collaborator';
 
+
+    /*
+     * Find the person regardless of whether their existing
+     * registry entry is currently marked Creator or Collaborator.
+     */
     var existingPerson =
         masterSearchRegistry.find(function(item) {
 
-            return item.type === creatorType &&
+            return (
+                (item.type === 'Creator' ||
+                 item.type === 'Collaborator') &&
                 item.name.toLowerCase() ===
-                creator.toLowerCase();
+                creator.toLowerCase()
+            );
 
         });
 
+
     if (existingPerson) {
 
+        /*
+         * If this person is the author on this level,
+         * Creator takes precedence for the person entry.
+         *
+         * This does NOT change the role stored for their
+         * individual levels.
+         */
+        if (creatorType === 'Creator') {
+            existingPerson.type = 'Creator';
+            existingPerson.creatorRole = 'Creator';
+        }
+
+
+        /*
+         * Add this level only once.
+         */
         if (
             Array.isArray(existingPerson.levelNames) &&
             existingPerson.levelNames.indexOf(level.name) === -1
@@ -493,37 +518,101 @@ creators.forEach(function(creator) {
 
         }
 
+
+        /*
+         * Store the role belonging to this specific level.
+         */
+        if (!Array.isArray(existingPerson.levelRoles)) {
+
+            existingPerson.levelRoles = [];
+
+        }
+
+        var existingRole =
+            existingPerson.levelRoles.find(function(entry) {
+
+                return (
+                    entry.levelName &&
+                    entry.levelName.toLowerCase() ===
+                    level.name.toLowerCase()
+                );
+
+            });
+
+
+        if (!existingRole) {
+
+            existingPerson.levelRoles.push({
+
+                levelName: level.name,
+
+                role: creatorType
+
+            });
+
+        } else {
+
+            /*
+             * The author is always the Creator.
+             *
+             * Therefore if this level was previously encountered
+             * as a Collaborator but the person is the author,
+             * update that level to Creator.
+             */
+            if (creatorType === 'Creator') {
+
+                existingRole.role = 'Creator';
+
+            }
+
+        }
+
+
     } else {
 
         masterSearchRegistry.push({
 
             name: creator,
 
+            /*
+             * The primary person type is Creator if this person
+             * is the author of this level. Otherwise Collaborator.
+             *
+             * If they later become a Creator on another level,
+             * the existing entry is upgraded to Creator above.
+             */
             type: creatorType,
 
             creatorRole: creatorType,
 
             route:
-    primaryType === 'Removed'
-        ? '/removed'
-        : primaryType === 'Extended'
-            ? '/extended'
-            : primaryType === 'Unverified'
-                ? '/unverified'
-                : primaryType === 'Anomalies'
-                    ? '/anomalies'
-                    : '/list',
-
+                primaryType === 'Removed'
+                    ? '/removed'
+                    : primaryType === 'Extended'
+                        ? '/extended'
+                        : primaryType === 'Unverified'
+                            ? '/unverified'
+                            : primaryType === 'Anomalies'
+                                ? '/anomalies'
+                                : '/list',
 
             levelName: level.name,
 
-            levelNames: [level.name]
+            levelNames: [level.name],
+
+            levelRoles: [
+                {
+                    levelName: level.name,
+                    role: creatorType
+                }
+            ]
 
         });
 
     }
 
 });
+
 
 
 
