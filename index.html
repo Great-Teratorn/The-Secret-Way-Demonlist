@@ -1125,18 +1125,17 @@ window.toggleCreatorSearchDropdown = function(toggle) {
     var isExpanded =
         toggle.getAttribute('data-expanded') === 'true';
 
-    var next = row.nextElementSibling;
+    var dropdown = row.nextElementSibling;
 
-    while (
-        next &&
-        next.classList.contains('creator-level-row')
+    if (
+        !dropdown ||
+        !dropdown.classList.contains('creator-level-dropdown')
     ) {
-
-        next.style.display =
-            isExpanded ? 'none' : 'flex';
-
-        next = next.nextElementSibling;
+        return;
     }
+
+    dropdown.style.display =
+        isExpanded ? 'none' : 'block';
 
     toggle.setAttribute(
         'data-expanded',
@@ -1146,6 +1145,7 @@ window.toggleCreatorSearchDropdown = function(toggle) {
     toggle.textContent =
         isExpanded ? '▼' : '▲';
 };
+
 
 
 window.selectWeeklySearchResult = function(element) {
