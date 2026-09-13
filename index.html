@@ -1292,6 +1292,66 @@ window.selectAnomalyPlayerSearchResult = function(element) {
 
 
 
+window.selectRemovedPlayerSearchResult = function(element) {
+
+    if (!element) {
+        return;
+    }
+
+    var name = element.getAttribute('data-search-name');
+
+    if (!name) {
+        return;
+    }
+
+    /*
+     * Find the existing Player registry entry so we can
+     * reuse its already-built Removed level list.
+     */
+    var player = masterSearchRegistry.find(function(item) {
+
+        return item.type === 'Player' &&
+            item.name.toLowerCase() ===
+            name.toLowerCase();
+
+    });
+
+    if (!player) {
+        return;
+    }
+
+    /*
+     * Store the player name and all associated Removed levels.
+     */
+    localStorage.setItem(
+        'removedPlayerSearch',
+        player.name
+    );
+
+    localStorage.setItem(
+        'removedPlayerLevels',
+        JSON.stringify(player.removedLevels || [])
+    );
+
+    /*
+     * Navigate to the Removed list.
+     */
+    if (window.location.hash !== '#/removed') {
+        window.location.hash = '/removed';
+    } else {
+        window.processSearchHighlight();
+    }
+
+    var dropdown =
+        document.getElementById('searchDropdownMenu');
+
+    if (dropdown) {
+        dropdown.style.display = 'none';
+    }
+};
+
+
+
 window.selectWeeklySearchResult = function(element) {
 
     if (!element) {
@@ -1642,6 +1702,146 @@ matchedRows.push(row);
 
     return;
 }
+
+
+/*
+ * REMOVED PLAYER SEARCH
+ *
+ * Highlight every Removed level associated with the player.
+ * The first matching row in the rendered Removed list
+ * is the highest associated Removed level.
+ */
+var removedPlayerTarget =
+    localStorage.getItem('removedPlayerSearch');
+
+var removedPlayerLevelsRaw =
+    localStorage.getItem('removedPlayerLevels');
+
+if (removedPlayerTarget && removedPlayerLevelsRaw) {
+
+    var removedPlayerLevels = [];
+
+    try {
+        removedPlayerLevels =
+            JSON.parse(removedPlayerLevelsRaw);
+    } catch (e) {
+        removedPlayerLevels = [];
+    }
+
+    var attempts = 0;
+
+    var removedLoop = setInterval(function() {
+
+        attempts++;
+
+        var rows = document.querySelectorAll('.list tr');
+
+        if (rows.length > 0) {
+
+            var matchedRows = [];
+
+            rows.forEach(function(row) {
+
+                var button = row.querySelector('button');
+
+                if (!button || !button.textContent) {
+                    return;
+                }
+
+                var levelName =
+                    button.textContent.trim().toLowerCase();
+
+                var matched =
+                    removedPlayerLevels.some(function(name) {
+
+                        return name &&
+                            levelName ===
+                            name.toLowerCase().trim();
+
+                    });
+
+                if (matched) {
+
+                    button.style.setProperty(
+                        'border',
+                        '2px dashed #ff9800',
+                        'important'
+                    );
+
+                    button.style.setProperty(
+                        'background',
+                        'rgba(255, 152, 0, 0.15)',
+                        'important'
+                    );
+
+                    button.classList.add(
+                        'search-highlight-active'
+                    );
+
+                    matchedRows.push(row);
+                }
+
+            });
+
+
+            /*
+             * The rendered Removed list keeps its existing order.
+             * Therefore the first matching row is the highest
+             * associated Removed level.
+             */
+            if (matchedRows.length > 0) {
+
+                var highestRow = matchedRows[0];
+
+                highestRow.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'center'
+                });
+
+                var highestButton =
+                    highestRow.querySelector('button');
+
+                if (
+                    highestButton &&
+                    typeof highestButton.click === 'function'
+                ) {
+                    highestButton.click();
+                }
+
+                clearInterval(removedLoop);
+
+                localStorage.removeItem(
+                    'removedPlayerSearch'
+                );
+
+                localStorage.removeItem(
+                    'removedPlayerLevels'
+                );
+
+                return;
+            }
+
+        }
+
+        if (attempts > 20) {
+
+            clearInterval(removedLoop);
+
+            localStorage.removeItem(
+                'removedPlayerSearch'
+            );
+
+            localStorage.removeItem(
+                'removedPlayerLevels'
+            );
+
+        }
+
+    }, 150);
+
+    return;
+}
+
 
 
 
