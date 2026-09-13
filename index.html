@@ -660,11 +660,13 @@ if (Array.isArray(level.records)) {
                 hasWeeklyRecord: false,
                 hasAnomalyRecord: false,
                 hasUnverifiedRecord: false,
+                hasRemovedRecord: false,
 
                 globalLevels: [],
                 weeklyLevels: [],
                 anomalyLevels: [],
-                unverifiedLevels: []
+                unverifiedLevels: [],
+                removedLevels: []
 
             };
 
@@ -712,6 +714,18 @@ if (Array.isArray(level.records)) {
 
             }
 
+        } else if (primaryType === 'Removed') {
+
+            existingPlayer.hasRemovedRecord = true;
+
+            if (
+                existingPlayer.removedLevels.indexOf(level.name) === -1
+            ) {
+
+                existingPlayer.removedLevels.push(level.name);
+
+            }
+
         } else if (primaryType === 'Unverified') {
 
             existingPlayer.hasUnverifiedRecord = true;
@@ -731,14 +745,13 @@ if (Array.isArray(level.records)) {
 }
 
 
-
-                     /*
-  * VERIFIERS ARE ALSO PLAYERS
-  *
-  * A verifier is associated with the level's category,
-  * but verifying an Anomaly/Unverified/Weekly level does
-  * NOT automatically make them a global leaderboard player.
-  */
+/*
+ * VERIFIERS ARE ALSO PLAYERS
+ *
+ * A verifier is associated with the level's category,
+ * but verifying an Anomaly/Unverified/Weekly/Removed level
+ * does NOT automatically make them a global leaderboard player.
+ */
 if (
     level.verifier &&
     level.verifier.toLowerCase() !== 'none' &&
@@ -772,11 +785,13 @@ if (
             hasWeeklyRecord: false,
             hasAnomalyRecord: false,
             hasUnverifiedRecord: false,
+            hasRemovedRecord: false,
 
             globalLevels: [],
             weeklyLevels: [],
             anomalyLevels: [],
-            unverifiedLevels: []
+            unverifiedLevels: [],
+            removedLevels: []
 
         };
 
@@ -821,6 +836,18 @@ if (
         ) {
 
             existingVerifierAsPlayer.anomalyLevels.push(level.name);
+
+        }
+
+    } else if (primaryType === 'Removed') {
+
+        existingVerifierAsPlayer.hasRemovedRecord = true;
+
+        if (
+            existingVerifierAsPlayer.removedLevels.indexOf(level.name) === -1
+        ) {
+
+            existingVerifierAsPlayer.removedLevels.push(level.name);
 
         }
 
@@ -871,6 +898,7 @@ if (
 
         });
 }
+
 
 
 
@@ -977,28 +1005,50 @@ if (
             item.type +
             '</span>' +
 
+                        /*
+             * ANOMALIES PLAYER TAG
+             *
+             * A player who has anomaly records gets a compact
+             * clickable A tag.
+             */
+            (
+                item.type === 'Player' &&
+                item.hasAnomalyRecord &&
+                Array.isArray(item.anomalyLevels) &&
+                item.anomalyLevels.length > 0
+                    ? '<span class="search-secondary-label search-anomalies-label" ' +
+                      'data-search-name="' + safeName + '" ' +
+                      'data-search-type="Anomalies" ' +
+                      'title="Anomalies" ' +
+                      'onclick="event.stopPropagation(); window.selectAnomalyPlayerSearchResult(this)" ' +
+                      'style="color:#ff6b6b !important; font-size:0.65rem !important; font-weight:bold !important; text-transform:uppercase !important; background:rgba(255,107,107,0.12) !important; padding:2px 6px !important; border-radius:4px !important; cursor:pointer !important;">' +
+                      'A' +
+                      '</span>'
+                    : ''
+            ) +
+
             /*
- * ANOMALIES PLAYER TAG
- *
- * A player who has both global and anomaly records keeps
- * their normal Leaderboard result, but also gets a separate
- * clickable Anomalies tag.
- */
-(
-    item.type === 'Player' &&
-    item.hasAnomalyRecord &&
-    item.hasGlobalRecord &&
-    Array.isArray(item.anomalyLevels) &&
-    item.anomalyLevels.length > 0
-        ? '<span class="search-secondary-label search-anomalies-label" ' +
-          'data-search-name="' + safeName + '" ' +
-          'data-search-type="Anomalies" ' +
-          'onclick="event.stopPropagation(); window.selectAnomalyPlayerSearchResult(this)" ' +
-          'style="color:#ff6b6b !important; font-size:0.65rem !important; font-weight:bold !important; text-transform:uppercase !important; background:rgba(255,107,107,0.12) !important; padding:2px 6px !important; border-radius:4px !important; cursor:pointer !important;">' +
-          'Anomalies' +
-          '</span>'
-        : ''
-) +
+             * REMOVED PLAYER TAG
+             *
+             * A player who has Removed records gets a compact
+             * clickable R tag.
+             */
+            (
+                item.type === 'Player' &&
+                item.hasRemovedRecord &&
+                Array.isArray(item.removedLevels) &&
+                item.removedLevels.length > 0
+                    ? '<span class="search-secondary-label search-removed-label" ' +
+                      'data-search-name="' + safeName + '" ' +
+                      'data-search-type="Removed" ' +
+                      'title="Removed" ' +
+                      'onclick="event.stopPropagation(); window.selectRemovedPlayerSearchResult(this)" ' +
+                      'style="color:#ff9800 !important; font-size:0.65rem !important; font-weight:bold !important; text-transform:uppercase !important; background:rgba(255,152,0,0.14) !important; padding:2px 6px !important; border-radius:4px !important; cursor:pointer !important;">' +
+                      'R' +
+                      '</span>'
+                    : ''
+            ) +
+
 
             
             
