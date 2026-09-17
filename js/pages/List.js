@@ -73,7 +73,15 @@ export default {
     :verifier="level.verifier"
 ></LevelAuthors>
 
-                    <iframe class="video" id="videoframe" :src="video" frameborder="0"></iframe>
+                    <iframe
+    class="video"
+    id="videoframe"
+    :src="video"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+    allowfullscreen
+></iframe>
+
                     <ul class="stats">
                         <li>
                             <div class="type-title-sm">Points when completed</div>
