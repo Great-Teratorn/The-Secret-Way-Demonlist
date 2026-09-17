@@ -109,7 +109,9 @@ export default {
                         <div v-if="givenUp || hasCompleted" class="results">
                             <h1>Results</h1>
                             <p>Number of levels: {{ progression.length }}</p>
-                            <p>Highest percent: {{ currentPercentage }}%</p>
+                            <p v-if="gameMode === 'classic' || gameMode === 'linear'">
+                                Highest percent: {{ currentPercentage }}%
+                            </p>
                             <Btn v-if="currentPercentage < 99 && !hasCompleted" @click.native.prevent="showRemaining = true">Show remaining levels</Btn>
                         </div>
                         <template v-if="givenUp && showRemaining">
@@ -241,7 +243,19 @@ path: lvl?.path,
             }
 
             this.progression.push(this.percentage);
-            this.percentage = undefined;
+this.percentage = undefined;
+
+this.$nextTick(() => {
+    const currentLevelElement = document.querySelector('.levels .actions');
+    if (currentLevelElement) {
+        currentLevelElement.scrollIntoView({
+            behavior: 'smooth',
+            block: 'center'
+        });
+    }
+});
+
+            
 
             // Calculates targets dynamically as players advance through secret slots
             if (this.gameMode === 'survival' || this.gameMode === 'secret-progression') {
