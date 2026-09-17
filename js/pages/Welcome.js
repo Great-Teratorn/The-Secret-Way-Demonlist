@@ -67,7 +67,16 @@ export default {
 
                 <!-- First Video Player (Introduction Video) -->
                 <div class="video-container" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 8px; margin-bottom: 25px;">
-                    <iframe class="video" id="videoframe1" :src="video1" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;" frameborder="0" allowfullscreen></iframe>
+                    <iframe
+    class="video"
+    id="videoframe1"
+    :src="video1"
+    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+    allowfullscreen>
+</iframe>
+
                 </div>
 
 
@@ -121,7 +130,16 @@ export default {
 
                     <!-- Second Video Player (Origins Video) -->
                     <div class="video-container" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 8px; margin-bottom: 25px;">
-                    <iframe class="video" id="videoframe2" :src="video2" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;" frameborder="0" allowfullscreen></iframe>
+                    <iframe
+    class="video"
+    id="videoframe2"
+    :src="video2"
+    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+    allowfullscreen>
+</iframe>
+
                 </div>
 
 
