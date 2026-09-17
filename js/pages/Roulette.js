@@ -218,14 +218,17 @@ methods: {        shuffle,        getThumbnailFromId,        getYout
             if (!this.useMainList && !this.useExtendedList) {                return;            }
             this.loading = true;            const fullListRaw = await fetchList();            const fullList = JSON.parse(JSON.stringify(fullListRaw || []));
             if (fullList.filter(([_, err]) => err).length > 0) {                this.loading = false;                this.showToast("List is broken. Wait until it's fixed to start.");                return;            }
-            const fullListMapped = (fullList || []).map((item, i) => {                const lvl = Array.isArray(item) ? item[0] : item;                return {                    rank: i + 1,                    id: lvl?.id || i,                    name: typeof lvl === 'string' ? lvl : (lvl?.name || 'Unknown Level'),                    video: lvl?.verification || lvl?.video || '',                };            });
+            const fullListMapped = (fullList || []).map((item, i) => {                const lvl = Array.isArray(item) ? item[0] : item;                return {                    rank: i + 1,                    id: lvl?.id || i,                    name: typeof lvl === 'string' ? lvl : (lvl?.name || 'Unknown Level'),                    video: lvl?.verification || lvl?.video || '',
+path: lvl?.path,
+               };            });
             const absoluteMax = fullListMapped.length;            const min = Math.max(1, parseInt(this.minRank) || 1);            const max = Math.min(absoluteMax, parseInt(this.maxRank) || absoluteMax);
             const targetedPool = [];            fullListMapped.forEach(lvl => {                if (lvl.rank <= 150 && this.useMainList) {                    targetedPool.push(lvl);                } else if (lvl.rank > 150 && this.useExtendedList) {                    targetedPool.push(lvl);                }            });
             const list = targetedPool.filter(lvl => lvl.rank >= min && lvl.rank <= max);
             if (list.length === 0) {                this.loading = false;                this.showToast("No levels found within your chosen settings and ranges.");                return;            }
             const safeListCopy = JSON.parse(JSON.stringify(list));
             if (this.gameMode === 'linear' || this.gameMode === 'secret-progression') {                if (this.progressionOrder === 'ascending') {                    this.levels = safeListCopy.sort((a, b) => b.rank - a.rank);                } else {                    this.levels = safeListCopy.sort((a, b) => a.rank - b.rank);                }            } else {                this.levels = shuffle([...safeListCopy]).slice(0, 100);            }
-            if (this.gameMode === 'survival' || this.gameMode === 'secret-progression') {                await Promise.all(                    this.levels.map(async (lvl) => {                        try {                            let lvlName = lvl.name || '';                            lvlName = lvlName.toLowerCase().replace(/\s+/g, '-');                            const res = await fetch(`data/${lvlName}.json`);                            if (res.ok) {                                const data = await res.json();                                lvl.secret_way_at = data.secret_way_at || 1;                            } else {                                lvl.secret_way_at = 1;                            }                        } catch (e) {                            lvl.secret_way_at = 1;                        }                    })                );            }
+            if (this.gameMode === 'survival' || this.gameMode === 'secret-progression') {                await Promise.all(                    this.levels.map(async (lvl) => {                        try {                            const res = await fetch(`data/${lvl.path}.json`);
+                            if (res.ok) {                                const data = await res.json();                                lvl.secret_way_at = data.secret_way_at || 1;                            } else {                                lvl.secret_way_at = 1;                            }                        } catch (e) {                            lvl.secret_way_at = 1;                        }                    })                );            }
             if ((this.gameMode === 'survival' || this.gameMode === 'secret-progression') && this.levels.length > 0) {                try {                    let firstLevelName = this.levels[0]?.name || '';                    firstLevelName = firstLevelName.toLowerCase().replace(/\s+/g, '-');                    const response = await fetch(`data/${firstLevelName}.json`);                    if (response.ok) {                        const firstLevelData = await response.json();                        this.survivalTarget = firstLevelData.secret_way_at || 1;                    } else {                        this.survivalTarget = 1;                    }                    this.percentage = undefined;                } catch (err) {                    this.survivalTarget = 1;                    this.percentage = undefined;                }            } else {                this.percentage = undefined;            }
             this.save();            this.loading = false;        },        save() {            localStorage.setItem(                'roulette',                JSON.stringify({                    levels: this.levels,                    progression: this.progression,                    minRank: this.minRank,                    maxRank: this.maxRank,                    progressionOrder: this.progressionOrder                }),            );        },        
         async onDone() {
@@ -245,15 +248,8 @@ methods: {        shuffle,        getThumbnailFromId,        getYout
                 const nextLevelData = this.levels[this.progression.length];
                 if (nextLevelData) {
                     try {
-                        let levelName = "";
-                        if (typeof nextLevelData === 'string') {
-                            levelName = nextLevelData;
-                        } else if (nextLevelData && typeof nextLevelData === 'object') {
-                            levelName = nextLevelData.level || nextLevelData.name || "";
-                        }
+                        const response = await fetch(`data/${nextLevelData.path}.json`);
 
-                        levelName = levelName.toLowerCase().replace(/\s+/g, '-');
-                        const response = await fetch(`data/${levelName}.json`);
                         if (!response.ok) {
                             this.survivalTarget = 1;
                             this.save();
