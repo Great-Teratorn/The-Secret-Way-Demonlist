@@ -147,30 +147,33 @@
     margin: 0;
     border-radius: 0.5rem;
     overflow: hidden;
+
+    /* Same background for the label and description */
+    background-color: var(--color-background-hover);
 }
 
 /* Description header */
 .page-list .level-container .level .level-description summary {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    justify-content: space-between;
 
-    padding: 1rem;
+    padding: 0.75rem 1rem;
 
-    background-color: var(--color-background);
+    background-color: var(--color-background-hover);
     color: var(--color-on-background);
-
-    border-radius: 0.5rem;
 
     cursor: pointer;
     user-select: none;
 
-    font-weight: bold;
+    /* Make it look like the existing headings */
+    font-size: 1.5rem;
+    font-weight: 600;
 
     list-style: none;
 }
 
-/* Remove the browser's default triangle */
+/* Remove browser's default triangle */
 .page-list .level-container .level .level-description summary::-webkit-details-marker {
     display: none;
 }
@@ -183,27 +186,45 @@
 /* Triangle */
 .page-list .level-container .level .description-arrow {
     display: inline-block;
-    font-size: 0.8rem;
+
+    font-size: 0.9rem;
+
     transform: rotate(0deg);
     transition: transform 0.2s ease;
+
+    margin-left: 1rem;
 }
 
-/* Closed = ▼, Open = ▲ */
+/* Closed = ▼ */
+/* Open = ▲ */
 .page-list .level-container .level .level-description[open] .description-arrow {
     transform: rotate(180deg);
 }
 
-/* Hover */
+/* Slight hover effect */
 .page-list .level-container .level .level-description summary:hover {
     background-color: var(--color-background-hover);
-    color: var(--color-on-background-hover);
 }
 
-/* Description text */
+/* Description body */
 .page-list .level-container .level .description-content {
-    padding: 1rem;
+    padding: 0 1rem 1rem 1rem;
+
+    background-color: var(--color-background-hover);
+    color: var(--color-on-background);
+
     line-height: 1.6;
+
     white-space: pre-wrap;
+}
+
+/* Paragraph spacing */
+.page-list .level-container .level .description-content p {
+    margin: 0 0 1rem 0;
+}
+
+.page-list .level-container .level .description-content p:last-child {
+    margin-bottom: 0;
 }
 
 
