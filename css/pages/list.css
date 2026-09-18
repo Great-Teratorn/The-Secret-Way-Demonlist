@@ -137,35 +137,34 @@
 }
 
 
-
 /* ========================================================= */
 /* LEVEL DESCRIPTION DROPDOWN                                */
 /* ========================================================= */
 
 .page-list .level-container .level .level-description {
-    width: 100%;
-    margin: 0;
-    padding: 0;
+    width: calc(100% + 3rem);
+    margin-left: -1.5rem;
+
+    padding: 0 1.5rem;
+
+    box-sizing: border-box;
 
     border-radius: 0.5rem;
     overflow: hidden;
 
-    /* Same background for header and description */
     background-color: var(--color-background-hover);
 }
 
-/* Description header */
+/* Description heading */
 .page-list .level-container .level .level-description summary {
     display: flex;
     align-items: center;
     justify-content: space-between;
 
-    width: calc(100% + 3rem);
+    width: 100%;
     box-sizing: border-box;
 
-    /* Keeps text aligned, but extends the background both ways */
-    margin-left: -1.5rem;
-    padding: 1rem 1.5rem;
+    padding: 1rem 0;
 
     background-color: var(--color-background-hover);
     color: var(--color-on-background);
@@ -183,7 +182,7 @@
     list-style: none;
 }
 
-/* Match h2's typography spacing */
+/* Match h2 typography spacing */
 .page-list .level-container .level .level-description summary::before {
     content: "";
     margin-bottom: -0.2583333333em;
@@ -222,8 +221,7 @@
     transition: transform 0.2s ease;
 }
 
-/* Closed = ▼ */
-/* Open = ▲ */
+/* Closed = ▼ / Open = ▲ */
 .page-list .level-container .level .level-description[open] .description-arrow {
     transform: rotate(180deg);
 }
@@ -243,7 +241,6 @@
     background-color: var(--color-background-hover);
     color: var(--color-on-background);
 
-    /* Match normal body text */
     font-family: "Lexend Deca", sans-serif;
     font-size: 17.1428571429px;
     line-height: 28px;
@@ -252,7 +249,6 @@
 
     white-space: pre-wrap;
 }
-
 
 
 
