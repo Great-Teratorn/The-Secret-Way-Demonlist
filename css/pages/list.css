@@ -149,15 +149,20 @@
 
     box-sizing: border-box;
 
-    /* Rounded on ALL four corners */
-    border-radius: 0.5rem;
-
-    overflow: hidden;
-
     background-color: var(--color-background-hover);
+
+    /* Round ALL four outer corners */
+    border-radius: 0.75rem;
+
+    /* Important: clips the child backgrounds to the rounded shape */
+    overflow: hidden;
 }
 
-/* Description heading */
+
+/* ========================================================= */
+/* DESCRIPTION HEADING                                       */
+/* ========================================================= */
+
 .page-list .level-container .level .level-description summary {
     display: flex;
     align-items: center;
@@ -179,15 +184,17 @@
     line-height: 34px;
     font-weight: 700;
     letter-spacing: -1px;
+
     -webkit-font-smoothing: subpixel-antialiased;
 
     list-style: none;
 
-    /* Keep all corners rounded */
-    border-radius: 0.5rem;
+    /* Round the visible heading */
+    border-radius: 0.75rem;
 }
 
-/* Match the typography spacing used by h2 */
+
+/* Match h2 typography spacing */
 .page-list .level-container .level .level-description summary::before {
     content: "";
     margin-bottom: -0.2583333333em;
@@ -200,6 +207,7 @@
     display: table;
 }
 
+
 /* Remove browser's default triangle */
 .page-list .level-container .level .level-description summary::-webkit-details-marker {
     display: none;
@@ -210,7 +218,11 @@
     content: "";
 }
 
-/* Right-side triangle */
+
+/* ========================================================= */
+/* TRIANGLE                                                  */
+/* ========================================================= */
+
 .page-list .level-container .level .description-arrow {
     display: inline-block;
 
@@ -226,17 +238,27 @@
     transition: transform 0.2s ease;
 }
 
-/* Closed = ▼ / Open = ▲ */
+
+/* Closed = ▼ */
+/* Open = ▲ */
 .page-list .level-container .level .level-description[open] .description-arrow {
     transform: rotate(180deg);
 }
 
-/* Hover */
+
+/* ========================================================= */
+/* HOVER                                                     */
+/* ========================================================= */
+
 .page-list .level-container .level .level-description summary:hover {
     background-color: var(--color-background-hover);
 }
 
-/* Description body */
+
+/* ========================================================= */
+/* DESCRIPTION BODY                                          */
+/* ========================================================= */
+
 .page-list .level-container .level .description-content {
     width: 100%;
     box-sizing: border-box;
@@ -250,9 +272,14 @@
     font-size: 17.1428571429px;
     line-height: 28px;
     font-weight: 500;
+
     -webkit-font-smoothing: subpixel-antialiased;
 
+    /* Allows you to paste paragraphs normally */
     white-space: pre-wrap;
+
+    /* Round the bottom of the visible description */
+    border-radius: 0 0 0.75rem 0.75rem;
 }
 
 
