@@ -160,12 +160,12 @@
     align-items: center;
     justify-content: space-between;
 
-    width: calc(100% + 2rem);
+    width: calc(100% + 3rem);
     box-sizing: border-box;
 
     /* Keeps text aligned, but extends the background both ways */
-    margin-left: -1rem;
-    padding: 1rem;
+    margin-left: -1.5rem;
+    padding: 1rem 1.5rem;
 
     background-color: var(--color-background-hover);
     color: var(--color-on-background);
