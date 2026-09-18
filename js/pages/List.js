@@ -111,29 +111,25 @@ export default {
                             <div class="type-title-sm">Password</div>
                             <p>{{ level.password || 'Free to Copy' }}</p>
                         </li>
-                    </ul>
-<!-- DESCRIPTION -->
-                <details
-                    v-if="level.description"
-                    class="level-description"
-                >
-                    <summary>
-                        <span class="description-arrow">▼</span>
-                        <span>Description</span>
-                    </summary>
+                                        </ul>
 
-                    <div class="description-content">
-                        <p
-                            v-for="(paragraph, index) in level.description.split(/\n\s*\n/)"
-                            :key="index"
-                        >
-                            {{ paragraph }}
-                        </p>
-                    </div>
-                </details>
+                    <details v-if="level.description" class="level-description">
+                        <summary>
+                            <span class="description-arrow">▼</span>
+                            <span>Description</span>
+                        </summary>
 
-                <!-- RECORDS -->
-                <h2>Records</h2>
+                        <div class="description-content">
+                            <p
+                                v-for="(paragraph, index) in level.description.split(/\n\s*\n/)"
+                                :key="index"
+                            >
+                                {{ paragraph }}
+                            </p>
+                        </div>
+                    </details>
+
+                    <h2>Records</h2>
                     <p v-if="selected + 1 <= 75"><strong>{{ level.percentToQualify }}%</strong> to qualify</p>
                     <p v-else-if="selected +1 <= 150"><strong>100%</strong> to qualify</p>
                     <p v-else>This level does not accept new records.</p>
