@@ -150,10 +150,11 @@
     border-radius: 0.5rem;
     overflow: hidden;
 
+    /* Same background for header and description */
     background-color: var(--color-background-hover);
 }
 
-/* Description heading */
+/* Description header */
 .page-list .level-container .level .level-description summary {
     display: flex;
     align-items: center;
@@ -162,7 +163,8 @@
     width: 100%;
     box-sizing: border-box;
 
-    padding: 0;
+    /* Give it the same breathing room as before */
+    padding: 1rem;
 
     background-color: var(--color-background-hover);
     color: var(--color-on-background);
@@ -170,11 +172,28 @@
     cursor: pointer;
     user-select: none;
 
-    /* Match the site's h2 */
-    font-size: 1.5em;
-    font-weight: bold;
+    /* EXACTLY matches typography.css h2 */
+    font-family: "Lexend Deca", sans-serif;
+    font-size: 34.2857142857px;
+    line-height: 40px;
+    font-weight: 700;
+    letter-spacing: -1px;
+    -webkit-font-smoothing: subpixel-antialiased;
 
     list-style: none;
+}
+
+/* Match h2's typography spacing */
+.page-list .level-container .level .level-description summary::before {
+    content: "";
+    margin-bottom: -0.2583333333em;
+    display: table;
+}
+
+.page-list .level-container .level .level-description summary::after {
+    content: "";
+    margin-top: -0.2083333333em;
+    display: table;
 }
 
 /* Remove browser's default triangle */
@@ -193,7 +212,11 @@
 
     margin-left: auto;
 
-    font-size: 0.8em;
+    font-family: sans-serif;
+    font-size: 0.8rem;
+    line-height: 1;
+
+    letter-spacing: normal;
 
     transform: rotate(0deg);
     transition: transform 0.2s ease;
@@ -210,17 +233,22 @@
     background-color: var(--color-background-hover);
 }
 
-/* Description text */
+/* Description body */
 .page-list .level-container .level .description-content {
     width: 100%;
     box-sizing: border-box;
 
-    padding: 0 0 1rem 0;
+    padding: 0 1rem 1rem 1rem;
 
     background-color: var(--color-background-hover);
     color: var(--color-on-background);
 
-    line-height: 1.6;
+    /* Match normal body text */
+    font-family: "Lexend Deca", sans-serif;
+    font-size: 17.1428571429px;
+    line-height: 28px;
+    font-weight: 500;
+    -webkit-font-smoothing: subpixel-antialiased;
 
     white-space: pre-wrap;
 }
