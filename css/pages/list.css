@@ -145,12 +145,13 @@
     width: calc(100% + 3rem);
     margin-left: -1.5rem;
 
-    /* Extra breathing room inside the box */
     padding: 0 1.5rem 0 2rem;
 
     box-sizing: border-box;
 
+    /* Rounded on ALL four corners */
     border-radius: 0.5rem;
+
     overflow: hidden;
 
     background-color: var(--color-background-hover);
@@ -173,7 +174,6 @@
     cursor: pointer;
     user-select: none;
 
-    /* Lexend Deca heading style */
     font-family: "Lexend Deca", sans-serif;
     font-size: 28px;
     line-height: 34px;
@@ -182,6 +182,9 @@
     -webkit-font-smoothing: subpixel-antialiased;
 
     list-style: none;
+
+    /* Keep all corners rounded */
+    border-radius: 0.5rem;
 }
 
 /* Match the typography spacing used by h2 */
@@ -243,14 +246,12 @@
     background-color: var(--color-background-hover);
     color: var(--color-on-background);
 
-    /* Normal body text */
     font-family: "Lexend Deca", sans-serif;
     font-size: 17.1428571429px;
     line-height: 28px;
     font-weight: 500;
     -webkit-font-smoothing: subpixel-antialiased;
 
-    /* Allows normal pasted paragraphs and blank lines */
     white-space: pre-wrap;
 }
 
