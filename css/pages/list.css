@@ -142,6 +142,8 @@
 /* ========================================================= */
 
 .page-list .level-container .level .level-description {
+    position: relative;
+
     width: calc(100% + 3rem);
     margin-left: -1.5rem;
 
@@ -149,13 +151,11 @@
 
     box-sizing: border-box;
 
-    background-color: var(--color-background-hover);
-
-    /* Round ALL four outer corners */
     border-radius: 0.75rem;
 
-    /* Important: clips the child backgrounds to the rounded shape */
     overflow: hidden;
+
+    background: var(--color-background-hover);
 }
 
 
@@ -164,6 +164,9 @@
 /* ========================================================= */
 
 .page-list .level-container .level .level-description summary {
+    position: relative;
+    z-index: 1;
+
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -173,7 +176,6 @@
 
     padding: 1rem 0;
 
-    background-color: var(--color-background-hover);
     color: var(--color-on-background);
 
     cursor: pointer;
@@ -189,8 +191,11 @@
 
     list-style: none;
 
-    /* Round the visible heading */
-    border-radius: 0.75rem;
+    /* Remove any browser/default background */
+    background: transparent;
+
+    border: none;
+    outline: none;
 }
 
 
@@ -208,7 +213,7 @@
 }
 
 
-/* Remove browser's default triangle */
+/* Remove browser default triangle */
 .page-list .level-container .level .level-description summary::-webkit-details-marker {
     display: none;
 }
@@ -251,7 +256,7 @@
 /* ========================================================= */
 
 .page-list .level-container .level .level-description summary:hover {
-    background-color: var(--color-background-hover);
+    background: transparent;
 }
 
 
@@ -260,12 +265,16 @@
 /* ========================================================= */
 
 .page-list .level-container .level .description-content {
+    position: relative;
+    z-index: 1;
+
     width: 100%;
     box-sizing: border-box;
 
     padding: 0 0 1rem 0;
 
-    background-color: var(--color-background-hover);
+    background: transparent;
+
     color: var(--color-on-background);
 
     font-family: "Lexend Deca", sans-serif;
@@ -275,11 +284,8 @@
 
     -webkit-font-smoothing: subpixel-antialiased;
 
-    /* Allows you to paste paragraphs normally */
+    /* Lets you paste normal paragraphs */
     white-space: pre-wrap;
-
-    /* Round the bottom of the visible description */
-    border-radius: 0 0 0.75rem 0.75rem;
 }
 
 
