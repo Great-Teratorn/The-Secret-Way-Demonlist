@@ -160,11 +160,12 @@
     align-items: center;
     justify-content: space-between;
 
-    width: 100%;
+    width: calc(100% + 2rem);
     box-sizing: border-box;
 
-    /* Give it the same breathing room as before */
-    padding: 1rem 0;
+    /* Keeps text aligned, but extends the background both ways */
+    margin-left: -1rem;
+    padding: 1rem;
 
     background-color: var(--color-background-hover);
     color: var(--color-on-background);
@@ -172,7 +173,6 @@
     cursor: pointer;
     user-select: none;
 
-    /* EXACTLY matches typography.css h2 */
     font-family: "Lexend Deca", sans-serif;
     font-size: 28px;
     line-height: 34px;
