@@ -115,9 +115,9 @@ export default {
 
                     <details v-if="level.description" class="level-description">
     <summary>
-    <span>Description</span>
-    <span class="description-arrow">▼</span>
-</summary>
+        <span>Description</span>
+        <span class="description-arrow">▼</span>
+    </summary>
 
     <div class="description-content">
         {{ level.description }}

@@ -145,20 +145,24 @@
 .page-list .level-container .level .level-description {
     width: 100%;
     margin: 0;
+    padding: 0;
+
     border-radius: 0.5rem;
     overflow: hidden;
 
-    /* Same background for the label and description */
     background-color: var(--color-background-hover);
 }
 
-/* Description header */
+/* Description heading */
 .page-list .level-container .level .level-description summary {
     display: flex;
     align-items: center;
     justify-content: space-between;
 
-    padding: 0.75rem 1rem;
+    width: 100%;
+    box-sizing: border-box;
+
+    padding: 0;
 
     background-color: var(--color-background-hover);
     color: var(--color-on-background);
@@ -166,9 +170,9 @@
     cursor: pointer;
     user-select: none;
 
-    /* Make it look like the existing headings */
-    font-size: 1.5rem;
-    font-weight: 600;
+    /* Match the site's h2 */
+    font-size: 1.5em;
+    font-weight: bold;
 
     list-style: none;
 }
@@ -183,16 +187,16 @@
     content: "";
 }
 
-/* Triangle */
+/* Right-side triangle */
 .page-list .level-container .level .description-arrow {
     display: inline-block;
 
-    font-size: 0.9rem;
+    margin-left: auto;
+
+    font-size: 0.8em;
 
     transform: rotate(0deg);
     transition: transform 0.2s ease;
-
-    margin-left: 1rem;
 }
 
 /* Closed = ▼ */
@@ -201,14 +205,17 @@
     transform: rotate(180deg);
 }
 
-/* Slight hover effect */
+/* Hover */
 .page-list .level-container .level .level-description summary:hover {
     background-color: var(--color-background-hover);
 }
 
-/* Description body */
+/* Description text */
 .page-list .level-container .level .description-content {
-    padding: 0 1rem 1rem 1rem;
+    width: 100%;
+    box-sizing: border-box;
+
+    padding: 0 0 1rem 0;
 
     background-color: var(--color-background-hover);
     color: var(--color-on-background);
@@ -216,15 +223,6 @@
     line-height: 1.6;
 
     white-space: pre-wrap;
-}
-
-/* Paragraph spacing */
-.page-list .level-container .level .description-content p {
-    margin: 0 0 1rem 0;
-}
-
-.page-list .level-container .level .description-content p:last-child {
-    margin-bottom: 0;
 }
 
 
