@@ -112,7 +112,28 @@ export default {
                             <p>{{ level.password || 'Free to Copy' }}</p>
                         </li>
                     </ul>
-                    <h2>Records</h2>
+<!-- DESCRIPTION -->
+                <details
+                    v-if="level.description"
+                    class="level-description"
+                >
+                    <summary>
+                        <span class="description-arrow">▼</span>
+                        <span>Description</span>
+                    </summary>
+
+                    <div class="description-content">
+                        <p
+                            v-for="(paragraph, index) in level.description.split(/\n\s*\n/)"
+                            :key="index"
+                        >
+                            {{ paragraph }}
+                        </p>
+                    </div>
+                </details>
+
+                <!-- RECORDS -->
+                <h2>Records</h2>
                     <p v-if="selected + 1 <= 75"><strong>{{ level.percentToQualify }}%</strong> to qualify</p>
                     <p v-else-if="selected +1 <= 150"><strong>100%</strong> to qualify</p>
                     <p v-else>This level does not accept new records.</p>

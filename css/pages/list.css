@@ -138,6 +138,89 @@
 
 
 
+/* ========================================================= */
+/* LEVEL DESCRIPTION DROPDOWN                                */
+/* ========================================================= */
+
+.page-list .level-container .level .level-description {
+    width: 100%;
+    margin: 0;
+    border-radius: 0.5rem;
+    overflow: hidden;
+}
+
+/* Description button */
+.page-list .level-container .level .level-description summary {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    padding: 1rem;
+
+    background-color: var(--color-background);
+    color: var(--color-on-background);
+
+    border-radius: 0.5rem;
+
+    cursor: pointer;
+    user-select: none;
+
+    font-weight: bold;
+
+    list-style: none;
+}
+
+/* Remove browser's default triangle */
+.page-list .level-container .level .level-description summary::-webkit-details-marker {
+    display: none;
+}
+
+/* Also remove default marker where supported */
+.page-list .level-container .level .level-description summary::marker {
+    display: none;
+    content: "";
+}
+
+/* Triangle */
+.page-list .level-container .level .description-arrow {
+    display: inline-block;
+
+    font-size: 0.8rem;
+
+    transform: rotate(0deg);
+    transition: transform 0.2s ease;
+}
+
+/* ▼ when closed -> ▲ when open */
+.page-list .level-container .level .level-description[open] .description-arrow {
+    transform: rotate(180deg);
+}
+
+/* Hover */
+.page-list .level-container .level .level-description summary:hover {
+    background-color: var(--color-background-hover);
+    color: var(--color-on-background-hover);
+}
+
+/* Description body */
+.page-list .level-container .level .description-content {
+    padding: 1rem;
+
+    line-height: 1.6;
+}
+
+/* Paragraph spacing */
+.page-list .level-container .level .description-content p {
+    margin: 0 0 1rem 0;
+}
+
+.page-list .level-container .level .description-content p:last-child {
+    margin-bottom: 0;
+}
+
+
+
+
 /* MASTER DEMONLIST MOBILE RESPONSIVENESS FIX */
 @media (max-width: 768px) {
     /* Fix the layout wrapper so things stack vertically */
