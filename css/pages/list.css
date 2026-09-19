@@ -671,31 +671,28 @@ opacity: 0.85;
 
 
 
-/* ========================================================= */
-/* LEVEL TITLE + DEMON FACE                                  */
-/* ========================================================= */
 
 .page-list .level-container .level .level-title-with-demon {
-    position: relative;
-    width: max-content;
-    max-width: 100%;
+    width: 100%;
 }
 
 .page-list .level-container .level .level-title-with-demon h1 {
     margin: 0;
-    padding-right: 94px;
+    line-height: 1.2;
 }
 
 .page-list .level-container .level .level-demon-icon {
-    position: absolute;
-    right: 0;
-    top: 0;
-
     width: 80px;
     height: 80px;
-
     object-fit: contain;
+
+    display: inline-block;
+    vertical-align: middle;
+
+    margin-left: 12px;
 }
+
+
 
 
 
