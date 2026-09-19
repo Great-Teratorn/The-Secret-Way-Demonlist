@@ -121,11 +121,20 @@ export default {
     </button>
 </div>
 
-<div v-if="showFilters" class="filter-modal-overlay" 
-@click.self="
-    difficultyFilter = appliedDifficultyFilter;
-    showFilters = false;
-">
+<div
+    v-if="showFilters"
+    class="filter-modal-overlay"
+    @click.self="
+        difficultyFilter = appliedDifficultyFilter;
+        secretWayStartMin = appliedSecretWayStartMin;
+        secretWayStartMax = appliedSecretWayStartMax;
+        secretWayEndMin = appliedSecretWayEndMin;
+        secretWayEndMax = appliedSecretWayEndMax;
+        secretWayLengthMin = appliedSecretWayLengthMin;
+        secretWayLengthMax = appliedSecretWayLengthMax;
+        showFilters = false;
+    "
+>
     <div class="filter-modal">
 
         <div class="filter-modal-header">
@@ -135,9 +144,15 @@ export default {
                 type="button"
                 class="filter-modal-close"
                 @click="
-    difficultyFilter = appliedDifficultyFilter;
-    showFilters = false;
-"
+                    difficultyFilter = appliedDifficultyFilter;
+                    secretWayStartMin = appliedSecretWayStartMin;
+                    secretWayStartMax = appliedSecretWayStartMax;
+                    secretWayEndMin = appliedSecretWayEndMin;
+                    secretWayEndMax = appliedSecretWayEndMax;
+                    secretWayLengthMin = appliedSecretWayLengthMin;
+                    secretWayLengthMax = appliedSecretWayLengthMax;
+                    showFilters = false;
+                "
                 aria-label="Close filters"
             >
                 ×
@@ -146,85 +161,209 @@ export default {
 
         <div class="filter-modal-content">
 
-            <div class="filter-group">
-                <h3>Difficulty</h3>
+            <!-- DIFFICULTY -->
+            <details class="filter-section" open>
+                <summary>Difficulty</summary>
 
-                <label class="filter-option">
-                    <input
-                        type="radio"
-                        value=""
-                        v-model="difficultyFilter"
-                    >
-                    <span>All difficulties</span>
-                </label>
+                <div class="filter-section-content">
 
-                <label class="filter-option">
-                    <input
-                        type="radio"
-                        value="easy"
-                        v-model="difficultyFilter"
-                    >
-                    <span>Easy Demon</span>
-                </label>
+                    <label class="filter-option">
+                        <input
+                            type="radio"
+                            value=""
+                            v-model="difficultyFilter"
+                        >
+                        <span>All difficulties</span>
+                    </label>
 
-                <label class="filter-option">
-                    <input
-                        type="radio"
-                        value="medium"
-                        v-model="difficultyFilter"
-                    >
-                    <span>Medium Demon</span>
-                </label>
+                    <label class="filter-option">
+                        <input
+                            type="radio"
+                            value="easy"
+                            v-model="difficultyFilter"
+                        >
+                        <span>Easy Demon</span>
+                    </label>
 
-                <label class="filter-option">
-                    <input
-                        type="radio"
-                        value="hard"
-                        v-model="difficultyFilter"
-                    >
-                    <span>Hard Demon</span>
-                </label>
+                    <label class="filter-option">
+                        <input
+                            type="radio"
+                            value="medium"
+                            v-model="difficultyFilter"
+                        >
+                        <span>Medium Demon</span>
+                    </label>
 
-                <label class="filter-option">
-                    <input
-                        type="radio"
-                        value="insane"
-                        v-model="difficultyFilter"
-                    >
-                    <span>Insane Demon</span>
-                </label>
+                    <label class="filter-option">
+                        <input
+                            type="radio"
+                            value="hard"
+                            v-model="difficultyFilter"
+                        >
+                        <span>Hard Demon</span>
+                    </label>
 
-                <label class="filter-option">
-                    <input
-                        type="radio"
-                        value="extreme"
-                        v-model="difficultyFilter"
-                    >
-                    <span>Extreme Demon</span>
-                </label>
-            </div>
+                    <label class="filter-option">
+                        <input
+                            type="radio"
+                            value="insane"
+                            v-model="difficultyFilter"
+                        >
+                        <span>Insane Demon</span>
+                    </label>
+
+                    <label class="filter-option">
+                        <input
+                            type="radio"
+                            value="extreme"
+                            v-model="difficultyFilter"
+                        >
+                        <span>Extreme Demon</span>
+                    </label>
+
+                </div>
+            </details>
+
+
+            <!-- SECRET WAY START -->
+            <details class="filter-section">
+                <summary>Secret Way Start</summary>
+
+                <div class="filter-section-content">
+
+                    <label class="filter-number">
+                        <span>Minimum</span>
+                        <input
+                            type="number"
+                            min="0"
+                            max="100"
+                            v-model.number="secretWayStartMin"
+                            placeholder="0"
+                        >
+                        <span>%</span>
+                    </label>
+
+                    <label class="filter-number">
+                        <span>Maximum</span>
+                        <input
+                            type="number"
+                            min="0"
+                            max="100"
+                            v-model.number="secretWayStartMax"
+                            placeholder="100"
+                        >
+                        <span>%</span>
+                    </label>
+
+                </div>
+            </details>
+
+
+            <!-- SECRET WAY END -->
+            <details class="filter-section">
+                <summary>Secret Way End</summary>
+
+                <div class="filter-section-content">
+
+                    <label class="filter-number">
+                        <span>Minimum</span>
+                        <input
+                            type="number"
+                            min="0"
+                            max="100"
+                            v-model.number="secretWayEndMin"
+                            placeholder="0"
+                        >
+                        <span>%</span>
+                    </label>
+
+                    <label class="filter-number">
+                        <span>Maximum</span>
+                        <input
+                            type="number"
+                            min="0"
+                            max="100"
+                            v-model.number="secretWayEndMax"
+                            placeholder="100"
+                        >
+                        <span>%</span>
+                    </label>
+
+                </div>
+            </details>
+
+
+            <!-- SECRET WAY LENGTH -->
+            <details class="filter-section">
+                <summary>Secret Way Length</summary>
+
+                <div class="filter-section-content">
+
+                    <label class="filter-number">
+                        <span>Minimum</span>
+                        <input
+                            type="number"
+                            min="0"
+                            max="100"
+                            v-model.number="secretWayLengthMin"
+                            placeholder="0"
+                        >
+                        <span>%</span>
+                    </label>
+
+                    <label class="filter-number">
+                        <span>Maximum</span>
+                        <input
+                            type="number"
+                            min="0"
+                            max="100"
+                            v-model.number="secretWayLengthMax"
+                            placeholder="100"
+                        >
+                        <span>%</span>
+                    </label>
+
+                </div>
+            </details>
 
         </div>
 
+
         <div class="filter-modal-actions">
+
             <button
                 type="button"
                 class="filter-clear"
-                @click="difficultyFilter = ''"
+                @click="
+                    difficultyFilter = '';
+                    secretWayStartMin = null;
+                    secretWayStartMax = null;
+                    secretWayEndMin = null;
+                    secretWayEndMax = null;
+                    secretWayLengthMin = null;
+                    secretWayLengthMax = null;
+                "
             >
                 Clear All
             </button>
 
             <button
-    type="button"
-    class="filter-apply"
-    @click="
-        appliedDifficultyFilter = difficultyFilter;
-        showFilters = false;
-    "
->
-    Apply
-</button>
+                type="button"
+                class="filter-apply"
+                @click="
+                    appliedDifficultyFilter = difficultyFilter;
+                    appliedSecretWayStartMin = secretWayStartMin;
+                    appliedSecretWayStartMax = secretWayStartMax;
+                    appliedSecretWayEndMin = secretWayEndMin;
+                    appliedSecretWayEndMax = secretWayEndMax;
+                    appliedSecretWayLengthMin = secretWayLengthMin;
+                    appliedSecretWayLengthMax = secretWayLengthMax;
+                    showFilters = false;
+                "
+            >
+                Apply
+            </button>
+
         </div>
 
     </div>
@@ -395,8 +534,23 @@ export default {
     editors: [],
     showFilters: false,
     difficultyFilter: "",
-    appliedDifficultyFilter: "",
-    loading: true,
+appliedDifficultyFilter: "",
+
+secretWayStartMin: null,
+secretWayStartMax: null,
+secretWayEndMin: null,
+secretWayEndMax: null,
+secretWayLengthMin: null,
+secretWayLengthMax: null,
+
+appliedSecretWayStartMin: null,
+appliedSecretWayStartMax: null,
+appliedSecretWayEndMin: null,
+appliedSecretWayEndMax: null,
+appliedSecretWayLengthMin: null,
+appliedSecretWayLengthMax: null,
+
+loading: true,
     selected: 0,
     isWeekly: false,
     errors: [],
@@ -437,12 +591,61 @@ export default {
                 return false;
             }
 
-            if (!this.appliedDifficultyFilter) {
-    return true;
+            if (
+    this.appliedDifficultyFilter &&
+    String(level.difficulty || "").toLowerCase()
+        !== this.appliedDifficultyFilter.toLowerCase()
+) {
+    return false;
 }
 
-return String(level.difficulty || "").toLowerCase()
-    === this.appliedDifficultyFilter.toLowerCase();
+const start = Number(level.secret_way_start);
+const end = Number(level.secret_way_end);
+const length = end - start;
+
+if (
+    this.appliedSecretWayStartMin !== null &&
+    start < this.appliedSecretWayStartMin
+) {
+    return false;
+}
+
+if (
+    this.appliedSecretWayStartMax !== null &&
+    start > this.appliedSecretWayStartMax
+) {
+    return false;
+}
+
+if (
+    this.appliedSecretWayEndMin !== null &&
+    end < this.appliedSecretWayEndMin
+) {
+    return false;
+}
+
+if (
+    this.appliedSecretWayEndMax !== null &&
+    end > this.appliedSecretWayEndMax
+) {
+    return false;
+}
+
+if (
+    this.appliedSecretWayLengthMin !== null &&
+    length < this.appliedSecretWayLengthMin
+) {
+    return false;
+}
+
+if (
+    this.appliedSecretWayLengthMax !== null &&
+    length > this.appliedSecretWayLengthMax
+) {
+    return false;
+}
+
+return true;
         });
 },
 
@@ -504,36 +707,36 @@ watch: {
     },
 
     appliedDifficultyFilter() {
-    const currentLevel = this.list[this.selected]?.[0];
+    this.selectFirstMatchingLevel();
+},
 
-    // No filter is applied.
-    // Keep the current level if it still exists.
-    if (!this.appliedDifficultyFilter) {
-        return;
-    }
+appliedSecretWayStartMin() {
+    this.selectFirstMatchingLevel();
+},
 
-    const currentMatches =
-        currentLevel &&
-        String(currentLevel.difficulty || "").toLowerCase()
-            === this.appliedDifficultyFilter.toLowerCase();
+appliedSecretWayStartMax() {
+    this.selectFirstMatchingLevel();
+},
 
-    // Current level already matches the applied filter.
-    if (currentMatches) {
-        return;
-    }
+appliedSecretWayEndMin() {
+    this.selectFirstMatchingLevel();
+},
 
-    // Find the first level matching the newly applied filter.
-    const firstMatch = this.list.findIndex(([level]) => {
-        if (!level) return false;
+appliedSecretWayEndMax() {
+    this.selectFirstMatchingLevel();
+},
 
-        return String(level.difficulty || "").toLowerCase()
-            === this.appliedDifficultyFilter.toLowerCase();
-    });
+appliedSecretWayLengthMin() {
+    this.selectFirstMatchingLevel();
+},
 
-    if (firstMatch !== -1) {
-        this.selected = firstMatch;
-    }
+appliedSecretWayLengthMax() {
+    this.selectFirstMatchingLevel();
 }
+
+
+
+
 },
 
 
@@ -599,6 +802,87 @@ async mounted() {
 
         return icons[String(difficulty).toLowerCase()] || null;
     },
+
+
+    selectFirstMatchingLevel() {
+    const firstMatch = this.list.findIndex(([level], index) => {
+        if (!level) return false;
+
+        // Only consider levels belonging to the current page/tab.
+        const routeMatches =
+            ((this.$route.path === '/' || this.$route.path === '/list') && index < 150) ||
+            ((this.$route.path === '/extended' || this.$route.path === '/list/extended') && index >= 150) ||
+            ((this.$route.path === '/legacy' || this.$route.path === '/list/legacy') && level.dateFallen) ||
+            this.$route.path === '/unverified' ||
+            this.$route.path === '/anomalies' ||
+            this.$route.path === '/weekly' ||
+            this.$route.path === '/removed';
+
+        if (!routeMatches) {
+            return false;
+        }
+
+        if (
+            this.appliedDifficultyFilter &&
+            String(level.difficulty || "").toLowerCase()
+                !== this.appliedDifficultyFilter.toLowerCase()
+        ) {
+            return false;
+        }
+
+        const start = Number(level.secret_way_start);
+        const end = Number(level.secret_way_end);
+        const length = end - start;
+
+        if (
+            this.appliedSecretWayStartMin !== null &&
+            start < this.appliedSecretWayStartMin
+        ) {
+            return false;
+        }
+
+        if (
+            this.appliedSecretWayStartMax !== null &&
+            start > this.appliedSecretWayStartMax
+        ) {
+            return false;
+        }
+
+        if (
+            this.appliedSecretWayEndMin !== null &&
+            end < this.appliedSecretWayEndMin
+        ) {
+            return false;
+        }
+
+        if (
+            this.appliedSecretWayEndMax !== null &&
+            end > this.appliedSecretWayEndMax
+        ) {
+            return false;
+        }
+
+        if (
+            this.appliedSecretWayLengthMin !== null &&
+            length < this.appliedSecretWayLengthMin
+        ) {
+            return false;
+        }
+
+        if (
+            this.appliedSecretWayLengthMax !== null &&
+            length > this.appliedSecretWayLengthMax
+        ) {
+            return false;
+        }
+
+        return true;
+    });
+
+    if (firstMatch !== -1) {
+        this.selected = firstMatch;
+    }
+},
 
 
     
