@@ -151,11 +151,16 @@
 
     box-sizing: border-box;
 
-    border-radius: 0.75rem;
+    background-color: var(--color-background-hover);
 
-    overflow: hidden;
+    /* Force rounded corners on every side */
+    border-radius: 0.75rem !important;
 
-    background: var(--color-background-hover);
+    /* Force the background to be clipped to those corners */
+    overflow: hidden !important;
+
+    /* Extra enforcement for browsers that ignore the clipping */
+    clip-path: inset(0 round 0.75rem);
 }
 
 
@@ -191,9 +196,7 @@
 
     list-style: none;
 
-    /* Remove any browser/default background */
-    background: transparent;
-
+    background: transparent !important;
     border: none;
     outline: none;
 }
@@ -256,7 +259,7 @@
 /* ========================================================= */
 
 .page-list .level-container .level .level-description summary:hover {
-    background: transparent;
+    background: transparent !important;
 }
 
 
@@ -273,7 +276,7 @@
 
     padding: 0 0 1rem 0;
 
-    background: transparent;
+    background: transparent !important;
 
     color: var(--color-on-background);
 
@@ -284,7 +287,7 @@
 
     -webkit-font-smoothing: subpixel-antialiased;
 
-    /* Lets you paste normal paragraphs */
+    /* Allows you to paste paragraphs normally */
     white-space: pre-wrap;
 }
 
