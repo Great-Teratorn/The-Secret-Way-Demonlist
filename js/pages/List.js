@@ -23,15 +23,30 @@ export default {
         <main v-else class="page-list">
 
 
-            <div class="list-controls">
-    <button class="filter-button" @click="filtersOpen = !filtersOpen">
-        Filters
-    </button>
+            <main v-else class="page-list">
 
-    <button class="settings-button" title="Filter settings">
-        ⚙
-    </button>
-</div>
+    <div class="filter-controls">
+        <button
+            class="filter-button"
+            @click="filtersOpen = !filtersOpen"
+        >
+            FILTERS
+        </button>
+
+        <button
+            class="filter-settings"
+            @click="filtersOpen = !filtersOpen"
+            title="Filter settings"
+        >
+            ⚙
+        </button>
+    </div>
+
+    <div v-if="filtersOpen" class="filter-panel">
+        <p>Filter options will go here.</p>
+    </div>
+
+    <div class="list-container">
 
 
             <div class="list-container">
@@ -235,16 +250,17 @@ export default {
         </main>
     `,
     data: () => ({
-        list: [],
-        editors: [],
-        loading: true,
-        selected: 0,
-        isWeekly: false,
-        filtersOpen: false,
-        errors: [],
-        roleIconMap,
-        store
-    }),
+    list: [],
+    editors: [],
+    loading: true,
+    selected: 0,
+    isWeekly: false,
+    errors: [],
+    roleIconMap,
+    store,
+
+    filtersOpen: false
+}),
 
     computed: {
     level() {

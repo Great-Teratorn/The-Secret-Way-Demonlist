@@ -304,6 +304,55 @@
 
 
 
+.filter-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding-inline: 1rem;
+    margin-bottom: 0;
+}
+
+.filter-button,
+.filter-settings {
+    background-color: var(--color-background);
+    color: var(--color-on-background);
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+}
+
+.filter-button {
+    padding: 0.75rem 1rem;
+    font-weight: bold;
+}
+
+.filter-settings {
+    width: 2.5rem;
+    height: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+}
+
+.filter-button:hover,
+.filter-settings:hover {
+    background-color: var(--color-background-hover);
+    color: var(--color-on-background-hover);
+}
+
+.filter-panel {
+    margin: 0.75rem 1rem 0;
+    padding: 1rem;
+    background-color: var(--color-background);
+    color: var(--color-on-background);
+    border-radius: 0.5rem;
+}
+
+
+
+
+
 /* MASTER DEMONLIST MOBILE RESPONSIVENESS FIX */
 @media (max-width: 768px) {
     /* Fix the layout wrapper so things stack vertically */
