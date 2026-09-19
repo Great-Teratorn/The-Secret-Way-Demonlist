@@ -109,7 +109,7 @@ export default {
 </div>
 
             <div class="level-container">
-                <div class="level" v-if="level">
+                <div class="level" v-if="level && filteredList.length > 0">
 
 
                     <div class="filter-controls">
@@ -502,8 +502,32 @@ export default {
                         </tr>
                     </table>
                 </div>
+                
+                
+<div
+    v-else-if="filteredList.length === 0"
+    class="level"
+    style="height: 100%; justify-content: center; align-items: center;"
+>
+    <pre style="font-family: monospace; text-align: left;"> ________________________
+
+|                        |
+| ERROR: 404             |
+| BRAIN NOT FOUND!       |
+| NO RESULTS!            |
+|________________________|
+    &#92;   ^__^
+     &#92;  (xx)&#92;_______
+        (__)&#92;       )\/&#92;
+         U  ||----w |
+            ||     ||
+
+</pre>
+</div>
+
+
                 <div v-else class="level" style="height: 100%; justify-content: center; align-items: center;">
-                    <p>(ノಠ益ಠ)ノ彡┻━┻</p>
+                    <p>✧･ﾟ:*(⊙﹏⊙)*:･ﾟ✧</p>
                 </div>
             </div>
             <div class="meta-container">
@@ -584,8 +608,20 @@ loading: true,
 
     computed: {
     level() {
-        return this.list[this.selected]?.[0] || null;
-    },
+    if (this.selected === null || this.selected === undefined) {
+        return null;
+    }
+
+    const selectedIsFiltered = this.filteredList.some(
+        ({ index }) => index === this.selected
+    );
+
+    if (!selectedIsFiltered) {
+        return null;
+    }
+
+    return this.list[this.selected]?.[0] || null;
+},
 
     filteredList() {
         return this.list
@@ -721,19 +757,9 @@ watch: {
     async $route() {
         this.list = await fetchList();
 
-        if (this.$route.path === '/extended' || this.$route.path === '/list/extended') {
-            this.selected = 150;
-        } else if (this.$route.path === '/legacy' || this.$route.path === '/list/legacy') {
-            const index = this.list.findIndex(
-                ([level]) => level && level.dateFallen
-            );
-
-            if (index !== -1) {
-                this.selected = index;
-            }
-        } else {
-            this.selected = 0;
-        }
+        // Select the first level matching the current filters
+        // on the newly loaded list.
+        this.selectFirstMatchingLevel();
 
         // Remove only the green search styling after Vue
         // has finished rendering the new list.
@@ -950,8 +976,10 @@ selectFirstMatchingLevel() {
     });
 
     if (firstMatch !== -1) {
-        this.selected = firstMatch;
-    }
+    this.selected = firstMatch;
+} else {
+    this.selected = null;
+}
 },
 
 
