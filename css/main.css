@@ -441,7 +441,14 @@ nav a svg {
     border: none !important;
     outline: none !important;
     color: #fff !important;
-    font-size: 0.9rem !important;
+
+    /* Match the site's existing typography */
+    font-family: "Lexend Deca", sans-serif !important;
+    font-size: 17.1428571429px !important;
+    line-height: 20px !important;
+    font-weight: 500 !important;
+    -webkit-font-smoothing: subpixel-antialiased !important;
+
     padding: 0 40px 0 10px !important;
     opacity: 0 !important;
     pointer-events: none !important;
