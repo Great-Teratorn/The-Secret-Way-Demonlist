@@ -387,17 +387,14 @@ export default {
 
                 
 <div class="level-title-with-demon">
-    <h1>
-        <span class="level-title-first-line">
-            <span class="level-title-text">{{ level.name }}</span>
-            <img
-                v-if="level?.difficulty"
-                :src="difficultyIcon(level.difficulty)"
-                :alt="level.difficulty + ' demon'"
-                class="level-demon-icon"
-            >
-        </span>
-    </h1>
+    <h1>{{ level.name }}</h1>
+
+    <img
+        v-if="level?.difficulty"
+        :src="difficultyIcon(level.difficulty)"
+        :alt="level.difficulty + ' demon'"
+        class="level-demon-icon"
+    >
 </div>
 
     
