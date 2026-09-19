@@ -387,7 +387,7 @@ export default {
 
 
                 
-<div v-if="level && filteredList.length > 0">
+
 <div class="level-title-with-demon">
     <h1>
         <span class="level-title-text">{{ level.name }}</span>
@@ -502,9 +502,9 @@ export default {
                             </td>
                         </tr>
                     </table>
-</div>
-
-</div>
+                </div>
+                
+                
 
 <div
     v-else-if="filteredList.length === 0"
@@ -878,109 +878,12 @@ async mounted() {
 
 
 selectFirstMatchingLevel() {
-    const hasSecretWayFilter =
-        this.appliedSecretWayStartMin !== null ||
-        this.appliedSecretWayStartMax !== null ||
-        this.appliedSecretWayEndMin !== null ||
-        this.appliedSecretWayEndMax !== null ||
-        this.appliedSecretWayLengthMin !== null ||
-        this.appliedSecretWayLengthMax !== null;
+    if (!this.filteredList.length) {
+        this.selected = null;
+        return;
+    }
 
-    const firstMatch = this.list.findIndex(([level], index) => {
-        if (!level) return false;
-
-        // Only consider levels belonging to the current page/tab.
-        const routeMatches =
-            ((this.$route.path === '/' || this.$route.path === '/list') && index < 150) ||
-            ((this.$route.path === '/extended' || this.$route.path === '/list/extended') && index >= 150) ||
-            ((this.$route.path === '/legacy' || this.$route.path === '/list/legacy') && level.dateFallen) ||
-            this.$route.path === '/unverified' ||
-            this.$route.path === '/anomalies' ||
-            this.$route.path === '/weekly' ||
-            this.$route.path === '/removed';
-
-        if (!routeMatches) {
-            return false;
-        }
-
-        // Difficulty filter.
-        if (
-            this.appliedDifficultyFilter &&
-            String(level.difficulty || "").toLowerCase()
-                !== this.appliedDifficultyFilter.toLowerCase()
-        ) {
-            return false;
-        }
-
-        // If any Secret Way filter is active, the level must actually
-        // have valid Secret Way start/end values.
-        if (hasSecretWayFilter) {
-            if (
-                level.secret_way_start == null ||
-                level.secret_way_end == null
-            ) {
-                return false;
-            }
-
-            const start = Number(level.secret_way_start);
-            const end = Number(level.secret_way_end);
-            const length = end - start;
-
-            if (!Number.isFinite(start) || !Number.isFinite(end)) {
-                return false;
-            }
-
-            if (
-                this.appliedSecretWayStartMin !== null &&
-                start < this.appliedSecretWayStartMin
-            ) {
-                return false;
-            }
-
-            if (
-                this.appliedSecretWayStartMax !== null &&
-                start > this.appliedSecretWayStartMax
-            ) {
-                return false;
-            }
-
-            if (
-                this.appliedSecretWayEndMin !== null &&
-                end < this.appliedSecretWayEndMin
-            ) {
-                return false;
-            }
-
-            if (
-                this.appliedSecretWayEndMax !== null &&
-                end > this.appliedSecretWayEndMax
-            ) {
-                return false;
-            }
-
-            if (
-                this.appliedSecretWayLengthMin !== null &&
-                length < this.appliedSecretWayLengthMin
-            ) {
-                return false;
-            }
-
-            if (
-                this.appliedSecretWayLengthMax !== null &&
-                length > this.appliedSecretWayLengthMax
-            ) {
-                return false;
-            }
-        }
-
-        return true;
-    });
-
-    if (firstMatch !== -1) {
-    this.selected = firstMatch;
-} else {
-    this.selected = null;
-}
+    this.selected = this.filteredList[0].index;
 },
 
 
