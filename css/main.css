@@ -680,16 +680,21 @@ nav a svg {
  * The right-hand label area starts at one fixed position,
  * but the individual coloured badges stay compact.
  */
+
 .search-suggestions-dropdown .suggestion-row > span:last-child {
     display: flex !important;
     align-items: center !important;
     justify-content: flex-start !important;
     gap: 6px !important;
 
-    width: 105px !important;
+    width: auto !important;
     min-width: 105px !important;
-    flex: 0 0 105px !important;
+    flex: 0 0 auto !important;
+
+    white-space: nowrap !important;
 }
+
+
 
 
 /*
