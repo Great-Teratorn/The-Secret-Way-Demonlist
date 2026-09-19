@@ -25,7 +25,7 @@ export default {
 
             <div class="list-container">
     <table class="list" v-if="list">
-    <template v-for="({ entry, index: originalIndex }) in list.map((entry, index) => ({ entry, index }))">
+        <template v-for="({ entry, index: originalIndex }) in filteredList">
     <tr
         :key="originalIndex"
         v-if="
@@ -109,7 +109,6 @@ export default {
 </div>
 
             <div class="level-container">
-
     <div class="filter-controls">
         <button
             class="filter-button"
@@ -118,6 +117,8 @@ export default {
             Filters
         </button>
     </div>
+
+    <div class="level" v-if="level && filteredList.length > 0">
 
 
                     
@@ -505,13 +506,12 @@ export default {
                 </div>
                 
                 
-
 <div
     v-else-if="filteredList.length === 0"
     class="level"
     style="height: 100%; justify-content: center; align-items: center;"
 >
-    <pre style="font-family: monospace; text-align: left; margin: 0;"> ________________________
+    <pre style="font-family: monospace; text-align: left;"> ________________________
 |                        |
 | ERROR: 404             |
 | BRAIN NOT FOUND!       |
@@ -521,10 +521,9 @@ export default {
      &#92;  (xx)&#92;_______
         (__)&#92;       )\/&#92;
          U  ||----w |
-            ||     ||</pre>
+            ||     ||
+</pre>
 </div>
-
-
 
 
                 <div v-else class="level" style="height: 100%; justify-content: center; align-items: center;">
@@ -878,12 +877,109 @@ async mounted() {
 
 
 selectFirstMatchingLevel() {
-    if (!this.filteredList.length) {
-        this.selected = null;
-        return;
-    }
+    const hasSecretWayFilter =
+        this.appliedSecretWayStartMin !== null ||
+        this.appliedSecretWayStartMax !== null ||
+        this.appliedSecretWayEndMin !== null ||
+        this.appliedSecretWayEndMax !== null ||
+        this.appliedSecretWayLengthMin !== null ||
+        this.appliedSecretWayLengthMax !== null;
 
-    this.selected = this.filteredList[0].index;
+    const firstMatch = this.list.findIndex(([level], index) => {
+        if (!level) return false;
+
+        // Only consider levels belonging to the current page/tab.
+        const routeMatches =
+            ((this.$route.path === '/' || this.$route.path === '/list') && index < 150) ||
+            ((this.$route.path === '/extended' || this.$route.path === '/list/extended') && index >= 150) ||
+            ((this.$route.path === '/legacy' || this.$route.path === '/list/legacy') && level.dateFallen) ||
+            this.$route.path === '/unverified' ||
+            this.$route.path === '/anomalies' ||
+            this.$route.path === '/weekly' ||
+            this.$route.path === '/removed';
+
+        if (!routeMatches) {
+            return false;
+        }
+
+        // Difficulty filter.
+        if (
+            this.appliedDifficultyFilter &&
+            String(level.difficulty || "").toLowerCase()
+                !== this.appliedDifficultyFilter.toLowerCase()
+        ) {
+            return false;
+        }
+
+        // If any Secret Way filter is active, the level must actually
+        // have valid Secret Way start/end values.
+        if (hasSecretWayFilter) {
+            if (
+                level.secret_way_start == null ||
+                level.secret_way_end == null
+            ) {
+                return false;
+            }
+
+            const start = Number(level.secret_way_start);
+            const end = Number(level.secret_way_end);
+            const length = end - start;
+
+            if (!Number.isFinite(start) || !Number.isFinite(end)) {
+                return false;
+            }
+
+            if (
+                this.appliedSecretWayStartMin !== null &&
+                start < this.appliedSecretWayStartMin
+            ) {
+                return false;
+            }
+
+            if (
+                this.appliedSecretWayStartMax !== null &&
+                start > this.appliedSecretWayStartMax
+            ) {
+                return false;
+            }
+
+            if (
+                this.appliedSecretWayEndMin !== null &&
+                end < this.appliedSecretWayEndMin
+            ) {
+                return false;
+            }
+
+            if (
+                this.appliedSecretWayEndMax !== null &&
+                end > this.appliedSecretWayEndMax
+            ) {
+                return false;
+            }
+
+            if (
+                this.appliedSecretWayLengthMin !== null &&
+                length < this.appliedSecretWayLengthMin
+            ) {
+                return false;
+            }
+
+            if (
+                this.appliedSecretWayLengthMax !== null &&
+                length > this.appliedSecretWayLengthMax
+            ) {
+                return false;
+            }
+        }
+
+        return true;
+    });
+
+    if (firstMatch !== -1) {
+    this.selected = firstMatch;
+} else {
+    this.selected = null;
+}
 },
 
 
