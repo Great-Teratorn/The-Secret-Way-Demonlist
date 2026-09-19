@@ -458,7 +458,7 @@ export default {
 
 
     // ADDED THIS WATCHER BLOCK: Forces Vue to reload data when switching tabs
-    watch: {
+watch: {
     async $route() {
         this.list = await fetchList();
 
@@ -490,6 +490,34 @@ export default {
                 }
             });
         });
+    },
+
+    difficultyFilter() {
+        if (!this.difficultyFilter) {
+            return;
+        }
+
+        const currentLevel = this.list[this.selected]?.[0];
+
+        const currentMatches =
+            currentLevel &&
+            String(currentLevel.difficulty || "").toLowerCase()
+                === this.difficultyFilter.toLowerCase();
+
+        if (currentMatches) {
+            return;
+        }
+
+        const firstMatch = this.list.findIndex(([level]) => {
+            if (!level) return false;
+
+            return String(level.difficulty || "").toLowerCase()
+                === this.difficultyFilter.toLowerCase();
+        });
+
+        if (firstMatch !== -1) {
+            this.selected = firstMatch;
+        }
     }
 },
 
