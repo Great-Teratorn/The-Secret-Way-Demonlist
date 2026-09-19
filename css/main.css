@@ -670,23 +670,67 @@ nav a svg {
 
 
 
-/* ======================================================= */
-/* SEARCH RESULTS — COMPACT TYPE LABEL ALIGNMENT          */
-/* ======================================================= */
 
+/* =======================================================
+   SEARCH RESULTS — PRIMARY LABEL ALIGNMENT
+   ======================================================= */
+
+/*
+ * All primary labels start at exactly the same position.
+ *
+ * The fixed width is kept modest so the labels do not become
+ * unnecessarily wide. The text itself remains left-aligned.
+ */
 .search-suggestions-dropdown .suggestion-type {
-    display: inline-block !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+
     width: 72px !important;
     min-width: 72px !important;
+
     box-sizing: border-box !important;
-    text-align: left !important;
+    white-space: nowrap !important;
 }
 
-/* Creator / Collaborator triangle sits beside the label,
-   without changing the label's starting position. */
+
+/*
+ * Keep the entire label group compact.
+ * Nothing stretches across the remaining row width.
+ */
+.search-suggestions-dropdown .suggestion-row > span:last-child {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+
+    gap: 6px !important;
+
+    width: auto !important;
+    min-width: 0 !important;
+    flex: 0 0 auto !important;
+}
+
+
+/*
+ * Creator / Collaborator dropdown triangle.
+ *
+ * The triangle sits immediately after the label, but does NOT
+ * alter the starting position of the label itself.
+ */
 .search-suggestions-dropdown .creator-dropdown-toggle {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    width: 12px !important;
+    min-width: 12px !important;
+
+    padding: 2px 0 !important;
+    margin: 0 !important;
+
+    box-sizing: border-box !important;
+    flex: 0 0 12px !important;
     flex-shrink: 0 !important;
-    margin-left: 6px !important;
 }
 
 
