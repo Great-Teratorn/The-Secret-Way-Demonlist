@@ -385,16 +385,20 @@ export default {
 
 
 
-                    <div style="display: flex; align-items: center; gap: 10px;">
-    <h1 style="margin: 0;">{{ level.name }}</h1>
-
-    <img
-    v-if="level?.difficulty"
-    :src="difficultyIcon(level.difficulty)"
-    :alt="level.difficulty + ' demon'"
-    style="width: 68px; height: 68px; object-fit: contain; margin-left: 14px;"
->
+                    
+<div class="level-title-with-demon">
+    <h1>
+        <span class="level-title-text">{{ level.name }}</span>
+        <img
+            v-if="level?.difficulty"
+            :src="difficultyIcon(level.difficulty)"
+            :alt="level.difficulty + ' demon'"
+            class="level-demon-icon"
+        >
+    </h1>
 </div>
+
+
 
 <p
     v-if="$route.path === '/removed' && level?.removedReason"
