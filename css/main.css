@@ -686,9 +686,9 @@ nav a svg {
     justify-content: flex-start !important;
     gap: 6px !important;
 
-    width: 125px !important;
-    min-width: 125px !important;
-    flex: 0 0 125px !important;
+    width: 105px !important;
+    min-width: 105px !important;
+    flex: 0 0 105px !important;
 }
 
 
