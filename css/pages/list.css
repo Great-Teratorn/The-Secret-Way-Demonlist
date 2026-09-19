@@ -137,6 +137,7 @@
 }
 
 
+
 /* ========================================================= */
 /* LEVEL DESCRIPTION DROPDOWN                                */
 /* ========================================================= */
@@ -144,29 +145,19 @@
 .page-list .level-container .level .level-description {
     position: relative;
 
-    /*
-     * Make the actual box wider.
-     * This gives the left and right sides their own
-     * real rounded corners instead of trying to draw
-     * rounded corners outside the parent.
-     */
-    width: calc(100% + 3rem);
-
-    /*
-     * Move the box left, but keep the text positioned
-     * with padding below.
-     */
-    margin-left: -1.5rem;
+    /* Stay completely inside the level container */
+    width: 100%;
+    margin: 0;
 
     box-sizing: border-box;
 
+    /* The actual background */
     background-color: var(--color-background-hover);
 
+    /* REAL rounded corners on the actual element */
     border-radius: 0.75rem;
 
-    /*
-     * Clip the background to the rounded corners.
-     */
+    /* Clip the background to all four rounded corners */
     overflow: hidden;
 }
 
@@ -177,7 +168,6 @@
 
 .page-list .level-container .level .level-description summary {
     position: relative;
-    z-index: 1;
 
     display: flex;
     align-items: center;
@@ -187,13 +177,10 @@
     box-sizing: border-box;
 
     /*
-     * 1.5rem compensates for the box being moved
-     * 1.5rem to the left.
-     *
-     * Extra 1rem gives the text breathing room
-     * from the left edge.
+     * Left/right breathing room.
+     * The text remains visually aligned with Records.
      */
-    padding: 1rem 1.5rem 1rem 2.5rem;
+    padding: 1rem 1.5rem 1rem 1rem;
 
     color: var(--color-on-background);
 
@@ -289,15 +276,14 @@
 
 .page-list .level-container .level .description-content {
     position: relative;
-    z-index: 1;
 
     width: 100%;
     box-sizing: border-box;
 
     /*
-     * Same left alignment as the Description label.
+     * Same left/right breathing room as the heading.
      */
-    padding: 0 1.5rem 1rem 2.5rem;
+    padding: 0 1.5rem 1rem 1rem;
 
     background: transparent;
 
@@ -310,12 +296,11 @@
 
     -webkit-font-smoothing: subpixel-antialiased;
 
-    /*
-     * Allows you to paste normal paragraphs
-     * without adding <p> tags manually.
-     */
+    /* Paste paragraphs normally */
     white-space: pre-wrap;
 }
+
+
 
 
 
