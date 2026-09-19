@@ -23,32 +23,10 @@ export default {
         <main v-else class="page-list">
 
 
-            <div class="level-container">
+            <div class="list-container">
 
+    
     <div class="level" v-if="level">
-
-        <div class="filter-controls">
-            <button
-                class="filter-button"
-                @click="showFilters = !showFilters"
-            >
-                Filters
-            </button>
-        </div>
-
-        <div v-if="showFilters" class="filter-panel">
-            <label>
-                Difficulty:
-                <select v-model="difficultyFilter">
-                    <option value="">All</option>
-                    <option value="easy">Easy Demon</option>
-                    <option value="medium">Medium Demon</option>
-                    <option value="hard">Hard Demon</option>
-                    <option value="insane">Insane Demon</option>
-                    <option value="extreme">Extreme Demon</option>
-                </select>
-            </label>
-        </div>
         <template v-for="([level, err], i) in list">
             <!-- FIXED: Added closing bracket and included permissions for anomalies/weekly -->
             <tr :key="i" v-if="(($route.path === '/' || $route.path === '/list') && i < 150) || (($route.path === '/extended' || $route.path === '/list/extended') && i >= 150) || (($route.path === '/legacy' || $route.path === '/list/legacy') && level && level.dateFallen) || ($route.path === '/unverified') || ($route.path === '/anomalies') || ($route.path === '/weekly') || ($route.path === '/removed')">
@@ -89,6 +67,32 @@ export default {
 
             <div class="level-container">
                 <div class="level" v-if="level">
+
+
+                    <div class="filter-controls">
+    <button
+        class="filter-button"
+        @click="showFilters = !showFilters"
+    >
+        Filters
+    </button>
+</div>
+
+<div v-if="showFilters" class="filter-panel">
+    <label>
+        Difficulty:
+        <select v-model="difficultyFilter">
+            <option value="">All</option>
+            <option value="easy">Easy Demon</option>
+            <option value="medium">Medium Demon</option>
+            <option value="hard">Hard Demon</option>
+            <option value="insane">Insane Demon</option>
+            <option value="extreme">Extreme Demon</option>
+        </select>
+    </label>
+</div>
+
+
                     <div style="display: flex; align-items: center; gap: 10px;">
     <h1 style="margin: 0;">{{ level.name }}</h1>
 
