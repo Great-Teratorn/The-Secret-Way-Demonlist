@@ -40,16 +40,9 @@ export default {
     <span class="type-label-lg">
         {{ level?.name || ($route.path === '/unverified' ? level?.name || 'Loading...' : 'Error (' + err + ')') }}
     </span>
-    <span style="color: red; margin-left: 10px;">
-    [{{ level?.difficulty }}]
-</span>
+    
 
-    <img
-    v-if="level?.difficulty"
-    :src="difficultyIcon(level.difficulty)"
-    :alt="level.difficulty + ' demon'"
-    style="width: 28px; height: 28px; object-fit: contain; flex-shrink: 0;"
->
+    
 
 
                         <!-- Added: Shows the fallback date next to the name on the legacy list -->
@@ -70,7 +63,16 @@ export default {
 
             <div class="level-container">
                 <div class="level" v-if="level">
-                    <h1>{{ level.name }}</h1>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+    <h1 style="margin: 0;">{{ level.name }}</h1>
+
+    <img
+        v-if="level?.difficulty"
+        :src="difficultyIcon(level.difficulty)"
+        :alt="level.difficulty + ' demon'"
+        style="width: 36px; height: 36px; object-fit: contain;"
+    >
+</div>
 
 <p
     v-if="$route.path === '/removed' && level?.removedReason"
