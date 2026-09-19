@@ -756,12 +756,13 @@ nav a svg {
     min-width: 12px !important;
 
     padding: 2px 0 !important;
-    margin-left: 4px !important;
+    margin: 0 !important;
 
     box-sizing: border-box !important;
     flex: 0 0 12px !important;
-}
 
+    transform: translateX(4px) !important;
+}
 
 /*
  * Secondary labels (W, A, R, Legacy, Weekly) remain compact.
