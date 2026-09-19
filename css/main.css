@@ -667,6 +667,32 @@ nav a svg {
 
 
 
+/* =======================================================
+   SEARCH RESULTS — MATCH SEARCH FONT
+   ======================================================= */
+
+/* Creator / Collaborator dropdown results */
+.search-suggestions-dropdown .creator-level-row,
+.search-suggestions-dropdown .creator-level-row span {
+    font-family: "Lexend Deca", sans-serif !important;
+    -webkit-font-smoothing: subpixel-antialiased !important;
+}
+
+/* Creator / Collaborator dropdown result name */
+.search-suggestions-dropdown .creator-level-row > span:first-child {
+    font-size: 0.82rem !important;
+    line-height: 20px !important;
+}
+
+/* W / A / R secondary tags */
+.search-suggestions-dropdown .search-weekly-player-label,
+.search-suggestions-dropdown .search-anomalies-label,
+.search-suggestions-dropdown .search-removed-label {
+    font-family: "Lexend Deca", sans-serif !important;
+    -webkit-font-smoothing: subpixel-antialiased !important;
+}
+
+
 
 
 
