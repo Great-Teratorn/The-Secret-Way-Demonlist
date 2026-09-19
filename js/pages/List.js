@@ -24,9 +24,7 @@ export default {
 
 
             <div class="list-container">
-
-    
-    <div class="level" v-if="level">
+    <table class="list" v-if="list">
         <template v-for="([level, err], i) in list">
             <!-- FIXED: Added closing bracket and included permissions for anomalies/weekly -->
             <tr :key="i" v-if="(($route.path === '/' || $route.path === '/list') && i < 150) || (($route.path === '/extended' || $route.path === '/list/extended') && i >= 150) || (($route.path === '/legacy' || $route.path === '/list/legacy') && level && level.dateFallen) || ($route.path === '/unverified') || ($route.path === '/anomalies') || ($route.path === '/weekly') || ($route.path === '/removed')">
