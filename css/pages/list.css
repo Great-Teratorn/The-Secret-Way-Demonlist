@@ -60,6 +60,11 @@
     padding-right: 2rem;
     max-width: 48rem;
 }
+
+.page-list .level-container > .level-empty-state {
+    height: auto;
+    min-height: 0;
+}
 .page-list .level-container .level .level-authors {
     display: grid;
     grid-template-columns: max-content 1fr;
@@ -333,35 +338,33 @@
 
 
 /* ========================================================= */
-/* FILTER BUTTON CLICK FIX                                  */
+/* FILTER BUTTON / EMPTY STATE LAYOUT FIX                   */
 /* ========================================================= */
 
-.page-list .level-container {
-    position: relative;
-}
-
-/* Keep filter controls above the level/error panel */
+/* Keep the filter controls in normal document flow */
 .page-list .level-container > .filter-controls {
-    position: relative !important;
-    z-index: 100 !important;
-    pointer-events: auto !important;
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    box-sizing: border-box;
 }
 
-/* Make sure the actual button is above everything */
+/* Keep the button itself above the level content */
 .page-list .level-container > .filter-controls .filter-button {
-    position: relative !important;
-    z-index: 101 !important;
-    pointer-events: auto !important;
+    position: relative;
+    z-index: 3;
 }
 
-/* Error / empty state must NEVER block clicks on controls */
-.page-list .level-container > .level.level-empty-state {
-    pointer-events: none !important;
-}
-
-/* Nothing inside the empty state should intercept the click */
-.page-list .level-container > .level.level-empty-state * {
-    pointer-events: none !important;
+/*
+ * The empty/error level is a sibling BELOW the filter controls.
+ * Do not let its inherited .level sizing create an overlapping
+ * click area.
+ */
+.page-list .level-container > .level-empty-state {
+    position: relative;
+    z-index: 1;
+    height: auto;
+    min-height: 0;
 }
 
 
