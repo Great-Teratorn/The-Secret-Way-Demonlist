@@ -40,6 +40,9 @@ export default {
     <span class="type-label-lg">
         {{ level?.name || ($route.path === '/unverified' ? level?.name || 'Loading...' : 'Error (' + err + ')') }}
     </span>
+    <span style="color: red; margin-left: 10px;">
+    [{{ level?.difficulty }}]
+</span>
 
     <img
     v-if="level?.difficulty"
