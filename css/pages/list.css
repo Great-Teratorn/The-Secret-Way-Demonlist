@@ -436,9 +436,13 @@ padding: 0.75rem 0.5rem;
 
 color: var(--color-on-background);
 
-font-family: inherit;
-font-size: 1rem;
-font-weight: 600;
+/* Match the site's normal typography */
+font-family: "Lexend Deca", sans-serif;
+font-size: 17.1428571429px;
+line-height: 20px;
+font-weight: 500;
+
+-webkit-font-smoothing: subpixel-antialiased;
 
 user-select: none;
 
@@ -517,10 +521,13 @@ border-radius: 6px;
 
 color: var(--color-on-background);
 
-/* Match the existing filter option text */
-font-family: inherit;
-font-size: 1rem;
-font-weight: 400;
+/* Exact site label typography */
+font-family: "Lexend Deca", sans-serif;
+font-size: 17.1428571429px;
+line-height: 20px;
+font-weight: 500;
+
+-webkit-font-smoothing: subpixel-antialiased;
 
 
 }
@@ -558,9 +565,13 @@ padding: 0.35rem 0;
 
 color: var(--color-on-background);
 
-font-family: inherit;
-font-size: 1rem;
-font-weight: 400;
+/* Exact site label typography */
+font-family: "Lexend Deca", sans-serif;
+font-size: 17.1428571429px;
+line-height: 20px;
+font-weight: 500;
+
+-webkit-font-smoothing: subpixel-antialiased;
 
 
 }
@@ -589,8 +600,13 @@ border-radius: 6px;
 background: var(--color-background);
 color: var(--color-on-background);
 
-font-family: inherit;
-font-size: 1rem;
+/* Match site's input typography */
+font-family: "Lexend Deca", sans-serif;
+font-size: 17.1428571429px;
+line-height: 20px;
+font-weight: 500;
+
+-webkit-font-smoothing: subpixel-antialiased;
 
 cursor: text;
 
@@ -626,7 +642,13 @@ border-radius: 6px;
 padding: 0.7rem 1.2rem;
 
 cursor: pointer;
-font-weight: bold;
+
+font-family: "Lexend Deca", sans-serif;
+font-size: 17.1428571429px;
+line-height: 20px;
+font-weight: 500;
+
+-webkit-font-smoothing: subpixel-antialiased;
 
 
 }
@@ -645,6 +667,7 @@ color: var(--color-on-primary);
 .filter-apply:hover {
 opacity: 0.85;
 }
+
 
 
 
