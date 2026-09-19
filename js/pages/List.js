@@ -338,11 +338,11 @@ async mounted() {
         if (!difficulty) return null;
 
         const icons = {
-            easy: "/assets/easy-demon-face.png",
-            medium: "/assets/medium-demon-face.png",
-            hard: "/assets/hard-demon-face.png",
-            insane: "/assets/insane-demon-face.png",
-            extreme: "/assets/extreme-demon-face.png",
+            easy: "assets/easy-demon-face.png",
+            medium: "assets/medium-demon-face.png",
+            hard: "assets/hard-demon-face.png",
+            insane: "assets/insane-demon-face.png",
+            extreme: "assets/extreme-demon-face.png",
         };
 
         return icons[String(difficulty).toLowerCase()] || null;
