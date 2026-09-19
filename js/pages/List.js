@@ -70,7 +70,7 @@ export default {
     v-if="level?.difficulty"
     :src="difficultyIcon(level.difficulty)"
     :alt="level.difficulty + ' demon'"
-    style="width: 56px; height: 56px; object-fit: contain; margin-left: 10px;"
+    style="width: 68px; height: 68px; object-fit: contain; margin-left: 14px;"
 >
 </div>
 
