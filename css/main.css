@@ -756,7 +756,7 @@ nav a svg {
     min-width: 12px !important;
 
     padding: 2px 0 !important;
-    margin: 0 !important;
+    margin-left: 4px !important;
 
     box-sizing: border-box !important;
     flex: 0 0 12px !important;
