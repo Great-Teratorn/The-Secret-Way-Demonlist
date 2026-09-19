@@ -144,23 +144,21 @@
 .page-list .level-container .level .level-description {
     position: relative;
 
+    /* Extend the background to the left and right */
     width: calc(100% + 3rem);
     margin-left: -1.5rem;
 
-    padding: 0 1.5rem 0 2rem;
+    /* The 1.5rem left padding cancels out the -1.5rem
+       margin, keeping the TEXT aligned with Records */
+    padding: 0 1.5rem 0 1.5rem;
 
     box-sizing: border-box;
 
     background-color: var(--color-background-hover);
 
-    /* Force rounded corners on every side */
-    border-radius: 0.75rem !important;
+    border-radius: 0.75rem;
 
-    /* Force the background to be clipped to those corners */
-    overflow: hidden !important;
-
-    /* Extra enforcement for browsers that ignore the clipping */
-    clip-path: inset(0 round 0.75rem);
+    overflow: hidden;
 }
 
 
@@ -196,13 +194,13 @@
 
     list-style: none;
 
-    background: transparent !important;
+    background: transparent;
     border: none;
     outline: none;
 }
 
 
-/* Match h2 typography spacing */
+/* Match Records / h2 typography spacing */
 .page-list .level-container .level .level-description summary::before {
     content: "";
     margin-bottom: -0.2583333333em;
@@ -247,8 +245,7 @@
 }
 
 
-/* Closed = ▼ */
-/* Open = ▲ */
+/* Closed = ▼ / Open = ▲ */
 .page-list .level-container .level .level-description[open] .description-arrow {
     transform: rotate(180deg);
 }
@@ -259,7 +256,7 @@
 /* ========================================================= */
 
 .page-list .level-container .level .level-description summary:hover {
-    background: transparent !important;
+    background: transparent;
 }
 
 
@@ -276,7 +273,7 @@
 
     padding: 0 0 1rem 0;
 
-    background: transparent !important;
+    background: transparent;
 
     color: var(--color-on-background);
 
@@ -287,7 +284,7 @@
 
     -webkit-font-smoothing: subpixel-antialiased;
 
-    /* Allows you to paste paragraphs normally */
+    /* Paste paragraphs normally */
     white-space: pre-wrap;
 }
 
