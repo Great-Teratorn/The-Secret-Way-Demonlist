@@ -508,8 +508,7 @@ export default {
                 
 <div
     v-else-if="filteredList.length === 0"
-    class="level"
-    style="height: 100%; justify-content: center; align-items: center;"
+    class="level level-empty-state"
 >
     <pre style="font-family: monospace; text-align: left;"> ________________________
 |                        |
@@ -526,7 +525,7 @@ export default {
 </div>
 
 
-                <div v-else class="level" style="height: 100%; justify-content: center; align-items: center;">
+                <div v-else class="level level-empty-state">
                     <p>✧･ﾟ:*(⊙﹏⊙)*:･ﾟ✧</p>
                 </div>
             </div>
