@@ -668,29 +668,38 @@ nav a svg {
 
 
 
+
 /* ======================================================= */
-/* SEARCH RESULTS — KEEP ALL LABELS ALIGNED LEFT           */
+/* SEARCH RESULTS — ALIGN TYPE LABELS                     */
 /* ======================================================= */
 
 .search-suggestions-dropdown .suggestion-row {
     display: flex !important;
     align-items: center !important;
-    justify-content: flex-start !important;
 }
 
-/* Make the result label start at the same position */
-.search-suggestions-dropdown .suggestion-name {
-    flex: 1 1 auto !important;
-    min-width: 0 !important;
+/*
+ * Give every type label the same starting position.
+ * This keeps Player / Creator / Collaborator / Level etc.
+ * aligned on their LEFT edge.
+ */
+.search-suggestions-dropdown .suggestion-type {
+    width: 110px !important;
+    min-width: 110px !important;
+    box-sizing: border-box !important;
     text-align: left !important;
 }
 
-/* Keep the Creator/Collaborator triangle at the far right
-   of the label area instead of pushing the text sideways */
+/*
+ * Keep the Creator / Collaborator triangle alongside
+ * its label without moving the label itself.
+ */
 .search-suggestions-dropdown .creator-dropdown-toggle {
-    flex: 0 0 auto !important;
-    margin-left: 8px !important;
+    flex-shrink: 0 !important;
+    margin-left: 6px !important;
 }
+
+
 
 
 
