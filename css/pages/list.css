@@ -676,23 +676,25 @@ opacity: 0.85;
 /* ========================================================= */
 
 .page-list .level-container .level .level-title-with-demon {
-    display: flex;
-    align-items: flex-start;
-    width: fit-content;
+    position: relative;
+    width: max-content;
     max-width: 100%;
 }
 
 .page-list .level-container .level .level-title-with-demon h1 {
     margin: 0;
-    min-width: 0;
+    padding-right: 94px;
 }
 
 .page-list .level-container .level .level-demon-icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+
     width: 80px;
     height: 80px;
+
     object-fit: contain;
-    flex-shrink: 0;
-    margin-left: 14px;
 }
 
 
