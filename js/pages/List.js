@@ -67,11 +67,11 @@ export default {
     <h1 style="margin: 0;">{{ level.name }}</h1>
 
     <img
-        v-if="level?.difficulty"
-        :src="difficultyIcon(level.difficulty)"
-        :alt="level.difficulty + ' demon'"
-        style="width: 36px; height: 36px; object-fit: contain;"
-    >
+    v-if="level?.difficulty"
+    :src="difficultyIcon(level.difficulty)"
+    :alt="level.difficulty + ' demon'"
+    style="width: 48px; height: 48px; object-fit: contain; margin-left: 8px;"
+>
 </div>
 
 <p
