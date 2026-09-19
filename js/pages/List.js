@@ -21,6 +21,19 @@ export default {
             <Spinner></Spinner>
         </main>
         <main v-else class="page-list">
+
+
+            <div class="list-controls">
+    <button class="filter-button" @click="filtersOpen = !filtersOpen">
+        Filters
+    </button>
+
+    <button class="settings-button" title="Filter settings">
+        ⚙
+    </button>
+</div>
+
+
             <div class="list-container">
     <table class="list" v-if="list">
         <template v-for="([level, err], i) in list">
@@ -227,6 +240,7 @@ export default {
         loading: true,
         selected: 0,
         isWeekly: false,
+        filtersOpen: false,
         errors: [],
         roleIconMap,
         store
