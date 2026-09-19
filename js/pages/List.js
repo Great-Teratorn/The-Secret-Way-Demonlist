@@ -25,7 +25,7 @@ export default {
 
             <div class="list-container">
     <table class="list" v-if="list">
-        <template v-for="({ entry, index: originalIndex }) in filteredList">
+    <template v-for="({ entry, index: originalIndex }) in list.map((entry, index) => ({ entry, index }))">
     <tr
         :key="originalIndex"
         v-if="
