@@ -513,12 +513,20 @@ nav a svg {
 
 .suggestion-name {
     color: #ffffff !important;
-    font-size: 0.9rem !important;
+    font-family: "Lexend Deca", sans-serif !important;
+    font-size: 17.1428571429px !important;
+    line-height: 20px !important;
     font-weight: 500 !important;
+    -webkit-font-smoothing: subpixel-antialiased !important;
 }
 
 .suggestion-type {
-    font-size: 0.7rem !important;
+    font-family: "Lexend Deca", sans-serif !important;
+    font-size: 11.4285714286px !important;
+    line-height: 12px !important;
+    font-weight: 500 !important;
+    -webkit-font-smoothing: subpixel-antialiased !important;
+
     text-transform: uppercase !important;
     background: rgba(255, 255, 255, 0.15) !important;
     color: #00e676 !important;
