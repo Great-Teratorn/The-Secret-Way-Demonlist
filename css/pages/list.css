@@ -679,6 +679,10 @@ opacity: 0.85;
     margin: 0;
 }
 
+.page-list .level-container .level .level-title-first-line {
+    display: inline;
+}
+
 .page-list .level-container .level .level-demon-icon {
     width: 80px;
     height: 80px;
