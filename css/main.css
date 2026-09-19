@@ -667,28 +667,30 @@ nav a svg {
 
 
 
+
 /* ======================================================= */
-/* SEARCH RESULT LABEL — LEFT ALIGNMENT                   */
+/* SEARCH RESULTS — KEEP ALL LABELS ALIGNED LEFT           */
 /* ======================================================= */
 
 .search-suggestions-dropdown .suggestion-row {
     display: flex !important;
     align-items: center !important;
+    justify-content: flex-start !important;
 }
 
+/* Make the result label start at the same position */
 .search-suggestions-dropdown .suggestion-name {
-    display: flex !important;
-    align-items: center !important;
-    flex: 1 !important;
+    flex: 1 1 auto !important;
     min-width: 0 !important;
-    padding-left: 16px !important;
+    text-align: left !important;
 }
 
+/* Keep the Creator/Collaborator triangle at the far right
+   of the label area instead of pushing the text sideways */
 .search-suggestions-dropdown .creator-dropdown-toggle {
-    flex-shrink: 0 !important;
-    margin-left: 6px !important;
+    flex: 0 0 auto !important;
+    margin-left: 8px !important;
 }
-
 
 
 
