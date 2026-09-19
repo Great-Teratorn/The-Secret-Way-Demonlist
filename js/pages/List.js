@@ -109,17 +109,18 @@ export default {
 </div>
 
             <div class="level-container">
-                <div class="level" v-if="level && filteredList.length > 0">
+
+    <div class="filter-controls">
+        <button
+            class="filter-button"
+            @click="showFilters = true"
+        >
+            Filters
+        </button>
+    </div>
 
 
-                    <div class="filter-controls">
-    <button
-        class="filter-button"
-        @click="showFilters = true"
-    >
-        Filters
-    </button>
-</div>
+                    
 
 <div
     v-if="showFilters"
@@ -386,7 +387,7 @@ export default {
 
 
                 
-
+<div v-if="level && filteredList.length > 0">
 <div class="level-title-with-demon">
     <h1>
         <span class="level-title-text">{{ level.name }}</span>
@@ -501,16 +502,16 @@ export default {
                             </td>
                         </tr>
                     </table>
-                </div>
-                
-                
+</div>
+
+</div>
+
 <div
     v-else-if="filteredList.length === 0"
     class="level"
     style="height: 100%; justify-content: center; align-items: center;"
 >
-    <pre style="font-family: monospace; text-align: left;"> ________________________
-
+    <pre style="font-family: monospace; text-align: left; margin: 0;"> ________________________
 |                        |
 | ERROR: 404             |
 | BRAIN NOT FOUND!       |
@@ -520,10 +521,10 @@ export default {
      &#92;  (xx)&#92;_______
         (__)&#92;       )\/&#92;
          U  ||----w |
-            ||     ||
-
-</pre>
+            ||     ||</pre>
 </div>
+
+
 
 
                 <div v-else class="level" style="height: 100%; justify-content: center; align-items: center;">
