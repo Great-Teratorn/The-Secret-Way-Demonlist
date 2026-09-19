@@ -37,14 +37,16 @@ export default {
                 <td class="level" :class="{ 'active': selected == i, 'error': !level }">
 
 <button @click="selected = i" style="display: flex; align-items: center; gap: 15px; width: 100%; text-align: left;">
-    <span class="type-label-lg">{{ level?.name || ($route.path === '/unverified' ? level?.name || 'Loading...' : 'Error (' + err + ')') }}</span>
+    <span class="type-label-lg">
+        {{ level?.name || ($route.path === '/unverified' ? level?.name || 'Loading...' : 'Error (' + err + ')') }}
+    </span>
 
     <img
-        v-if="level?.difficulty && difficultyIcon"
-        :src="difficultyIcon"
-        :alt="level.difficulty + ' demon'"
-        style="width: 28px; height: 28px; object-fit: contain; flex-shrink: 0;"
-    >
+    v-if="level?.difficulty"
+    :src="difficultyIcon(level.difficulty)"
+    :alt="level.difficulty + ' demon'"
+    style="width: 28px; height: 28px; object-fit: contain; flex-shrink: 0;"
+>
 
 
                         <!-- Added: Shows the fallback date next to the name on the legacy list -->
@@ -235,23 +237,7 @@ export default {
         );
     },
 
-    difficultyIcon() {
-        if (!this.level?.difficulty) {
-            return null;
-        }
-
-        const difficulty = this.level.difficulty.toLowerCase();
-
-        const icons = {
-            easy: "/assets/easy-demon-face.png",
-            medium: "/assets/medium-demon-face.png",
-            hard: "/assets/hard-demon-face.png",
-            insane: "/assets/insane-demon-face.png",
-            extreme: "/assets/extreme-demon-face.png",
-        };
-
-        return icons[difficulty] || null;
-    },
+   
 },
 
 
@@ -339,8 +325,22 @@ async mounted() {
     this.loading = false;
 },
 
-    methods: {
-        embed,
-        score,
+   methods: {
+    embed,
+    score,
+
+    difficultyIcon(difficulty) {
+        if (!difficulty) return null;
+
+        const icons = {
+            easy: "/assets/easy-demon-face.png",
+            medium: "/assets/medium-demon-face.png",
+            hard: "/assets/hard-demon-face.png",
+            insane: "/assets/insane-demon-face.png",
+            extreme: "/assets/extreme-demon-face.png",
+        };
+
+        return icons[String(difficulty).toLowerCase()] || null;
     },
+},
 };

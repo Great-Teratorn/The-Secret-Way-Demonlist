@@ -520,6 +520,15 @@ nav a svg {
 }
 
 
+.difficulty-icon {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+    flex-shrink: 0;
+    margin-left: 4px;
+}
+
+
 /* =======================================================
    NARROW DESKTOP / DEVTOOLS FIX
    769px - 1100px
