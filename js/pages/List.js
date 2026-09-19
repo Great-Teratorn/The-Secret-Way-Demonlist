@@ -23,38 +23,55 @@ export default {
         <main v-else class="page-list">
 
 
-            <main v-else class="page-list">
+            <div class="level-container">
 
     <div class="filter-controls">
-        <button
-            class="filter-button"
-            @click="filtersOpen = !filtersOpen"
-        >
-            FILTERS
+        <button class="filter-button" @click="showFilters = !showFilters">
+            Filters
         </button>
 
-        <button
-            class="filter-settings"
-            @click="filtersOpen = !filtersOpen"
-            title="Filter settings"
-        >
+        <button class="filter-settings" @click="showFilters = !showFilters">
             ⚙
         </button>
     </div>
 
-    <div v-if="filtersOpen" class="filter-panel">
-        <p>Filter options will go here.</p>
+    <div v-if="showFilters" class="filter-panel">
+        <label>
+            Difficulty:
+            <select v-model="difficultyFilter">
+                <option value="">All</option>
+                <option value="easy">Easy Demon</option>
+                <option value="medium">Medium Demon</option>
+                <option value="hard">Hard Demon</option>
+                <option value="insane">Insane Demon</option>
+                <option value="extreme">Extreme Demon</option>
+            </select>
+        </label>
     </div>
 
-    <div class="list-container">
-
-
-            <div class="list-container">
-    <table class="list" v-if="list">
+    <div class="level" v-if="level">
         <template v-for="([level, err], i) in list">
             <!-- FIXED: Added closing bracket and included permissions for anomalies/weekly -->
-            <tr :key="i" v-if="(($route.path === '/' || $route.path === '/list') && i < 150) || (($route.path === '/extended' || $route.path === '/list/extended') && i >= 150) || (($route.path === '/legacy' || $route.path === '/list/legacy') && level && level.dateFallen) || ($route.path === '/unverified') || ($route.path === '/anomalies') || ($route.path === '/weekly') || ($route.path === '/removed')">
-
+            <tr
+    :key="i"
+    v-if="
+        (
+            (($route.path === '/' || $route.path === '/list') && i < 150) ||
+            (($route.path === '/extended' || $route.path === '/list/extended') && i >= 150) ||
+            (($route.path === '/legacy' || $route.path === '/list/legacy') && level && level.dateFallen) ||
+            ($route.path === '/unverified') ||
+            ($route.path === '/anomalies') ||
+            ($route.path === '/weekly') ||
+            ($route.path === '/removed')
+        )
+        &&
+        (
+            !difficultyFilter ||
+            !level ||
+            String(level.difficulty).toLowerCase() === difficultyFilter
+        )
+    "
+>
                 <td class="rank">
                     <!-- FIXED: Added missing && between unverified and anomalies checks -->
                     <p v-if="$route.path !== '/legacy' && $route.path !== '/removed' && $route.path !== '/unverified' && $route.path !== '/anomalies' && $route.path !== '/weekly'" class="type-label-lg">#{{ i + 1 }}</p>
@@ -252,6 +269,8 @@ export default {
     data: () => ({
     list: [],
     editors: [],
+    showFilters: false,
+    difficultyFilter: "",
     loading: true,
     selected: 0,
     isWeekly: false,
