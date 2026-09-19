@@ -70,25 +70,111 @@ export default {
                     <div class="filter-controls">
     <button
         class="filter-button"
-        @click="showFilters = !showFilters"
+        @click="showFilters = true"
     >
         Filters
     </button>
 </div>
 
-<div v-if="showFilters" class="filter-panel">
-    <label>
-        Difficulty:
-        <select v-model="difficultyFilter">
-            <option value="">All</option>
-            <option value="easy">Easy Demon</option>
-            <option value="medium">Medium Demon</option>
-            <option value="hard">Hard Demon</option>
-            <option value="insane">Insane Demon</option>
-            <option value="extreme">Extreme Demon</option>
-        </select>
-    </label>
+<div v-if="showFilters" class="filter-modal-overlay" @click.self="showFilters = false">
+    <div class="filter-modal">
+
+        <div class="filter-modal-header">
+            <h2>Filters</h2>
+
+            <button
+                type="button"
+                class="filter-modal-close"
+                @click="showFilters = false"
+                aria-label="Close filters"
+            >
+                ×
+            </button>
+        </div>
+
+        <div class="filter-modal-content">
+
+            <div class="filter-group">
+                <h3>Difficulty</h3>
+
+                <label class="filter-option">
+                    <input
+                        type="radio"
+                        value=""
+                        v-model="difficultyFilter"
+                    >
+                    <span>All difficulties</span>
+                </label>
+
+                <label class="filter-option">
+                    <input
+                        type="radio"
+                        value="easy"
+                        v-model="difficultyFilter"
+                    >
+                    <span>Easy Demon</span>
+                </label>
+
+                <label class="filter-option">
+                    <input
+                        type="radio"
+                        value="medium"
+                        v-model="difficultyFilter"
+                    >
+                    <span>Medium Demon</span>
+                </label>
+
+                <label class="filter-option">
+                    <input
+                        type="radio"
+                        value="hard"
+                        v-model="difficultyFilter"
+                    >
+                    <span>Hard Demon</span>
+                </label>
+
+                <label class="filter-option">
+                    <input
+                        type="radio"
+                        value="insane"
+                        v-model="difficultyFilter"
+                    >
+                    <span>Insane Demon</span>
+                </label>
+
+                <label class="filter-option">
+                    <input
+                        type="radio"
+                        value="extreme"
+                        v-model="difficultyFilter"
+                    >
+                    <span>Extreme Demon</span>
+                </label>
+            </div>
+
+        </div>
+
+        <div class="filter-modal-actions">
+            <button
+                type="button"
+                class="filter-clear"
+                @click="difficultyFilter = ''"
+            >
+                Clear All
+            </button>
+
+            <button
+                type="button"
+                class="filter-apply"
+                @click="showFilters = false"
+            >
+                Apply
+            </button>
+        </div>
+
+    </div>
 </div>
+
 
 
                     <div style="display: flex; align-items: center; gap: 10px;">
