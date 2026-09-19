@@ -593,12 +593,8 @@
         overflow-y: visible !important; /* Explicitly grants permission to scroll normally anywhere */
     }
 
-    /* Strip any full-screen overlay behavior that prevents touching the page */
-    div[style*="position: fixed"], 
-    div[style*="position: absolute"] {
-        position: relative !important;
-        height: auto !important;
-    }
+        /* Do not override fixed/absolute positioning globally.
+       The filter modal and other overlays need their positioning. */
 
         /* LEADERBOARD MOBILE PANEL FIX */
     .page-leaderboard, 
@@ -673,13 +669,18 @@
     /* ======================================================= */
     /* INSERTED HERE: CONSTRAIN LEVEL LIST TO A SCROLLABLE BOX */
     /* ======================================================= */
-    .g-layout > div:first-child, 
-    .list-container, 
-    .list {
+        .page-list .list-container {
         max-height: 35vh !important;
         overflow-y: auto !important;
+        overflow-x: hidden !important;
         border-bottom: 2px solid rgba(255, 255, 255, 0.1);
         padding-right: 5px !important;
+        box-sizing: border-box !important;
+    }
+
+    .page-list .list {
+        max-height: none !important;
+        overflow: visible !important;
     }
 
     .g-layout > div:first-child::-webkit-scrollbar,
@@ -692,5 +693,104 @@
     .list::-webkit-scrollbar-thumb {
         background: rgba(255, 255, 255, 0.2);
         border-radius: 4px;
+    }
+
+
+        /* ======================================================= */
+    /* FILTER MODAL MOBILE FIX                                */
+    /* ======================================================= */
+
+    .page-list .filter-controls {
+        width: 100%;
+        box-sizing: border-box;
+        margin-bottom: 12px;
+    }
+
+    .page-list .filter-button {
+        width: 100%;
+        min-height: 44px;
+        font-size: 1rem;
+    }
+
+    .page-list .filter-modal-overlay {
+        position: fixed !important;
+        inset: 0 !important;
+
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+
+        padding: 12px !important;
+        box-sizing: border-box !important;
+
+        z-index: 9999 !important;
+    }
+
+    .page-list .filter-modal {
+        width: 100% !important;
+        max-width: 480px !important;
+        max-height: 90vh !important;
+
+        overflow-y: auto !important;
+        overflow-x: hidden !important;
+
+        padding: 1rem !important;
+        box-sizing: border-box !important;
+
+        border-radius: 12px !important;
+    }
+
+    .page-list .filter-modal-header {
+        margin-bottom: 1rem !important;
+    }
+
+    .page-list .filter-modal-header h2 {
+        font-size: 1.4rem;
+    }
+
+    .page-list .filter-modal-close {
+        min-width: 44px;
+        min-height: 44px;
+    }
+
+    .page-list .filter-section-content {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .page-list .filter-number {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        width: 100%;
+        box-sizing: border-box;
+        margin-bottom: 10px;
+    }
+
+    .page-list .filter-number input {
+        flex: 1;
+        min-width: 0;
+        width: 100%;
+        box-sizing: border-box;
+        min-height: 40px;
+    }
+
+    .page-list .filter-modal-actions {
+        position: sticky;
+        bottom: 0;
+
+        display: flex;
+        gap: 8px;
+
+        padding-top: 12px;
+        margin-top: 1rem;
+
+        background: var(--color-background);
+    }
+
+    .page-list .filter-clear,
+    .page-list .filter-apply {
+        flex: 1;
+        min-height: 44px;
     }
 }

@@ -161,170 +161,184 @@ export default {
 
         <div class="filter-modal-content">
 
-            <!-- DIFFICULTY -->
-            <details class="filter-section" open>
-                <summary>Difficulty</summary>
 
-                <div class="filter-section-content">
+<!-- DIFFICULTY -->
+<details class="filter-section">
+    <summary>
+        <span>Difficulty</span>
+        <span class="filter-chevron">▼</span>
+    </summary>
 
-                    <label class="filter-option">
-                        <input
-                            type="radio"
-                            value=""
-                            v-model="difficultyFilter"
-                        >
-                        <span>All difficulties</span>
-                    </label>
+    <div class="filter-section-content">
 
-                    <label class="filter-option">
-                        <input
-                            type="radio"
-                            value="easy"
-                            v-model="difficultyFilter"
-                        >
-                        <span>Easy Demon</span>
-                    </label>
+        <label class="filter-option">
+            <input
+                type="radio"
+                value=""
+                v-model="difficultyFilter"
+            >
+            <span>All difficulties</span>
+        </label>
 
-                    <label class="filter-option">
-                        <input
-                            type="radio"
-                            value="medium"
-                            v-model="difficultyFilter"
-                        >
-                        <span>Medium Demon</span>
-                    </label>
+        <label class="filter-option">
+            <input
+                type="radio"
+                value="easy"
+                v-model="difficultyFilter"
+            >
+            <span>Easy Demon</span>
+        </label>
 
-                    <label class="filter-option">
-                        <input
-                            type="radio"
-                            value="hard"
-                            v-model="difficultyFilter"
-                        >
-                        <span>Hard Demon</span>
-                    </label>
+        <label class="filter-option">
+            <input
+                type="radio"
+                value="medium"
+                v-model="difficultyFilter"
+            >
+            <span>Medium Demon</span>
+        </label>
 
-                    <label class="filter-option">
-                        <input
-                            type="radio"
-                            value="insane"
-                            v-model="difficultyFilter"
-                        >
-                        <span>Insane Demon</span>
-                    </label>
+        <label class="filter-option">
+            <input
+                type="radio"
+                value="hard"
+                v-model="difficultyFilter"
+            >
+            <span>Hard Demon</span>
+        </label>
 
-                    <label class="filter-option">
-                        <input
-                            type="radio"
-                            value="extreme"
-                            v-model="difficultyFilter"
-                        >
-                        <span>Extreme Demon</span>
-                    </label>
+        <label class="filter-option">
+            <input
+                type="radio"
+                value="insane"
+                v-model="difficultyFilter"
+            >
+            <span>Insane Demon</span>
+        </label>
 
-                </div>
-            </details>
+        <label class="filter-option">
+            <input
+                type="radio"
+                value="extreme"
+                v-model="difficultyFilter"
+            >
+            <span>Extreme Demon</span>
+        </label>
 
-
-            <!-- SECRET WAY START -->
-            <details class="filter-section">
-                <summary>Secret Way Start</summary>
-
-                <div class="filter-section-content">
-
-                    <label class="filter-number">
-                        <span>Minimum</span>
-                        <input
-                            type="number"
-                            min="0"
-                            max="100"
-                            v-model.number="secretWayStartMin"
-                            placeholder="0"
-                        >
-                        <span>%</span>
-                    </label>
-
-                    <label class="filter-number">
-                        <span>Maximum</span>
-                        <input
-                            type="number"
-                            min="0"
-                            max="100"
-                            v-model.number="secretWayStartMax"
-                            placeholder="100"
-                        >
-                        <span>%</span>
-                    </label>
-
-                </div>
-            </details>
+    </div>
+</details>
 
 
-            <!-- SECRET WAY END -->
-            <details class="filter-section">
-                <summary>Secret Way End</summary>
+<!-- SECRET WAY START -->
+<details class="filter-section">
+    <summary>
+        <span>Secret Way Start</span>
+        <span class="filter-chevron">▼</span>
+    </summary>
 
-                <div class="filter-section-content">
+    <div class="filter-section-content">
 
-                    <label class="filter-number">
-                        <span>Minimum</span>
-                        <input
-                            type="number"
-                            min="0"
-                            max="100"
-                            v-model.number="secretWayEndMin"
-                            placeholder="0"
-                        >
-                        <span>%</span>
-                    </label>
+        <label class="filter-number">
+            <span>Minimum</span>
+            <input
+                type="number"
+                min="0"
+                max="100"
+                v-model.number="secretWayStartMin"
+                placeholder="0"
+            >
+            <span>%</span>
+        </label>
 
-                    <label class="filter-number">
-                        <span>Maximum</span>
-                        <input
-                            type="number"
-                            min="0"
-                            max="100"
-                            v-model.number="secretWayEndMax"
-                            placeholder="100"
-                        >
-                        <span>%</span>
-                    </label>
+        <label class="filter-number">
+            <span>Maximum</span>
+            <input
+                type="number"
+                min="0"
+                max="100"
+                v-model.number="secretWayStartMax"
+                placeholder="100"
+            >
+            <span>%</span>
+        </label>
 
-                </div>
-            </details>
+    </div>
+</details>
 
 
-            <!-- SECRET WAY LENGTH -->
-            <details class="filter-section">
-                <summary>Secret Way Length</summary>
+<!-- SECRET WAY END -->
+<details class="filter-section">
+    <summary>
+        <span>Secret Way End</span>
+        <span class="filter-chevron">▼</span>
+    </summary>
 
-                <div class="filter-section-content">
+    <div class="filter-section-content">
 
-                    <label class="filter-number">
-                        <span>Minimum</span>
-                        <input
-                            type="number"
-                            min="0"
-                            max="100"
-                            v-model.number="secretWayLengthMin"
-                            placeholder="0"
-                        >
-                        <span>%</span>
-                    </label>
+        <label class="filter-number">
+            <span>Minimum</span>
+            <input
+                type="number"
+                min="0"
+                max="100"
+                v-model.number="secretWayEndMin"
+                placeholder="0"
+            >
+            <span>%</span>
+        </label>
 
-                    <label class="filter-number">
-                        <span>Maximum</span>
-                        <input
-                            type="number"
-                            min="0"
-                            max="100"
-                            v-model.number="secretWayLengthMax"
-                            placeholder="100"
-                        >
-                        <span>%</span>
-                    </label>
+        <label class="filter-number">
+            <span>Maximum</span>
+            <input
+                type="number"
+                min="0"
+                max="100"
+                v-model.number="secretWayEndMax"
+                placeholder="100"
+            >
+            <span>%</span>
+        </label>
 
-                </div>
-            </details>
+    </div>
+</details>
+
+
+<!-- SECRET WAY LENGTH -->
+<details class="filter-section">
+    <summary>
+        <span>Secret Way Length</span>
+        <span class="filter-chevron">▼</span>
+    </summary>
+
+    <div class="filter-section-content">
+
+        <label class="filter-number">
+            <span>Minimum</span>
+            <input
+                type="number"
+                min="0"
+                max="100"
+                v-model.number="secretWayLengthMin"
+                placeholder="0"
+            >
+            <span>%</span>
+        </label>
+
+        <label class="filter-number">
+            <span>Maximum</span>
+            <input
+                type="number"
+                min="0"
+                max="100"
+                v-model.number="secretWayLengthMax"
+                placeholder="100"
+            >
+            <span>%</span>
+        </label>
+
+    </div>
+</details>
+
 
         </div>
 
@@ -566,88 +580,113 @@ loading: true,
     },
 
     filteredList() {
-    return this.list
-        .map((entry, index) => ({
-            entry,
-            index
-        }))
-        .filter(({ entry, index }) => {
-            const level = entry[0];
+        return this.list
+            .map((entry, index) => ({
+                entry,
+                index
+            }))
+            .filter(({ entry, index }) => {
+                const level = entry[0];
 
-            if (!level) {
-                return false;
-            }
+                if (!level) {
+                    return false;
+                }
 
-            const routeMatches =
-                ((this.$route.path === '/' || this.$route.path === '/list') && index < 150) ||
-                ((this.$route.path === '/extended' || this.$route.path === '/list/extended') && index >= 150) ||
-                ((this.$route.path === '/legacy' || this.$route.path === '/list/legacy') && level.dateFallen) ||
-                this.$route.path === '/unverified' ||
-                this.$route.path === '/anomalies' ||
-                this.$route.path === '/weekly' ||
-                this.$route.path === '/removed';
+                const routeMatches =
+                    ((this.$route.path === '/' || this.$route.path === '/list') && index < 150) ||
+                    ((this.$route.path === '/extended' || this.$route.path === '/list/extended') && index >= 150) ||
+                    ((this.$route.path === '/legacy' || this.$route.path === '/list/legacy') && level.dateFallen) ||
+                    this.$route.path === '/unverified' ||
+                    this.$route.path === '/anomalies' ||
+                    this.$route.path === '/weekly' ||
+                    this.$route.path === '/removed';
 
-            if (!routeMatches) {
-                return false;
-            }
+                if (!routeMatches) {
+                    return false;
+                }
 
-            if (
-    this.appliedDifficultyFilter &&
-    String(level.difficulty || "").toLowerCase()
-        !== this.appliedDifficultyFilter.toLowerCase()
-) {
-    return false;
-}
+                // Difficulty filter
+                if (
+                    this.appliedDifficultyFilter &&
+                    String(level.difficulty || "").toLowerCase() !==
+                        this.appliedDifficultyFilter.toLowerCase()
+                ) {
+                    return false;
+                }
 
-const start = Number(level.secret_way_start);
-const end = Number(level.secret_way_end);
-const length = end - start;
+                // Check whether any Secret Way filter is active.
+                const hasSecretWayFilter =
+                    this.appliedSecretWayStartMin !== null ||
+                    this.appliedSecretWayStartMax !== null ||
+                    this.appliedSecretWayEndMin !== null ||
+                    this.appliedSecretWayEndMax !== null ||
+                    this.appliedSecretWayLengthMin !== null ||
+                    this.appliedSecretWayLengthMax !== null;
 
-if (
-    this.appliedSecretWayStartMin !== null &&
-    start < this.appliedSecretWayStartMin
-) {
-    return false;
-}
+                // If a Secret Way filter is active, levels without
+                // Secret Way data should not be included.
+                if (hasSecretWayFilter) {
+                    if (
+                        level.secret_way_start == null ||
+                        level.secret_way_end == null
+                    ) {
+                        return false;
+                    }
 
-if (
-    this.appliedSecretWayStartMax !== null &&
-    start > this.appliedSecretWayStartMax
-) {
-    return false;
-}
+                    const start = Number(level.secret_way_start);
+                    const end = Number(level.secret_way_end);
+                    const length = end - start;
 
-if (
-    this.appliedSecretWayEndMin !== null &&
-    end < this.appliedSecretWayEndMin
-) {
-    return false;
-}
+                    if (!Number.isFinite(start) || !Number.isFinite(end)) {
+                        return false;
+                    }
 
-if (
-    this.appliedSecretWayEndMax !== null &&
-    end > this.appliedSecretWayEndMax
-) {
-    return false;
-}
+                    if (
+                        this.appliedSecretWayStartMin !== null &&
+                        start < this.appliedSecretWayStartMin
+                    ) {
+                        return false;
+                    }
 
-if (
-    this.appliedSecretWayLengthMin !== null &&
-    length < this.appliedSecretWayLengthMin
-) {
-    return false;
-}
+                    if (
+                        this.appliedSecretWayStartMax !== null &&
+                        start > this.appliedSecretWayStartMax
+                    ) {
+                        return false;
+                    }
 
-if (
-    this.appliedSecretWayLengthMax !== null &&
-    length > this.appliedSecretWayLengthMax
-) {
-    return false;
-}
+                    if (
+                        this.appliedSecretWayEndMin !== null &&
+                        end < this.appliedSecretWayEndMin
+                    ) {
+                        return false;
+                    }
 
-return true;
-        });
-},
+                    if (
+                        this.appliedSecretWayEndMax !== null &&
+                        end > this.appliedSecretWayEndMax
+                    ) {
+                        return false;
+                    }
+
+                    if (
+                        this.appliedSecretWayLengthMin !== null &&
+                        length < this.appliedSecretWayLengthMin
+                    ) {
+                        return false;
+                    }
+
+                    if (
+                        this.appliedSecretWayLengthMax !== null &&
+                        length > this.appliedSecretWayLengthMax
+                    ) {
+                        return false;
+                    }
+                }
+
+                return true;
+            });
+    },
 
     video() {
         if (!this.level?.verification) {
@@ -664,8 +703,6 @@ return true;
                 : this.level.verification
         );
     },
-
-   
 },
 
 
@@ -804,7 +841,16 @@ async mounted() {
     },
 
 
-    selectFirstMatchingLevel() {
+
+selectFirstMatchingLevel() {
+    const hasSecretWayFilter =
+        this.appliedSecretWayStartMin !== null ||
+        this.appliedSecretWayStartMax !== null ||
+        this.appliedSecretWayEndMin !== null ||
+        this.appliedSecretWayEndMax !== null ||
+        this.appliedSecretWayLengthMin !== null ||
+        this.appliedSecretWayLengthMax !== null;
+
     const firstMatch = this.list.findIndex(([level], index) => {
         if (!level) return false;
 
@@ -822,6 +868,7 @@ async mounted() {
             return false;
         }
 
+        // Difficulty filter.
         if (
             this.appliedDifficultyFilter &&
             String(level.difficulty || "").toLowerCase()
@@ -830,50 +877,65 @@ async mounted() {
             return false;
         }
 
-        const start = Number(level.secret_way_start);
-        const end = Number(level.secret_way_end);
-        const length = end - start;
+        // If any Secret Way filter is active, the level must actually
+        // have valid Secret Way start/end values.
+        if (hasSecretWayFilter) {
+            if (
+                level.secret_way_start == null ||
+                level.secret_way_end == null
+            ) {
+                return false;
+            }
 
-        if (
-            this.appliedSecretWayStartMin !== null &&
-            start < this.appliedSecretWayStartMin
-        ) {
-            return false;
-        }
+            const start = Number(level.secret_way_start);
+            const end = Number(level.secret_way_end);
+            const length = end - start;
 
-        if (
-            this.appliedSecretWayStartMax !== null &&
-            start > this.appliedSecretWayStartMax
-        ) {
-            return false;
-        }
+            if (!Number.isFinite(start) || !Number.isFinite(end)) {
+                return false;
+            }
 
-        if (
-            this.appliedSecretWayEndMin !== null &&
-            end < this.appliedSecretWayEndMin
-        ) {
-            return false;
-        }
+            if (
+                this.appliedSecretWayStartMin !== null &&
+                start < this.appliedSecretWayStartMin
+            ) {
+                return false;
+            }
 
-        if (
-            this.appliedSecretWayEndMax !== null &&
-            end > this.appliedSecretWayEndMax
-        ) {
-            return false;
-        }
+            if (
+                this.appliedSecretWayStartMax !== null &&
+                start > this.appliedSecretWayStartMax
+            ) {
+                return false;
+            }
 
-        if (
-            this.appliedSecretWayLengthMin !== null &&
-            length < this.appliedSecretWayLengthMin
-        ) {
-            return false;
-        }
+            if (
+                this.appliedSecretWayEndMin !== null &&
+                end < this.appliedSecretWayEndMin
+            ) {
+                return false;
+            }
 
-        if (
-            this.appliedSecretWayLengthMax !== null &&
-            length > this.appliedSecretWayLengthMax
-        ) {
-            return false;
+            if (
+                this.appliedSecretWayEndMax !== null &&
+                end > this.appliedSecretWayEndMax
+            ) {
+                return false;
+            }
+
+            if (
+                this.appliedSecretWayLengthMin !== null &&
+                length < this.appliedSecretWayLengthMin
+            ) {
+                return false;
+            }
+
+            if (
+                this.appliedSecretWayLengthMax !== null &&
+                length > this.appliedSecretWayLengthMax
+            ) {
+                return false;
+            }
         }
 
         return true;
@@ -883,6 +945,7 @@ async mounted() {
         this.selected = firstMatch;
     }
 },
+
 
 
     
