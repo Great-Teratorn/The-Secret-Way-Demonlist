@@ -121,7 +121,11 @@ export default {
     </button>
 </div>
 
-<div v-if="showFilters" class="filter-modal-overlay" @click.self="showFilters = false">
+<div v-if="showFilters" class="filter-modal-overlay" 
+@click.self="
+    difficultyFilter = appliedDifficultyFilter;
+    showFilters = false;
+">
     <div class="filter-modal">
 
         <div class="filter-modal-header">
@@ -130,7 +134,10 @@ export default {
             <button
                 type="button"
                 class="filter-modal-close"
-                @click="showFilters = false"
+                @click="
+    difficultyFilter = appliedDifficultyFilter;
+    showFilters = false;
+"
                 aria-label="Close filters"
             >
                 ×
@@ -209,12 +216,15 @@ export default {
             </button>
 
             <button
-                type="button"
-                class="filter-apply"
-                @click="showFilters = false"
-            >
-                Apply
-            </button>
+    type="button"
+    class="filter-apply"
+    @click="
+        appliedDifficultyFilter = difficultyFilter;
+        showFilters = false;
+    "
+>
+    Apply
+</button>
         </div>
 
     </div>
@@ -385,6 +395,7 @@ export default {
     editors: [],
     showFilters: false,
     difficultyFilter: "",
+    appliedDifficultyFilter: "",
     loading: true,
     selected: 0,
     isWeekly: false,
@@ -426,12 +437,12 @@ export default {
                 return false;
             }
 
-            if (!this.difficultyFilter) {
-                return true;
-            }
+            if (!this.appliedDifficultyFilter) {
+    return true;
+}
 
-            return String(level.difficulty || "").toLowerCase()
-                === this.difficultyFilter.toLowerCase();
+return String(level.difficulty || "").toLowerCase()
+    === this.appliedDifficultyFilter.toLowerCase();
         });
 },
 
@@ -492,33 +503,37 @@ watch: {
         });
     },
 
-    difficultyFilter() {
-        if (!this.difficultyFilter) {
-            return;
-        }
+    appliedDifficultyFilter() {
+    const currentLevel = this.list[this.selected]?.[0];
 
-        const currentLevel = this.list[this.selected]?.[0];
-
-        const currentMatches =
-            currentLevel &&
-            String(currentLevel.difficulty || "").toLowerCase()
-                === this.difficultyFilter.toLowerCase();
-
-        if (currentMatches) {
-            return;
-        }
-
-        const firstMatch = this.list.findIndex(([level]) => {
-            if (!level) return false;
-
-            return String(level.difficulty || "").toLowerCase()
-                === this.difficultyFilter.toLowerCase();
-        });
-
-        if (firstMatch !== -1) {
-            this.selected = firstMatch;
-        }
+    // No filter is applied.
+    // Keep the current level if it still exists.
+    if (!this.appliedDifficultyFilter) {
+        return;
     }
+
+    const currentMatches =
+        currentLevel &&
+        String(currentLevel.difficulty || "").toLowerCase()
+            === this.appliedDifficultyFilter.toLowerCase();
+
+    // Current level already matches the applied filter.
+    if (currentMatches) {
+        return;
+    }
+
+    // Find the first level matching the newly applied filter.
+    const firstMatch = this.list.findIndex(([level]) => {
+        if (!level) return false;
+
+        return String(level.difficulty || "").toLowerCase()
+            === this.appliedDifficultyFilter.toLowerCase();
+    });
+
+    if (firstMatch !== -1) {
+        this.selected = firstMatch;
+    }
+}
 },
 
 
