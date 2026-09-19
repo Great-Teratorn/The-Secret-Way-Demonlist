@@ -89,6 +89,17 @@ export default {
     :verifier="level.verifier"
 ></LevelAuthors>
 
+
+<p
+    v-if="level.secret_way_start != null && level.secret_way_end != null"
+    class="type-label-lg"
+    style="margin: 10px 0 15px;"
+>
+    <strong>SECRET WAY:</strong>
+    {{ level.secret_way_start }}% to {{ level.secret_way_end }}%
+</p>
+
+
                     <iframe
     class="video"
     id="videoframe"
