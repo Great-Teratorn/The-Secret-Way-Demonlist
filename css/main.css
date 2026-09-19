@@ -666,8 +666,9 @@ nav a svg {
 
 
 
+
 /* ======================================================= */
-/* SEARCH RESULT LABEL ALIGNMENT                           */
+/* SEARCH RESULT LABEL — LEFT ALIGNMENT                   */
 /* ======================================================= */
 
 .search-suggestions-dropdown .suggestion-row {
@@ -678,15 +679,17 @@ nav a svg {
 .search-suggestions-dropdown .suggestion-name {
     display: flex !important;
     align-items: center !important;
-    min-width: 0 !important;
     flex: 1 !important;
-    padding-left: 4px !important;
+    min-width: 0 !important;
+    padding-left: 16px !important;
 }
 
 .search-suggestions-dropdown .creator-dropdown-toggle {
     flex-shrink: 0 !important;
     margin-left: 6px !important;
 }
+
+
 
 
 
