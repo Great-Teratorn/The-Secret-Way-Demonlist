@@ -35,8 +35,17 @@ export default {
                     <p v-else-if="$route.path === '/weekly' && level?.weeklyDate" class="type-label-lg" style="color: #a29bfe; font-size: 0.9rem; font-weight: bold;">{{ level.weeklyDate }}</p>
                 </td>
                 <td class="level" :class="{ 'active': selected == i, 'error': !level }">
-                    <button @click="selected = i" style="display: flex; align-items: center; gap: 15px; width: 100%; text-align: left;">
-                        <span class="type-label-lg">{{ level?.name || ($route.path === '/unverified' ? level?.name || 'Loading...' : 'Error (' + err + ')') }}</span>
+
+<button @click="selected = i" style="display: flex; align-items: center; gap: 15px; width: 100%; text-align: left;">
+    <span class="type-label-lg">{{ level?.name || ($route.path === '/unverified' ? level?.name || 'Loading...' : 'Error (' + err + ')') }}</span>
+
+    <img
+        v-if="level?.difficulty && difficultyIcon"
+        :src="difficultyIcon"
+        :alt="level.difficulty + ' demon'"
+        style="width: 28px; height: 28px; object-fit: contain; flex-shrink: 0;"
+    >
+
 
                         <!-- Added: Shows the fallback date next to the name on the legacy list -->
                         <span v-if="$route.path === '/legacy' && level?.dateFallen" class="type-label-sm" style="color: #94a3b8; font-style: italic; margin-left: auto; padding-right: 15px;">
@@ -169,23 +178,23 @@ export default {
                     </template>
                     <h3>Submission Requirements</h3>
                     <p>
-                        Achieved the record without using hacks (however, FPS bypass is allowed, up to 360fps). 
+                        Achieved the record without using hacks (however, FPS bypass is allowed, up to 360fps).
                     </p>
                     <p>
-                        Achieved the record on the level that is listed on the site - please check the level ID before you submit a record. 
+                        Achieved the record on the level that is listed on the site - please check the level ID before you submit a record.
                     </p>
                     <p>
-                        The secret way(s) must be used correctly as shown in the video. Otherwise, the record is invalid. 
+                        The secret way(s) must be used correctly as shown in the video. Otherwise, the record is invalid.
                     </p>
                     <p>
-                        Clicks or taps must be clearly visible in the recording to reinforce legitimacy. Audible clicks are preferred but not compulsory. 
+                        Clicks or taps must be clearly visible in the recording to reinforce legitimacy. Audible clicks are preferred but not compulsory.
                     </p>
                     <p>
                         The recording must show the player hit the endwall, or the completion will be invalidated.
                     </p>
-                    
+
                     <p>
-                        Do not use easy modes, only a record of the unmodified level qualifies. LDM/ULDM is allowed - only if part of the level. Custom version will lead to the record being invalidated.  
+                        Do not use easy modes, only a record of the unmodified level qualifies. LDM/ULDM is allowed - only if part of the level. Custom version will lead to the record being invalidated.
                     </p>
                     <p>
                     A raw, unedited footage link must be provided upon request.
@@ -204,24 +213,50 @@ export default {
         roleIconMap,
         store
     }),
-    computed: {
-        level() {
-            return this.list[this.selected][0];
-        },
-        video() {
-            if (!this.level.showcase) {
-                return embed(this.level.verification);
-            }
 
-            return embed(
-                this.toggledShowcase
-                    ? this.level.showcase
-                    : this.level.verification
-            );
-        },
+    computed: {
+    level() {
+        return this.list[this.selected]?.[0] || null;
     },
-   
-    
+
+    video() {
+        if (!this.level?.verification) {
+            return "";
+        }
+
+        if (!this.level.showcase) {
+            return embed(this.level.verification);
+        }
+
+        return embed(
+            this.toggledShowcase
+                ? this.level.showcase
+                : this.level.verification
+        );
+    },
+
+    difficultyIcon() {
+        if (!this.level?.difficulty) {
+            return null;
+        }
+
+        const difficulty = this.level.difficulty.toLowerCase();
+
+        const icons = {
+            easy: "/assets/easy-demon-face.png",
+            medium: "/assets/medium-demon-face.png",
+            hard: "/assets/hard-demon-face.png",
+            insane: "/assets/insane-demon-face.png",
+            extreme: "/assets/extreme-demon-face.png",
+        };
+
+        return icons[difficulty] || null;
+    },
+},
+
+
+
+
     // ADDED THIS WATCHER BLOCK: Forces Vue to reload data when switching tabs
     watch: {
     async $route() {
@@ -260,7 +295,7 @@ export default {
 
 
 
-    
+
 
 async mounted() {
     // Load list

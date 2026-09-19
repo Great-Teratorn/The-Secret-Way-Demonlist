@@ -8,6 +8,9 @@
     "verification": "https://www.youtube.com/watch?v=xtmxcAbMfuQ",
     "percentToQualify": 100,
     "secret_way_at": 7, 
+    "difficulty": "easy",
+    "secret_way_start": 6,
+    "secret_way_end": 100,
     "description": "This is my extremely long description about a button which persistently gets mashed to absolute pieces because it is totally difficult and irritating to do.\n\nTo make it worse, it has an insane frame perfect which is completely time consuming and usurps your efforts. SO ANNOYING, I WOULD DEFINITELY NOT RECOMMEND!",
     "records": [
         {
