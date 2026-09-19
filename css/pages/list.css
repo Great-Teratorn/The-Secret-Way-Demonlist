@@ -320,7 +320,7 @@
     color: var(--color-on-background);
     cursor: pointer;
     border-radius: 6px;
-    padding: 10px 16px;
+    padding: 12px 20px;
     font-weight: bold;
 }
 
