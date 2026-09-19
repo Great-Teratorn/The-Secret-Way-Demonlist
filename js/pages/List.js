@@ -25,41 +25,86 @@ export default {
 
             <div class="list-container">
     <table class="list" v-if="list">
-        <template v-for="([level, err], i) in list">
-            <!-- FIXED: Added closing bracket and included permissions for anomalies/weekly -->
-            <tr :key="i" v-if="(($route.path === '/' || $route.path === '/list') && i < 150) || (($route.path === '/extended' || $route.path === '/list/extended') && i >= 150) || (($route.path === '/legacy' || $route.path === '/list/legacy') && level && level.dateFallen) || ($route.path === '/unverified') || ($route.path === '/anomalies') || ($route.path === '/weekly') || ($route.path === '/removed')">
+        <template v-for="({ entry, index: originalIndex }) in filteredList">
+    <tr
+        :key="originalIndex"
+        v-if="
+            (($route.path === '/' || $route.path === '/list') && originalIndex < 150) ||
+            (($route.path === '/extended' || $route.path === '/list/extended') && originalIndex >= 150) ||
+            (($route.path === '/legacy' || $route.path === '/list/legacy') && entry[0] && entry[0].dateFallen) ||
+            ($route.path === '/unverified') ||
+            ($route.path === '/anomalies') ||
+            ($route.path === '/weekly') ||
+            ($route.path === '/removed')
+        "
+    >
+        <td class="rank">
+            <p
+                v-if="$route.path !== '/legacy' && $route.path !== '/removed' && $route.path !== '/unverified' && $route.path !== '/anomalies' && $route.path !== '/weekly'"
+                class="type-label-lg"
+            >
+                #{{ originalIndex + 1 }}
+            </p>
 
-                <td class="rank">
-                    <!-- FIXED: Added missing && between unverified and anomalies checks -->
-                    <p v-if="$route.path !== '/legacy' && $route.path !== '/removed' && $route.path !== '/unverified' && $route.path !== '/anomalies' && $route.path !== '/weekly'" class="type-label-lg">#{{ i + 1 }}</p>
-                    <p v-else-if="$route.path === '/removed'" class="type-label-lg" style="color: #a29bfe; font-size: 0.9rem; font-weight: bold; text-transform: uppercase;">Removed</p>
-                    <p v-else-if="$route.path === '/legacy'" class="type-label-lg" style="color: #a29bfe; font-size: 0.9rem; font-weight: bold; text-transform: uppercase;">Fallen</p>
-                    <p v-else-if="$route.path === '/weekly' && level?.weeklyDate" class="type-label-lg" style="color: #a29bfe; font-size: 0.9rem; font-weight: bold;">{{ level.weeklyDate }}</p>
-                </td>
-                <td class="level" :class="{ 'active': selected == i, 'error': !level }">
+            <p
+                v-else-if="$route.path === '/removed'"
+                class="type-label-lg"
+                style="color: #a29bfe; font-size: 0.9rem; font-weight: bold; text-transform: uppercase;"
+            >
+                Removed
+            </p>
 
-<button @click="selected = i" style="display: flex; align-items: center; gap: 15px; width: 100%; text-align: left;">
-    <span class="type-label-lg">
-        {{ level?.name || ($route.path === '/unverified' ? level?.name || 'Loading...' : 'Error (' + err + ')') }}
-    </span>
-    
+            <p
+                v-else-if="$route.path === '/legacy'"
+                class="type-label-lg"
+                style="color: #a29bfe; font-size: 0.9rem; font-weight: bold; text-transform: uppercase;"
+            >
+                Fallen
+            </p>
 
-    
+            <p
+                v-else-if="$route.path === '/weekly' && entry[0]?.weeklyDate"
+                class="type-label-lg"
+                style="color: #a29bfe; font-size: 0.9rem; font-weight: bold;"
+            >
+                {{ entry[0].weeklyDate }}
+            </p>
+        </td>
 
+        <td
+            class="level"
+            :class="{
+                'active': selected === originalIndex,
+                'error': !entry[0]
+            }"
+        >
+            <button
+                @click="selected = originalIndex"
+                style="display: flex; align-items: center; gap: 15px; width: 100%; text-align: left;"
+            >
+                <span class="type-label-lg">
+                    {{ entry[0]?.name || ($route.path === '/unverified' ? 'Loading...' : 'Error (' + entry[1] + ')') }}
+                </span>
 
-                        <!-- Added: Shows the fallback date next to the name on the legacy list -->
-                        <span v-if="$route.path === '/legacy' && level?.dateFallen" class="type-label-sm" style="color: #94a3b8; font-style: italic; margin-left: auto; padding-right: 15px;">
-    Fell off: {{ level.dateFallen }}
-</span>
+                <span
+                    v-if="$route.path === '/legacy' && entry[0]?.dateFallen"
+                    class="type-label-sm"
+                    style="color: #94a3b8; font-style: italic; margin-left: auto; padding-right: 15px;"
+                >
+                    Fell off: {{ entry[0].dateFallen }}
+                </span>
 
-<span v-if="$route.path === '/removed' && level?.dateRemoved" class="type-label-sm" style="color: #94a3b8; font-style: italic; margin-left: auto; padding-right: 15px;">
-    Removed: {{ level.dateRemoved }}
-</span>
-
-                    </button>
-                </td>
-            </tr>
-        </template>
+                <span
+                    v-if="$route.path === '/removed' && entry[0]?.dateRemoved"
+                    class="type-label-sm"
+                    style="color: #94a3b8; font-style: italic; margin-left: auto; padding-right: 15px;"
+                >
+                    Removed: {{ entry[0].dateRemoved }}
+                </span>
+            </button>
+        </td>
+    </tr>
+</template>
     </table>
 </div>
 
@@ -355,6 +400,41 @@ export default {
         return this.list[this.selected]?.[0] || null;
     },
 
+    filteredList() {
+    return this.list
+        .map((entry, index) => ({
+            entry,
+            index
+        }))
+        .filter(({ entry, index }) => {
+            const level = entry[0];
+
+            if (!level) {
+                return false;
+            }
+
+            const routeMatches =
+                ((this.$route.path === '/' || this.$route.path === '/list') && index < 150) ||
+                ((this.$route.path === '/extended' || this.$route.path === '/list/extended') && index >= 150) ||
+                ((this.$route.path === '/legacy' || this.$route.path === '/list/legacy') && level.dateFallen) ||
+                this.$route.path === '/unverified' ||
+                this.$route.path === '/anomalies' ||
+                this.$route.path === '/weekly' ||
+                this.$route.path === '/removed';
+
+            if (!routeMatches) {
+                return false;
+            }
+
+            if (!this.difficultyFilter) {
+                return true;
+            }
+
+            return String(level.difficulty || "").toLowerCase()
+                === this.difficultyFilter.toLowerCase();
+        });
+},
+
     video() {
         if (!this.level?.verification) {
             return "";
@@ -476,5 +556,8 @@ async mounted() {
 
         return icons[String(difficulty).toLowerCase()] || null;
     },
+
+
+    
 },
 };
