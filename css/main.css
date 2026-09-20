@@ -1207,3 +1207,77 @@ nav a svg {
 }
 
 
+
+
+
+/* =======================================================
+   NARROW DESKTOP — LEFT LIST LEVEL NAME FIX
+   Removed / Legacy / Weekly Demon
+   ======================================================= */
+
+@media screen and (min-width: 769px) and (max-width: 1100px) {
+
+    /*
+     * Only affect the left-hand list.
+     * Keep the existing right-side panels untouched.
+     */
+    .page-list .list-container,
+    .page-list .list {
+        min-width: 0 !important;
+        overflow-x: visible !important;
+    }
+
+    /*
+     * Keep each level row horizontal instead of allowing
+     * the level name to collapse vertically.
+     */
+    .page-list .list tr {
+        width: 100% !important;
+        min-width: 0 !important;
+        display: flex !important;
+        align-items: center !important;
+    }
+
+    /*
+     * Give the level column the space it needs.
+     */
+    .page-list .list .level {
+        flex: 1 1 auto !important;
+        min-width: 0 !important;
+        width: auto !important;
+    }
+
+    /*
+     * Level buttons remain horizontal.
+     */
+    .page-list .list .level button {
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        width: 100% !important;
+        min-width: 0 !important;
+        white-space: nowrap !important;
+    }
+
+    /*
+     * Weekly / Legacy / Removed level names stay on one line.
+     */
+    .page-list .list .level button > .type-label-lg {
+        display: block !important;
+        flex: 1 1 auto !important;
+        min-width: 0 !important;
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+    }
+
+    /*
+     * Keep the secondary date/status text on the right.
+     */
+    .page-list .list .level button > .type-label-sm {
+        flex: 0 0 auto !important;
+        white-space: nowrap !important;
+        margin-left: auto !important;
+    }
+}
+
