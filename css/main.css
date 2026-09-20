@@ -1218,14 +1218,14 @@ nav a svg {
 
 
 /* =======================================================
-   COMPRESSED DESKTOP — FINAL LIST BALANCE
+   COMPRESSED DESKTOP — FINAL LEVEL NAME WRAPPING
    ======================================================= */
 
 @media screen and (min-width: 769px) and (max-width: 1100px) {
 
     /*
-     * Keep the current column balance.
-     * Do NOT squeeze the middle section any further.
+     * Keep the existing column balance.
+     * Do NOT make the middle column any narrower.
      */
     main {
         grid-template-columns:
@@ -1236,9 +1236,6 @@ nav a svg {
         column-gap: 1rem !important;
     }
 
-    /*
-     * Let the left list fully occupy its available column.
-     */
     main > div:first-child,
     .page-list {
         min-width: 0 !important;
@@ -1254,67 +1251,71 @@ nav a svg {
     }
 
     /*
-     * Keep each level row horizontal.
+     * Each level row stays horizontal.
      */
     .page-list .list .level button {
         display: flex !important;
         align-items: center !important;
         width: 100% !important;
         min-width: 0 !important;
-        box-sizing: border-box !important;
-
-        /*
-         * Give wrapped names enough vertical room.
-         */
         height: auto !important;
         min-height: 2.75rem !important;
+        box-sizing: border-box !important;
     }
 
     /*
      * LEVEL NAME
      *
-     * Short names stay on one line.
+     * This is the important part:
      *
-     * Long multi-word names may wrap naturally onto a
-     * second line when the available space is genuinely
-     * too narrow.
-     *
-     * Words themselves are never forcibly broken.
+     * - Short names stay on one line.
+     * - Multi-word names may naturally wrap onto 2 lines.
+     * - Words themselves are NOT broken apart.
+     * - The name is allowed to use all remaining space.
      */
     .page-list .list .level button > .type-label-lg {
         display: block !important;
-
         flex: 1 1 auto !important;
         min-width: 0 !important;
-
         max-width: none !important;
 
         white-space: normal !important;
         overflow: visible !important;
         text-overflow: clip !important;
 
-        word-break: normal !important;
         overflow-wrap: normal !important;
+        word-break: normal !important;
         hyphens: none !important;
 
         line-height: 1.35 !important;
-
-        /*
-         * Allow the text to actually occupy the remaining
-         * width instead of forcing the row wider.
-         */
-        width: auto !important;
     }
 
     /*
-     * Removed / Legacy dates and other right-side metadata
-     * remain on one line and never steal unnecessary width
-     * from the level name.
+     * Removed / Legacy date.
+     *
+     * Keep it on the right, but DO NOT force the level name
+     * to stay on one line just to preserve this label.
      */
     .page-list .list .level button > .type-label-sm {
-        flex: 0 0 auto !important;
-        white-space: nowrap !important;
+        flex: 0 1 auto !important;
+        min-width: 0 !important;
+
+        white-space: normal !important;
+        overflow: visible !important;
+        text-overflow: clip !important;
+
+        line-height: 1.35 !important;
         margin-left: auto !important;
     }
-}
 
+    /*
+     * Removed rows get enough room for the date without
+     * squeezing the middle column.
+     *
+     * The date can itself occupy a second line if necessary.
+     */
+    .page-list .list .level button > .type-label-sm[style*="italic"] {
+        max-width: 42% !important;
+        text-align: right !important;
+    }
+}
