@@ -1218,29 +1218,22 @@ nav a svg {
 
 
 
+
 /* =======================================================
-   COMPRESSED DESKTOP — LEFT LIST / MULTI-LINE NAMES
+   COMPRESSED DESKTOP — LEVEL NAME WRAPPING
    ======================================================= */
 
 @media screen and (min-width: 769px) and (max-width: 1100px) {
 
-    /*
-     * Keep the three main sections balanced.
-     * Long level names can use a second line instead of
-     * forcing the middle panel to become narrower.
-     */
     main {
         grid-template-columns:
-            minmax(18rem, 1fr)
+            minmax(20rem, 1.05fr)
             minmax(20rem, 2fr)
             minmax(16rem, 1fr) !important;
 
         column-gap: 1rem !important;
     }
 
-    /*
-     * Left list fills its available column.
-     */
     main > div:first-child,
     .page-list {
         min-width: 0 !important;
@@ -1256,13 +1249,24 @@ nav a svg {
     }
 
     /*
-     * Level names:
-     *
-     * Short names stay on one line.
-     * Longer multi-word names naturally use a second line.
-     * Words themselves are never split apart.
+     * Keep the button horizontal, but allow the actual
+     * level-name span to become two lines.
+     */
+    .page-list .list .level button {
+        display: flex !important;
+        align-items: center !important;
+        width: 100% !important;
+        min-width: 0 !important;
+        box-sizing: border-box !important;
+    }
+
+    /*
+     * Level name gets the available space.
+     * Long multi-word names wrap naturally.
+     * Individual words are never broken.
      */
     .page-list .list .level button > .type-label-lg {
+        flex: 1 1 auto !important;
         min-width: 0 !important;
         white-space: normal !important;
         overflow-wrap: normal !important;
@@ -1272,23 +1276,15 @@ nav a svg {
     }
 
     /*
-     * Keep the level row horizontal.
-     */
-    .page-list .list .level button {
-        display: flex !important;
-        align-items: center !important;
-        flex-wrap: nowrap !important;
-        min-width: 0 !important;
-    }
-
-    /*
-     * Removed / Legacy dates stay compact and don't
-     * consume unnecessary width.
+     * Removed / Legacy date stays on the right and
+     * does not wrap.
      */
     .page-list .list .level button > .type-label-sm {
-        flex-shrink: 1 !important;
+        flex: 0 0 auto !important;
         white-space: nowrap !important;
         margin-left: auto !important;
     }
 }
+
+
 
