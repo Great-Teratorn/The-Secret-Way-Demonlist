@@ -671,32 +671,6 @@ nav a svg {
 
 
 
-@media screen and (min-width: 769px) and (max-width: 1100px) {
-
-    .page-list .list .level {
-        flex: 1 1 auto !important;
-        width: auto !important;
-        min-width: 0 !important;
-    }
-
-    .page-list .list .level button {
-        width: 100% !important;
-        box-sizing: border-box !important;
-        display: flex !important;
-        align-items: center !important;
-        flex-wrap: nowrap !important;
-        overflow: visible !important;
-    }
-
-    .page-list .list .level button > .type-label-lg {
-        flex: 1 1 auto !important;
-        min-width: 0 !important;
-        white-space: nowrap !important;
-        overflow: visible !important;
-    }
-}
-
-
 
 
 
@@ -1242,4 +1216,41 @@ nav a svg {
 
 
 
+
+/* =======================================================
+   COMPRESSED DESKTOP — LEFT LIST WIDTH
+   ======================================================= */
+
+@media screen and (min-width: 769px) and (max-width: 1100px) {
+
+    /*
+     * Give the three-column layout more room to breathe.
+     * The left list must not be squeezed below its usable width.
+     */
+    main {
+        grid-template-columns:
+            minmax(22rem, 1.15fr)
+            minmax(20rem, 2fr)
+            minmax(16rem, 1fr) !important;
+        column-gap: 1rem !important;
+    }
+
+    /*
+     * Allow the left-hand list column to actually use
+     * the width given to it.
+     */
+    main > div:first-child,
+    .page-list {
+        min-width: 0 !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    .page-list .list-container,
+    .page-list .list {
+        width: 100% !important;
+        min-width: 0 !important;
+        box-sizing: border-box !important;
+    }
+}
 
