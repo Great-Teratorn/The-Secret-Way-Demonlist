@@ -124,7 +124,7 @@ export default {
     v-if="showFilters"
     class="filter-modal-overlay"
     @click.self="
-        difficultyFilter = appliedDifficultyFilter;
+        difficultyFilter = [...appliedDifficultyFilter];
         secretWayStartMin = appliedSecretWayStartMin;
         secretWayStartMax = appliedSecretWayStartMax;
         secretWayEndMin = appliedSecretWayEndMin;
@@ -143,7 +143,7 @@ export default {
                 type="button"
                 class="filter-modal-close"
                 @click="
-                    difficultyFilter = appliedDifficultyFilter;
+                    difficultyFilter = [...appliedDifficultyFilter];
                     secretWayStartMin = appliedSecretWayStartMin;
                     secretWayStartMax = appliedSecretWayStartMax;
                     secretWayEndMin = appliedSecretWayEndMin;
@@ -171,17 +171,17 @@ export default {
     <div class="filter-section-content">
 
         <label class="filter-option">
-            <input
-                type="radio"
-                value=""
-                v-model="difficultyFilter"
-            >
-            <span>All difficulties</span>
-        </label>
+    <input
+        type="checkbox"
+        :checked="difficultyFilter.length === 0"
+        @change="difficultyFilter = []"
+    >
+    <span>All difficulties</span>
+</label>
 
         <label class="filter-option">
             <input
-                type="radio"
+                type="checkbox"
                 value="easy"
                 v-model="difficultyFilter"
             >
@@ -190,7 +190,7 @@ export default {
 
         <label class="filter-option">
             <input
-                type="radio"
+                type="checkbox"
                 value="medium"
                 v-model="difficultyFilter"
             >
@@ -199,7 +199,7 @@ export default {
 
         <label class="filter-option">
             <input
-                type="radio"
+                type="checkbox"
                 value="hard"
                 v-model="difficultyFilter"
             >
@@ -208,7 +208,7 @@ export default {
 
         <label class="filter-option">
             <input
-                type="radio"
+                type="checkbox"
                 value="insane"
                 v-model="difficultyFilter"
             >
@@ -217,7 +217,7 @@ export default {
 
         <label class="filter-option">
             <input
-                type="radio"
+                type="checkbox"
                 value="extreme"
                 v-model="difficultyFilter"
             >
@@ -348,7 +348,7 @@ export default {
                 type="button"
                 class="filter-clear"
                 @click="
-                    difficultyFilter = '';
+                    difficultyFilter = [];
                     secretWayStartMin = null;
                     secretWayStartMax = null;
                     secretWayEndMin = null;
@@ -364,7 +364,7 @@ export default {
                 type="button"
                 class="filter-apply"
                 @click="
-                    appliedDifficultyFilter = difficultyFilter;
+                    appliedDifficultyFilter = [...difficultyFilter];
                     appliedSecretWayStartMin = secretWayStartMin;
                     appliedSecretWayStartMax = secretWayStartMax;
                     appliedSecretWayEndMin = secretWayEndMin;
@@ -584,8 +584,8 @@ export default {
     list: [],
     editors: [],
     showFilters: false,
-    difficultyFilter: "",
-appliedDifficultyFilter: "",
+    difficultyFilter: [],
+    appliedDifficultyFilter: [],
 
 secretWayStartMin: null,
 secretWayStartMax: null,
@@ -655,13 +655,14 @@ loading: true,
                 }
 
                 // Difficulty filter
-                if (
-                    this.appliedDifficultyFilter &&
-                    String(level.difficulty || "").toLowerCase() !==
-                        this.appliedDifficultyFilter.toLowerCase()
-                ) {
-                    return false;
-                }
+if (
+    this.appliedDifficultyFilter.length > 0 &&
+    !this.appliedDifficultyFilter.includes(
+        String(level.difficulty || "").toLowerCase()
+    )
+) {
+    return false;
+}
 
                 // Check whether any Secret Way filter is active.
                 const hasSecretWayFilter =
@@ -912,13 +913,14 @@ selectFirstMatchingLevel() {
         }
 
         // Difficulty filter.
-        if (
-            this.appliedDifficultyFilter &&
-            String(level.difficulty || "").toLowerCase()
-                !== this.appliedDifficultyFilter.toLowerCase()
-        ) {
-            return false;
-        }
+if (
+    this.appliedDifficultyFilter.length > 0 &&
+    !this.appliedDifficultyFilter.includes(
+        String(level.difficulty || "").toLowerCase()
+    )
+) {
+    return false;
+}
 
         // If any Secret Way filter is active, the level must actually
         // have valid Secret Way start/end values.
