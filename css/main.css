@@ -1217,27 +1217,27 @@ nav a svg {
 
 
 
-/* =======================================================
-   FINAL DESKTOP LEVEL ROW WRAPPING
-   ======================================================= */
+ /* =======================================================
+    FINAL DESKTOP LEVEL ROW BALANCE
+    ======================================================= */
 
 @media screen and (min-width: 769px) and (max-width: 1100px) {
 
     /*
-     * DO NOT change the three main columns here.
-     * The middle section is already basically correct.
+     * Give the middle section a TINY bit more room.
+     * This is deliberately a very small adjustment.
      */
     main {
         grid-template-columns:
-            minmax(20.75rem, 1.06fr)
-            minmax(20rem, 2fr)
+            minmax(20.75rem, 1.05fr)
+            minmax(20.15rem, 2fr)
             minmax(16rem, 1fr) !important;
 
         column-gap: 1rem !important;
     }
 
     /*
-     * Give the left list the full width of its column.
+     * Left list must be allowed to use its entire column.
      */
     main > div:first-child,
     .page-list,
@@ -1249,42 +1249,49 @@ nav a svg {
     }
 
     /*
-     * THE IMPORTANT CHANGE:
+     * Normal level row.
      *
-     * The row itself may wrap.
-     *
-     * This means the level name does NOT have to fight
-     * the Removed/Legacy text for every pixel of one line.
+     * Keep the row itself on one horizontal axis.
+     * The NAME is the part that is allowed to become two lines.
      */
     .page-list .list .level button {
         display: flex !important;
-        flex-wrap: wrap !important;
         align-items: center !important;
+        flex-wrap: nowrap !important;
 
         width: 100% !important;
         min-width: 0 !important;
-        height: auto !important;
         min-height: 2.75rem !important;
+        height: auto !important;
 
         box-sizing: border-box !important;
-
         overflow: visible !important;
+
+        padding-top: 0.65rem !important;
+        padding-bottom: 0.65rem !important;
     }
 
     /*
      * LEVEL NAME
      *
-     * It gets the available horizontal space.
+     * This is the ONLY part that should wrap.
      *
-     * Normal spaces are wrapping points.
-     * Individual words are not deliberately broken.
+     * Short name:
+     *     Countershock
+     *
+     * Long multi-word name:
+     *     Rhythmical Scream
+     *     [can occupy a second line]
+     *
+     * Individual words are not broken.
      */
     .page-list .list .level button > .type-label-lg {
         display: block !important;
 
-        flex: 1 1 0 !important;
+        flex: 1 1 auto !important;
         min-width: 0 !important;
-        max-width: 100% !important;
+
+        max-width: none !important;
 
         white-space: normal !important;
 
@@ -1299,67 +1306,25 @@ nav a svg {
     }
 
     /*
-     * MAIN / ordinary rows:
-     * metadata remains beside the name whenever it fits.
+     * REMOVED / LEGACY METADATA
+     *
+     * THIS MUST NEVER WRAP.
+     *
+     * "Removed: 08/09/2026" stays together.
      */
     .page-list .list .level button > .type-label-sm {
+        display: block !important;
+
         flex: 0 0 auto !important;
-        min-width: 0 !important;
+        min-width: max-content !important;
 
         white-space: nowrap !important;
 
-        margin-left: auto !important;
-
-        line-height: 1.35 !important;
-    }
-
-    /*
-     * IMPORTANT:
-     *
-     * When the name + metadata cannot comfortably fit,
-     * allow the metadata to move onto its own line instead
-     * of crushing/clipping the level name.
-     *
-     * The metadata stays right-aligned.
-     */
-    .page-list .list .level button > .type-label-lg
-        + .type-label-sm {
-        max-width: 100% !important;
-    }
-
-    /*
-     * Keep rows tall enough when the level name naturally
-     * becomes two lines.
-     */
-    .page-list .list .level button {
-        padding-top: 0.65rem !important;
-        padding-bottom: 0.65rem !important;
-        line-height: 1.35 !important;
-    }
-}
-
-
-
-/* =======================================================
-   REMOVED / LEGACY: LET METADATA YIELD BEFORE NAME
-   ======================================================= */
-
-@media screen and (min-width: 769px) and (max-width: 1100px) {
-
-    .page-list .list .level button > .type-label-sm {
-        white-space: normal !important;
-        flex: 0 1 auto !important;
-        min-width: 0 !important;
-        text-align: right !important;
-    }
-
-    /*
-     * The level name must never be clipped just because
-     * the status/date text is present.
-     */
-    .page-list .list .level button > .type-label-lg {
-        flex-shrink: 1 !important;
         overflow: visible !important;
         text-overflow: clip !important;
+
+        margin-left: 0.75rem !important;
+
+        line-height: 1.35 !important;
     }
 }
