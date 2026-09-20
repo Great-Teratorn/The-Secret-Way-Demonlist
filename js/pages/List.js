@@ -26,18 +26,9 @@ export default {
             <div class="list-container">
     <table class="list" v-if="list">
         <template v-for="({ entry, index: originalIndex }) in filteredList">
-    <tr
-        :key="originalIndex"
-        v-if="
-            (($route.path === '/' || $route.path === '/list') && originalIndex < 150) ||
-            (($route.path === '/extended' || $route.path === '/list/extended') && originalIndex >= 150) ||
-            (($route.path === '/legacy' || $route.path === '/list/legacy') && entry[0] && entry[0].dateFallen) ||
-            ($route.path === '/unverified') ||
-            ($route.path === '/anomalies') ||
-            ($route.path === '/weekly') ||
-            ($route.path === '/removed')
-        "
-    >
+    
+        <tr :key="originalIndex">
+
         <td class="rank">
             <p
                 v-if="$route.path !== '/legacy' && $route.path !== '/removed' && $route.path !== '/unverified' && $route.path !== '/anomalies' && $route.path !== '/weekly'"
