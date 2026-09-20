@@ -760,6 +760,8 @@ loading: true,
     // ADDED THIS WATCHER BLOCK: Forces Vue to reload data when switching tabs
 watch: {
     async $route() {
+        this.loading = true;
+
         const newList = await fetchList();
 
         if (newList) {
@@ -767,6 +769,8 @@ watch: {
         }
 
         this.selectFirstMatchingLevel();
+
+        this.loading = false;
 
         this.$nextTick(() => {
             document.querySelectorAll('.list button').forEach((button) => {
