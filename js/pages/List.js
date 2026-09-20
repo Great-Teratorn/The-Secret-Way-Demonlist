@@ -118,12 +118,9 @@ export default {
         </button>
     </div>
 
-    <div class="level" v-if="level && filteredList.length > 0">
+    
 
-
-                    
-
-<div
+    <div
     v-if="showFilters"
     class="filter-modal-overlay"
     @click.self="
@@ -384,6 +381,15 @@ export default {
 
     </div>
 </div>
+
+    
+    
+    <div class="level" v-if="level && filteredList.length > 0">
+
+
+                    
+
+
 
 
 
