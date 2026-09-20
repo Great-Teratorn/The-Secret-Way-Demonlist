@@ -2168,10 +2168,18 @@ window.processSearchHighlight = function() {
 
             elements.forEach(function(el) {
 
-                if (
-                    el.textContent &&
-                    el.textContent.toLowerCase().indexOf(query) !== -1
-                ) {
+                
+var nameElement =
+    el.querySelector('.type-label-lg');
+
+var elementName =
+    nameElement
+        ? nameElement.textContent.trim().toLowerCase()
+        : el.textContent.trim().toLowerCase();
+
+if (elementName === query) {
+
+
 
                     el.style.setProperty(
                         'border',
