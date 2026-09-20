@@ -1328,3 +1328,32 @@ nav a svg {
         line-height: 1.35 !important;
     }
 }
+
+
+@media screen and (min-width: 769px) and (max-width: 1100px) {
+
+    /*
+     * REMOVED ROWS ONLY:
+     * Put "Removed: 08/09/2026" underneath the level name.
+     */
+    .page-list .list .level button:has(> .type-label-sm) {
+        flex-wrap: wrap !important;
+    }
+
+    .page-list .list .level button:has(> .type-label-sm) > .type-label-lg {
+        flex: 1 1 100% !important;
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    .page-list .list .level button:has(> .type-label-sm) > .type-label-sm {
+        flex: 0 0 100% !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        margin-left: 0 !important;
+        margin-top: 2px !important;
+
+        white-space: nowrap !important;
+        text-align: left !important;
+    }
+}
