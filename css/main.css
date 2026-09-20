@@ -654,10 +654,10 @@ nav a svg {
 .page-list .list .level button > span:first-child {
     min-width: 0 !important;
     line-height: 1.4 !important;
-    overflow: hidden !important;
+    overflow: visible !important;
     white-space: nowrap !important;
     overflow-wrap: normal !important;
-    text-overflow: ellipsis !important;
+    text-overflow: clip !important;
 }
 
 
