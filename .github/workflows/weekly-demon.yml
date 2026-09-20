@@ -1,0 +1,30 @@
+name: Weekly Demon
+
+on:
+  schedule:
+    - cron: "0 0 * * 1"
+
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  weekly-demon:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Run Weekly Demon
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+        run: python .github/scripts/weekly_demon.py
