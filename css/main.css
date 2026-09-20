@@ -671,6 +671,34 @@ nav a svg {
 
 
 
+@media screen and (min-width: 769px) and (max-width: 1100px) {
+
+    .page-list .list .level {
+        flex: 1 1 auto !important;
+        width: auto !important;
+        min-width: 0 !important;
+    }
+
+    .page-list .list .level button {
+        width: 100% !important;
+        box-sizing: border-box !important;
+        display: flex !important;
+        align-items: center !important;
+        flex-wrap: nowrap !important;
+        overflow: visible !important;
+    }
+
+    .page-list .list .level button > .type-label-lg {
+        flex: 1 1 auto !important;
+        min-width: 0 !important;
+        white-space: nowrap !important;
+        overflow: visible !important;
+    }
+}
+
+
+
+
 
 /* =======================================================
    SEARCH RESULTS — MATCH SEARCH FONT
