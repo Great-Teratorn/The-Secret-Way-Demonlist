@@ -297,6 +297,7 @@ embed = {
 
 payload = {
     "content": (
+        "<@&1526357877093044376>\n\n"
         "🧪 **TEST — NEW SECRET WAY WEEKLY DEMON #1**\n\n"
         "A test Weekly Demon has been generated. "
         "This is running on the `weekly-demon-test` branch."
