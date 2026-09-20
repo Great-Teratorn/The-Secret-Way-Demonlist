@@ -140,6 +140,42 @@ used_slugs = {
     for entry in weekly_history
 }
 
+
+# ============================================================
+# PREVENT DUPLICATE WEEKLY DEMON
+# ============================================================
+
+current_week = get_week_dates()
+
+if weekly_history:
+    latest_slug = get_slug_from_weekly_entry(
+        weekly_history[0]
+    )
+
+    latest_weekly_file = (
+        WEEKLY_FOLDER / f"{latest_slug}.json"
+    )
+
+    if latest_weekly_file.exists():
+        latest_weekly = load_json(
+            latest_weekly_file
+        )
+
+        latest_week = latest_weekly.get(
+            "weeklyDate",
+            ""
+        )
+
+        if latest_week == current_week:
+            print(
+                f"Weekly Demon for {current_week} "
+                "already exists."
+            )
+            print(
+                "Nothing to do. Exiting safely."
+            )
+            raise SystemExit(0)
+
 print(f"Previous Weekly Demons: {len(used_slugs)}")
 
 
