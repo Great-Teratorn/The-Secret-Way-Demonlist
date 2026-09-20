@@ -1217,7 +1217,6 @@ nav a svg {
 
 
 
-
 /* =======================================================
    COMPRESSED DESKTOP — FINAL LIST BALANCE
    ======================================================= */
@@ -1225,8 +1224,8 @@ nav a svg {
 @media screen and (min-width: 769px) and (max-width: 1100px) {
 
     /*
-     * Only a small increase for the left list.
-     * The middle section is intentionally protected.
+     * Keep the current column balance.
+     * Do NOT squeeze the middle section any further.
      */
     main {
         grid-template-columns:
@@ -1238,7 +1237,7 @@ nav a svg {
     }
 
     /*
-     * Allow the left list to use its full column.
+     * Let the left list fully occupy its available column.
      */
     main > div:first-child,
     .page-list {
@@ -1255,7 +1254,7 @@ nav a svg {
     }
 
     /*
-     * Keep the level row horizontal.
+     * Keep each level row horizontal.
      */
     .page-list .list .level button {
         display: flex !important;
@@ -1263,32 +1262,54 @@ nav a svg {
         width: 100% !important;
         min-width: 0 !important;
         box-sizing: border-box !important;
+
+        /*
+         * Give wrapped names enough vertical room.
+         */
+        height: auto !important;
+        min-height: 2.75rem !important;
     }
 
     /*
-     * The actual level name is the flexible portion.
+     * LEVEL NAME
      *
-     * Short names remain on one line.
-     * Long multi-word names can wrap to a second line.
-     * Individual words are never broken.
+     * Short names stay on one line.
+     *
+     * Long multi-word names may wrap naturally onto a
+     * second line when the available space is genuinely
+     * too narrow.
+     *
+     * Words themselves are never forcibly broken.
      */
     .page-list .list .level button > .type-label-lg {
         display: block !important;
-        flex: 1 1 0 !important;
+
+        flex: 1 1 auto !important;
         min-width: 0 !important;
-        max-width: 100% !important;
+
+        max-width: none !important;
 
         white-space: normal !important;
         overflow: visible !important;
-        overflow-wrap: normal !important;
+        text-overflow: clip !important;
+
         word-break: normal !important;
+        overflow-wrap: normal !important;
         hyphens: none !important;
 
         line-height: 1.35 !important;
+
+        /*
+         * Allow the text to actually occupy the remaining
+         * width instead of forcing the row wider.
+         */
+        width: auto !important;
     }
 
     /*
-     * Keep Removed / Legacy metadata compact.
+     * Removed / Legacy dates and other right-side metadata
+     * remain on one line and never steal unnecessary width
+     * from the level name.
      */
     .page-list .list .level button > .type-label-sm {
         flex: 0 0 auto !important;
