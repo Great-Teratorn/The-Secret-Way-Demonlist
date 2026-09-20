@@ -1712,132 +1712,237 @@ window.selectSearchResult = function(element) {
 
 
 
-    /*     * ==========================================================     * SEARCH ENTER / HIGHLIGHT PROCESSING     * ==========================================================     */
-    window.processSearchHighlight = function() {    
-    
-        console.log(
-    'SEARCH CLEANUP:',
-    document.querySelectorAll('.search-highlight-active').length
-);
+/*     * ==========================================================     * SEARCH ENTER / HIGHLIGHT PROCESSING     * ==========================================================     */
 
-    
+window.processSearchHighlight = function() {
+
+    console.log(
+        'SEARCH CLEANUP:',
+        document.querySelectorAll('.search-highlight-active').length
+    );
+
+    /*
+     * ==========================================================
+     * SEARCH HIGHLIGHT COLOURS
+     *
+     * COLOUR ONLY.
+     *
+     * The search/navigation system itself is unchanged.
+     * These values only control the visual highlight.
+     * ==========================================================
+     */
+
+    var highlightBorder = '#00e676';
+    var highlightBackground = 'rgba(0, 230, 118, 0.15)';
+
+    var currentRoute = window.location.hash || '';
+
+    /*
+     * Route-specific colours.
+     *
+     * Main / Extended = green
+     * Anomalies = red
+     * Removed = orange
+     * Legacy = purple
+     * Unverified = cyan
+     * Weekly is handled below because current/past Weekly
+     * use different colours.
+     */
+
+    if (currentRoute.includes('/anomalies')) {
+
+        highlightBorder = '#ff6b6b';
+        highlightBackground = 'rgba(255, 107, 107, 0.15)';
+
+    } else if (currentRoute.includes('/removed')) {
+
+        highlightBorder = '#ff9800';
+        highlightBackground = 'rgba(255, 152, 0, 0.15)';
+
+    } else if (currentRoute.includes('/legacy')) {
+
+        highlightBorder = '#a29bfe';
+        highlightBackground = 'rgba(162, 155, 254, 0.15)';
+
+    } else if (currentRoute.includes('/unverified')) {
+
+        highlightBorder = '#26c6da';
+        highlightBackground = 'rgba(38, 198, 218, 0.15)';
+
+    } else if (currentRoute.includes('/weekly')) {
+
+        /*
+         * Weekly level searches are normally current/past Weekly.
+         *
+         * We start with the existing blue/past-Weekly colour.
+         * If the selected level is the current Weekly Demon,
+         * the existing weeklyDate metadata changes it to yellow.
+         */
+
+        highlightBorder = '#3f8fff';
+        highlightBackground = 'rgba(63, 143, 255, 0.15)';
+
+        var weeklyTargetForColour =
+            localStorage.getItem('listSearchTarget') ||
+            localStorage.getItem('listSearchLevel');
+
+        if (weeklyTargetForColour) {
+
+            var weeklyMatch =
+                masterSearchRegistry.find(function(item) {
+
+                    return (
+                        item.type === 'Level' &&
+                        item.name &&
+                        item.name.toLowerCase() ===
+                        weeklyTargetForColour.toLowerCase()
+                    );
+
+                });
+
+            if (
+                weeklyMatch &&
+                weeklyMatch.weeklyDate &&
+                typeof currentWeeklyDate !== 'undefined' &&
+                weeklyMatch.weeklyDate === currentWeeklyDate
+            ) {
+
+                highlightBorder = '#ffd54f';
+                highlightBackground = 'rgba(255, 213, 79, 0.15)';
+
+            }
+
+        }
+
+    }
+
+    /*
+     * Remove existing search highlights.
+     *
+     * This is the same cleanup behaviour as before.
+     */
     document.querySelectorAll('.search-highlight-active').forEach(function(el) {
         el.classList.remove('search-highlight-active');
         el.style.removeProperty('border');
         el.style.removeProperty('background');
     });
-    console.log(
-    'GREEN HIGHLIGHTS:',
-    document.querySelectorAll(
-        '[style*="2px dashed #00e676"], [style*="rgba(0, 230, 118, 0.15)"]'
-    ).length
-);
 
-
-    
     /*
- * ANOMALY-ONLY PLAYER SEARCH
- *
- * Highlight every anomaly level associated with the player.
- * The first matching row in the rendered Anomalies list
- * is the highest associated anomaly.
- */
-var anomalyPlayerTarget =
-    localStorage.getItem('anomalyPlayerSearch');
+     * ==========================================================
+     * ANOMALY PLAYER SEARCH
+     * ==========================================================
+     *
+     * A-player searches use the Anomalies colour.
+     */
 
-var anomalyPlayerLevelsRaw =
-    localStorage.getItem('anomalyPlayerLevels');
+    var anomalyPlayerTarget =
+        localStorage.getItem('anomalyPlayerSearch');
 
-if (anomalyPlayerTarget && anomalyPlayerLevelsRaw) {
+    var anomalyPlayerLevelsRaw =
+        localStorage.getItem('anomalyPlayerLevels');
 
-    var anomalyPlayerLevels = [];
+    if (anomalyPlayerTarget && anomalyPlayerLevelsRaw) {
 
-    try {
-        anomalyPlayerLevels =
-            JSON.parse(anomalyPlayerLevelsRaw);
-    } catch (e) {
-        anomalyPlayerLevels = [];
-    }
+        var anomalyPlayerLevels = [];
 
-    var attempts = 0;
+        try {
+            anomalyPlayerLevels =
+                JSON.parse(anomalyPlayerLevelsRaw);
+        } catch (e) {
+            anomalyPlayerLevels = [];
+        }
 
-    var anomalyLoop = setInterval(function() {
+        var attempts = 0;
 
-        attempts++;
+        var anomalyLoop = setInterval(function() {
 
-        var rows = document.querySelectorAll('.list tr');
+            attempts++;
 
-        if (rows.length > 0) {
+            var rows = document.querySelectorAll('.list tr');
 
-            var matchedRows = [];
+            if (rows.length > 0) {
 
-            rows.forEach(function(row) {
+                var matchedRows = [];
 
-                var button = row.querySelector('button');
+                rows.forEach(function(row) {
 
-                if (!button || !button.textContent) {
+                    var button = row.querySelector('button');
+
+                    if (!button || !button.textContent) {
+                        return;
+                    }
+
+                    var levelName =
+                        button.textContent.trim().toLowerCase();
+
+                    var matched =
+                        anomalyPlayerLevels.some(function(name) {
+
+                            return name &&
+                                levelName ===
+                                name.toLowerCase().trim();
+
+                        });
+
+                    if (matched) {
+
+                        button.style.setProperty(
+                            'border',
+                            '2px dashed #ff6b6b',
+                            'important'
+                        );
+
+                        button.style.setProperty(
+                            'background',
+                            'rgba(255, 107, 107, 0.15)',
+                            'important'
+                        );
+
+                        button.classList.add(
+                            'search-highlight-active'
+                        );
+
+                        matchedRows.push(row);
+
+                    }
+
+                });
+
+                if (matchedRows.length > 0) {
+
+                    var highestRow = matchedRows[0];
+
+                    highestRow.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'center'
+                    });
+
+                    var highestButton =
+                        highestRow.querySelector('button');
+
+                    if (
+                        highestButton &&
+                        typeof highestButton.click === 'function'
+                    ) {
+                        highestButton.click();
+                    }
+
+                    clearInterval(anomalyLoop);
+
+                    localStorage.removeItem(
+                        'anomalyPlayerSearch'
+                    );
+
+                    localStorage.removeItem(
+                        'anomalyPlayerLevels'
+                    );
+
                     return;
                 }
 
-                var levelName =
-                    button.textContent.trim().toLowerCase();
+            }
 
-                var matched =
-                    anomalyPlayerLevels.some(function(name) {
-
-                        return name &&
-                            levelName ===
-                            name.toLowerCase().trim();
-
-                    });
-
-                if (matched) {
-
-                    button.style.setProperty(
-                        'border',
-                        '2px dashed #00e676',
-                        'important'
-                    );
-
-                    button.style.setProperty(
-    'background',
-    'rgba(0, 230, 118, 0.15)',
-    'important'
-);
-
-button.classList.add('search-highlight-active');
-
-matchedRows.push(row);
-
-
-                }
-
-            });
-
-
-            /*
-             * The rendered Anomalies list keeps its existing order.
-             * Therefore the first matching row is the highest
-             * associated anomaly.
-             */
-            if (matchedRows.length > 0) {
-
-                var highestRow = matchedRows[0];
-
-                highestRow.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'center'
-                });
-
-                var highestButton =
-                    highestRow.querySelector('button');
-
-                if (
-                    highestButton &&
-                    typeof highestButton.click === 'function'
-                ) {
-                    highestButton.click();
-                }
+            if (attempts > 20) {
 
                 clearInterval(anomalyLoop);
 
@@ -1849,141 +1954,135 @@ matchedRows.push(row);
                     'anomalyPlayerLevels'
                 );
 
-                return;
             }
 
-        }
+        }, 150);
 
-        if (attempts > 20) {
-
-            clearInterval(anomalyLoop);
-
-            localStorage.removeItem(
-                'anomalyPlayerSearch'
-            );
-
-            localStorage.removeItem(
-                'anomalyPlayerLevels'
-            );
-
-        }
-
-    }, 150);
-
-    return;
-}
-
-
-/*
- * REMOVED PLAYER SEARCH
- *
- * Highlight every Removed level associated with the player.
- * This intentionally mirrors the existing Anomalies player
- * highlighting system exactly.
- */
-var removedPlayerTarget =
-    localStorage.getItem('removedPlayerSearch');
-
-var removedPlayerLevelsRaw =
-    localStorage.getItem('removedPlayerLevels');
-
-if (removedPlayerTarget && removedPlayerLevelsRaw) {
-
-    var removedPlayerLevels = [];
-
-    try {
-        removedPlayerLevels =
-            JSON.parse(removedPlayerLevelsRaw);
-    } catch (e) {
-        removedPlayerLevels = [];
+        return;
     }
 
-    var attempts = 0;
 
-    var removedLoop = setInterval(function() {
+    /*
+     * ==========================================================
+     * REMOVED PLAYER SEARCH
+     * ==========================================================
+     *
+     * R-player searches remain orange.
+     */
 
-        attempts++;
+    var removedPlayerTarget =
+        localStorage.getItem('removedPlayerSearch');
 
-        var rows = document.querySelectorAll('.list tr');
+    var removedPlayerLevelsRaw =
+        localStorage.getItem('removedPlayerLevels');
 
-        if (rows.length > 0) {
+    if (removedPlayerTarget && removedPlayerLevelsRaw) {
 
-            var matchedRows = [];
+        var removedPlayerLevels = [];
 
-            rows.forEach(function(row) {
+        try {
+            removedPlayerLevels =
+                JSON.parse(removedPlayerLevelsRaw);
+        } catch (e) {
+            removedPlayerLevels = [];
+        }
 
-                var button = row.querySelector('button');
+        var attempts = 0;
 
-                if (!button || !button.textContent) {
+        var removedLoop = setInterval(function() {
+
+            attempts++;
+
+            var rows = document.querySelectorAll('.list tr');
+
+            if (rows.length > 0) {
+
+                var matchedRows = [];
+
+                rows.forEach(function(row) {
+
+                    var button = row.querySelector('button');
+
+                    if (!button || !button.textContent) {
+                        return;
+                    }
+
+                    var nameElement =
+                        button.querySelector('.type-label-lg');
+
+                    var levelName =
+                        nameElement
+                            ? nameElement.textContent.trim().toLowerCase()
+                            : button.textContent.trim().toLowerCase();
+
+                    var matched =
+                        removedPlayerLevels.some(function(name) {
+
+                            return name &&
+                                levelName ===
+                                name.toLowerCase().trim();
+
+                        });
+
+                    if (matched) {
+
+                        button.style.setProperty(
+                            'border',
+                            '2px dashed #ff9800',
+                            'important'
+                        );
+
+                        button.style.setProperty(
+                            'background',
+                            'rgba(255, 152, 0, 0.15)',
+                            'important'
+                        );
+
+                        button.classList.add(
+                            'search-highlight-active'
+                        );
+
+                        matchedRows.push(row);
+
+                    }
+
+                });
+
+                if (matchedRows.length > 0) {
+
+                    var highestRow = matchedRows[0];
+
+                    highestRow.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'center'
+                    });
+
+                    var highestButton =
+                        highestRow.querySelector('button');
+
+                    if (
+                        highestButton &&
+                        typeof highestButton.click === 'function'
+                    ) {
+                        highestButton.click();
+                    }
+
+                    clearInterval(removedLoop);
+
+                    localStorage.removeItem(
+                        'removedPlayerSearch'
+                    );
+
+                    localStorage.removeItem(
+                        'removedPlayerLevels'
+                    );
+
                     return;
                 }
 
-                var nameElement =
-    button.querySelector('.type-label-lg');
+            }
 
-var levelName =
-    nameElement
-        ? nameElement.textContent.trim().toLowerCase()
-        : button.textContent.trim().toLowerCase();
-
-
-                var matched =
-                    removedPlayerLevels.some(function(name) {
-
-                        return name &&
-                            levelName ===
-                            name.toLowerCase().trim();
-
-                    });
-
-                if (matched) {
-
-                    button.style.setProperty(
-                        'border',
-                        '2px dashed #ff9800',
-                        'important'
-                    );
-
-                    button.style.setProperty(
-                        'background',
-                        'rgba(255, 152, 0, 0.15)',
-                        'important'
-                    );
-
-                    button.classList.add(
-                        'search-highlight-active'
-                    );
-
-                    matchedRows.push(row);
-
-                }
-
-            });
-
-
-            /*
-             * The Removed list keeps its existing order.
-             * Therefore the first matching row is the highest
-             * associated Removed level.
-             */
-            if (matchedRows.length > 0) {
-
-                var highestRow = matchedRows[0];
-
-                highestRow.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'center'
-                });
-
-                var highestButton =
-                    highestRow.querySelector('button');
-
-                if (
-                    highestButton &&
-                    typeof highestButton.click === 'function'
-                ) {
-                    highestButton.click();
-                }
+            if (attempts > 20) {
 
                 clearInterval(removedLoop);
 
@@ -1995,69 +2094,128 @@ var levelName =
                     'removedPlayerLevels'
                 );
 
-                return;
             }
+
+        }, 150);
+
+        return;
+    }
+
+
+    /*
+     * ==========================================================
+     * EXISTING PLAYER SEARCH
+     *
+     * Do not alter the existing leaderboard behaviour.
+     * ==========================================================
+     */
+
+    var playerTarget =
+        localStorage.getItem('leaderboardPlayerSearch');
+
+    if (playerTarget) {
+        return;
+    }
+
+
+    /*
+     * ==========================================================
+     * EXISTING LEVEL / CREATOR SEARCH
+     * ==========================================================
+     */
+
+    var target =
+        localStorage.getItem('listSearchTarget');
+
+    if (!target) {
+        return;
+    }
+
+    /*
+     * If a creator search supplied an associated level,
+     * use that level as the actual selection target.
+     */
+    var levelTarget =
+        localStorage.getItem('listSearchLevel');
+
+    var query = (
+        levelTarget ||
+        target
+    ).toLowerCase().trim();
+
+    localStorage.removeItem('listSearchTarget');
+    localStorage.removeItem('listSearchLevel');
+
+    var attempts = 0;
+
+    var loop = setInterval(function() {
+
+        attempts++;
+
+        var isLeaderboard =
+            window.location.hash.includes('/leaderboard');
+
+        var targetClass = isLeaderboard
+            ? '.leaderboard-row, .leaderboard-player, .player, [class*="leaderboard"] .player'
+            : '.list button, .list-container a, .list a, [class*="item"] button';
+
+        var elements =
+            document.querySelectorAll(targetClass);
+
+        if (elements.length > 0) {
+
+            clearInterval(loop);
+
+            elements.forEach(function(el) {
+
+                if (
+                    el.textContent &&
+                    el.textContent.toLowerCase().indexOf(query) !== -1
+                ) {
+
+                    el.style.setProperty(
+                        'border',
+                        '2px dashed ' + highlightBorder,
+                        'important'
+                    );
+
+                    el.style.setProperty(
+                        'background',
+                        highlightBackground,
+                        'important'
+                    );
+
+                    el.classList.add(
+                        'search-highlight-active'
+                    );
+
+                    el.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'center'
+                    });
+
+                    if (typeof el.click === 'function') {
+                        el.click();
+                    }
+
+                }
+
+            });
 
         }
 
         if (attempts > 20) {
-
-            clearInterval(removedLoop);
-
-            localStorage.removeItem(
-                'removedPlayerSearch'
-            );
-
-            localStorage.removeItem(
-                'removedPlayerLevels'
-            );
-
+            clearInterval(loop);
         }
 
     }, 150);
 
-    return;
-}
+};
 
 
 
 
-/*
- * EXISTING PLAYER SEARCH
- *
- * Do not alter the existing leaderboard behavior.
- */
-var playerTarget =
-    localStorage.getItem('leaderboardPlayerSearch');
-
-if (playerTarget) {
-    return;
-}
-
-    /*     * EXISTING LEVEL / CREATOR SEARCH     */    var target = localStorage.getItem('listSearchTarget');
-    if (!target) {        return;    }
-    /*     * If a creator search supplied an associated level,     * use that level as the actual selection target.     *     * Level searches do not need this because their own     * name is already stored as listSearchTarget.     */    var levelTarget = localStorage.getItem('listSearchLevel');
-    var query = (        levelTarget ||        target    ).toLowerCase().trim();
-    localStorage.removeItem('listSearchTarget');    localStorage.removeItem('listSearchLevel');
-    var attempts = 0;
-    var loop = setInterval(function() {        attempts++;
-        var isLeaderboard = window.location.hash.includes('/leaderboard');
-var targetClass = isLeaderboard
-    ? '.leaderboard-row, .leaderboard-player, .player, [class*="leaderboard"] .player'
-    : '.list button, .list-container a, .list a, [class*="item"] button';
-
-        var elements = document.querySelectorAll(targetClass);
-        if (elements.length > 0) {            clearInterval(loop);
-            elements.forEach(function(el) {                if (                    el.textContent &&                    el.textContent.toLowerCase().indexOf(query) !== -1                ) {                    el.style.setProperty(                        'border',                        '2px dashed #00e676',                        'important'                    );
-
-                    el.style.setProperty(                        'background',                        'rgba(0, 230, 118, 0.15)',                        'important'                    );
-el.classList.add('search-highlight-active');
-
-                    el.scrollIntoView({                        behavior: 'smooth',                        block: 'center'                    });
-                    if (typeof el.click === 'function') {                        el.click();                    }                }            });        }
-        if (attempts > 20) {            clearInterval(loop);        }    }, 150);};
-
-    /*     * ==========================================================     * SEARCH BUTTON     * ==========================================================     */
+/*     * ==========================================================     * SEARCH BUTTON     * ==========================================================     */
     document.addEventListener('click', function(e) {
         if (e.target.closest('#welcomeSearchBtn')) {
             e.preventDefault();
