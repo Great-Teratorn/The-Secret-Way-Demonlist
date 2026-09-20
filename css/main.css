@@ -283,7 +283,7 @@ aside ul li:nth-child(6) img {
     display: block !important;
     font-size: 0.95rem !important;
     text-align: left;
-    font-family: inherit;
+    font-family: "Lexend Deca", sans-serif !important;
     transition: background-color 0.15s;
 }
 
