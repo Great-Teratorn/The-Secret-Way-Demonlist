@@ -759,15 +759,9 @@ loading: true,
 
     // ADDED THIS WATCHER BLOCK: Forces Vue to reload data when switching tabs
 watch: {
-    async $route() {
-        this.list = await fetchList();
-
-        // Select the first level matching the current filters
-        // on the newly loaded list.
+    $route() {
         this.selectFirstMatchingLevel();
 
-        // Remove only the green search styling after Vue
-        // has finished rendering the new list.
         this.$nextTick(() => {
             document.querySelectorAll('.list button').forEach((button) => {
                 if (
