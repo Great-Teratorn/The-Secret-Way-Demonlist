@@ -129,3 +129,46 @@
         align-self: stretch;
     }
 }
+
+
+
+
+
+@media screen and (max-width: 700px) {
+    .page-roulette .levels-container {
+        width: 100%;
+        max-width: 100%;
+        padding-right: 0;
+        box-sizing: border-box;
+        overflow-x: hidden;
+    }
+
+    .page-roulette .levels {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .page-roulette .levels .level {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        box-sizing: border-box;
+        grid-template-columns: 8rem minmax(0, 1fr);
+    }
+
+    .page-roulette .levels .level .meta {
+        min-width: 0;
+        box-sizing: border-box;
+    }
+
+    .page-roulette .levels .level .actions {
+        min-width: 0;
+        box-sizing: border-box;
+    }
+
+    .page-roulette .levels .level .actions input[type="number"] {
+        min-width: 0;
+        width: 0;
+    }
+}
+
