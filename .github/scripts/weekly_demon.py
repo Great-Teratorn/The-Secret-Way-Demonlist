@@ -369,8 +369,7 @@ embed = {
 
     "description": (
         f"**{name}**\n"
-        f"by **{author}**\n\n"
-        f"{description}"
+        f"by **{author}**"
     ),
 
     "color": 0xE74C3C,
@@ -392,19 +391,27 @@ embed = {
             "inline": False
         },
         {
-            "name": "🎥 YOUTUBE VERIFICATION VIDEO",
-            "value": (
-                verification
-                if verification
-                else "No video provided."
-            ),
-            "inline": False
-        },
-        {
-            "name": "📅 WEEKLY DEMON",
-            "value": weekly_date,
-            "inline": False
-        }
+    "name": "🎥 YOUTUBE VERIFICATION VIDEO",
+    "value": (
+        verification
+        if verification
+        else "No video provided."
+    ),
+    "inline": False
+},
+{
+    "name": "🌐 WEEKLY DEMON PAGE",
+    "value": (
+        "https://great-teratorn.github.io/"
+        "The-Secret-Way-Demonlist/#/weekly"
+    ),
+    "inline": False
+},
+{
+    "name": "📅 WEEKLY DEMON",
+    "value": weekly_date,
+    "inline": False
+}
     ],
 
     "footer": {
