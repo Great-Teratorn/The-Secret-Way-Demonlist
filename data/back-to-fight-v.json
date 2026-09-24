@@ -6,8 +6,12 @@
         "Waltertheboss"
     ],
     "verifier": "Liverlan",
-    "verification": "https://youtu.be/gfj8KklrdIo?si=lkX-eOBtNt-Opl_i",
+    "verification": "https://youtu.be/gfj8KklrdIo?si=fUhQwrTPh0si4ZGI",
     "percentToQualify": 100,
-    "secret_way_at": 27,
+"secret_way_start": 29,
+"secret_way_end": 100,
+"description": "This is a long description. ", 
+"difficulty": "medium",
+"secret_way_at": 27,
     "records": [ ]
 }

@@ -6,9 +6,13 @@
         "Eduptal"
     ],
     "verifier": "Liverlan",
-    "verification": "https://youtu.be/BmBTLSwn8Fk?si=UIjw1aAhNIe0hUvS",
+    "verification": "https://youtu.be/BmBTLSwn8Fk",
     "percentToQualify": 100,
-    "secret_way_at": 15,
+"secret_way_start": 14,
+"secret_way_end": 49,
+"description": "This is a long description. ", 
+"difficulty": "easy",
+"secret_way_at": 15,
 "password": "Not Copyable",
     "records": [ ]
 }

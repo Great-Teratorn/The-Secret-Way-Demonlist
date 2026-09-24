@@ -9,6 +9,10 @@
     "verifier": "salvoe",
     "verification": "https://youtu.be/HutSp-aahLI?si=aOMB-KX_RqRORZjn",
     "percentToQualify": 100,
-    "secret_way_at": 21,
+"secret_way_start": 21,
+"secret_way_end": 100,
+"description": "This is a long description. ", 
+"difficulty": "extreme",
+"secret_way_at": 22,
     "records": [ ]
 }

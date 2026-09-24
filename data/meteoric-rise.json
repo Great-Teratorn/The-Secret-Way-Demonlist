@@ -6,8 +6,12 @@
         "16lord"
     ],
     "verifier": "Gold Dyno",
-    "verification": "https://youtu.be/PiyXEoWSX1I?si=TAJ6Hj6tFvFwjN3k",
+    "verification": "https://youtu.be/PiyXEoWSX1I?si=0w0_f2ydOPeXzWq5",
     "percentToQualify": 100,
-    "secret_way_at": 26,
+"secret_way_start": 26,
+"secret_way_end": 100,
+"description": "This is a long description. ", 
+"difficulty": "easy",
+"secret_way_at": 26,
     "records": [ ]
 }

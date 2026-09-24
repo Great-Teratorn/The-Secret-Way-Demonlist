@@ -6,9 +6,13 @@
         "Florent"
     ],
     "verifier": "ChiefWoof",
-    "verification": "https://youtu.be/6Rhu_SZbw8Y?si=jwsPUmoFKTCS0yFf",
+    "verification": "https://youtu.be/6Rhu_SZbw8Y?si=y84xTu2OCljG9t7Y",
     "percentToQualify": 100,
-    "secret_way_at": 26,
+"secret_way_start": 28,
+"secret_way_end": 58,
+"description": "This is a long description. ", 
+"difficulty": "medium",
+"secret_way_at": 26,
 "password": "Not Copyable",
     "records": [ ]
 }

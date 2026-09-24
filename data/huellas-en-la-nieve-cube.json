@@ -6,12 +6,12 @@
         "notlsa"
     ],
     "verifier": "Great Teratorn",
-    "verification": "https://www.youtube.com/watch?v=KrZQsmW8kMQ",
+    "verification": "https://youtu.be/KrZQsmW8kMQ?si=5_dAXgFcqR0BcyOd",
     "percentToQualify": 100,
-    "difficulty": "extreme",
-    "secret_way_start": 25,
-    "secret_way_end": 100,
-    "description": "Memory...",
-    "secret_way_at": 24,
+"secret_way_start": 24,
+"secret_way_end": 100,
+"description": "This is a long description. ", 
+"difficulty": "extreme",
+"secret_way_at": 24,
     "records": [ ]
 }

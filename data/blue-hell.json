@@ -8,7 +8,11 @@
     "verifier": "Tylz",
     "verification": "https://youtu.be/yiYvf-I9G7E?si=MpxIpPyshp3FJ45q",
     "percentToQualify": 100,
-    "secret_way_at": 20,
+"secret_way_start": 20,
+"secret_way_end": 100,
+"description": "This is a long description. ", 
+"difficulty": "easy",
+"secret_way_at": 21,
 "password": "Not Copyable",
     "records": [ ]
 }

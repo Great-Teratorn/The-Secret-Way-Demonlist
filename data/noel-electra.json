@@ -8,6 +8,10 @@
     "verifier": "Unknown",
     "verification": "https://youtu.be/HCxuy-gvStY?si=lasO-N-pDGMb_2Wl",
     "percentToQualify": 100,
+"secret_way_start": 38,
+"secret_way_end": 100,
+"description": "This is a long description. ", 
+"difficulty": "medium",
 "secret_way_at": 38,
     "records": [ ]
 }

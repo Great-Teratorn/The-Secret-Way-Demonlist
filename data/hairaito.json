@@ -6,9 +6,13 @@
         "ValkyrieMaster"
     ],
     "verifier": "Iamsheep44",
-    "verification": "https://youtu.be/G4nJHuXDZlE?si=XyMBxD-BBQIIlWzh",
+    "verification": "https://youtu.be/G4nJHuXDZlE?feature=shared",
     "percentToQualify": 100,
-    "secret_way_at": 25,
+"secret_way_start": 36,
+"secret_way_end": 100,
+"description": "This is a long description. ", 
+"difficulty": "easy",
+"secret_way_at": 25,
 "password": "Password Required",
     "records": [ ]
 }

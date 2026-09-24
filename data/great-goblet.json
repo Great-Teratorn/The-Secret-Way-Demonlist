@@ -8,6 +8,10 @@
     "verifier": "aMaxZon200",
     "verification": "https://www.youtube.com/watch?v=vIRD5fXkS0c",
     "percentToQualify": 100,
-    "secret_way_at": 57,
+"secret_way_start": 58,
+"secret_way_end": 100,
+"description": "This is a long description. ", 
+"difficulty": "insane",
+"secret_way_at": 57,
     "records": [ ]
 }

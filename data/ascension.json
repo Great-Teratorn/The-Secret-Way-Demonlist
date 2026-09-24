@@ -9,6 +9,11 @@
     "verifier": "Zorktron",
     "verification": "https://youtu.be/BsjfsN-pVKc?si=M6kVXGWwVKSRY1up",
     "percentToQualify": 100,
-"secret_way_at": 44,
+"secret_way_start": 43,
+"secret_way_end": 100,
+"description": "This is a long description. ", 
+"difficulty": "hard",
+"dateFallen": "16/09/2026",
+"secret_way_at": 44, 
     "records": [ ]
 }

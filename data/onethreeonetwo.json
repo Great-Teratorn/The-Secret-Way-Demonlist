@@ -8,6 +8,10 @@
     "verifier": "Jackypoo",
     "verification": "https://youtu.be/qZWAfN0OAiY?si=Sqj_rkMOFOBY65PS",
     "percentToQualify": 100,
-"secret_way_at": 46,
+"secret_way_start": 46,
+"secret_way_end": 100,
+"description": "This is a long description. ", 
+"difficulty": "easy",
+"secret_way_at": 46, 
     "records": [ ]
 }

@@ -1,0 +1,19 @@
+{
+    "id": 20761188,
+    "name": "Allegiance",
+    "author": "nikroplays",
+    "creators": ["nikroplays"
+        
+    ],
+    "verifier": "None",
+    "verification": "https://www.youtube.com/watch?v=i63sk-3BWJU",
+    "percentToQualify": 100,
+"secret_way_start": 27,
+"secret_way_end": 100,
+"difficulty": "extreme",
+"description": "This is a long description. ",
+    "secret_way_at": 27,
+    "records": [
+        
+    ]
+}

@@ -8,7 +8,11 @@
     "verifier": "KillerMeganet",
     "verification": "https://youtu.be/LUbdc73UUws?si=z4TVL-FmHFfYCsIs/",
     "percentToQualify": 100,
-"password": "Password Required",
+"secret_way_start": 21,
+"secret_way_end": 100,
+"description": "This is a long description. ", 
+"difficulty": "medium",
 "secret_way_at": 14,
+"password": "Password Required",
     "records": [ ]
 }

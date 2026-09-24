@@ -173,10 +173,8 @@ export default {
 
         <!-- PASTE HERE -->
         <div class="site-credits" style="margin-top: 50px; margin-bottom: 30px; padding-top: 20px; text-align: center; width: 100%;">
-            <p style="font-size: 0.85rem; color: #94a3b8; margin: 0 0 6px 0; letter-spacing: 0.5px; text-transform: uppercase; font-weight: bold;">Website Credits</p>
-            <p style="font-size: 0.95rem; color: #cbd5e1; margin: 0; line-height: 1.6;">
-                Original Idea by <span style="color: #a29bfe; font-weight: bold;">Jackypoo</span> • 
-                Entire Website Development and Roulette Gamemodes by <span style="color: #2563eb; font-weight: bold;">Great Teratorn</span> • 
+            <p style="font-size: 0.85rem; color: #94a3b8; margin: 0 0 6px 0; letter-spacing: 0.5px; text-transform: uppercase; font-weight: bold;">Website Template Credits</p>
+            <p style="font-size: 0.95rem; color: #cbd5e1; margin: 0; line-height: 1.6;"> 
                 Template by <span style="color: #94a3b8; font-style: italic;"><a href="https://tsl.pages.dev/" target="_blank" rel="noopener">TheShittyList</a></span> •
                 Classic Roulette by <span style="color: #94a3b8; font-style: italic;"><a href="https://matcool.github.io/extreme-demon-roulette/" target="_blank" rel="noopener">matcool</a></span>
             </p>

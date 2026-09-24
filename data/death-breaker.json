@@ -5,10 +5,14 @@
     "creators": [
         "lioleo"
     ],
-    "verifier": "Iamsheep44",
+    "verifier": "Iamsheep",
     "verification": "https://youtu.be/yFwzwV6v_Gs?feature=shared",
     "percentToQualify": 100,
-"password": "Password Required",
+"secret_way_start": 36,
+"secret_way_end": 100,
+"description": "This is a long description. ", 
+"difficulty": "insane",
 "secret_way_at": 28,
+"password": "Password Required",
     "records": [ ]
 }

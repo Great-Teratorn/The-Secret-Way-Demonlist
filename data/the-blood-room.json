@@ -6,10 +6,14 @@
         "xsebasfnx",
         "jimcasd"
     ],
-    "verifier": "Iamsheep44",
+    "verifier": "Iamsheep",
     "verification": "https://youtu.be/NMD2zujWTw8?feature=shared",
     "percentToQualify": 100,
-    "secret_way_at": 52,
+"secret_way_start": 52,
+"secret_way_end": 100,
+"description": "This is a long description. ", 
+"difficulty": "insane",
+"secret_way_at": 52,
 "password": "Password Required",
     "records": [ ]
 }

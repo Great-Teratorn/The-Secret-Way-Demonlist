@@ -8,6 +8,10 @@
     "verifier": "DariGamer13",
     "verification": "https://youtu.be/W8PeyBAqLVc?si=PI4WbPJtXbnRtSWI",
     "percentToQualify": 100,
-    "secret_way_at": 30,
+"secret_way_start": 40,
+"secret_way_end": 100,
+"description": "This is a long description. ", 
+"difficulty": "medium",
+"secret_way_at": 30,
     "records": [ ]
 }

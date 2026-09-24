@@ -8,10 +8,10 @@
     "verifier": "Liverlan",
     "verification": "https://youtu.be/Jn2q6c_PSNs?si=702_o1N8Mxjr_CAG",
     "percentToQualify": 100,
-    "difficulty": "insane",
-    "secret_way_start": 6,
-    "secret_way_end": 100,
-    "description": "Insane timing",
-    "secret_way_at": 6,
+"secret_way_start": 6,
+"secret_way_end": 100,
+"description": "This is a long description. ", 
+"difficulty": "insane",
+"secret_way_at": 6,
     "records": [ ]
 }

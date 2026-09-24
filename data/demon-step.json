@@ -8,7 +8,11 @@
     "verifier": "Meowington",
     "verification": "https://youtu.be/1_VjGzpgV4c?si=_WD0RcGkqPA8y62B",
     "percentToQualify": 100,
-    "secret_way_at": 50,
+"secret_way_start": 66,
+"secret_way_end": 100,
+"description": "This is a long description. ", 
+"difficulty": "easy",
+"secret_way_at": 50,
 "password": "Not Copyable",
     "records": [ ]
 }

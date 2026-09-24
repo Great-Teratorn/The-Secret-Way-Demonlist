@@ -5,10 +5,14 @@
     "creators": [
         "KeiAs"
     ],
-    "verifier": "Mineber",
-    "verification": "https://youtu.be/FoeK_7CeqJs?si=cJfyod-KNCRP8E5M",
+    "verifier": "Vicotr",
+    "verification": "https://youtu.be/aEiTpquGGxE?si=n2LVKe0QZqDNnvfo",
     "percentToQualify": 100,
-    "secret_way_at": 46,
+"secret_way_start": 61,
+"secret_way_end": 100,
+"description": "This is a long description. ", 
+"difficulty": "insane",
+"secret_way_at": 61,
 "password": "Not Copyable",
     "records": [ ]
 }

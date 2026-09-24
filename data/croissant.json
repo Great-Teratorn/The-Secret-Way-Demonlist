@@ -15,6 +15,10 @@
     "verifier": "Lizzy",
     "verification": "https://youtu.be/SJQgiUNajNo?si=L-QnY60WDNkzJuOs",
     "percentToQualify": 100,
-    "secret_way_at": 9,
+"secret_way_start": "9 to 29, 40",
+"secret_way_end": 81,
+"description": "This is a long description. ", 
+"difficulty": "easy",
+"secret_way_at": 9,
     "records": [ ]
 }

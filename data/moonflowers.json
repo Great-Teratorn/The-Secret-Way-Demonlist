@@ -9,6 +9,10 @@
     "verifier": "Liverlan",
     "verification": "https://youtu.be/1RfBOvPtnLI?si=ExBorQTDJ0QU3OAM",
     "percentToQualify": 100,
-    "secret_way_at": 27,
+"secret_way_start": 29,
+"secret_way_end": 100,
+"description": "This is a long description. ", 
+"difficulty": "easy",
+"secret_way_at": 27,
     "records": [ ]
 }

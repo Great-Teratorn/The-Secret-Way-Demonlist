@@ -1,0 +1,21 @@
+{
+    "id": 54434382,
+    "name": "Showdown",
+    "author": "SpinStudios",
+    "creators": ["SpinStudios", "Vorgogne", "TCD", "Drakeghast"
+        
+    ],
+    "verifier": "Gold Dyno",
+    "verification": "https://www.youtube.com/watch?v=AEjuv48ARi4",
+    "percentToQualify": 100,
+"secret_way_start": 18,
+"secret_way_end": 100,
+"difficulty": "easy",
+"removedReason": "Patched",
+"dateRemoved": "27/08/2026",
+"description": "This is a long description. ",
+    "secret_way_at": 18,
+    "records": [
+        
+    ]
+}

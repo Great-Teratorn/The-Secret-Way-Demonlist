@@ -8,6 +8,10 @@
     "verifier": "chiefwoof",
     "verification": "https://youtu.be/QWSE6fE8qj4?si=vPTny4eO6MPQQuTo",
     "percentToQualify": 100,
+"secret_way_start": 66,
+"secret_way_end": 100,
+"description": "This is a long description. ", 
+"difficulty": "hard",
 "secret_way_at": 66,
     "records": [ ]
 }

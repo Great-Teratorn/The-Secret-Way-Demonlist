@@ -6,8 +6,12 @@
         "4dean"
     ],
     "verifier": "Sc0r5i0N",
-    "verification": "https://youtu.be/pmYYJoNKUEQ?si=TPrLkGcjW_4tAGy0",
+    "verification": "https://youtu.be/pmYYJoNKUEQ?si=PLW8GTlLZ4WE4o25&t=27",
     "percentToQualify": 100,
-    "secret_way_at": 36,
+"secret_way_start": 57,
+"secret_way_end": 100,
+"description": "This is a long description. ", 
+"difficulty": "hard",
+"secret_way_at": 36,
     "records": [ ]
 }

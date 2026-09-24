@@ -8,7 +8,11 @@
     "verifier": "Lizzy",
     "verification": "https://youtu.be/cdlEOhTIxb0?si=mptb29-qb7FbAM0J",
     "percentToQualify": 100,
-    "secret_way_at": 33,
+"secret_way_start": 33,
+"secret_way_end": 100,
+"description": "This is a long description. ", 
+"difficulty": "medium",
+"secret_way_at": 33,
 "password": "Not Copyable",
     "records": [ ]
 }

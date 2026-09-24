@@ -19,6 +19,10 @@
     "verifier": "CoriOshawott",
     "verification": "https://www.youtube.com/watch?v=hhXXpnKX2gw",
     "percentToQualify": 100,
-    "secret_way_at": 50,
+"secret_way_start": 51,
+"secret_way_end": 100,
+"description": "This is a long description. ", 
+"difficulty": "insane",
+"secret_way_at": 50,
     "records": [ ]
 }

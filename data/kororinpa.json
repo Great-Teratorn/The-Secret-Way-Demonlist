@@ -8,7 +8,11 @@
     "verifier": "Liverlan",
     "verification": "https://youtu.be/72lfBUV7JPk?si=M7tBH694zZJBYMgV",
     "percentToQualify": 100,
-"password": "Password Required",
+"secret_way_start": "1 to 17, 39",
+"secret_way_end": 100,
+"description": "This is a long description. ", 
+"difficulty": "easy",
 "secret_way_at": 39,
+"password": "Password Required",
     "records": [ ]
 }

@@ -12,6 +12,10 @@
     "verifier": "Jackypoo",
     "verification": "https://youtu.be/yHmZYAb34fc?si=yw_DZWtMs2F-0Ixv",
     "percentToQualify": 100,
-    "secret_way_at": 30,
+"secret_way_start": 31,
+"secret_way_end": 100,
+"description": "This is a long description. ", 
+"difficulty": "insane",
+"secret_way_at": 30,
     "records": [ ]
 }

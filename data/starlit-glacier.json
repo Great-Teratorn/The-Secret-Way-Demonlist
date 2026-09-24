@@ -8,6 +8,10 @@
     "verifier": "Zorktron",
     "verification": "https://www.youtube.com/watch?v=0f_yjvEWVQc",
     "percentToQualify": 100,
-    "secret_way_at": 63,
+"secret_way_start": 64,
+"secret_way_end": 100,
+"description": "This is a long description. ", 
+"difficulty": "medium",
+"secret_way_at": 63,
     "records": [ ]
 }

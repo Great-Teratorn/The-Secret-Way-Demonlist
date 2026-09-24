@@ -6,9 +6,13 @@
         "CreatorEagle",
         "galofuf"
     ],
-    "verifier": "J Schwizzle",
+    "verifier": "Jschwizzle",
     "verification": "https://youtu.be/d-bIKXXcvp0?si=nQOUqK1-vmLuAFyp",
     "percentToQualify": 100,
-    "secret_way_at": 4,
+"secret_way_start": 0,
+"secret_way_end": 100,
+"description": "This is a long description. ", 
+"difficulty": "medium",
+"secret_way_at": 4,
     "records": [ ]
 }

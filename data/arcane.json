@@ -27,6 +27,10 @@
     "verifier": "Sonic ponegrel",
     "verification": "https://youtu.be/LALxx9OrJBM?si=gFKJ1Ia--y32v3nu&t=205",
     "percentToQualify": 100,
-    "secret_way_at": 44,
+"secret_way_start": 46,
+"secret_way_end": 100,
+"description": "This is a long description. ", 
+"difficulty": "insane",
+"secret_way_at": 44,
     "records": [ ]
 }

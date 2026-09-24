@@ -5,9 +5,13 @@
     "creators": [
         "clohy"
     ],
-    "verifier": "J Schwizzle",
+    "verifier": "Jschwizzle",
     "verification": "https://youtu.be/_EXX5JsO-YQ?si=1ZtD_MMl4nm-GOdN",
     "percentToQualify": 100,
-    "secret_way_at": 26,
+"secret_way_start": 26,
+"secret_way_end": 100,
+"description": "This is a long description. ", 
+"difficulty": "medium",
+"secret_way_at": 26,
     "records": [ ]
 }

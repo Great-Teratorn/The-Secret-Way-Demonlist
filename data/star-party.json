@@ -8,7 +8,11 @@
     "verifier": "Gold Dyno",
     "verification": "https://youtu.be/32bQzyOpNwk?si=3yKNDRGiR3SrEN_D",
     "percentToQualify": 100,
-    "secret_way_at": 47,
+"secret_way_start": 76,
+"secret_way_end": 100,
+"description": "This is a long description. ", 
+"difficulty": "easy",
+"secret_way_at": 47,
 "password": "Not Copyable",
     "records": [ ]
 }

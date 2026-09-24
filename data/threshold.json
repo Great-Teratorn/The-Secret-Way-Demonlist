@@ -8,6 +8,10 @@
     "verifier": "Liverlan",
     "verification": "https://youtu.be/ICKZfevVAZs?si=Y1dlW3hk23JyeGkH",
     "percentToQualify": 100,
+"secret_way_start": 32,
+"secret_way_end": 100,
+"description": "This is a long description. ", 
+"difficulty": "medium",
 "secret_way_at": 33,
 "password": "Password Required",
     "records": [ ]

@@ -14,7 +14,11 @@
     "verifier": "Plasma64",
     "verification": "https://youtu.be/C0fLt-V6OCQ?si=16O1MrLB990ewIz8",
     "percentToQualify": 100,
-    "secret_way_at": 39,
+"secret_way_start": 40,
+"secret_way_end": 100,
+"description": "This is a long description. ", 
+"difficulty": "medium",
+"secret_way_at": 39,
 "password": "Password Required",
     "records": [ ]
 }

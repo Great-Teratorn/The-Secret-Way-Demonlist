@@ -8,10 +8,10 @@
     "verifier": "Evandabeanz",
     "verification": "https://youtu.be/A6Yasy9WGIk?si=qnc5f4zMwavbdCSW",
     "percentToQualify": 100,
-    "difficulty": "extreme",
-    "secret_way_start": 60,
-    "secret_way_end": 100,
-    "description": "Another frame perfect :sob:",
-  "secret_way_at": 60,
+"secret_way_start": 60,
+"secret_way_end": 100,
+"description": "This is a long description. ", 
+"difficulty": "extreme",
+"secret_way_at": 60,
     "records": [ ]
 }

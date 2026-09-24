@@ -5,9 +5,13 @@
     "creators": [
         "dashiell10"
     ],
-    "verifier": "DariGamer13",
-    "verification": "https://youtu.be/HegsquFnqdk?si=yHSyOSCPlEbGftPy",
+    "verifier": "DG13",
+    "verification": "https://www.youtube.com/watch?v=HegsquFnqdk",
     "percentToQualify": 100,
-    "secret_way_at": 42,
+"secret_way_start": 42,
+"secret_way_end": 100,
+"description": "This is a long description. ", 
+"difficulty": "easy",
+"secret_way_at": 42,
     "records": [ ]
 }

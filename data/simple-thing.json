@@ -5,9 +5,13 @@
     "creators": [
         "electrodash27"
     ],
-    "verifier": "J Schwizzle",
+    "verifier": "Jschwizzle",
     "verification": "https://youtu.be/c_3v4kbUK64?si=Kep5a1HqmRQlxBVN",
     "percentToQualify": 100,
-    "secret_way_at": 56,
+"secret_way_start": 58,
+"secret_way_end": 100,
+"description": "This is a long description. ", 
+"difficulty": "medium",
+"secret_way_at": 56,
     "records": [ ]
 }

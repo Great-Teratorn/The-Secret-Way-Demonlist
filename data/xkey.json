@@ -9,6 +9,10 @@
     "verifier": "AZuLer4",
     "verification": "https://youtu.be/EEHO677T0xA?si=bAkTl3ZZO5qppft5",
     "percentToQualify": 100,
-    "secret_way_at": 47,
+"secret_way_start": 49,
+"secret_way_end": 100,
+"description": "This is a long description. ", 
+"difficulty": "easy",
+"secret_way_at": 47,
     "records": [ ]
 }

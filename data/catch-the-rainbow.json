@@ -8,6 +8,11 @@
     "verifier": "Great Teratorn",
     "verification": "https://youtu.be/PWVxJZ9DN80?si=UMlOrvDtWsmEn3Iw",
     "percentToQualify": 100,
-    "secret_way_at": 57,
+"secret_way_start": 57,
+"secret_way_end": 100,
+"description": "This is a long description. ", 
+"difficulty": "easy",
+"secret_way_at": 57,
+"password": "Free to copy",
     "records": [ ]
 }

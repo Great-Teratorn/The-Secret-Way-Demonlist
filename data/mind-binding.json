@@ -9,6 +9,11 @@
     "verifier": "Liverlan",
     "verification": "https://youtu.be/cvwFT8jD7Zc?si=Y6wfZD7KTh3kg8JV",
     "percentToQualify": 100,
-"secret_way_at": 48,
+"secret_way_start": 48,
+"secret_way_end": 100,
+"description": "This is a long description. ", 
+"difficulty": "easy",
+"dateFallen": "22/09/2026",
+"secret_way_at": 48, 
     "records": [ ]
 }

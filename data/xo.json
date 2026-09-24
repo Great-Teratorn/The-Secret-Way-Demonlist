@@ -1,14 +1,18 @@
 {
-
-    "name": "xo", 
-    "author": "KrmaL",
-    "verifier": "PureL",
-    "creators": ["KrmaL"],
     "id": 58825144,
-    "verification": "https://www.youtube.com/watch?v=VLmqKPw6seU",
+    "name": "xo",
+    "author": "KrmaL",
+    "creators": [
+        "KrmaL"
+    ],
+    "verifier": "PureL",
+    "verification": "https://youtu.be/VLmqKPw6seU?si=tilKcRL_E256A2Pt",
     "percentToQualify": 100,
-    "password": "Password Required",
-    "secret_way_at": 66, 
-    "records": []
-
-   }
+"secret_way_start": 66,
+"secret_way_end": 100,
+"description": "This is a long description. ", 
+"difficulty": "extreme",
+"secret_way_at": 66,
+"password": "Password Required",
+    "records": [ ]
+}

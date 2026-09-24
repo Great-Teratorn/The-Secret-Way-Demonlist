@@ -6,8 +6,12 @@
         "Simarlet"
     ],
     "verifier": "AZuLer4",
-    "verification": "https://youtu.be/aJJsoSs95pQ?si=EkUP5ddz0ygRaUM4",
+    "verification": "https://youtu.be/aJJsoSs95pQ",
     "percentToQualify": 100,
-    "secret_way_at": 37,
+"secret_way_start": 37,
+"secret_way_end": 100,
+"description": "This is a long description. ", 
+"difficulty": "hard",
+"secret_way_at": 37,
     "records": [ ]
 }

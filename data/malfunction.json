@@ -7,10 +7,14 @@
         "Ajedaboss",
         "SirZaiss"
     ],
-    "verifier": "Iamsheep44",
+    "verifier": "Iamsheep",
     "verification": "https://youtu.be/YsHSqhG5g5A?feature=shared",
     "percentToQualify": 100,
-    "secret_way_at": 50,
+"secret_way_start": 56,
+"secret_way_end": 100,
+"description": "This is a long description. ", 
+"difficulty": "easy",
+"secret_way_at": 51,
 "password": "Password Required",
     "records": [ ]
 }

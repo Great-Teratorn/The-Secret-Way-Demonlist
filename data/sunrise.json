@@ -5,10 +5,14 @@
     "creators": [
         "RoWey"
     ],
-    "verifier": "Zorktron",
+    "verifier": "Zork",
     "verification": "https://youtu.be/ZzO8FfCgkMI?si=-ojO6wzHUvvDBytU",
     "percentToQualify": 100,
-    "secret_way_at": 13,
+"secret_way_start": "26 to 38, 44 to 52, 80",
+"secret_way_end": 100,
+"description": "This is a long description. ", 
+"difficulty": "medium",
+"secret_way_at": 13,
 "password": "Password Required",
     "records": [ ]
 }

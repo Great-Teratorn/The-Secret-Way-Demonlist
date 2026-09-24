@@ -6,9 +6,13 @@
         "vayulena",
         "kr4t"
     ],
-    "verifier": "J Schwizzle",
-    "verification": "https://www.youtube.com/watch?v=RYA45j9uOUg",
+    "verifier": "J schwizzle",
+    "verification": "https://youtu.be/RYA45j9uOUg?si=Rm8WBUanm2z7ssdA",
     "percentToQualify": 100,
-    "secret_way_at": 31,
+"secret_way_start": 33,
+"secret_way_end": 100,
+"description": "This is a long description. ", 
+"difficulty": "hard",
+"secret_way_at": 31,
     "records": [ ]
 }

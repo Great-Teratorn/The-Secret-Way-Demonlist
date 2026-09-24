@@ -1,0 +1,20 @@
+{
+    "id": 97795164,
+    "name": "Sleighbell Summit",
+    "author": "Alex112300",
+    "creators": ["Alex112300"
+        
+    ],
+    "verifier": "Liverlan",
+    "verification": "https://www.youtube.com/watch?v=WWkiyAwD9GM",
+    "percentToQualify": 100,
+"secret_way_start": 5,
+"secret_way_end": 100,
+"difficulty": "medium",
+"description": "This is a long description. ",
+    "secret_way_at": 5,
+    "password": "Not Copyable",
+    "records": [
+        
+    ]
+}

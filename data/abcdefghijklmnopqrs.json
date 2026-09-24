@@ -29,6 +29,10 @@
     "verifier": "DariGamer13",
     "verification": "https://youtu.be/QRL-21eHLho?si=OJnx9Hz4YatkbY7O",
     "percentToQualify": 100,
+"secret_way_start": 20,
+"secret_way_end": 100,
+"description": "This is a long description. ", 
+"difficulty": "easy",
 "secret_way_at": 20,
 "password": "Password Required",
     "records": [ ]

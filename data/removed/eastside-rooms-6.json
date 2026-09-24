@@ -1,0 +1,21 @@
+{
+    "id": 137140169,
+    "name": "eastside rooms 6",
+    "author": "spycold",
+    "creators": ["spycold"
+        
+    ],
+    "verifier": "Liverlan",
+    "verification": "https://www.youtube.com/watch?v=GwgD4hiLsaw",
+    "percentToQualify": 100,
+"secret_way_start": 14,
+"secret_way_end": 100,
+"difficulty": "easy",
+"removedReason": "Patched",
+"dateRemoved": "09/07/2026",
+"description": "This is a long description. ",
+    "secret_way_at": 13,
+    "records": [
+        
+    ]
+}

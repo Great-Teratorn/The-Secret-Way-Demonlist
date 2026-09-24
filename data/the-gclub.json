@@ -8,6 +8,10 @@
     "verifier": "Chiefwoof",
     "verification": "https://youtu.be/45Mw0Iz_ZXs?si=FIU_GZzuVKTg6Wz-",
     "percentToQualify": 100,
+"secret_way_start": 64,
+"secret_way_end": 100,
+"description": "This is a long description. ", 
+"difficulty": "hard",
 "secret_way_at": 64,
 "password": "Password Required",
     "records": [ ]
