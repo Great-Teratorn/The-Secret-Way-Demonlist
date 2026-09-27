@@ -12,7 +12,7 @@
 "secret_way_start": 57,
 "secret_way_end": 100,
 "description": "This is a long description. ", 
-"difficulty": "insane",
+"difficulty": "hard",
 "secret_way_at": 49,
     "records": [ ]
 }

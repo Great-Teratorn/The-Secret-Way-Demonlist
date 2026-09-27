@@ -1,0 +1,19 @@
+{
+    "id": 897987,
+    "name": "Flappy Weird",
+    "author": "TheSuperbot",
+    "creators": [
+        "TheSuperbot"
+    ],
+    "verifier": "Unknown",
+    "verification": "https://www.youtube.com/watch?v=uRtN3_xlRwQ",
+    "percentToQualify": 100, 
+"secret_way_start": 30,
+"secret_way_end": 100,
+"description": "This is a long description. ", 
+"difficulty": "easy",
+"dateFallen": "10/07/2026",
+"secret_way_at": 31,
+"password": "Not Copyable",
+    "records": [ ]
+}

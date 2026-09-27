@@ -1,0 +1,19 @@
+{
+    "id": 28125368,
+    "name": "Wub A Dub Dub",
+    "author": "Danzmen",
+    "creators": [
+        "Danzmen"
+    ],
+    "verifier": "Zorktron",
+    "verification": "https://youtu.be/FStkMesTR6E?si=O4C9LmSMUR7YXWH_",
+    "percentToQualify": 100,
+"secret_way_start": 65,
+"secret_way_end": 100,
+"description": "This is a long description. ", 
+"difficulty": "medium",
+"dateFallen": "08/08/2026",
+"secret_way_at": 63,
+"password": "Password Required",
+    "records": [ ]
+}

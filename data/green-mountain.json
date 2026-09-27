@@ -1,0 +1,19 @@
+{
+    "id": 112544644,
+    "name": "Green Mountain",
+    "author": "FloxMi",
+    "creators": [
+        "FloxMi",
+        "Dom89"
+    ],
+    "verifier": "Liverlan",
+    "verification": "https://youtu.be/ttOfDBTCgK4?si=3NqKK9f1c5Rg_4nN",
+    "percentToQualify": 100,
+"secret_way_start": 27,
+"secret_way_end": 100,
+"description": "This is a long description. ", 
+"difficulty": "easy",
+"dateFallen": "21/08/2026",
+"secret_way_at": 27,
+    "records": [ ]
+}

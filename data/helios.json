@@ -1,0 +1,17 @@
+{
+    "id": 104303131,
+    "name": "HELIOS",
+    "author": "NotCyanide",
+    "creators:": [
+        "NotCyanide"
+    ],
+    "verifier": "Gold Dyno",
+    "verification": "https://youtu.be/0mm67thQPqs?si=aQKe9yDGsHSMoPHp",
+    "percentToQualify": 100,
+"secret_way_start": 69,
+"secret_way_end": 100,
+"description": "This is a long description. ", 
+"difficulty": "easy",
+"secret_way_at": 69,
+    "records": [ ]
+}

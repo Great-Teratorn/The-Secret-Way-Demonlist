@@ -1,0 +1,17 @@
+{
+    "id": 116770231,
+    "name": "uve been funked",
+    "author": "PixelLolka",
+    "creators": [
+        "PixelLolka"
+    ],
+    "verifier": "Liverlan",
+    "verification": "https://youtu.be/NK-QzjKLP5w?si=K-NV2GgmDvLF9L89",
+    "percentToQualify": 100,
+"secret_way_start": [51, 87],
+"secret_way_end": [80, 100],
+"description": "This is a long description. ", 
+"difficulty": "easy",
+"secret_way_at": 51,
+    "records": [ ]
+}

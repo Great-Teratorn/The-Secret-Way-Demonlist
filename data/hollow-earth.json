@@ -1,0 +1,18 @@
+{
+    "id": 110754744,
+    "name": "Hollow Earth",
+    "author": "FileExplorerExe",
+    "creators": [
+        "FileExplorerExe"
+    ],
+    "verifier": "Liverlan",
+    "verification": "https://youtu.be/TQBgoNMRfYw?si=hFZASaeYC-358YXI",
+    "percentToQualify": 100,
+"secret_way_start": 34,
+"secret_way_end": 100,
+"description": "This is a long description. ", 
+"difficulty": "medium",
+"dateFallen": "20/08/2026",
+"secret_way_at": 35, 
+    "records": [ ]
+}

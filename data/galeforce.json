@@ -1,0 +1,17 @@
+{
+    "id": 115313314,
+    "name": "Galeforce",
+    "author": "OniLinkGD",
+    "creators": [
+        "OniLinkGD"
+    ],
+    "verifier": "Clublight",
+    "verification": "https://www.youtube.com/live/aoL-1wkcUP4?t=2588&is=s1cMBifY6vdxKojP",
+    "percentToQualify": 100,
+"secret_way_start": 35,
+"secret_way_end": 100,
+"description": "This is a long description. ", 
+"difficulty": "extreme",
+"secret_way_at": 34, 
+    "records": [ ]
+}

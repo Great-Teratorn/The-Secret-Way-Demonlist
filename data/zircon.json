@@ -1,0 +1,18 @@
+{
+    "id": 76821414,
+    "name": "Zircon",
+    "author": "DHaner",
+    "creators": [
+        "DHaner"
+    ],
+    "verifier": "zylaku",
+    "verification": "https://youtu.be/J9YLW7bIPYg?si=FNHfPbAS1OHPx-Wl",
+    "percentToQualify": 100,
+"secret_way_start": 70,
+"secret_way_end": 100,
+"description": "This is a long description. ", 
+"difficulty": "easy",
+"dateFallen": "31/08/2026",
+"secret_way_at": 67, 
+    "records": [ ]
+}

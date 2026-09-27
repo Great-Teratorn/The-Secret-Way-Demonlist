@@ -1,0 +1,17 @@
+{
+    "id": 128272104,
+    "name": "FROST VISIONS",
+    "author": "hauxz",
+    "creators": [
+        "hauxz"
+    ],
+    "verifier": "Liverlan",
+    "verification": "https://www.youtube.com/watch?v=6uHKu8uqVhM&feature=youtu.be",
+    "percentToQualify": 100, 
+"secret_way_start": 57,
+"secret_way_end": 100,
+"description": "This is a long description. ", 
+"difficulty": "easy",
+"secret_way_at": 58,
+    "records": [ ]
+}

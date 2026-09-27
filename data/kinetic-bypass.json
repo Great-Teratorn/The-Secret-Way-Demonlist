@@ -1,0 +1,18 @@
+{
+    "id": 41293157,
+    "name": "Kinetic Bypass",
+    "author": "Sminx",
+    "creators": [
+        "Sminx"
+    ],
+    "verifier": "awesomemetv",
+    "verification": "https://youtu.be/qLTobXBOziM?t=985&si=aAoGs1EJ0SqSfwki",
+    "percentToQualify": 100,
+"secret_way_start": 43,
+"secret_way_end": 72,
+"description": "This is a long description. ", 
+"difficulty": "extreme",  
+"secret_way_at": 43,
+"password": "Password Required",
+    "records": [ ]
+}

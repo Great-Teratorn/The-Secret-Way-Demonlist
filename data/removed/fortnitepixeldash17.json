@@ -1,0 +1,30 @@
+{
+    "id": 120334898,
+    "name": "FortnitePixelDash17",
+    "author": "FDAteam",
+    "creators": [
+        "rampogd",
+        "Zerokokos",
+        "TheDolb1nator",
+        "Anhhella",
+        "Desderok",
+        "renverw",
+        "Quint",
+        "DeniPol",
+        "Ferbat",
+        "fooxx",
+        "FarFo4r",
+        "Odelq"
+    ],
+    "verifier": "J Schwizzle",
+    "verification": "https://www.youtube.com/watch?v=cBPEY9y0tSA",
+    "percentToQualify": 100,
+    "secret_way_at": 7,
+    "secret_way_start": 7,
+    "dateRemoved": "25/07/2026",
+    "secret_way_end": 100,
+    "description": "This is a long description. ", 
+    "removedReason": "Replaced",
+    "difficulty": "medium",
+    "records": [ ]
+}

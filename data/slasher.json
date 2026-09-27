@@ -1,0 +1,17 @@
+{
+    "id": 110681124,
+    "name": "Slasher",
+    "author": "Whirl",
+    "creators": [
+        "Whirl"
+    ],
+    "verifier": "DariGamer13",
+    "verification": "https://youtu.be/F-sCn_-VFmw?si=HkNv1r5WS8kpR0Aj",
+    "percentToQualify": 100,
+"secret_way_start": 16,
+"secret_way_end": 42,
+"description": "This is a long description. ", 
+"difficulty": "easy",
+"secret_way_at": 16,
+    "records": [ ]
+}

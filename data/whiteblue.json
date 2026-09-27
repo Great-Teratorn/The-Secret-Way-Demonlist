@@ -1,0 +1,18 @@
+{
+    "id": 115038671,
+    "name": "WhiteBlue",
+    "author": "Olegolog",
+    "creators": [
+        "Olegolog"
+    ],
+    "verifier": "Liverlan",
+    "verification": "https://youtu.be/AggWQWMgiiY",
+    "percentToQualify": 100,
+"secret_way_start": 24,
+"secret_way_end": 100,
+"description": "This is a long description. ", 
+"difficulty": "easy",
+"dateFallen": "20/08/2026",
+"secret_way_at": 24,
+    "records": [ ]
+}

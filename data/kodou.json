@@ -1,0 +1,26 @@
+{
+    "id": 56920080,
+    "name": "Kodou",
+    "author": "koolboom",
+    "creators": [
+        "koolboom",
+        "genericqueso",
+        "Chase",
+        "eggnog",
+        "bionicpenguin",
+        "yoshikawa",
+        "kllnex",
+        "Zhander"
+    ],
+    "verifier": "Zorktron",
+    "verification": "https://youtu.be/Vq6GMDssybo?si=f7-C0zIw-yvMAaC9",
+    "percentToQualify": 100, 
+"secret_way_start": 48,
+"secret_way_end": 74,
+"description": "This is a long description. ", 
+"difficulty": "hard",
+"dateFallen": "26/07/2026",
+"secret_way_at": 48,
+"password": "Password Required",
+    "records": [ ]
+}

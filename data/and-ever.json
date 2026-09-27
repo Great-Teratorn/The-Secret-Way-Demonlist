@@ -1,0 +1,18 @@
+{
+    "id": 97493518,
+    "name": "And Ever",
+    "author": "galofuf",
+    "creators": [
+        "galofuf"
+    ],
+    "verifier": "Liverlan",
+    "verification": "https://youtu.be/TNRmWfkmPWQ",
+    "percentToQualify": 100,
+"secret_way_start": 72,
+"secret_way_end": 100,
+"description": "This is a long description. ", 
+"difficulty": "easy",
+"dateFallen": "20/08/2026",
+"secret_way_at": 73,
+    "records": [ ]
+}

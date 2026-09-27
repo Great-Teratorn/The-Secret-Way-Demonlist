@@ -1,0 +1,17 @@
+{
+    "id": 138810051,
+    "name": "Foggy Meadows",
+    "author": "rileynya",
+    "creators": [
+        "rileynya"
+    ],
+    "verifier": "Liverlan",
+    "verification": "https://www.youtube.com/watch?v=6KE0jpGEVuA",
+    "percentToQualify": 100, 
+"secret_way_start": 53,
+"secret_way_end": 100,
+"description": "This is a long description. ", 
+"difficulty": "easy",
+"secret_way_at": 54,
+    "records": [ ]
+}

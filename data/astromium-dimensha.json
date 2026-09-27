@@ -1,0 +1,19 @@
+{
+    "id": 55736079,
+    "name": "Astromium Dimensha",
+    "author": "Maelstrom",
+    "creators": [
+        "Maelstrom",
+        "Reunomi"
+    ],
+    "verifier": "Liverlan",
+    "verification": "https://youtu.be/upgCtOcs-qI?si=ePAuIjWho_cx3bPy",
+    "percentToQualify": 100,
+"secret_way_start": 70,
+"secret_way_end": 100,
+"description": "This is a long description. ", 
+"difficulty": "easy",
+"dateFallen": "06/07/2026",
+"secret_way_at": 70,
+    "records": [ ]
+}

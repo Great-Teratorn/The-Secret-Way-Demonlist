@@ -1,0 +1,19 @@
+{
+    "id": 14810251,
+    "name": "The New Phonics",
+    "author": "Tronzeki",
+    "creators": [
+        "Tronzeki"
+    ],
+    "verifier": "Zorktron",
+    "verification": "https://youtu.be/Rat_VEv5keY?si=9LQtUxo3gsmBTxUx",
+    "percentToQualify": 100,
+"secret_way_start": 70,
+"secret_way_end": 100,
+"description": "This is a long description. ", 
+"difficulty": "hard",
+"dateFallen": "20/08/2026",
+"secret_way_at": 70,
+"password": "Password Required",
+    "records": [ ]
+}

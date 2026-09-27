@@ -1,0 +1,19 @@
+{
+    "id": 74992123,
+    "name": "New dawn",
+    "author": "Waltertheboss",
+    "creators": [
+        "Waltertheboss"
+    ],
+    "verifier": "Liverlan",
+    "verification": "https://www.youtube.com/watch?v=U_QTE88X_GM",
+    "percentToQualify": 100,
+"secret_way_start": [42, 71],
+"secret_way_end": [59, 100],
+"description": "This is a long description. ", 
+"difficulty": "easy",
+"dateFallen": "12/07/2026",
+"secret_way_at": 44,
+"password": "Password Required",
+    "records": [ ]
+}

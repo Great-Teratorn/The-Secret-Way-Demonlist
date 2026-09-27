@@ -1,0 +1,18 @@
+{
+    "id": 82026581,
+    "name": "Dip",
+    "author": "ToastLord",
+    "creators": [
+        "ToastLord"
+    ],
+    "verifier": "Liverlan",
+    "verification": "https://youtu.be/ilyShjK6XUs",
+    "percentToQualify": 100, 
+"secret_way_start": 44,
+"secret_way_end": 100,
+"description": "This is a long description. ", 
+"difficulty": "medium",
+"dateFallen": "06/07/2026",
+"secret_way_at": 42,
+    "records": [ ]
+}

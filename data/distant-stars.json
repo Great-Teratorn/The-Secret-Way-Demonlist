@@ -1,0 +1,18 @@
+{
+    "id": 173009,
+    "name": "Distant Stars",
+    "author": "PIS",
+    "creators": [
+        "PIS"
+    ],
+    "verifier": "Unknown",
+    "verification": "https://www.youtube.com/watch?v=PCMkpJhuDFA",
+    "percentToQualify": 100,
+"secret_way_start": 79,
+"secret_way_end": 100,
+"description": "This is a long description. ", 
+"difficulty": "easy",
+"secret_way_at": 79,
+"password": "Password Required",
+    "records": [ ]
+}

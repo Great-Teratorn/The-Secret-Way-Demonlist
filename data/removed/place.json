@@ -1,0 +1,19 @@
+{
+
+    "name": "Place", 
+    "author": "Spu7Nix",
+    "creators": ["Spu7Nix and 14,010 participants"],
+    "id": 86917672,
+    "verifier": "Zorktron",
+    "verification": "https://www.youtube.com/watch?v=mR1Yiu-KDjY",
+    "percentToQualify": 100,
+    "secret_way_at": 30,
+    "secret_way_start": [30, 89],
+    "secret_way_end": [73, 100],
+    "dateRemoved": "04/07/2026",
+    "description": "This is a long description. ", 
+    "removedReason": "Replaced",
+    "difficulty": "extreme",
+    "records": []
+
+   }

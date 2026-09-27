@@ -1,0 +1,19 @@
+{
+    "id": 55170588,
+    "name": "Calling Megaman II",
+    "author": "Bluskys",
+    "creators": [
+        "Bluskys"
+    ],
+    "verifier": "Sharko",
+    "verification": "https://youtu.be/jTE7qVWbhHg?si=CB6AhG5l8M55U-jD",
+    "percentToQualify": 100,
+"secret_way_start": 15,
+"secret_way_end": 100,
+"description": "This is a long description. ", 
+"difficulty": "easy",
+"dateFallen": "16/07/2026",
+"secret_way_at": 15,
+"password": "Password Required",
+    "records": [ ]
+}
