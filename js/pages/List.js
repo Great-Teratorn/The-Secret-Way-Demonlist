@@ -433,8 +433,10 @@ export default {
     class="type-label-lg"
     style="margin: 10px 0 15px;"
 >
-    <strong>SECRET WAY:</strong>
-    {{ level.secret_way_start }}% to {{ level.secret_way_end }}%
+    <strong>SECRET WAY: </strong>
+    <template v-for="(range, i) in secretWayRanges(level)" :key="i">
+    <span v-if="i > 0">, </span><span>{{ range.start }}% to {{ range.end }}%</span>
+</template>
 </p>
 
 
@@ -683,13 +685,15 @@ if (
                         return false;
                     }
 
-                    const start = Number(level.secret_way_start);
-                    const end = Number(level.secret_way_end);
-                    const length = end - start;
+                    const ranges = this.secretWayRanges(level);
 
-                    if (!Number.isFinite(start) || !Number.isFinite(end)) {
-                        return false;
-                    }
+if (ranges.length === 0) {
+    return false;
+}
+
+const start = ranges[0].start;
+const end = ranges[ranges.length - 1].end;
+const totalLength = this.secretWayTotalLength(level);
 
                     if (
                         this.appliedSecretWayStartMin !== null &&
@@ -721,14 +725,14 @@ if (
 
                     if (
                         this.appliedSecretWayLengthMin !== null &&
-                        length < this.appliedSecretWayLengthMin
+                        totalLength < this.appliedSecretWayLengthMin
                     ) {
                         return false;
                     }
 
                     if (
                         this.appliedSecretWayLengthMax !== null &&
-                        length > this.appliedSecretWayLengthMax
+                        totalLength > this.appliedSecretWayLengthMax
                     ) {
                         return false;
                     }
@@ -771,7 +775,18 @@ watch: {
 
         this.selectFirstMatchingLevel();
 
-        this.loading = false;
+this.loading = false;
+
+this.$nextTick(() => {
+    const listContainer = document.querySelector(".list-container");
+
+    if (listContainer) {
+        listContainer.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+    }
+});
 
         this.$nextTick(() => {
             document.querySelectorAll('.list button').forEach((button) => {
@@ -932,13 +947,15 @@ if (
                 return false;
             }
 
-            const start = Number(level.secret_way_start);
-            const end = Number(level.secret_way_end);
-            const length = end - start;
+            const ranges = this.secretWayRanges(level);
 
-            if (!Number.isFinite(start) || !Number.isFinite(end)) {
-                return false;
-            }
+if (ranges.length === 0) {
+    return false;
+}
+
+const start = ranges[0].start;
+const end = ranges[ranges.length - 1].end;
+const totalLength = this.secretWayTotalLength(level);
 
             if (
                 this.appliedSecretWayStartMin !== null &&
@@ -970,14 +987,14 @@ if (
 
             if (
                 this.appliedSecretWayLengthMin !== null &&
-                length < this.appliedSecretWayLengthMin
+                totalLength < this.appliedSecretWayLengthMin
             ) {
                 return false;
             }
 
             if (
                 this.appliedSecretWayLengthMax !== null &&
-                length > this.appliedSecretWayLengthMax
+                totalLength > this.appliedSecretWayLengthMax
             ) {
                 return false;
             }
@@ -993,6 +1010,36 @@ if (
 }
 },
 
+
+
+secretWayRanges(level) {
+    const starts = Array.isArray(level.secret_way_start)
+        ? level.secret_way_start
+        : [level.secret_way_start];
+
+    const ends = Array.isArray(level.secret_way_end)
+        ? level.secret_way_end
+        : [level.secret_way_end];
+
+    return starts
+        .map((start, i) => ({
+            start: Number(start),
+            end: Number(ends[i])
+        }))
+        .filter(
+            range =>
+                Number.isFinite(range.start) &&
+                Number.isFinite(range.end)
+        );
+},
+
+secretWayTotalLength(level) {
+    return this.secretWayRanges(level)
+        .reduce(
+            (total, range) => total + (range.end - range.start),
+            0
+        );
+},
 
 
     
