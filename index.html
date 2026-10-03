@@ -219,13 +219,7 @@ weeklyPaths.forEach(function(path, index) {
         pathInfo[normalPath].isWeekly = true;
         pathInfo[normalPath].weeklyEntries.push(index + 1);
 
-        console.log(
-            'WEEKLY MATCH:',
-            path,
-            '->',
-            normalPath,
-            pathInfo[normalPath]
-        );
+        
 
     }
 
@@ -300,30 +294,64 @@ anomalyPaths.forEach(function(path) {
     });
 
 
+    
+    
+    var levelFetchQueue = [];
+var activeLevelFetches = 0;
+var maxLevelFetches = 6;
+
+function processLevelFetchQueue() {
+    while (
+        activeLevelFetches < maxLevelFetches &&
+        levelFetchQueue.length > 0
+    ) {
+        var job = levelFetchQueue.shift();
+
+        activeLevelFetches++;
+
+        fetch(job.url)
+            .then(function(r) {
+                if (!r.ok) {
+                    return null;
+                }
+
+                return r.json();
+            })
+            .then(function(level) {
+                job.resolve(level);
+            })
+            .catch(function() {
+                job.resolve(null);
+            })
+            .then(function() {
+                activeLevelFetches--;
+                processLevelFetchQueue();
+            });
+    }
+}
+
+function fetchLevelJson(url) {
+    return new Promise(function(resolve) {
+        levelFetchQueue.push({
+            url: url,
+            resolve: resolve
+        });
+
+        processLevelFetchQueue();
+    });
+}
+    
+    
+    
     return Promise.all(
         entries.map(function(info) {
 
-            return fetch(
+            return fetchLevelJson(
     base + 'data/' +
     (info.isWeekly ? 'weekly/' + info.path : info.path) +
     '.json'
 )
-
-                .then(function(r) {
-
-                    if (!r.ok) {
-                        throw new Error(
-                            'Failed to load ' +
-                            info.path +
-                            '.json: ' +
-                            r.status
-                        );
-                    }
-
-                    return r.json();
-
-                })
-                .then(function(level) {
+    .then(function(level) {
 
     if (!level || !level.name) {
         return;
@@ -880,11 +908,7 @@ if (
 
     applyWeeklyLeaderboardPlayers();
 
-    console.log(
-        'Search registry loaded:',
-        masterSearchRegistry.length,
-        'entries'
-    );
+    
 
 })
 
@@ -1598,7 +1622,7 @@ window.selectSearchResult = function(element) {
         return;
     }
 
-    console.log('Search result clicked:', name, type);
+    
 
     /* Find the exact registry entry that was clicked */
     var matchedItem = masterSearchRegistry.find(function(item) {
@@ -1607,7 +1631,7 @@ window.selectSearchResult = function(element) {
     });
 
     if (!matchedItem) {
-        console.log('No matching registry item found:', name, type);
+        
         return;
     }
 
@@ -1716,10 +1740,7 @@ window.selectSearchResult = function(element) {
 
 window.processSearchHighlight = function() {
 
-    console.log(
-        'SEARCH CLEANUP:',
-        document.querySelectorAll('.search-highlight-active').length
-    );
+    
 
     /*
      * ==========================================================

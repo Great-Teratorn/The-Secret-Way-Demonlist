@@ -424,7 +424,7 @@ export default {
 <LevelAuthors
     :author="level.author"
     :creators="level.creators"
-    :verifier="level.verifier"
+    :verifier="level.verifier || ''"
 ></LevelAuthors>
 
 

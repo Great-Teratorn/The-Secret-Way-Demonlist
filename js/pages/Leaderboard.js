@@ -138,11 +138,20 @@ export default {
             </div>
         </main>
     `,
-    computed: {
-        entry() {
-            return this.leaderboard[this.selected];
-        },
+
+computed: {
+    entry() {
+        return this.leaderboard[this.selected] || {
+            user: '',
+            total: 0,
+            verified: [],
+            completed: [],
+            progressed: [],
+        };
     },
+},
+
+
     
     
     watch: {
