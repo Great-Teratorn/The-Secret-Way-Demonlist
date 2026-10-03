@@ -2599,14 +2599,47 @@ body#app.tswd-chaos::before {
 
 
 
-/* =======================================================
-   MOBILE REMOVED ROWS — PREVENT DATE CLIPPING
-   ======================================================= */
-
 @media screen and (max-width: 768px) {
 
-    /* Removed rows may use two lines */
-    .page-list .list .level button:has(> .type-label-sm) {
+    /* ===================================================
+       MOBILE REMOVED ROW CLIPPING FIX
+       =================================================== */
+
+    /* Only the container should scroll */
+    .page-list .list-container {
+        max-height: 35vh !important;
+        overflow-y: auto !important;
+        overflow-x: hidden !important;
+        box-sizing: border-box !important;
+    }
+
+    /* The table itself must NOT be a scrolling/clipping box */
+    .page-list .list {
+        max-height: none !important;
+        height: auto !important;
+        overflow: visible !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    /* Give every row enough vertical room */
+    .page-list .list tr {
+        min-height: 3.5rem !important;
+        height: auto !important;
+        overflow: visible !important;
+        box-sizing: border-box !important;
+        align-items: stretch !important;
+    }
+
+    /* Removed row */
+    .page-list .list tr:has(.type-label-sm) .level {
+        min-width: 0 !important;
+        width: 100% !important;
+        flex: 1 1 auto !important;
+        overflow: visible !important;
+    }
+
+    .page-list .list tr:has(.type-label-sm) .level button {
         display: flex !important;
         flex-direction: column !important;
         align-items: flex-start !important;
@@ -2619,18 +2652,18 @@ body#app.tswd-chaos::before {
 
         box-sizing: border-box !important;
 
-        padding: 0.65rem 0.75rem !important;
+        padding: 0.6rem 0.75rem !important;
 
         overflow: visible !important;
     }
 
     /* Level name */
-    .page-list .list .level button:has(> .type-label-sm) > .type-label-lg {
+    .page-list .list tr:has(.type-label-sm) .level button > .type-label-lg {
         display: block !important;
 
         width: 100% !important;
-        max-width: 100% !important;
         min-width: 0 !important;
+        max-width: 100% !important;
 
         white-space: normal !important;
         overflow: visible !important;
@@ -2638,21 +2671,19 @@ body#app.tswd-chaos::before {
 
         overflow-wrap: normal !important;
         word-break: normal !important;
-        hyphens: none !important;
 
         line-height: 1.35 !important;
     }
 
     /* Removed date */
-    .page-list .list .level button:has(> .type-label-sm) > .type-label-sm {
+    .page-list .list tr:has(.type-label-sm) .level button > .type-label-sm {
         display: block !important;
 
         width: 100% !important;
-        max-width: 100% !important;
         min-width: 0 !important;
+        max-width: 100% !important;
 
-        margin-left: 0 !important;
-        margin-top: 3px !important;
+        margin: 3px 0 0 0 !important;
 
         white-space: nowrap !important;
         overflow: visible !important;
