@@ -2306,15 +2306,20 @@ if (elementName === query) {
                     <span class="type-label-lg">Roulette</span>
                 </router-link>
                 <div class="nav__actions">
-                    <button
-                        class="nav__icon"
-                        @click.prevent="store.toggleDark()"
-                    >
-                        <img
-                            :src="store.dark ? '/assets/light.svg' : '/assets/dark.svg'"
-                            alt=""
-                        />
-                    </button>
+
+<button
+    class="nav__icon tswd-dark-button"
+    @click.prevent="store.toggleDark()"
+    aria-label="Dark mode"
+    type="button"
+>
+    <img
+        src="/assets/dark.svg"
+        alt=""
+    />
+</button>
+
+
                     
     
                     <!-- Replace the '#' with your discord server's invite-->
@@ -2346,6 +2351,42 @@ if (elementName === query) {
             </nav>
         </header>
         <router-view :class="{ dark: store.dark }"></router-view>
+
+
+<!-- =====================================================
+     SECRET DARK MODE EASTER EGG
+     ===================================================== -->
+
+<div id="tswd-dark-overlay" aria-hidden="true">
+    <div id="tswd-glitch-layer"></div>
+
+<div id="tswd-tease-message"></div>
+
+<div id="tswd-achievement">
+        <div class="tswd-achievement-icon">🏆</div>
+
+        <div class="tswd-achievement-title">
+            ACHIEVEMENT UNLOCKED
+        </div>
+
+        <div class="tswd-achievement-name">
+            PROFESSIONAL IDIOT
+        </div>
+
+        <div class="tswd-achievement-description">
+            You clicked the dark mode button <strong>10 times.</strong>
+        </div>
+
+        <div class="tswd-achievement-insult">
+            <em>The website was already dark.</em><br>
+            <strong>What is wrong with you?</strong>
+        </div>
+    </div>
+
+    <div id="tswd-confetti"></div>
+</div>
+
+
     
     
 </body>
