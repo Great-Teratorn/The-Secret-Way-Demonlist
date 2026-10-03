@@ -22,5 +22,11 @@
     "verification": "https://youtu.be/xtmxcAbMfuQ?si=AQ_6FVfx8f-Fm6rl",
     "percentToQualify": 100, 
 "secret_way_at": 7,
-    "records": [ ]
+    "records": [{
+    "user": "Liverlan",
+    "percent": 100,
+    "hz": 60,
+    "link": "https://www.youtube.com/watch?v=JoGv0_l6nRA"
+}
+ ]
 }

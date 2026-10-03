@@ -2619,3 +2619,41 @@ body#app.tswd-chaos::before {
     }
 
 }
+
+
+
+
+
+@media screen and (max-width: 768px) {
+
+    /* ===================================================
+       MOBILE LEVEL RECORDS — SAME SCROLL BEHAVIOUR AS LEVELS
+       =================================================== */
+
+    .page-list .level-container .level .records {
+        display: block !important;
+
+        width: 100% !important;
+        max-width: 100% !important;
+
+        max-height: 35vh !important;
+
+        overflow-y: auto !important;
+        overflow-x: hidden !important;
+
+        box-sizing: border-box !important;
+    }
+
+    .page-list .level-container .level .records::-webkit-scrollbar {
+        width: 6px;
+    }
+
+    .page-list .level-container .level .records::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 4px;
+    }
+
+    .page-list .level-container .level .records::-webkit-scrollbar-track {
+        background: transparent;
+    }
+}
