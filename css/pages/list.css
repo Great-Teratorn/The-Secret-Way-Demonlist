@@ -1049,3 +1049,53 @@ opacity: 0.85;
         min-height: 44px;
     }
 }
+
+
+
+
+/* ========================================================= */
+/* REMOVED LEVELS — KEEP REMOVAL DATE FULLY VISIBLE          */
+/* ========================================================= */
+
+.page-list .list .level button:has(> .type-label-sm) {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    align-items: center !important;
+
+    width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+
+    overflow: visible !important;
+}
+
+/* Level name takes its own line */
+.page-list .list .level button:has(> .type-label-sm) > .type-label-lg {
+    flex: 1 1 100% !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+
+    white-space: normal !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
+    overflow-wrap: normal !important;
+    word-break: normal !important;
+}
+
+/* Removal date gets its own line */
+.page-list .list .level button:has(> .type-label-sm) > .type-label-sm {
+    flex: 0 0 100% !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+
+    margin-left: 0 !important;
+    margin-top: 2px !important;
+
+    white-space: nowrap !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
+
+    text-align: left !important;
+}

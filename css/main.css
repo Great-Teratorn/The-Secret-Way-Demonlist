@@ -2567,3 +2567,30 @@ body#app.tswd-chaos::before {
     }
 }
 
+
+
+
+
+
+
+
+
+/* TEST — REMOVED ROW CLIPPING */
+.page-list .list .level:has(.type-label-sm) {
+    overflow: visible !important;
+    min-width: 0 !important;
+}
+
+.page-list .list .level:has(.type-label-sm) button {
+    overflow: visible !important;
+    min-width: 0 !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+}
+
+.page-list .list .level:has(.type-label-sm) button > .type-label-sm {
+    overflow: visible !important;
+    clip: auto !important;
+    clip-path: none !important;
+    text-overflow: clip !important;
+}
