@@ -2594,3 +2594,71 @@ body#app.tswd-chaos::before {
     clip-path: none !important;
     text-overflow: clip !important;
 }
+
+
+
+
+
+/* =======================================================
+   MOBILE REMOVED ROWS — PREVENT DATE CLIPPING
+   ======================================================= */
+
+@media screen and (max-width: 768px) {
+
+    /* Removed rows may use two lines */
+    .page-list .list .level button:has(> .type-label-sm) {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        justify-content: center !important;
+
+        width: 100% !important;
+        min-width: 0 !important;
+        height: auto !important;
+        min-height: 3.5rem !important;
+
+        box-sizing: border-box !important;
+
+        padding: 0.65rem 0.75rem !important;
+
+        overflow: visible !important;
+    }
+
+    /* Level name */
+    .page-list .list .level button:has(> .type-label-sm) > .type-label-lg {
+        display: block !important;
+
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+
+        white-space: normal !important;
+        overflow: visible !important;
+        text-overflow: clip !important;
+
+        overflow-wrap: normal !important;
+        word-break: normal !important;
+        hyphens: none !important;
+
+        line-height: 1.35 !important;
+    }
+
+    /* Removed date */
+    .page-list .list .level button:has(> .type-label-sm) > .type-label-sm {
+        display: block !important;
+
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+
+        margin-left: 0 !important;
+        margin-top: 3px !important;
+
+        white-space: nowrap !important;
+        overflow: visible !important;
+        text-overflow: clip !important;
+
+        line-height: 1.3 !important;
+        text-align: left !important;
+    }
+}
