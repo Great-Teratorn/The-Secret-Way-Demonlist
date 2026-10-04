@@ -5,53 +5,74 @@ import { round, score } from './score.js';
  */
 const dir = './data';
 
+
 export async function fetchList() {
-    
     let listFile = '_list.json';
-const hash = window.location.hash;
+    const hash = window.location.hash;
 
-if (hash.includes('/unverified')) {
-    listFile = '_unverified.json';
-} else if (hash.includes('/anomalies')) {
-    listFile = '_anomalies.json';
-} else if (hash.includes('/weekly')) {
-    listFile = '_weekly.json';
-} else if (hash.includes('/removed')) {
-    listFile = '_removed.json';
-}
+    if (hash.includes('/unverified')) {
+        listFile = '_unverified.json';
+    } else if (hash.includes('/anomalies')) {
+        listFile = '_anomalies.json';
+    } else if (hash.includes('/weekly')) {
+        listFile = '_weekly.json';
+    } else if (hash.includes('/removed')) {
+        listFile = '_removed.json';
+    }
 
-
-    
     const listResult = await fetch(`${dir}/${listFile}`);
-    
+
     try {
         const list = await listResult.json();
-        return await Promise.all(
-            list.map(async (path, rank) => {
+
+        const results = [];
+
+        // Load levels one at a time instead of requesting
+        // all 216+ files simultaneously.
+        for (let rank = 0; rank < list.length; rank++) {
+            const path = list[rank];
+
+            try {
                 const levelResult = await fetch(`${dir}/${path}.json`);
-                try {
-                    const level = await levelResult.json();
-                    return [
-                        {
-                            ...level,
-                            path,
-                            records: level.records.sort(
-                                (a, b) => b.percent - a.percent,
-                            ),
-                        },
-                        null,
-                    ];
-                } catch {
-                    console.error(`Failed to load level #${rank + 1} ${path}.`);
-                    return [null, path];
+
+                if (!levelResult.ok) {
+                    throw new Error(
+                        `HTTP ${levelResult.status} ${levelResult.statusText}`,
+                    );
                 }
-            }),
-        );
-    } catch {
-        console.error(`Failed to load list.`);
+
+                const level = await levelResult.json();
+
+                results.push([
+                    {
+                        ...level,
+                        path,
+                        records: Array.isArray(level.records)
+                            ? level.records.sort(
+                                  (a, b) => b.percent - a.percent,
+                              )
+                            : [],
+                    },
+                    null,
+                ]);
+            } catch (error) {
+                console.error(
+                    `Failed to load level #${rank + 1} ${path}.`,
+                    error,
+                );
+
+                results.push([null, path]);
+            }
+        }
+
+        return results;
+    } catch (error) {
+        console.error(`Failed to load list.`, error);
         return null;
     }
 }
+
+
 
 
 

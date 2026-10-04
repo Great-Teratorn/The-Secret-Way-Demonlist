@@ -1,5 +1,5 @@
 import { embed } from "../util.js";
-import { fetchSearchData } from "../content.js";
+import { fetchSearchData, fetchLeaderboard, fetchWeeklyLeaderboard } from "../content.js";
 
 
 export default {
@@ -346,25 +346,33 @@ export default {
             }
         });
 
-        // Keep the existing leaderboard/player search
-        var xhrBoard = new XMLHttpRequest();
-        xhrBoard.open('GET', './data/leaderboard.json', true);
-        xhrBoard.onload = function() {
-            if (xhrBoard.status === 200) {
-                try {
-                    var data = JSON.parse(xhrBoard.responseText);
-                    data.forEach(function(player, idx) {
-                        self.searchDatabase.push({
-                            name: player.name,
-                            type: 'Player',
-                            route: '/leaderboard',
-                            index: idx
-                        });
-                    });
-                } catch (e) {}
-            }
-        };
-        xhrBoard.send();
+        
+        // Leaderboard players
+var leaderboardResult = await fetchLeaderboard();
+var leaderboard = leaderboardResult[0];
+
+leaderboard.forEach(function(player, idx) {
+    self.searchDatabase.push({
+        name: player.user,
+        type: 'Player',
+        route: '/leaderboard',
+        index: idx
+    });
+});
+
+// Weekly leaderboard players
+var weeklyLeaderboardResult = await fetchWeeklyLeaderboard();
+var weeklyLeaderboard = weeklyLeaderboardResult[0];
+
+weeklyLeaderboard.forEach(function(player, idx) {
+    self.searchDatabase.push({
+        name: player.user,
+        type: 'Weekly Player',
+        route: '/leaderboard',
+        index: idx,
+        weekly: true
+    });
+});
 
 
                 // Weekly
@@ -455,10 +463,23 @@ export default {
             }
         },
         clickSuggestion: function(item) {
-            localStorage.setItem('pendingListSearch', item.name);
-            this.suggestions = [];
-            this.searchQuery = '';
-            window.location.hash = item.route;
-        }
+    this.suggestions = [];
+    this.searchQuery = '';
+
+    if (item.type === 'Player') {
+        localStorage.setItem('leaderboardPlayerSearch', item.name);
+        window.location.hash = '/leaderboard';
+        return;
+    }
+
+    if (item.type === 'Weekly Player') {
+        localStorage.setItem('weeklyLeaderboardPlayerSearch', item.name);
+        window.location.hash = '/leaderboard';
+        return;
+    }
+
+    localStorage.setItem('pendingListSearch', item.name);
+    window.location.hash = item.route;
+}
     }
 };
