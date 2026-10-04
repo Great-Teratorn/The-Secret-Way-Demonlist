@@ -27,6 +27,9 @@ TOP_150_COUNT = 150
 
 UK_TIMEZONE = ZoneInfo("Europe/London")
 
+# First official Weekly Demon
+WEEKLY_NUMBER_START_DATE = datetime(2026, 10, 11, tzinfo=UK_TIMEZONE)
+
 
 # ============================================================
 # HELPERS
@@ -272,7 +275,9 @@ weekly_date = get_week_dates()
 # WEEKLY DEMON NUMBER
 # ============================================================
 
-weekly_number = 1
+weekly_number = (
+    (now_uk.date() - WEEKLY_NUMBER_START_DATE.date()).days // 7
+) + 1
 
 
 # ============================================================
@@ -365,7 +370,7 @@ if len(description) > 4000:
 
 
 embed = {
-    "title": "🔥 SECRET WAY WEEKLY DEMON #1",
+    "title": f"🔥 SECRET WAY WEEKLY DEMON #{weekly_number}",
 
     "description": (
         f"**{name}**\n"
@@ -400,13 +405,11 @@ embed = {
     "inline": False
 },
 {
-    "name": "🌐 WEEKLY DEMON PAGE",
-    "value": (
-        "https://great-teratorn.github.io/"
-        "The-Secret-Way-Demonlist/#/weekly"
-    ),
-    "inline": False
+"name": "🌐 WEEKLY DEMON PAGE",
+"value": "https://thesecretwaydemonlist.com/#/weekly",
+"inline": False
 },
+
 {
     "name": "📅 WEEKLY DEMON",
     "value": weekly_date,
