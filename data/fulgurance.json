@@ -9,6 +9,10 @@
     "verification": "https://www.youtube.com/watch?v=WUVmAoXG6v0",
     "percentToQualify": 100,
 "secret_way_at": 43,
+"secret_way_start": 46,
+"secret_way_end": 100,
+"description": "This is a long description. ", 
+"difficulty": "easy",
 "password": "Password Required",
 "dateFallen": "08/09/26",
     "records": [ ]

@@ -20,5 +20,9 @@
     "verification": "https://youtu.be/iYsKilGe4wc?si=YjGVdbJVe0j4_Go7",
     "percentToQualify": 100,
     "secret_way_at": 8,
+    "secret_way_start": 7,
+"secret_way_end": 100,
+"description": "This is a long description. ", 
+"difficulty": "medium",
     "records": [ ]
 }

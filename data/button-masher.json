@@ -22,6 +22,10 @@
     "verification": "https://youtu.be/xtmxcAbMfuQ?si=AQ_6FVfx8f-Fm6rl",
     "percentToQualify": 100, 
     "secret_way_at": 7,
+    "secret_way_start": 6,
+"secret_way_end": 100,
+"description": "This is a long description. ", 
+"difficulty": "easy",
     "records": [{
     "user": "Liverlan",
     "percent": 100,

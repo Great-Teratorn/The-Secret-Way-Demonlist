@@ -7,7 +7,11 @@
     "id": 13965242,
     "verification": "https://www.youtube.com/watch?v=5Cg_Wd_BWJI",
     "percentToQualify": 100,
-    "secret_way_at": 72, 
+    "secret_way_at": 72,
+    "secret_way_start": 72,
+"secret_way_end": 100,
+"description": "This is a long description. ", 
+"difficulty": "insane", 
     "records": []
 
    }

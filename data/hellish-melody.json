@@ -9,6 +9,10 @@
     "percentToQualify": 100,
     "password": "Not Copyable",
     "secret_way_at": 34, 
+    "secret_way_start": 34,
+"secret_way_end": 100,
+"description": "This is a long description. ", 
+"difficulty": "insane",
     "records": []
 
    }

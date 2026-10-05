@@ -8,6 +8,10 @@
     "verification": "https://www.youtube.com/watch?v=q2K_MBPyzLI&t=49s",
     "percentToQualify": 100,
     "secret_way_at": 24, 
+    "secret_way_start": 24,
+"secret_way_end": 100,
+"description": "This is a long description. ", 
+"difficulty": "extreme",
     "records": []
 
    }

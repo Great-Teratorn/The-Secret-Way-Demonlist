@@ -10,6 +10,10 @@
     "percentToQualify": 100,
     "password": "Password Required",
     "secret_way_at": 17,
+    "secret_way_start": 20,
+"secret_way_end": 93,
+"description": "This is a long description. ", 
+"difficulty": "hard",
     "records": [
         
     ]
