@@ -32,7 +32,7 @@
     "percentToQualify": 100,
 "secret_way_start": 33,
 "secret_way_end": 100,
-"description": "This is a long description. ", 
+"description": "Hold to the ceiling as the wave at 30% instead of falling into the invisible cube portal. Stop holding at 33.11% or 33.12% to fall to the floor between the spikes. Stay at the floor to the end from there. ", 
 "difficulty": "extreme",
 "secret_way_at": 33,
     "records": [ ]

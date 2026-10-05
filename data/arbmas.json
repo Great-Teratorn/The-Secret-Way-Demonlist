@@ -14,7 +14,7 @@
     "percentToQualify": 100,
 "secret_way_start": 31,
 "secret_way_end": 100,
-"description": "This is a long description. ", 
+"description": "NOTE: The secret way is actually 31%-94%. The secret way makes the percentage bar inaccurate. Hold below the level as the wave after passing the spike wall at 30% (you can hold below the level at any point in the wave section). Stay below the gameplay until 51%, where you can then fall into the bottom of the ship portal after the last platform. Play the ship section at 0.5x speed until 70%, where you can then fall to the right of the lower saws to fall to the floor as the ship. Stay at the floor until the in-game time is 261.5 (in show info label setting), where you can then hold to go below a half invisible and half white platform. Go between the right side of the platform and the spikes to re-enter the level at the ship portal. Play the rest of the level as a mini ship and cube. ", 
 "difficulty": "insane",
 "secret_way_at": 30,
     "records": [ ]

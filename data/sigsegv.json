@@ -10,7 +10,7 @@
     "percentToQualify": 100,
 "secret_way_start": 36,
 "secret_way_end": 100,
-"description": "This is a long description. ", 
+"description": "LDM ONLY: Buffer a hold when you get teleported at 32% to jump over the invisible size portal at 33%. Briefly hold the dash orb at the very beginning of the section at 34% to fall upwards. Time a hold again to go right below the saws at 35%. Stop holding right before you land on the bottom of the slope at 36% to get sent out of the level between the invisible spikes. Fall near the ceiling and hold until the end. ", 
 "difficulty": "extreme",
 "secret_way_at": 35,
     "records": [ ]

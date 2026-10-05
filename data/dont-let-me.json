@@ -10,7 +10,7 @@
     "percentToQualify": 100, 
 "secret_way_start": 72,
 "secret_way_end": 100,
-"description": "This is a long description. ", 
+"description": "LDM Only: Time a jump before the blue orb at 71% to fall out of the level between the spikes right after the orb. Free to the end from there. ", 
 "difficulty": "easy",
 "secret_way_at": 72, 
     "records": [ ]

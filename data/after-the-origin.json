@@ -10,7 +10,7 @@
     "percentToQualify": 100,
 "secret_way_start": 64,
 "secret_way_end": 100,
-"description": "This is a long description. ", 
+"description": "Fall between the saw and cube portal as the ship at 64%. At 65%, fall to the floor and stay there for the rest of the level. ", 
 "difficulty": "medium",
 "dateFallen": "11/07/2026",
 "secret_way_at": 64,

@@ -10,7 +10,7 @@
     "percentToQualify": 100,
 "secret_way_start": 27,
 "secret_way_end": 100,
-"description": "This is a long description. ", 
+"description": "Make it so both sides of the wave go above the level on the opposite side than where they started (do this by spamming up and to the side). Navigate with the waves while outside of the level to be able to fall into a portal at 43% that disables the dual (you will know you did this correctly if you can see your mini wave icon at 47%). Hold from 48%-52%. Start holding at 69% and hold until the end from there.", 
 "difficulty": "insane",
 "secret_way_at": 27,
     "records": [ ]

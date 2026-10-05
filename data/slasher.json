@@ -10,7 +10,7 @@
     "percentToQualify": 100,
 "secret_way_start": 16,
 "secret_way_end": 42,
-"description": "This is a long description. ", 
+"description": "Go above the level as the swing between the saw and structure at 16%. Stay slightly above the level until 40% where you can start falling up. At 42%, you will be teleported back into the level. Play the level normally from there. ", 
 "difficulty": "easy",
 "secret_way_at": 16,
     "records": [ ]

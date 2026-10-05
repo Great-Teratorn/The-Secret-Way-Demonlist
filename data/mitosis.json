@@ -10,7 +10,7 @@
     "secret_way_at": 17, 
     "secret_way_start": 17,
 "secret_way_end": 100,
-"description": "This is a long description. ", 
+"description": "Jump between the slopes as the robot at 17% so both waves will fall above the level. Stay at a constant level offscreen until 30.2% where you can hold until you enter the invisible solo portal. Stay above the gameplay without dying for the rest of the level from there. ", 
 "difficulty": "insane",
     "records": []
 

@@ -11,7 +11,7 @@
     "percentToQualify": 100,
 "secret_way_start": 27,
 "secret_way_end": 100,
-"description": "This is a long description. ", 
+"description": "Press and hold the green orb in the middle at 25% (or time a jump and hold from the left edge of the platform at 25%) so you go between the gears at 27% when you enter the ship portal. Stop holding the moment you go between the gears to avoid the invisible moving spike and to land on the platform at 28% when your inputs are disabled. Fall up until your icon is near the ceiling where you can then stay at a constant position until the end from there. ", 
 "difficulty": "easy",
 "dateFallen": "21/08/2026",
 "secret_way_at": 27,

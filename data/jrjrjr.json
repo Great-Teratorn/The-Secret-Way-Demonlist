@@ -11,7 +11,7 @@
     "percentToQualify": 100,
 "secret_way_start": 27,
 "secret_way_end": 100,
-"description": "This is a long description. ", 
+"description": "Skip the blue orb and the normal size portal at 25%. Go between the slopes at 26% and hold below the level before the invisible hitboxes at 27%. Stay near the floor until your controls are disabled at 99%. Buffer a hold until you get your controls back, then briefly maintain a constant position and then fall back into the level before the moving 1x speed portal (between the cube portal and slope). Go either above or below the invisible hitbox wall and go a bit above the triple spikes to complete the level. ", 
 "difficulty": "extreme",
 "secret_way_at": 25,
     "records": [ ]

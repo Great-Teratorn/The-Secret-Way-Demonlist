@@ -16,7 +16,7 @@
     "percentToQualify": 100,
 "secret_way_start": 60,
 "secret_way_end": 100,
-"description": "This is a long description. ", 
+"description": "Time a hold between the structures at 60% right before the robot portal to escape the level as the ship. Stay above the level until 88% where you can then release. Free to the end from there. ", 
 "difficulty": "easy",
 "dateFallen": "06/07/2026",
 "secret_way_at": 60, 

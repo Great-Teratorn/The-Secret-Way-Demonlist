@@ -27,7 +27,7 @@
     "percentToQualify": 100,
 "secret_way_start": 66,
 "secret_way_end": 100,
-"description": "This is a long description. ", 
+"description": "Time the second blue orb relatively early at 65% and then skip the following orbs to fall to the floor between the hitboxes. Stay on the floor until the end from there. ", 
 "difficulty": "medium",
 "secret_way_at": 65,
     "records": [ ]

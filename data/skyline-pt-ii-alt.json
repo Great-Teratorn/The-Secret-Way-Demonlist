@@ -10,7 +10,7 @@
     "percentToQualify": 100,
 "secret_way_start": 57,
 "secret_way_end": 100,
-"description": "This is a long description. ", 
+"description": "Go between the last two spikes above the cube portal as the ship at 58% and stay at a constant position until 59% where you can start falling up. Stay above the level until the end from there. ", 
 "difficulty": "easy",
 "secret_way_at": 58,
     "records": [ ]

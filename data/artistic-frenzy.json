@@ -10,7 +10,7 @@
     "percentToQualify": 100,
 "secret_way_start": 21,
 "secret_way_end": 100,
-"description": "This is a long description. ", 
+"description": "Skip the ball portal at 13% while still entering the mini portal. Navigate around the portals and gameplay until 21% where you can fall or hold to the ceiling depending on your gravity. ", 
 "difficulty": "medium",
 "secret_way_at": 14,
 "password": "Password Required",

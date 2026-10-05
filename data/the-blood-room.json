@@ -11,7 +11,7 @@
     "percentToQualify": 100,
 "secret_way_start": 52,
 "secret_way_end": 100,
-"description": "This is a long description. ", 
+"description": "Jump a little bit after 52% to go over an invisible teleport portal. Stay on the floor until the end from there. ", 
 "difficulty": "insane",
 "secret_way_at": 52,
 "password": "Password Required",

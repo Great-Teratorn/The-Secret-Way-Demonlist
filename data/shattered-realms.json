@@ -11,7 +11,7 @@
     "secret_way_at": 40,
     "secret_way_start": 39,
 "secret_way_end": 100,
-"description": "This is a long description. ", 
+"description": "Don’t click the jump indicator after the saw at 39% to fall out of the level as the UFO. Maintain a position offscreen while being under the gameplay until 42% where you can go up back into the level, get the reverse gravity portal and then fall above the level at 43%. Stay above the level while being offscreen until the end from there. ", 
 "difficulty": "medium",
     "records": [
         

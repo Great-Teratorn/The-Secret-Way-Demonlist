@@ -11,7 +11,7 @@
     "percentToQualify": 100,
 "secret_way_start": 4,
 "secret_way_end": 100,
-"description": "This is a long description. ", 
+"description": "Land on the platform at 3% to fall to the floor as the ship. After 6% straightfly offscreen while being above the floor but below the level's gameplay until 18% where you have to hold to go back into the level. After the blue pads fly out of the level (or click the yellow orb and hold). Stay near the ceiling until the end from there. ", 
 "difficulty": "easy",
 "secret_way_at": 7,
 "password": "Free to copy",

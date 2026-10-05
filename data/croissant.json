@@ -17,7 +17,7 @@
     "percentToQualify": 100,
 "secret_way_start": [9, 40],
 "secret_way_end": [29, 81],
-"description": "This is a long description. ", 
+"description": "Release from the dash orb early at 9% to go under the teleport portal and stay on the floor. At 29%, you will be teleported back into the level. Play the level normally from there. | Land on the block under the robot portal at 40% and stay there until passing the portal to stay as the ship. Navigate through the following gameplay as the ship (you cannot go to the ceiling) until 49% where you either have to fall up to the ceiling or hold to the ceiling right after the pink pad (you cannot touch the pink pad or platform with it). Stay on the ceiling until 75% where you have to hold back/fall back into the level and then play as the ship until you reach the wave portal at 81% where you can play the rest of the level normally. ", 
 "difficulty": "easy",
 "secret_way_at": 9,
     "records": [ ]

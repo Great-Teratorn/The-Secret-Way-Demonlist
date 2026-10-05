@@ -10,7 +10,7 @@
     "percentToQualify": 100,
 "secret_way_start": 60,
 "secret_way_end": 100,
-"description": "This is a long description. ", 
+"description": "Time a click at 60.1% to fall to the ceiling as the swing between the platform and cube portal. Move to the floor at 61%. Free to the end from there. (You don't have to break all of the blocks in the ufo and swing section if you take this secret way). ", 
 "difficulty": "extreme",
 "secret_way_at": 60,
     "records": [ ]
