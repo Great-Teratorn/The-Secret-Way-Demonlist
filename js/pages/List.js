@@ -573,7 +573,7 @@ export default {
                     </p>
 
                     <p>
-                        Do not use easy modes, only a record of the unmodified level qualifies. Unless a requirement for FDM/LDM is explicitly stated by a level's description, LDM/ULDM is allowed - only if part of the level. Custom version will lead to the record being invalidated. 
+                        Do not use easy modes, only a record of the unmodified level qualifies. Unless a requirement for FDM/LDM is explicitly stated by a level's description, LDM/ULDM is allowed - only if part of the level. A custom version will lead to the record being invalidated. 
                     </p>
                     <p>
                     A raw, unedited footage link must be provided upon request.
