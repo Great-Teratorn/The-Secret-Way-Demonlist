@@ -557,23 +557,23 @@ export default {
                     </template>
                     <h3>Submission Requirements</h3>
                     <p>
-                        Achieved the record without using hacks (however, FPS bypass is allowed, up to 360fps).
+                        Achieved the record without using hacks (FPS bypass is permitted up to 360fps).
                     </p>
                     <p>
-                        Achieved the record on the level that is listed on the site - please check the level ID before you submit a record.
+                        Achieved 100% on the level - anything less will not be accepted. This includes playing all of a level's secret ways and normal gameplay, not just the secret ways(s) alone.  
                     </p>
                     <p>
                         The secret way(s) must be used correctly as shown in the video. Otherwise, the record is invalid.
                     </p>
                     <p>
-                        Clicks or taps must be clearly visible in the recording to reinforce legitimacy. Audible clicks are preferred but not compulsory.
+                        Either clicks/taps must be clearly visible in the recording, or clicks/taps must be audible. This reinforces your legitimacy. 
                     </p>
                     <p>
-                        The recording must show the player hit the endwall, or the completion will be invalidated.
+                        The recording must show the player hit the endwall, or the record will be invalidated.
                     </p>
 
                     <p>
-                        Do not use easy modes, only a record of the unmodified level qualifies. LDM/ULDM is allowed - only if part of the level. Custom version will lead to the record being invalidated.
+                        Do not use easy modes, only a record of the unmodified level qualifies. Unless a requirement for FDM/LDM is explicitly stated by a level's description, LDM/ULDM is allowed - only if part of the level. Custom version will lead to the record being invalidated. 
                     </p>
                     <p>
                     A raw, unedited footage link must be provided upon request.
