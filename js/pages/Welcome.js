@@ -55,7 +55,7 @@ export default {
 
                 <!-- General Information Box -->
                 <div style="background: rgba(20, 15, 35, 0.8); padding: 25px; border-radius: 8px; border: 1px solid #4a3f75; margin-bottom: 25px;">
-                    <h2 style="font-size: 1.5rem; margin: 0 0 12px 0; color: #e0d4ff;">Introduction - TSWD was Jackypoo's idea!</h2>
+                    <h2 style="font-size: 1.5rem; margin: 0 0 12px 0; color: #e0d4ff;">Introduction</h2>
                     <p style="line-height: 1.6; font-size: 0.95rem; color: #cbd5e1; margin: 0 0 15px 0;">
                         Hi everyone! This demonlist ranks the most difficult secret way levels within our community. Submissions are thoroughly inspected based on verification validity, mechanical difficulty, and strict submission guidelines. Secret ways must skip at least 30% of the level, however we do have 'Cool Secret Ways' which only require 20% - if you deem your secret way to be 'cool', request it in our <a href="https://discord.gg/rCEZZA9kZD" target="_blank" rel="noopener noreferrer" style="color: #9023d8; text-decoration: underline; font-weight: bold;">Discord Server</a>, and through polls, the community will decide if it should get added to the Demonlist or not!
                     </p>
