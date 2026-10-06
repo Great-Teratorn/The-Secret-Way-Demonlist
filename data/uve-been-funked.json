@@ -10,7 +10,7 @@
     "percentToQualify": 100,
 "secret_way_start": [51, 87],
 "secret_way_end": [80, 100],
-"description": "Don't click when entering the ufo portal at 50% to fall above the level. Stay a bit above the gameplay until 60%, where you are teleported back into the level. Skip both blue orbs at 61% and then maintain a constant position until 70%. Start spamming at 71% to go above the level. Stay at a constant position until 83%, where you'll be teleported back into the level. | Buffer a hold when you enter the wave portal at 87% to go above the level. Hold to the end from there.  ", 
+"description": "Don't click when entering the ufo portal at 50% to fall above the level. Stay a bit above the gameplay until 60%, where you are teleported back into the level. Skip both blue orbs at 61% and then maintain a constant position until 70%. Start spamming at 71% to go above the level. Stay at a constant position until 83%, where you'll be teleported back into the level. Buffer a hold when you enter the wave portal at 87% to go above the level. Hold to the end from there.  ", 
 "difficulty": "easy",
 "secret_way_at": 51,
     "records": [ ]
