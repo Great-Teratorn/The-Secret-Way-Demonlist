@@ -26,14 +26,44 @@
         "Pix",
         "CultriX"
     ],
-    "verifier": "DariGamer13",
-    "verification": "https://youtu.be/QRL-21eHLho?si=OJnx9Hz4YatkbY7O",
+    "verifier": "Great Teratorn",
+    "verification": "https://youtu.be/THaX6AUQshs?si=X9-K2FLye-okcVpu",
     "percentToQualify": 100,
 "secret_way_start": 20,
 "secret_way_end": 100,
-"description": "This is a long description. ", 
+"description": "Go to 1:53 in the video. ", 
 "difficulty": "easy",
 "secret_way_at": 20,
 "password": "Password Required",
-    "records": [ ]
+    "records": [
+        {
+            "user": "DariGamer13",
+            "link": "https://youtu.be/QRL-21eHLho?si=Bz7GRi31V3zFgCy3",
+            "percent": 100,
+            "hz": 60,
+            "mobile": true
+        },
+        {
+            "user": "Liverlan",
+            "link": "https://youtu.be/QezAgoGoIGw?si=21Ef8fkd5KMN8vbG",
+            "percent": 100,
+            "hz": 60,
+            "mobile": false 
+        },
+        {
+            "user": "Lizzy",
+            "link": "https://youtu.be/Ok-4myBjU-A?feature=shared",
+            "percent": 100,
+            "hz": 240,
+            "mobile": false 
+        },
+        {
+            "user": "aMaxZon200",
+            "link": "https://youtu.be/IUXjewy22Mc?si=NfnvIr7KxTv_Xw4V",
+            "percent": 100,
+            "hz": 240,
+            "mobile": false
+        }
+    ]
+
 }

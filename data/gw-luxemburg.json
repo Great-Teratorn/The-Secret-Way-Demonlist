@@ -5,8 +5,8 @@
     "creators": ["ElEcmEtAl"
         
     ],
-    "verifier": "DariGamer13",
-    "verification": "https://www.youtube.com/watch?v=lPCJTHCGfPo",
+    "verifier": "Scottobozo",
+    "verification": "https://www.youtube.com/watch?v=4awzWfXvPME",
     "percentToQualify": 100,
     "secret_way_at": 16,
     "secret_way_start": 16,
@@ -15,6 +15,13 @@
 "difficulty": "easy",
     "password": "Not Copyable",
     "records": [
-        
+        {
+            "user": "DariGamer13",
+            "link": "https://youtu.be/lPCJTHCGfPo?si=nsB1-raHAP6HaAyp",
+            "percent": 100,
+            "hz": 240,
+            "mobile": false
+        }
     ]
+
 }

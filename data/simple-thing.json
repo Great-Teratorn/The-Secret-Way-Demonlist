@@ -13,5 +13,14 @@
 "description": "At 55%, spam right after you enter the UFO portal to go above the level. Stay slightly above the gameplay until 58% where you can spam above the level. Maintain a constant position under the gameplay until 65% where you can aim to go as far and as high from the last pillar as you can before your controls get disabled. Start spamming at 68% so when you regain controls you go above the level. Stay above the level until the end from there. ", 
 "difficulty": "medium",
 "secret_way_at": 56,
-    "records": [ ]
+    "records": [
+        {
+            "user": "DariGamer13",
+            "link": "https://youtu.be/ljMUfoemeGs?si=epwpoU8HqzNKApXq",
+            "percent": 100,
+            "hz": 240,
+            "mobile": false
+        }
+    ]
+
 }

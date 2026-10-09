@@ -13,6 +13,15 @@
 "secret_way_end": 100,
 "description": "Time two quick jumps after clicking the pink orb at 3% to go up between the saw and ball portal as the UFO. Don’t click until 4% where you have to spam above the first spike and then click the green orb to move to the ceiling. Spam at the floor from 43%-50% and then stay slightly above the ceiling until 52% where you can fall back to it. Go into the ship portal on the ceiling at 60%. Continue playing normally from there. ", 
 "difficulty": "hard",
-    "records": []
+    "records": [
+        {
+            "user": "Lizzy",
+            "link": "https://www.youtube.com/watch?v=_WgChGdt5Rs",
+            "percent": 100,
+            "hz": 240,
+            "mobile": false
+        }
+    ]
+
 
    }

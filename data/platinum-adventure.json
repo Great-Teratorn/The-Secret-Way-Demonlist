@@ -10,13 +10,27 @@
     "percentToQualify": 100,
     "secret_way_at": 50,
     "secret_way_start": 50,
-"secret_way_end": 100,
+"secret_way_end": 82,
 "description": "Enter the bottom of the portal at 50% to skip the 1x speed portal and stay at 3x speed. Jump over the blue pad at 55% (you want your icon to be close to hitting the platform at 56%) to fall to the floor. At 74%, play through the gameplay as the 3x speed robot. At 82%, you will enter a ball portal. Play the level normally from there.", 
 "difficulty": "easy",
     "password": "Password Required",
     "records": [
-        
+        {
+            "user": "Liverlan",
+            "link": "https://youtu.be/8le47FN7STw?si=lSxbqqBawAsNsFZy",
+            "percent": 100,
+            "hz": 60,
+"mobile": false
+        },
+        {
+            "user": "Lizzy",
+            "link": "https://youtu.be/wZWSykFbcG0",
+            "percent": 100,
+            "hz": 240,
+            "mobile": false
+        }
     ]
+
 }
 
 

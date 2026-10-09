@@ -13,6 +13,15 @@
 "secret_way_end": 100,
 "description": "Fall between the saws above the spider portal at 30.3% to continue playing as the wave. Go below the saw right below the ship portal at 30.7% and then quickly hold before hitting the spikes to continue playing as the wave. Go below the saw right below the UFO portal at 31.3% and then quickly hold before hitting the spikes to continue playing as the wave. Go below the cube portal at 31.7% and then navigate through the following saws and structures until 32.2% where you can fall to the ceiling, avoid the ball portal and, navigate through the gameplay as the wave until 33.5% where you can fall back to the ceiling. Stay at the ceiling for the rest of the level. ", 
 "difficulty": "medium",
-    "records": []
+    "records": [
+        {
+            "user": "Lizzy",
+            "link": "https://youtu.be/EQtA5mrHx5Q",
+            "percent": 100,
+            "hz": 240,
+            "mobile": false
+        }
+    ]
+
 
    }

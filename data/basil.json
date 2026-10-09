@@ -12,6 +12,16 @@
 "secret_way_end": 100,
 "description": "Let go of the dash orb at 14% right before entering the wave portal to skip the invisible cube portal. Navigate between the structures and then go between the spikes at 16%. Stay at the floor to the end from there. ", 
 "difficulty": "extreme",
-    "records": []
+    "records": [
+        
+        {
+            "user": "kolgotochnik",
+            "link": "https://youtu.be/g_6jxUolRBs?t=204&si=aPg9d9pFrMrTp9SG",
+            "percent": 100,
+            "hz": 60,
+            "mobile": false
+        }
+    ]
+
 
    }

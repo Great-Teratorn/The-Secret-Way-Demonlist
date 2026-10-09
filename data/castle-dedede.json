@@ -14,6 +14,34 @@
 "description": " Press the blue orb late at 22% to skip the cube portal. Play the following section as the robot until 28%, where you'll have to do a precise jump and skip the orbs to fall out of the level between the platforms at 30%. Free to the end from there. ", 
 "difficulty": "insane",
     "records": [
-        
+        {
+            "user": "J Schwizzle",
+            "link": "https://youtu.be/olccldf9JS8?si=9VZ1rlprxDlJ6DqD",
+            "percent": 100,
+            "hz": 60,
+"mobile": true
+        },
+        {
+            "user": "Gold Dyno",
+            "link": "https://youtu.be/i5FEo3_7YDs?si=hdu1vHZxwrnxj8cH",
+            "percent": 100,
+            "hz": 60,
+            "mobile": true 
+        },
+        {
+            "user": "Lizzy",
+            "link": "https://youtu.be/j_yfdccwXow",
+            "percent": 100,
+            "hz": 240,
+            "mobile": false
+        },
+        {
+            "user": "aMaxZon200",
+            "link": "https://www.youtube.com/watch?v=Q6FBD4CZXCI",
+            "percent": 100,
+            "hz": 240,
+            "mobile": false
+        }
     ]
+
 }

@@ -24,5 +24,14 @@
 "description": "Fall right next to the lower slope at 49% (go slightly through the deco) to go under the dual portal (or hold through the far right of the upper deco to go over the dual portal). Go above the level as the mini wave between the structures at 51%. Stay above the level until it ends at 85%. ", 
 "difficulty": "insane",
 "secret_way_at": 50,
-    "records": [ ]
+    "records": [
+        {
+            "user": "DariGamer13",
+            "link": "https://youtu.be/wPWV7L2Tdh4?si=4mquwbl8gHSKaKOi",
+            "percent": 100,
+            "hz": 240,
+            "mobile": false
+        }
+    ]
+
 }

@@ -13,5 +13,14 @@
 "description": "At 10%, time a click on the red orb and then don’t click to escape the level as the reverse gravity ship. Stay slightly above the level until 14% where you need to fly back into the level through the black orbs. At 23%, stay below the saw and above the wave portal until 24.5% when you can fall above the level. Maintain a constant position until 32% when you can move more down and then maintain a constant position for the rest of the level. ", 
 "difficulty": "easy",
 "secret_way_at": 12,
-    "records": [ ]
+    "records": [
+        {
+            "user": "DariGamer13",
+            "link": "https://youtu.be/7OZVfJ7XCeo?si=Ch7H3jNbKsWpD1rV",
+            "percent": 100,
+            "hz": 240,
+            "mobile": false
+        }
+    ]
+
 }

@@ -15,6 +15,13 @@
 "description": "Hold to the ceiling as the wave at 30.8% to get the mini portal without becoming robot. Move down at 31.6% and then back up at 31.8% to avoid the spider portal and then fall back down, stay between the platforms as the wave, touch the first blue pad and then don't click to fall to the ceiling at 32%. Stay at the ceiling until the end from there. ", 
 "difficulty": "medium",
     "records": [
-        
+        {
+            "user": "Lizzy",
+            "link": "https://youtu.be/dAq6TpCwksg",
+            "percent": 100,
+            "hz": 240,
+            "mobile": false
+        }
     ]
+
 }

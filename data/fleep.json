@@ -12,6 +12,37 @@
 "secret_way_end": 100,
 "description": "Buffer the first red orb while falling from the platform at 6% and then click the second red orb late. Skip the third red orb and then click the blue orb as late as possible to land on the blocks above the level. Free to the end from there. ", 
 "difficulty": "medium",
-    "records": []
+    "records": [
+        { 
+        
+            "user": "DariGamer13",
+            "link": "https://youtu.be/c3uuVDYghHw?si=0hud_ihEntkJlC1V",
+            "percent": 100,
+            "hz": 240,
+"mobile": false
+        },
+        {
+            "user":"Jackypoo",
+            "link": "https://youtu.be/RmMCnrTLVJ0?si=6cDPdIz_RVIPS0ni",
+            "percent": 100,
+            "hz": 60,
+            "mobile": true
+         },
+         {
+            "user": "Gold Dyno",
+            "link": "https://youtu.be/YEVQ8UhIcVY?si=0tgcisdIjSRG6mIJ/",
+            "percent": 100,
+            "hz": 120,
+            "mobile": true
+        },
+        {
+            "user": "Liverlan",
+            "link": "https://youtu.be/eltYPBIfr1M?si=wDs39knsppit9GaI/",
+            "percent": 100,
+            "hz": 60,
+            "mobile": false
+        }
+    ]
+
 
    }

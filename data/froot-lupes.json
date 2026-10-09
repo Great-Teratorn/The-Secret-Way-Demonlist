@@ -20,5 +20,21 @@
 "difficulty": "medium",
 "secret_way_at": 39,
 "password": "Password Required",
-    "records": [ ]
+    "records": [
+        {
+            "user": "Jackypoo",
+            "link": "https://youtu.be/kCmGCCL_Xjs?si=7f5U_--PACIMxwdv",
+            "percent": 100,
+            "hz": 60,
+"mobile": true
+        },
+        {
+            "user": "Liverlan",
+            "link": "https://youtu.be/aJC50lrdJK0?si=prbCJ_iy0rwNK5NO",
+            "percent": 100,
+            "hz": 60,
+            "mobile": false
+        }
+    ]
+
 }

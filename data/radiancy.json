@@ -14,5 +14,21 @@
 "difficulty": "medium",
 "secret_way_at": 9,
 "password": "Password Required",
-    "records": [ ]
+    "records": [
+        {
+            "user": "Great Teratorn",
+            "link": "https://youtu.be/Ifn-hCh4IfA?si=0QrqSjfUQYzxwEuN",
+            "percent": 100,
+            "hz": 60,
+"mobile": true
+        },
+        {
+            "user": "Liverlan",
+            "link": "https://youtu.be/92rbiKbrSFY?si=-dL5M762zfl0LqSt",
+            "percent": 100,
+            "hz": 60,
+            "mobile": false 
+        }
+    ]
+
 }

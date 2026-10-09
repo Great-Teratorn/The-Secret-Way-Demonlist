@@ -16,5 +16,14 @@
 "description": "This is a long description. ", 
 "difficulty": "medium",
 "secret_way_at": 63, 
-    "records": [ ]
+    "records": [
+        {
+            "user": "DariGamer13",
+            "link": "https://youtu.be/ofYmTMi_osw?si=yqkWlsiRk1a11Qjb",
+            "percent": 100,
+            "hz": 240,
+            "mobile": false
+        }
+    ]
+
 }

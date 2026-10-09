@@ -14,5 +14,23 @@
 "difficulty": "easy",
 "secret_way_at": 25,
 "password": "Not Copyable",
-    "records": [ ]
+    "records": [
+        {
+            "user": "Great Teratorn",
+            "link": "https://youtu.be/Y_GRISzcCi0?si=p6C3cN3Sd-lQFJmk&t=225",
+            "percent": 100,
+            "hz": 120,
+            "mobile": true
+        },
+            {
+            "user": "Liverlan",
+            "link": "https://youtu.be/MBA_8XWujjM?si=ZJBNkschsTLaKrPv",
+            "percent": 100,
+            "hz": 60,
+            "mobile": false
+        }
+
+        
+    ]
+
 }

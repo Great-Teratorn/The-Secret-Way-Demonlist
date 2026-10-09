@@ -14,5 +14,42 @@
 "difficulty": "medium",
 "secret_way_at": 28,
 "password": "Password Required",
-    "records": [ ]
+    "records": [
+        {
+            "user": "DariGamer13",
+            "link": "https://youtu.be/5Pk1kwj3iiw?si=1iUzLKIUzX7n5r_n",
+            "percent": 100,
+            "hz": 240,
+"mobile": false
+        },
+        {
+            "user": "Lizzy",
+            "link": "https://youtu.be/AQ6ND3ywlXQ?si=F_SzLcXRYZ-gk2SB",
+            "percent": 100,
+            "hz": 240, 
+            "moblie": false
+        },
+        {
+            "user": "Gold Dyno",
+            "link": "https://youtu.be/y4azrQh91VU?si=nzDYSSQi5i1Qde-j",
+            "percent": 100,
+            "hz": 120,
+            "mobile": true 
+        },
+        {
+            "user": "T0un3t",
+            "link": "https://youtu.be/v2amPescsEM?si=b9Qwd-DWvvghFea7",
+            "percent": 100,
+            "hz": 60,
+            "mobile": true 
+        },
+        {
+            "user": "Liverlan",
+            "link": "https://youtu.be/8ZNpeqqlJyE?si=xNVEg_d_ghv-bL2f",
+            "percent": 100,
+            "hz": 60,
+            "mobile": false
+        }
+    ]
+
 }

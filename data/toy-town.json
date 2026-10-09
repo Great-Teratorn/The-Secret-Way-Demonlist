@@ -13,5 +13,14 @@
 "description": "This is a long description. ", 
 "difficulty": "medium",
 "secret_way_at": 30,
-    "records": [ ]
+    "records": [
+        {
+            "user": "Lizzy",
+            "link": "https://youtu.be/8TifjHSv4pU",
+            "percent": 100,
+            "hz": 240,
+            "mobile": false
+        }
+    ]
+
 }

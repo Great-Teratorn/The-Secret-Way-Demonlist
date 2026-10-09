@@ -13,6 +13,29 @@
 "secret_way_end": 100,
 "description": "Hit the blue orb at 3% as late as possible, then click exactly how the video shows in the UFO part following to skip the cube portal. Avoid all portals after this to stay upside down (I recommend pausing so you don't accidently hit any of the portals) and go under the saw at 6%. Spam under the gear at 31% and avoid obstacles until the end from there. ", 
 "difficulty": "hard",
-    "records": []
+    "records": [
+         {
+            "user":"Lizzy",
+            "link": "https://youtu.be/jiZZanG5jHs",
+            "percent": 100,
+            "hz": 240,
+            "mobile": false 
+        },
+        {
+            "user": "Gold Dyno",
+            "link": "https://youtu.be/EVtk_Ey_tg8?si=rPrjGLeCnrCbc4Wn",
+            "percent": 100,
+            "hz": 120,
+            "mobile": true 
+        },
+        {
+            "user": "J Schwizzle",
+            "link": "https://www.youtube.com/watch?v=XoBQQ18KmKA",
+            "percent": 100,
+            "hz": 60,
+            "mobile": true
+        }
+    ]
+
 
    }

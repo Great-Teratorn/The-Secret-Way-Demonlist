@@ -13,5 +13,14 @@
 "description": "This is a long description. ", 
 "difficulty": "hard",
 "secret_way_at": 66,
-    "records": [ ]
+    "records": [
+        {
+            "user": "Liverlan",
+            "link": "https://youtu.be/CBzVhUDw-LE?si=WIGNgUDURhhKp_Tm",
+            "percent": 100,
+            "hz": 60,
+            "mobile": false
+        }
+    ]
+
 }

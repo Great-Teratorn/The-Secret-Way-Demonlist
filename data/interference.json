@@ -22,5 +22,14 @@
 "description": "Go over the robot portal as the UFO at 13.9%. Navigate through the following gameplay as the UFO (make sure to touch the orbs or you will die) until 22% where you can spam above the level after touching the last blue pad (you can also fall above the level as the reverse gravity UFO at 17% and 19%. Stay near the ceiling until the end from there, and then fall or spam at the endscreen (depending on your gravity). ", 
 "difficulty": "insane",
 "secret_way_at": 15,
-    "records": [ ]
+    "records": [
+        {
+            "user": "Liverlan",
+            "link": "https://youtu.be/QupLoZ1VYKo?si=cIr10oTDng6I0Uuy",
+            "percent": 100,
+            "hz": 60,
+            "mobile": false
+        }
+    ]
+
 }

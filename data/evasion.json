@@ -13,6 +13,22 @@
 "secret_way_end": 100,
 "description": "Fit through the spike hitboxes 3 times at 47% to skip the cube portal. Hold to the end from there. ", 
 "difficulty": "hard",
-    "records": []
+    "records": [
+        {
+            "user": "aMaxZon200",
+            "link": "https://www.youtube.com/watch?v=a6-W_pezFRE",
+            "percent": 100,
+            "hz": 240,
+"mobile": false
+        },
+        {
+            "user": "Lizzy",
+            "link": "https://youtu.be/5SBPd5cHgbw",
+            "percent": 100,
+            "hz": 240,
+            "mobile": false
+        }
+    ]
+
 
    }

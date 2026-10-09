@@ -14,5 +14,28 @@
 "difficulty": "insane",
 "secret_way_at": 28,
 "password": "Password Required",
-    "records": [ ]
+    "records": [
+        {
+            "user": "DariGamer13",
+            "link": "https://youtu.be/Wjm57bOgh5g?si=Ep8FxW4LysuzTNk_",
+            "percent": 100,
+            "hz": 240,
+"mobile": false 
+        },
+        {
+            "user": "Lizzy",
+            "link": "https://www.youtube.com/watch?v=RNTjTxDAg78",
+            "percent": 100,
+            "hz": 240,
+            "mobile": false
+        },
+        {
+            "user": "Gold Dyno",
+            "link": "https://youtu.be/RA8HkvpXjDc?si=EZVHVLNq1Cp7btJ4",
+            "percent": 100,
+            "hz": 120,
+            "mobile": true 
+        }
+    ]
+
 }

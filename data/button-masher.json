@@ -24,13 +24,23 @@
     "secret_way_at": 7,
     "secret_way_start": 6,
 "secret_way_end": 100,
-"description": "Time a near-frame perfect at 6.8% to go in between the spike and cube portal as the swing copter. Navigate through the cube section exactly as shown in the video. As you are falling towards the ceiling, click at around 26.2% (NOT BEFORE 26% - YOU WILL DIE). At 42% navigate through the level as shown in the video. At 69% you will be teleported back into the level, navigate through this tricky part as shown in the video. As you are falling up towards the ceiling, click at 84.8%. Finally, click at exactly when the percentage bar reaches 100%.", 
+"description": "Time a near-frame perfect at 6.8% to go in between the spike and cube portal as the swingcopter. Navigate through the cube section exactly as shown in the video. As you are falling towards the ceiling, click at around 26.2% (NOT BEFORE 26% - YOU WILL DIE). At 42% navigate through the level as shown in the video. At 69% you will be teleported back into the level, navigate through this tricky part as shown in the video. As you are falling up towards the ceiling, click at 84.8%. Finally, click at exactly when the percentage bar reaches 100%.", 
 "difficulty": "easy",
-    "records": [{
-    "user": "Liverlan",
-    "percent": 100,
-    "hz": 60,
-    "link": "https://www.youtube.com/watch?v=JoGv0_l6nRA"
-}
- ]
+    "records": [
+        {
+            "user": "Liverlan",
+            "link": "https://youtu.be/JoGv0_l6nRA?si=yD8AeI2k-emzsvuW",
+            "percent": 100,
+            "hz": 60,
+"mobile": false
+        },
+        {
+            "user": "DariGamer13",
+            "link": "https://youtu.be/W7mc9loWukE?si=2IwSPHtB8-_CQvlN",
+            "percent": 100,
+            "hz": 240,
+            "mobile": false
+        }
+    ]
+
 }

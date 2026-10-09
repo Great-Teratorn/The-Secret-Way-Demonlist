@@ -13,5 +13,35 @@
 "description": "Skip the yellow gravity portal at 32%. Fall between the slopes as the wave at 34% and avoid the following spikes and saws. Avoid the invisible speed portal on the floor at 37% and then hold to the ceiling at 38%. Stop holding at 51% and fall to the floor between the spikes at 52%. Enter the ufo portal at the ceiling at 57%. Stay at the ceiling until 69% where you can then stay at the floor to the end. ", 
 "difficulty": "insane",
 "secret_way_at": 34,
-    "records": [ ]
+    "records": [
+        {
+            "user": "DariGamer13",
+            "link": "https://youtu.be/u4A4zoa8xSs?si=oTM_975R7rbiIaq_",
+            "percent": 100,
+            "hz": 60,
+"mobile": false
+        },
+        {
+            "user": "Gold Dyno",
+            "link": "https://youtu.be/ea8TaGA33iA?si=Ez32r17Ap4Uw0xkr",
+            "percent": 100,
+            "hz": 120,
+            "mobile": true
+        },
+        {
+            "user": "J Schwizzle",
+            "link": "https://youtu.be/Stb_MPFYA9E?si=Mjga3IpGXbCCYyb0",
+            "percent": 100,
+            "hz": 240,
+            "mobile": false 
+        },
+        {
+            "user": "aMaxZon200",
+            "link": "https://www.youtube.com/watch?v=Qec0qr6V3q4",
+            "percent": 100,
+            "hz": 240,
+            "mobile": false
+        }
+    ]
+
 }

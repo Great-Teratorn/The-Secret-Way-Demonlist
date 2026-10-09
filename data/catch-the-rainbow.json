@@ -14,5 +14,14 @@
 "difficulty": "easy",
 "secret_way_at": 57,
 "password": "Free to copy",
-    "records": [ ]
+    "records": [
+        {
+            "user": "Liverlan",
+            "link": "https://youtu.be/f8IOWcsWIRo?si=uw8myS4LkYD-CP-U",
+            "percent": 100,
+            "hz": 60,
+            "mobile": false
+        }
+    ]
+
 }

@@ -15,8 +15,15 @@
 "difficulty": "medium",
     "password": "Password Required",
     "records": [
-        
+        {
+            "user": "DariGamer13",
+            "link": "https://youtu.be/T18bOX_HTD4?si=tmcc5-E599WFKVK8",
+            "percent": 100,
+            "hz": 240,
+            "mobile": false
+        }
     ]
+
 }
 
 

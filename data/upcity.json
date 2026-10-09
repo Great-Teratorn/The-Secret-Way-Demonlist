@@ -14,8 +14,15 @@
 "description": "This is a long description. ", 
 "difficulty": "medium",
     "records": [
-        
+        {
+            "user": "DariGamer13",
+            "link": "https://youtu.be/Q_yEwADeqmA?si=2Cy-O1nlDtgp8r2E",
+            "percent": 100,
+            "hz": 240,
+            "mobile": false
+        }
     ]
+
 }
 
 

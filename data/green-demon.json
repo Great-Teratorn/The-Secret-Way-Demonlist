@@ -14,5 +14,28 @@
 "difficulty": "easy",
 "secret_way_at": 35,
 "password": "Not Copyable",
-    "records": [ ]
+    "records": [
+        {
+            "user": "DariGamer13",
+            "link": "https://youtu.be/__I3DX5o3Rs?si=WNcOrtUNemKauV9T",
+            "percent": 100,
+            "hz": 60,
+"mobile": true
+        },
+        {
+            "user": "Liverlan",
+            "link": "https://youtu.be/hLV12-52G04?si=3DMnO9XeVOlZAu-z",
+            "percent": 100,
+            "hz": 60,
+            "mobile": false 
+        },
+        {
+            "user": "Lizzy",
+            "link": "https://youtu.be/wjO-rpSwiaE?feature=shared",
+            "percent": 100,
+            "hz": 240,
+            "mobile": false
+        }
+    ]
+
 }

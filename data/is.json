@@ -14,8 +14,29 @@
 "description": "At 26%, when you are about to hit the cube portal, go between the upper blocks and saw. Navigate through the obstacles until 28% where you can fall to the floor. Free to the end from there. ", 
 "difficulty": "easy",
     "records": [
-        
+        {
+            "user": "DariGamer13",
+            "link": "https://youtu.be/t-H6Wtp7iHA?si=CrONGb9R81QmQPer",
+            "percent": 100,
+            "hz": 240,
+"mobile": false
+        },
+        {
+            "user": "Lizzy",
+            "link": "https://youtu.be/S2lE9Spzbko?feature=shared",
+            "percent": 100,
+            "hz": 240,
+            "mobile": false 
+        },
+        {
+            "user": "Liverlan",
+            "link": "https://youtu.be/iHVtpaaEk7g?si=O1rW_eEzRbnE9OVf",
+            "percent": 100,
+            "hz": 60,
+            "mobile": false
+        }
     ]
+
 }
 
 

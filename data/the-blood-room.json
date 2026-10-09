@@ -15,5 +15,14 @@
 "difficulty": "insane",
 "secret_way_at": 52,
 "password": "Password Required",
-    "records": [ ]
+    "records": [
+        {
+            "user": "Lizzy",
+            "link": "https://youtu.be/0exdn_QUtOg",
+            "percent": 100,
+            "hz": 240,
+            "mobile": false
+        }
+    ]
+
 }

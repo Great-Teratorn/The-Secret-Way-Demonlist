@@ -13,5 +13,14 @@
 "description": "Buffer the yellow orb at 57% and then time a click in the bottom right corner of the blue orb to fall to the floor at 58%. Free to the end from there. ", 
 "difficulty": "insane",
 "secret_way_at": 57,
-    "records": [ ]
+    "records": [
+        {
+            "user": "Gold Dyno",
+            "link": "https://youtu.be/K0jWa2vBYqE?si=79ge5NaAtt9UNcxJ",
+            "percent": 100,
+            "hz": 120,
+            "mobile": true
+        }
+    ]
+
 }

@@ -12,6 +12,15 @@
 "secret_way_end": 100,
 "description": "Skip the speed portal at 11.8%, go under the ball portal at 14.8% and then don’t click to fall to the ceiling before the saw at 15%. Stay at the ceiling. Until ~45.7% where you can move to the middle of the screen and then can fall back down at 47% to avoid invisible spikes. Stay at the ceiling until the end from there. ", 
 "difficulty": "medium",
-    "records": []
+    "records": [
+        {
+            "user": "Lizzy",
+            "link": "https://youtu.be/aafeMUBW3p4",
+            "percent": 100,
+            "hz": 240,
+            "mobile": false
+        }
+    ]
+
 
    }

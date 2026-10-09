@@ -16,5 +16,28 @@
 "difficulty": "easy",
 "secret_way_at": 51,
 "password": "Password Required",
-    "records": [ ]
+    "records": [
+        {
+            "user": "Lizzy",
+            "link": "https://youtu.be/XOUyRzoS6xU?feature=shared",
+            "percent": 100,
+            "hz": 240,
+"mobile": false
+        },
+        {
+            "user": "DariGamer13",
+            "link": "https://youtu.be/TJL3W7b9xxI?si=sAGRp1t3_wwDIol3",
+            "percent": 100,
+            "hz": 240,
+            "mobile": false 
+        },
+        {
+            "user": "Liverlan",
+            "link": "https://youtu.be/QmKpkaK0Vdw?si=Qw8m3s7tpVOEcxXv",
+            "percent": 100,
+            "hz": 60,
+            "mobile": false
+        }
+    ]
+
 }

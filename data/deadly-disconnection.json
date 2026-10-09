@@ -35,5 +35,14 @@
 "description": "Time a hold at 46% to avoid the gravity portal and to go below the level between the platforms as the ship. Fly below the level near the floor from 48% to 59%. Avoid the gears on the floor at 60% and 64%. Fly near the floor from 65% to 78%. Stay below the gameplay to the end from there. ", 
 "difficulty": "insane",
 "secret_way_at": 46,
-    "records": [ ]
+    "records": [
+        {
+            "user": "Gold Dyno",
+            "link": "https://youtu.be/5_mPwSWBths?si=Z8kL6dL6l10STkI2",
+            "percent": 100,
+            "hz": 120,
+"mobile": true
+        }
+    ]
+
 }

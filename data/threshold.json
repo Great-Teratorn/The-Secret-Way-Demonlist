@@ -14,5 +14,14 @@
 "difficulty": "medium",
 "secret_way_at": 33,
 "password": "Password Required",
-    "records": [ ]
+    "records": [
+        {
+            "user": "Liverlan",
+            "link": "https://youtu.be/ICKZfevVAZs?si=MzpBqbExo8JLqVDa",
+            "percent": 100,
+            "hz": 240,
+            "mobile": false
+        }
+    ]
+
 }

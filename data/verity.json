@@ -12,6 +12,15 @@
 "secret_way_end": 100,
 "description": "Spam above the cube portal as the wave at 39.0%. Go under the ship portal while avoiding dying to the spikes at 39.9%. Hold up (without touching the ceiling) as the wave between the spikes and ball portal at 41% and then move to the floor. Hold to the ceiling at 46%. Stay at the ceiling until the end from there. ", 
 "difficulty": "medium",
-    "records": []
+    "records": [
+        {
+            "user": "Lizzy",
+            "link": "https://www.youtube.com/watch?v=WXFqJ-nrhuc",
+            "percent": 100,
+            "hz": 240,
+            "mobile": false
+        }
+    ]
+
 
    }

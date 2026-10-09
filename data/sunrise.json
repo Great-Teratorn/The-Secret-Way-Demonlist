@@ -8,11 +8,20 @@
     "verifier": "Zorktron",
     "verification": "https://youtu.be/ZzO8FfCgkMI?si=-ojO6wzHUvvDBytU",
     "percentToQualify": 100,
-"secret_way_start": "26 to 38, 44 to 52, 80",
-"secret_way_end": 100,
+"secret_way_start": [26, 44, 80],
+"secret_way_end": [38, 52, 100],
 "description": "This is a long description. ", 
 "difficulty": "medium",
 "secret_way_at": 13,
 "password": "Password Required",
-    "records": [ ]
+    "records": [
+        {
+            "user": "DariGamer13",
+            "link": "https://youtu.be/W8gA6ahwwu8?si=Q2ZlU7BU_ciJE8zL",
+            "percent": 100,
+            "hz": 240,
+            "mobile": false
+        }
+    ]
+
 }

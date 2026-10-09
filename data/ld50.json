@@ -15,5 +15,21 @@
 "description": "Let go of the dash orb early at 22% to land on the block after the spikes. Click the far right middle of the red orb at 23% to fall between the spikes at 24%. Do a small jump over the spike as the robot to fall out of the level before the platform. Free to the end from there. ", 
 "difficulty": "extreme",
 "secret_way_at": 23,
-    "records": [ ]
+    "records": [
+        {
+            "user": "kolgotochnik",
+            "link": "https://youtu.be/g_6jxUolRBs?si=ZwZZ8-Z1j2NBP5bR&t=21",
+            "percent": 100,
+            "hz": 60,
+"mobile": false
+        },
+        {
+            "user": "DariGamer13",
+            "link": "https://youtu.be/_UEqpvVQVXY?si=vJZAEyn5SGpJ31K8",
+            "percent": 100,
+            "hz": 240,
+            "mobile": false
+        }
+    ]
+
 }

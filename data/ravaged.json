@@ -14,5 +14,35 @@
 "description": "Take the joke secret way by hitting the invisible orb at 0%. At 9%, fly through the invisible hitboxes in the caution tape and then hold over the slope. Free to the end from there. ", 
 "difficulty": "easy",
 "secret_way_at": 4,
-    "records": [ ]
+    "records": [
+        {
+            "user": "DariGamer13",
+            "link": "https://youtu.be/H0Htu5lNnRc?si=oVxowkqTLem6C4ln",
+            "percent": 100,
+            "hz": 240,
+"mobile": false
+        },
+        {
+            "user": "Great Teratorn",
+            "link": "https://youtu.be/mqaObzmeSV0?si=-cpwRwGp13xaec9E",
+            "percent": 100,
+            "hz": 60,
+            "mobile": true
+        },
+        {
+            "user": "Jackypoo",
+            "link": "https://youtu.be/raUf10liOrs?si=9ao_ebq-DuR9dQuo",
+            "percent": 100,
+            "hz": 60,
+            "mobile": true
+        },
+        {
+            "user": "Liverlan",
+            "link": "https://youtu.be/jsGhGJ-Bn28?si=tHF8ln5RWG1jv2mh",
+            "percent": 100,
+            "hz": 60,
+            "mobile": false
+        }
+    ]
+
 }

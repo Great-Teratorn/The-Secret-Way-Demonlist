@@ -20,5 +20,14 @@
 "difficulty": "medium",
 "secret_way_at": 32,
 "password": "Password Required",
-    "records": [ ]
+    "records": [
+        {
+            "user": "Lizzy",
+            "link": "https://youtu.be/loeJLWGGOno",
+            "percent": 100,
+            "hz": 240,
+            "mobile": false
+        }
+    ]
+
 }

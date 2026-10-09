@@ -13,5 +13,21 @@
 "description": "Go above the robot portal as the wave at 40% between the portal and platform and then hold to the ceiling. Move down at 43% after passing the UFO portal and then navigate through the following gameplay as the wave until 45% where you can go above the ship portal between the portal and structure, drop down a bit and then hold to the ceiling. Drop down shortly before the spike at 47% and then navigate through the gameplay as the wave while avoiding all of the portals until 53% where you can hold to the ceiling after getting the .5x speed portal. Hold to the ceiling until the end from there. ", 
 "difficulty": "easy",
 "secret_way_at": 40,
-    "records": [ ]
+    "records": [
+        {
+            "user": "Liverlan",
+            "link": "https://youtu.be/HxuBBG-9ycU?si=22bGFwj1u_MTT9h9",
+            "percent": 100,
+            "hz": 60,
+"mobile": false
+        },
+        {
+            "user": "Lizzy",
+            "link": "https://youtu.be/XZ-jFESWIZ8",
+            "percent": 100,
+            "hz": 240,
+            "mobile": false
+        }
+    ]
+
 }
