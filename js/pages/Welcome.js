@@ -122,6 +122,62 @@ export default {
                     
                 </div>
 
+
+
+                <!-- Search Bar Box -->
+                <div style="background: rgba(15, 10, 25, 0.6); padding: 25px; border-radius: 8px; border-left: 4px solid #8a2be2; margin-bottom: 35px;">
+                    <h3 style="font-size: 1.2rem; margin: 0 0 12px 0; color: #fff;">Search Bar</h3>
+                    <ul style="padding-left: 20px; margin: 0; line-height: 1.7; color: #dde3ea; font-size: 1rem; font-weight: 500;">
+                        <li style="margin-bottom: 8px;">The search bar at the top of this Welcome page allows you to search for any level in our lists, along with any players, creators, collaborators and levels IDs. </li>
+                        <li>Meanings of tags in level results:</li>
+                        <li>Just clicking on the level result navigates you to the list which it is on. </li>
+                        <li>LEGACY - navigates you to the level's position in the Legacy List.</li>
+                        <li>WEEKLY DEMON yellow tag - shows that the level is the current Weekly Demon, navigates you to the level on the Weeky Demon list - will be at the top of the list. </li>
+                        <li style="margin-bottom: 8px;">Blue W - shows that a level has previously been a Weekly Demon, navigates you to that level on the Weeky Demon list. </li>
+                        <li>When searching for a player:</li>
+                        <li>You will be navigated to their position on the Main Leaderboard. </li>
+                        <li>Players with the pink W tag - you will be navigated to their position on the Weekly Demon Leaderboard. </li>
+                        <li>Players with the red A tag - you will be redirected to the Anomalies list and that player's anomaly verifications will all be highlighted. </li>
+                        <li style="margin-bottom: 8px;">Players with the orange R tag - you will be redirected to the Removed list and that player's verifications which have been removed will all be highlighted. </li>
+                        <li>When searching for a creator/collaborator:</li>
+                        <li style="margin-bottom: 8px;">Click on the dropdown in the search results. All of the levels which they have contributed to will show up in the search results, so that you can pick which one you would like to be navigated to. A person may be both a creator and a collaborator depending on the level.  </li>
+                        <li style="margin-bottom: 8px;">You may search a level by its ID only if it is the exact, complete ID. For instance, 58825144 will take you to xo - only if it is fully typed out. </li>
+                        <li>(R) - if this is next to a level name, it simply means that it is in the Removed list. This helps in differentiating between search results with the same level name.  </li>
+                    </ul>
+                </div>
+
+
+
+                <!-- Abbreviations Box -->
+                <div style="background: rgba(20, 15, 35, 0.8); padding: 25px; border-radius: 8px; border: 1px solid #4a3f75; margin-bottom: 25px;">
+                    <h2 style="font-size: 1.5rem; margin: 0 0 12px 0; color: #e0d4ff;">Abbreviations</h2>
+                    <p style="line-height: 1.6; font-size: 0.95rem; color: #cbd5e1; margin: 0 0 15px 0;">
+                        TSWD - The Secret Way Demonlist
+                    </p>
+                    <p style="line-height: 1.6; font-size: 0.95rem; color: #cbd5e1; margin: 0 0 16px 0;">
+                        SW - Secret Way 
+                    </p>
+                    <p style="line-height: 1.6; font-size: 0.95rem; color: #cbd5e1; margin: 0 0 16px 0;">
+                        WDP - Weekly Demon Point(s)
+                    </p>
+                    <p style="line-height: 1.6; font-size: 0.95rem; color: #cbd5e1; margin: 0 0 16px 0;">
+                        LDM - Low Detail Mode
+                    </p>
+                    <p style="line-height: 1.6; font-size: 0.95rem; color: #cbd5e1; margin: 0 0 16px 0;">
+                        ULDM - Ultra Low Detail Mode
+                    </p>
+                    <p style="line-height: 1.6; font-size: 0.95rem; color: #cbd5e1; margin: 0 0 16px 0;">
+                        FDM - Full Detail Mode
+                    </p>
+                    <p style="line-height: 1.6; font-size: 0.95rem; color: #cbd5e1; margin: 0 0 16px 0;">
+                        GD - Geometrical Dominator (obviously)
+                    </p>
+                    
+                </div>
+
+
+
+
 <!-- Origins Heading -->
                 <div style="margin-top: 20px;">
                     <h2 style="font-size: 1.6rem; margin: 0 0 15px 0; color: #e0d4ff; font-weight: bold; text-transform: uppercase;">
