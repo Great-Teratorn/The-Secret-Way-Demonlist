@@ -13,7 +13,7 @@
     "percentToQualify": 100,
 "secret_way_start": "28 to 60, 67",
 "secret_way_end": 100,
-"description": "This is a long description. ", 
+"description": "Hold into the top part of the cube portal at 28% to make both icons be on the top side of the gameplay and then keep holding to have both icons be ball. Play through the levels top-half gameplay while using a P1 and P2 input until 59% where you need to land on the right corner of the floating hitboxes and then buffer a jump to enter the cube portal at 60%. Play the level normally from there. ", 
 "difficulty": "medium",
 "secret_way_at": 29, 
     "records": [ ]

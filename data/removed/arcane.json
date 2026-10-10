@@ -1,6 +1,6 @@
 {
     "id": 65269826,
-    "name": "Arcane",
+    "name": "Arcane (R)",
     "author": "qMystic",
     "creators": [
         "qMystic",
@@ -31,7 +31,7 @@
     "secret_way_start": 46,
     "dateRemoved": "27/08/2026",
     "secret_way_end": 100,
-"description": "This is a long description. ", 
+"description": "LDM ONLY: Land behind the spike at 43% to go under the cube portal. Enter the invisible normal size portal at 44% and go between the platform and gear. Hold to the ceiling at 45% (try to avoid the 2x speed portal to make the next part of the secret way easier). Stop holding at 46% when your wave goes behind the decoration to fall between the spikes. Hold at the ceiling from 46% to 81%. At 81% fall to the floor and stay there to the end. ", 
 "removedReason": "Replaced",
 "difficulty": "insane",
     "records": [ ]

@@ -10,7 +10,7 @@
     "percentToQualify": 100,
 "secret_way_start": 39,
 "secret_way_end": 100,
-"description": "This is a long description. ", 
+"description": "Hold out of the level as the ship between the spikes at 39.5%. Maintain a constant position for the rest of the level until 82% where you can let go and complete the level. ", 
 "difficulty": "easy",
 "secret_way_at": 39,
     "records": [ ]

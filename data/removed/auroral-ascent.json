@@ -1,6 +1,6 @@
 {
     "id": 122872017,
-    "name": "Auroral Ascent",
+    "name": "Auroral Ascent (R)",
     "author": "rnexel",
     "creators": ["rnexel"
         
@@ -13,7 +13,7 @@
 "difficulty": "extreme",
 "removedReason": "Patched",
 "dateRemoved": "27/05/2026",
-"description": "This is a long description. ",
+"description": "Go below the cube portal as the mini wave at 4%. Play until 12% as mini (jump as late as possible at 5% to reach the gravity portal). Skip the cube portal at 12% and navigate through the following section as a UFO. Fall above the level at between the platforms at 16%. Stay near the ceiling for the rest of the level. ",
     "secret_way_at": 13,
     "records": [
         

@@ -1,6 +1,6 @@
 {
     "id": 78892868,
-    "name": "Rhythmical Scream",
+    "name": "Rhythmical Scream (R)",
     "author": "iIDariusIi",
     "creators": [
         "iIDariusIi",
@@ -12,8 +12,9 @@
     "percentToQualify": 100,
     "difficulty": "hard",
     "secret_way_start": 41,
+    "secret_way_at": 41,
     "secret_way_end": 100,
-    "description": "How did both secret ways get patched lol",
+    "description": "ULDM ONLY: Go between the cube portal and platform at 41% as the wave and then hold to the ceiling at 42%. Go between the spike and platform at 43% and then continue holding at the ceiling for the rest of the level. ",
     "removedReason": "Patched",
     "dateRemoved": "08/09/2026",
 

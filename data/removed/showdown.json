@@ -1,6 +1,6 @@
 {
     "id": 54434382,
-    "name": "Showdown",
+    "name": "Showdown (R)",
     "author": "SpinStudios",
     "creators": ["SpinStudios", "Vorgogne", "TCD", "Drakeghast"
         
@@ -13,7 +13,7 @@
 "difficulty": "easy",
 "removedReason": "Patched",
 "dateRemoved": "27/08/2026",
-"description": "This is a long description. ",
+"description": "Time a jump from the platform at exactly 17.38%, then buffer the yellow orb and skip the pink orb at 18% to fall out of the level. ",
     "secret_way_at": 18,
     "records": [
         

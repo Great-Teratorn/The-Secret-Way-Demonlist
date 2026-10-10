@@ -10,7 +10,7 @@
     "percentToQualify": 100,
 "secret_way_start": 41,
 "secret_way_end": 85,
-"description": "This is a long description. ", 
+"description": "Time the dash orb late at 39% and keep holding until 41.25% where you release to barely dodge the invisible yellow portal falling to the ground (percentage on when to release is different based on how late you hold that dash orb). Immediately jump when you reach 85% to re-enter the level. ", 
 "difficulty": "medium",
 "secret_way_at": 41,
     "records": [ ]

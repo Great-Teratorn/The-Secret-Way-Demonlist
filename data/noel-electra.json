@@ -10,7 +10,7 @@
     "percentToQualify": 100,
 "secret_way_start": 38,
 "secret_way_end": 100,
-"description": "This is a long description. ", 
+"description": "Start holding at 38% between the moving trains and keep holding until 52%. Start holding again at 53.5% until you get teleported at 57%. Keep playing normally until 58.7% where you go through the slope (it has no hitbox) and fall out of the level. ", 
 "difficulty": "medium",
 "secret_way_at": 38,
     "records": [

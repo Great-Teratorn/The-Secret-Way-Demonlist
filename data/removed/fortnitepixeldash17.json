@@ -1,6 +1,6 @@
 {
     "id": 120334898,
-    "name": "FortnitePixelDash17",
+    "name": "FortnitePixelDash17 (R)",
     "author": "FDAteam",
     "creators": [
         "rampogd",
@@ -23,7 +23,7 @@
     "secret_way_start": 7,
     "dateRemoved": "25/07/2026",
     "secret_way_end": 100,
-    "description": "This is a long description. ", 
+    "description": "Fly under the gravity portal at 7%, hold out of the level between a block and a slope and release to not die to an invisible saw. Fly above the level and start holding at 17% to avoid invisible blue pads. Stop clicking when the camera goes static at 40%. Start holding at 48% and when the camera goes back to normal fly near the ceiling until the level ends at 71%. ", 
     "removedReason": "Replaced",
     "difficulty": "medium",
     "records": [ ]

@@ -1,6 +1,6 @@
 {
     "id": 96039122,
-    "name": "ascension to walmart",
+    "name": "ascension to walmart (R)",
     "author": "vayulena",
     "creators": [
         "vayulena",
@@ -13,7 +13,7 @@
     "secret_way_start": 30,
     "dateRemoved": "07/09/2026",
     "secret_way_end": 100,
-    "description": "This is a long description. ", 
+    "description": "Skip the green orb at 29% and then go above the cube portal at 30% to stay as a mini wave. Navigate through the following section as the wave until 33% where you can enter the normal size portal and fall above the level. Stay near the ceiling for the rest of the level, especially at 92% to go over an invisible saw wall. ", 
     "removedReason": "Replaced",
 "difficulty": "hard",
     "records": [ ]

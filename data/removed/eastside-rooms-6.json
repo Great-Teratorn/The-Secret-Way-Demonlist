@@ -1,6 +1,6 @@
 {
     "id": 137140169,
-    "name": "eastside rooms 6",
+    "name": "eastside rooms 6 (R)",
     "author": "spycold",
     "creators": ["spycold"
         
@@ -13,7 +13,7 @@
 "difficulty": "easy",
 "removedReason": "Patched",
 "dateRemoved": "09/07/2026",
-"description": "This is a long description. ",
+"description": "Click the red orb at 12% as early as possible (don't buffer it) and click in the middle of the arrow at 13%. Stay below the level until the end. ",
     "secret_way_at": 13,
     "records": [
         

@@ -1,6 +1,6 @@
 {
     "id": 140719263,
-    "name": "lwyn",
+    "name": "lwyn (R)",
     "author": "Y0lis",
     "creators": ["Y0lis", "BlueOrbe", "GenteelNoobie", "Strudull", "IDKguy", "DaRealTech", "SadCraft0o", "CheeseCannon99", "AstraliYT", "thatrosey", "Zek"
         
@@ -13,7 +13,7 @@
 "difficulty": "medium",
 "removedReason": "Patched",
 "dateRemoved": "31/08/2026",
-"description": "This is a long description. ",
+"description": "At 60% you need to fly into the red pad in the lower part. If you hit the very bottom of the red pad, you'll 'bounce' and die afterwards. But if you manage to hit just above the bottom of the red pad, don't do anything and let the mini ship go between the hitboxes and fall to the floor. Free to the end from there. ",
     "secret_way_at": 61,
     "records": [
         

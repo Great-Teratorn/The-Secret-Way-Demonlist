@@ -10,7 +10,7 @@
     "percentToQualify": 100,
 "secret_way_start": 22,
 "secret_way_end": 100,
-"description": "This is a long description. ", 
+"description": "Jump right before entering the robot portal at 14% to skip an invisible trigger while still entering the robot portal. Play normally until 22%, where the level will end if the trigger was successfully skipped (it is also possible to fully skip the robot portal and reach 22% as a cube). ", 
 "difficulty": "easy",
 "secret_way_at": 25,
 "password": "Not Copyable",

@@ -1,6 +1,6 @@
 {
 
-    "name": "Place", 
+    "name": "Place (R)", 
     "author": "Spu7Nix",
     "creators": ["Spu7Nix and 14,010 participants"],
     "id": 86917672,
@@ -11,7 +11,7 @@
     "secret_way_start": [30, 89],
     "secret_way_end": [73, 100],
     "dateRemoved": "04/07/2026",
-    "description": "This is a long description. ", 
+    "description": "Take the intended route (staying near the floor) until 28%. Hold the dash orb at 28.7% and then jump from the breakable block at 29.0% to the platform. Hold the pink dash orb at 29.4% a bit and then fall up into the gravity portal. Hold the dash orb at 30.4%. Stop holding when you reach the ceiling (31.65%-31.70%) to enter the spider portal at 32%. Enter the cube portal at the ceiling at 49% to become a wave. Enter the spider portal at 53% and enter the wave portal at the ceiling at 54%. Change gravity using the pink dash orb at 64%. Enter the wave portal at 72%. Hold at the ceiling as the ship until you are a bit over halfway past the first row of black orbs in the letter 'K' at 76.1%. Buffer a hold when you fall so you can land on the platform at 76.8%, letting you click the red orb without hitting the gravity portal. Enter the wave portal at 78.9% and the ship portal at 79%. Hold into the far left of the second wave portal at 80.7%. Enter the ship portal at 81.8%. Do a full hold from the end of the platform at 85% to enter the wave portal. Enter the spider portals at 87.8% and 88.6%. Teleport down into the cube portal at 88.9%. Hold into the cube portal at 90% after you enter the wave portal. Jump onto the second blue pad at 90.7% and buffer a hold. Stop holding at the middle of the cross at 91.5% and buffer a hold after you fall from the block at 91.8% to enter the spider portal. Enter the ship portal at 96%. Hold between the saws and block at 98% and then fall to the ceiling at 98.9%. ", 
     "removedReason": "Replaced",
     "difficulty": "extreme",
     "records": []
