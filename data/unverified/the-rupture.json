@@ -1,0 +1,19 @@
+{
+    "id": 57828784,
+    "name": "The Rupture",
+    "author": "Ka1ns",
+    "creators": ["Ka1ns"
+        
+    ],
+    "verifier": "None",
+    "verification": "https://www.youtube.com/watch?v=5CEaPhhGK-Y",
+    "percentToQualify": 100,
+"secret_way_start": 13,
+"secret_way_end": 58,
+"difficulty": "extreme",
+"description": "Hold to the ceiling as the wave over the cube portal at 13%. Fall to the floor at 15%. Hold to the ceiling between the saws at 58% and then enter the ball portal to re-enter the level. ",
+    "secret_way_at": 13,
+    "records": [
+        
+    ]
+}

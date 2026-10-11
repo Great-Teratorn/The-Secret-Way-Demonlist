@@ -1,0 +1,19 @@
+{
+    "id": 56916170,
+    "name": "Bang Gang",
+    "author": "Danzmen",
+    "creators": ["Danzmen"
+        
+    ],
+    "verifier": "None",
+    "verification": "https://www.youtube.com/watch?v=c02TzHFagaY",
+    "percentToQualify": 100,
+"secret_way_start": 42,
+"secret_way_end": 100,
+"difficulty": "extreme",
+"description": "Only press and hold the yellow orb at 42% with player 2 to sync the dual. Play half of the dual for the rest of the level with two inputs. ",
+    "secret_way_at": 42,
+    "records": [
+        
+    ]
+}
