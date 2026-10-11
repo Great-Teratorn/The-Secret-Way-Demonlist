@@ -19,7 +19,14 @@
             "link": "https://youtu.be/M-qKMKYvAlI?si=QixYV_ImgDvxZkdf",
             "percent": 100,
             "hz": 60,
-"mobile": false
+"mobile": false 
+        },
+        {
+            "user": "Lizzy",
+            "link": "https://youtu.be/3nvyHyGEoEk?si=dU5_wMEXCHNHoe2Q",
+            "percent": 100,
+            "hz": 240,
+            "mobile": false
         },
         {
             "user": "Gold Dyno",

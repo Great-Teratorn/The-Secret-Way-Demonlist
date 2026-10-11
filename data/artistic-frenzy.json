@@ -15,9 +15,16 @@
 "secret_way_at": 14,
 "password": "Password Required",
     "records": [
-        {
+        {         
             "user": "DariGamer13",
             "link": "https://youtu.be/k9bvUVzdC3c?si=SkZfvHy8C-159jTs",
+            "percent": 100,
+            "hz": 240,
+            "mobile": false 
+        },
+        {
+            "user": "Lizzy",
+            "link": "https://youtu.be/KNeKbXNIUUQ",
             "percent": 100,
             "hz": 240,
             "mobile": false

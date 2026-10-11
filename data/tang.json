@@ -19,6 +19,13 @@
             "link": "https://youtu.be/7OZVfJ7XCeo?si=Ch7H3jNbKsWpD1rV",
             "percent": 100,
             "hz": 240,
+            "mobile": false 
+        },
+        {
+            "user": "Lizzy",
+            "link": "https://youtu.be/c2QoPmwlTt4",
+            "percent": 100,
+            "hz": 240,
             "mobile": false
         }
     ]

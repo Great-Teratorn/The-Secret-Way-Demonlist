@@ -13,7 +13,14 @@
 "description": "Go under the cube portal between the saw shortly after clicking the green orb at 58% and then fall to the ceiling as the UFO and stay there. Jump over the single spike on the ceiling at 73%. Stay at the ceiling for the rest of the level from there. ", 
 "difficulty": "easy",
 "secret_way_at": 57,
-    "records": [
+    "records": [ 
+        {
+            "user": "Lizzy",
+            "link": "https://youtu.be/eiuXn1e_FoE",
+            "percent": 100,
+            "hz": 240,
+            "mobile": false 
+        },
         {
             "user": "Liverlan",
             "link": "https://youtu.be/f8IOWcsWIRo?si=uw8myS4LkYD-CP-U",
