@@ -15,6 +15,7 @@
 "secret_way_end": 100,
 "description": "This is a long description. ", 
 "difficulty": "medium",
+"datefallen": "10/10/2026",
 "secret_way_at": 63, 
     "records": [
         {
