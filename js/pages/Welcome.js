@@ -246,7 +246,7 @@ export default {
         `,
     computed: {
     video1() {
-        return embed("https://www.youtube.com/watch?v=S7BtDDTYVLM");
+        return embed("https://www.youtube.com/watch?v=zmHXbQ_6i9o");
     },
     video2() {
         return embed("https://www.youtube.com/watch?v=S7BtDDTYVLM");
