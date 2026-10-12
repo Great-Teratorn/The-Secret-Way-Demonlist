@@ -12,6 +12,7 @@
 "secret_way_end": 90,
 "description": "Fall under the level in the blue portal at 57% and go above the gears on the floor. Stay on the floor until you're teleported back at 90%. ", 
 "difficulty": "medium",
+"dateFallen": "10/10/2026",
 "secret_way_at": 58,
     "records": [ ]
 }

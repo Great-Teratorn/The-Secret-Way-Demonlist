@@ -1,0 +1,17 @@
+{
+    "id": 96858692,
+    "name": "The Rainbow Switch",
+    "author": "ImMantaa",
+    "creators": [
+        "ImMantaa"
+    ],
+    "verifier": "Liverlan",
+    "verification": "https://youtu.be/QwUUApKuwyw?si=aGcMXUIX44BIWzGqb",
+    "percentToQualify": 100,
+"secret_way_start": 8,
+"secret_way_end": 100,
+"description": "NOTE: The invisible spike on the floor has a 0.1% chance to be removed each attempt, making the secret way possible. LDM RECOMMENDED: Time a hold at the third column of platforms at 2% to go above the level. Time the pink orb at 4% and hold so you jump from both side of the platform at 5% and so you can click the later yellow orb at 5.8%. Jump from the left side of the platform at 6% and then jump out of the level from the right side of the lower platform (covered by the decoration) at 7%. Click once between 16.6-17.6% and 26.7%-27.2% to move invisible hitboxes. Stay at the floor to the end from there.", 
+"difficulty": "extreme",
+"secret_way_at": 10,
+    "records": [ ]
+}
