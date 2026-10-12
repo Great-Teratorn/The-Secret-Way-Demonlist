@@ -1,0 +1,17 @@
+{
+    "id": 116640243,
+    "name": "Phasing Sequence",
+    "author": "DriftGMD",
+    "creators": [
+        "DriftGMD"
+    ],
+    "verifier": "Gold Dyno",
+    "verification": "https://youtu.be/6W0G_PQWAyc?si=HOkZ_c70dnw1-k9w",
+    "percentToQualify": 100,
+"secret_way_start": 63,
+"secret_way_end": 100,
+"description": "Hold above the level as the wave between the spikes and ball portal at 62%. Spam at a constant position bit under the “NO” text until the end from there.", 
+"difficulty": "medium",
+"secret_way_at": 63,
+    "records": [ ]
+}
