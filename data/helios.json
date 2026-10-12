@@ -13,5 +13,13 @@
 "description": "Go above the cube portal as the wave at 68%. At 72%, start spamming slightly below the moving rocks. Continue spamming at that level until the end from there. ", 
 "difficulty": "easy",
 "secret_way_at": 69,
-    "records": [ ]
+    "records": [
+        {
+            "user": "Liverlan",
+            "link": "https://youtu.be/td_6KRHehp4?si=K5mtWu5vtdBxVHfI",
+            "percent": 100,
+            "hz": 60,
+            "mobile": false
+        }
+    ]
 }
