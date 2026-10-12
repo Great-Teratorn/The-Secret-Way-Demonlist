@@ -12,7 +12,7 @@
 "secret_way_end": 100,
 "description": "Start holding at 38% between the moving trains and keep holding until 52%. Start holding again at 53.5% until you get teleported at 57%. Keep playing normally until 58.7% where you go through the slope (it has no hitbox) and fall out of the level. ", 
 "difficulty": "medium",
-"dateFalen": "10/10/2026",
+"dateFallen": "10/10/2026",
 "secret_way_at": 38,
     "records": [
         {
