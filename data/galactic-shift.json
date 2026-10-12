@@ -1,0 +1,39 @@
+{
+    "id": 59829005,
+    "name": "Galactic Shift",
+    "author": "TeamSmokeWeed",
+    "creators": [
+        "Krampux",
+        "moreEstachi",
+        "HelpegasuS",
+        "Sikatsuka",
+        "SyQual",
+        "Isane",
+        "LioLeo",
+        "Reunomi",
+        "DUBU",
+        "Tesseract",
+        "Amatuerre",
+        "1374",
+        "KireiMirai"
+    ],
+    "verifier": "hytklfsq",
+    "verification": "https://youtu.be/3bDFh03s9BU?si=WGeMVud2vuhK4NjM",
+    "percentToQualify": 100,
+"secret_way_start": 62,
+"secret_way_end": 100,
+"description": "Jump early at 62.1% over the blue pad to fall out of the level.", 
+"difficulty": "extreme",
+"secret_way_at": 62,
+"password": "Password Required",
+    "records": [
+        {
+            "user": "Salvoe",
+            "link": "https://youtu.be/r9N2SF7VHIY?t=303&si=hnY0SPUwi7oPH4pY",
+            "percent": 100,
+            "hz": 240,
+            "mobile": false
+        }
+    ]
+    
+}
