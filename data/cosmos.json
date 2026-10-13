@@ -13,5 +13,13 @@
 "description": "Go under the UFO portal as the wave at 47%. Navigate through the following gameplay as the wave while avoiding all the portals until 57% where you can fall to the floor between the saws. Avoid the obstacles on the floor while staying semi-near/on the floor until 73% where you can go above the wave and 3x speed portal and play the section at a slower speed instead. At 79%, you will enter a ship portal. Play the level normally from there. ", 
 "difficulty": "medium",
 "secret_way_at": 48,
-    "records": [ ]
+    "records": [
+        {
+            "user": "aMaxZon200",
+            "link": "https://youtu.be/1GNmM62UMo0?si=spmxYXTvCR2W_zU4",
+            "percent": 100,
+            "hz": 240,
+            "mobile": false
+        }
+    ]
 }
