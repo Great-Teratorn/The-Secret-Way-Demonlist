@@ -1,0 +1,21 @@
+{
+    "id": 125132045,
+    "name": "pivo",
+    "author": "PlantLife",
+    "creators": ["PlantLife"
+        
+    ],
+    "verifier": "Great Teratorn",
+    "verification": "https://www.youtube.com/watch?v=QpWlIlkTRbU",
+    "percentToQualify": 100,
+    "secret_way_at": 63,
+"secret_way_start": 64,
+"secret_way_end": 100,
+"difficulty": "medium",
+"description": "To actually get the timing, once the mini cube falls onto the platform, wait a microsecond and then jump, afterwards timing the UFO jump quite late to be able to fall upside down between the spike and the platform. Once you fall above the level, keep falling until 70%, then just stay there until the end. ",
+    "records": [
+
+
+        
+    ]
+}

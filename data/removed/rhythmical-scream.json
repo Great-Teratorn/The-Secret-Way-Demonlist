@@ -18,5 +18,13 @@
     "removedReason": "Patched",
     "dateRemoved": "08/09/2026",
 
-    "records": [ ]
+    "records": [
+        {
+    "user": "Gold Dyno",
+    "percent": 100,
+    "hz": 120,
+    "link": "https://www.youtube.com/watch?v=xzhinWFZ24U",
+    "mobile": true
+        } 
+    ]
 }
