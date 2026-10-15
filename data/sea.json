@@ -15,5 +15,13 @@
 "difficulty": "easy",
 "secret_way_at": 30,
 "password": "Password Required",
-    "records": [ ]
+    "records": [
+        {
+            "user": "DariGamer13",
+            "link": "https://youtu.be/hRgWfsADFpY?si=y9zUnUwyaYwMauyO",
+            "percent": 100,
+            "hz": 240,
+            "mobile": false
+        }
+    ]
 }
