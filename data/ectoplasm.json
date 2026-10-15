@@ -12,6 +12,7 @@
 "secret_way_end": 100,
 "description": "Buffer the first UFO click at 47% and then time the second click and don’t click after to fall above the level between the spike and saw right after entering the wave portal. Stay at a constant position a bit above the gameplay for the rest of the level. ", 
 "difficulty": "easy",
+"dateFallen": "15/10/2026",
 "secret_way_at": 49,
     "records": [ ]
 }

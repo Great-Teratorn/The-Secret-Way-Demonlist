@@ -1,0 +1,18 @@
+{
+    "id": 76866307,
+    "name": "EXG",
+    "author": "Grax",
+    "creators": [
+        "Grax"
+    ],
+    "verifier": "Gold Dyno",
+    "verification": "https://youtu.be/wyhI8bZ9hqw?si=rViwobALumGJcOpb",
+    "percentToQualify": 100,
+"secret_way_start": 66,
+"secret_way_end": 100,
+"description": "Hold on the slope at 66 to skip the cube portal and fall down. At 74.5% fly between the obstacles and fly in the middle until 83%.", 
+"difficulty": "insane",
+"secret_way_at": 67,
+"password": "Password Required",
+    "records": [ ]
+}
