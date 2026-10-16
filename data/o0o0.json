@@ -13,5 +13,13 @@
 "description": "Press and hold the bottom left corner of the second black orb at 5%. Stop holding briefly to go over the first block at 6% without hitting the invisible saw above. Start holding again at the second block to go above the level between the invisible saws. Fly above the level until 66% where you have to fly upwards and stay right below the gear until 76%. Start falling at around 74.8% to land on a platform. Free to the end from there.  ", 
 "difficulty": "insane",
 "secret_way_at": 6,
-    "records": [ ]
+    "records": [
+        {
+            "user": "DariGamer13",
+            "link": "https://youtu.be/wOnqQDhuLXo?si=rBCZxHa6iC8Q2w9E",
+            "percent": 100,
+            "hz": 60,
+            "mobile": true
+        }
+    ]
 }

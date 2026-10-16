@@ -13,5 +13,13 @@
 "description": "Fly near the first set of rotating spikes at 42% (this will make the secret way not rng) and then time a hold after your icon touches the invisible mini portal at 42.3% to go to the ceiling between the rotating spikes. Fall to the floor a bit before the ball portal at 44% and stay there. Fly above the creature with the spikes on the floor at 66% and then move back to the floor. Stay on the floor until the end from there.", 
 "difficulty": "hard",
 "secret_way_at": 43,
-    "records": [ ]
+    "records": [
+        {
+            "user": "DariGamer13",
+            "link": "https://youtu.be/EJls7LNSFJQ?si=hnJDYHqjVQyUXCso",
+            "percent": 100,
+            "hz": 60,
+            "mobile": true
+        }
+    ]
 }
