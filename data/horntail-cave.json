@@ -14,5 +14,13 @@
 "difficulty": "insane",
 "secret_way_at": 61,
 "password": "Not Copyable",
-    "records": [ ]
+    "records": [
+        {
+            "user": "humanchip",
+            "link": "https://youtu.be/6QCqkVzX_GY?si=6Wehq1PPiSGY8ofa",
+            "percent": 100,
+            "hz": 240,
+            "mobile": false
+        }
+    ]
 }

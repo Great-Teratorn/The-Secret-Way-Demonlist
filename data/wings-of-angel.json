@@ -13,7 +13,7 @@
     "percentToQualify": 100,
 "secret_way_start": 63,
 "secret_way_end": 100,
-"description": "This is a long description. ", 
+"description": "Time the pink dash orb at 63% to go between the structures. Let go right when your percent changes to 70%. Hold to the floor at 73%. You can then fall to the ceiling at 74%. At 95% hold to the floor again for the rest of the level.", 
 "difficulty": "medium",
 "dateFallen": "10/10/2026",
 "secret_way_at": 63, 

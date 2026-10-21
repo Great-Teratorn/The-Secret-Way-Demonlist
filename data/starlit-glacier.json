@@ -10,7 +10,7 @@
     "percentToQualify": 100,
 "secret_way_start": 64,
 "secret_way_end": 100,
-"description": "This is a long description. ", 
+"description": "Land on the edge of the platform at 63% and then fly through the saws right after it. If you fly too high after them, you will go into a yellow gravity and a normal size portal. You can still make it past the spike wall if you're regular size or upside-down, it's just more awkward, so it's best to just avoid them. Be sure to start holding at around 96% to avoid the spike wall at the end.", 
 "difficulty": "medium",
 "secret_way_at": 63,
     "records": [
