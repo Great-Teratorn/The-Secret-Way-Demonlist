@@ -1,0 +1,17 @@
+{
+    "id": 104929284,
+    "name": "Western Movie",
+    "author": "DamianosKabanos",
+    "creators": [
+        "DamianosKabanos"
+    ],
+    "verifier": "Liverlan",
+    "verification": "https://youtu.be/hW_-Pdhrc1o",
+    "percentToQualify": 100,
+"secret_way_start": [34, 63],
+"secret_way_end": [57, 100],
+"description": "Let go of the dash orb at 34%, just before the cube portal to fall out of the level. Time a click at 57.7% to re-enter the level. Time a small click on the green orb at 60% to go between two sawblades and skip the cube portal. Navigate through the gameplay, then tap the dash orb at 63% and avoid two invisible hitboxes from 69% to 71%. Free to the end from there.", 
+"difficulty": "easy",
+"secret_way_at": 36,
+    "records": [ ]
+}
