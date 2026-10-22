@@ -1204,10 +1204,12 @@ function loadWeeklyLeaderboardPlayers() {
              * We will populate it once we connect the existing
              * Weekly data source.
              */
-            (
+            
+(
     item.isWeekly
         ? (
-            item.weeklyDate === currentWeeklyDate
+            Array.isArray(item.weeklyEntries) &&
+            item.weeklyEntries.indexOf(1) !== -1
                 ? '<span class="search-secondary-label search-weekly-label" ' +
                   'data-search-name="' + safeName + '" ' +
                   'data-search-type="Weekly" ' +
