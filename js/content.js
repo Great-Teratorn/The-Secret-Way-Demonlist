@@ -5,6 +5,12 @@ import { round, score } from './score.js';
  */
 const dir = './data';
 
+// Cache successfully loaded lists for this page session.
+const listCache = new Map();
+
+// Reuse requests that are already loading.
+const listRequests = new Map();
+
 
 
 /*
@@ -80,104 +86,171 @@ async function getOriginalVerifierMap() {
 
 
 
-export async function fetchList() {
-    let listFile = '_list.json';
-    const hash = window.location.hash;
 
-    if (hash.includes('/unverified')) {
+export async function fetchList(routePath = window.location.hash) {
+    const route = routePath || window.location.hash;
+
+    let listFile = '_list.json';
+
+    if (route.includes('/unverified')) {
         listFile = '_unverified.json';
-    } else if (hash.includes('/anomalies')) {
+    } else if (route.includes('/anomalies')) {
         listFile = '_anomalies.json';
-    } else if (hash.includes('/weekly')) {
+    } else if (route.includes('/weekly')) {
         listFile = '_weekly.json';
-    } else if (hash.includes('/removed')) {
+    } else if (route.includes('/removed')) {
         listFile = '_removed.json';
     }
 
-    const listResult = await fetch(`${dir}/${listFile}`);
-
-    try {
-        const list = await listResult.json();
-
-        const results = [];
-
-        // Load levels one at a time instead of requesting
-        // all 216+ files simultaneously.
-        for (let rank = 0; rank < list.length; rank++) {
-            const path = list[rank];
-
-            try {
-                const levelResult = await fetch(`${dir}/${path}.json`);
-
-                if (!levelResult.ok) {
-                    throw new Error(
-                        `HTTP ${levelResult.status} ${levelResult.statusText}`,
-                    );
-                }
-
-               
-let level = await levelResult.json();
-
-
-        
-if (
-    hash.includes('/weekly') &&
-    (!level.verifier ||
-        ['unknown', 'none'].includes(
-            String(level.verifier).trim().toLowerCase()
-        ))
-) {
-    try {
-        const verifierMap = await getOriginalVerifierMap();
-
-        const originalVerifier = verifierMap.get(
-            String(level.id)
-        );
-
-        if (originalVerifier) {
-            level.verifier = originalVerifier;
-        }
-    } catch (error) {
-        console.warn(
-            `Could not recover verifier for weekly level: ${path}`,
-            error
-        );
+    // Reuse a fully loaded list immediately.
+    if (listCache.has(listFile)) {
+        return listCache.get(listFile);
     }
-}
 
+    // If this list is already loading, share that request.
+    if (listRequests.has(listFile)) {
+        return listRequests.get(listFile);
+    }
 
+    const request = (async () => {
+        try {
+            const listResponse = await fetch(`${dir}/${listFile}`);
 
-results.push([
-    {
-        ...level,
-        path,
-        records: Array.isArray(level.records)
-            ? level.records.sort(
-                (a, b) => b.percent - a.percent,
-            )
-            : [],
-    },
-    null,
-]);
+            if (!listResponse.ok) {
+                throw new Error(
+                    `Failed to load ${listFile}: HTTP ${listResponse.status}`
+                );
+            }
 
-            } catch (error) {
-                console.error(
-                    `Failed to load level #${rank + 1} ${path}.`,
-                    error,
+            const paths = await listResponse.json();
+
+            if (!Array.isArray(paths)) {
+                throw new Error(`${listFile} did not contain a list`);
+            }
+
+            // Preserve the original order while limiting concurrency.
+            const results = new Array(paths.length);
+            const batchSize = 6;
+
+            for (
+                let start = 0;
+                start < paths.length;
+                start += batchSize
+            ) {
+                const batch = paths.slice(start, start + batchSize);
+
+                const batchResults = await Promise.all(
+                    batch.map(async (path, offset) => {
+                        const rank = start + offset;
+
+                        try {
+                            const response = await fetch(
+                                `${dir}/${path}.json`
+                            );
+
+                            if (!response.ok) {
+                                throw new Error(
+                                    `HTTP ${response.status} ${response.statusText}`
+                                );
+                            }
+
+                            const level = await response.json();
+
+                            if (
+                                !level ||
+                                typeof level !== 'object' ||
+                                Array.isArray(level)
+                            ) {
+                                throw new Error('Invalid level data');
+                            }
+
+                            // Preserve the existing weekly verifier recovery.
+                            if (
+                                route.includes('/weekly') &&
+                                (
+                                    !level.verifier ||
+                                    ['unknown', 'none'].includes(
+                                        String(level.verifier)
+                                            .trim()
+                                            .toLowerCase()
+                                    )
+                                )
+                            ) {
+                                try {
+                                    const verifierMap =
+                                        await getOriginalVerifierMap();
+
+                                    const originalVerifier =
+                                        verifierMap.get(String(level.id));
+
+                                    if (originalVerifier) {
+                                        level.verifier = originalVerifier;
+                                    }
+                                } catch (error) {
+                                    console.warn(
+                                        `Could not recover verifier for weekly level: ${path}`,
+                                        error
+                                    );
+                                }
+                            }
+
+                            return [
+                                {
+                                    ...level,
+                                    path,
+                                    records: Array.isArray(level.records)
+                                        ? level.records.sort(
+                                            (a, b) => b.percent - a.percent
+                                        )
+                                        : [],
+                                },
+                                null,
+                            ];
+                        } catch (error) {
+                            console.error(
+                                `Failed to load level #${rank + 1} ${path}.`,
+                                error
+                            );
+
+                            return [null, path];
+                        }
+                    })
                 );
 
-                results.push([null, path]);
+                // Promise.all preserves order within each batch.
+                batchResults.forEach((result, offset) => {
+                    results[start + offset] = result;
+                });
             }
-        }
 
-        return results;
-    } catch (error) {
-        console.error(`Failed to load list.`, error);
-        return null;
+            // Never permanently cache a list containing failed levels.
+            // A later visit can retry those requests.
+            const complete = results.every(
+                ([level, error]) => level !== null && error === null
+            );
+
+            if (complete) {
+                listCache.set(listFile, results);
+            }
+
+            return results;
+        } catch (error) {
+            console.error('Failed to load list.', error);
+            return null;
+        }
+    })();
+
+    listRequests.set(listFile, request);
+
+    try {
+        return await request;
+    } finally {
+        // Remove only our own request, never a newer one.
+        if (listRequests.get(listFile) === request) {
+            listRequests.delete(listFile);
+        }
     }
 }
-
-
 
 
 

@@ -604,6 +604,7 @@ appliedSecretWayLengthMin: null,
 appliedSecretWayLengthMax: null,
 
 loading: true,
+listLoadId: 0,
     selected: 0,
     isWeekly: false,
     errors: [],
@@ -764,43 +765,83 @@ const totalLength = this.secretWayTotalLength(level);
 
     // ADDED THIS WATCHER BLOCK: Forces Vue to reload data when switching tabs
 watch: {
-    async $route() {
-        this.loading = true;
+    
+async $route(to) {
+    const loadId = ++this.listLoadId;
 
-        const newList = await fetchList();
+    this.loading = true;
 
-        if (newList) {
-            this.list = newList;
+    try {
+        const newList = await fetchList(to.path);
+
+        // Ignore results from an older navigation.
+        if (loadId !== this.listLoadId) {
+            return;
         }
 
+        if (!newList) {
+            this.errors = [
+                ...this.errors.filter(
+                    error => error !== 'Failed to load list. Retry in a few minutes or notify list staff.'
+                ),
+                'Failed to load list. Retry in a few minutes or notify list staff.',
+            ];
+            return;
+        }
+
+        this.list = newList;
+
         this.selectFirstMatchingLevel();
+    } catch (error) {
+        if (loadId !== this.listLoadId) {
+            return;
+        }
 
-this.loading = false;
+        console.error('Failed to switch lists:', error);
 
-this.$nextTick(() => {
-    const listContainer = document.querySelector(".list-container");
+        this.errors = [
+            ...this.errors,
+            'Failed to load list. Retry in a few minutes or notify list staff.',
+        ];
+    } finally {
+        // An older request must not hide the current loading indicator.
+        if (loadId === this.listLoadId) {
+            this.loading = false;
 
-    if (listContainer) {
-        listContainer.scrollTo({
-            top: 0,
-            behavior: "smooth"
-        });
-    }
-});
-
-        this.$nextTick(() => {
-            document.querySelectorAll('.list button').forEach((button) => {
-                if (
-                    button.style.border.includes('2px dashed') &&
-                    button.style.background.includes('rgba(0, 230, 118')
-                ) {
-                    button.style.removeProperty('border');
-                    button.style.removeProperty('background');
-                    button.classList.remove('search-highlight-active');
+            this.$nextTick(() => {
+                if (loadId !== this.listLoadId) {
+                    return;
                 }
+
+                const listContainer =
+                    document.querySelector('.list-container');
+
+                if (listContainer) {
+                    listContainer.scrollTo({
+                        top: 0,
+                        behavior: 'smooth',
+                    });
+                }
+
+                document.querySelectorAll('.list button').forEach(button => {
+                    if (
+                        button.style.border.includes('2px dashed') &&
+                        button.style.background.includes(
+                            'rgba(0, 230, 118'
+                        )
+                    ) {
+                        button.style.removeProperty('border');
+                        button.style.removeProperty('background');
+
+                        button.classList.remove(
+                            'search-highlight-active'
+                        );
+                    }
+                });
             });
-        });
-    },
+        }
+    }
+},
 
     appliedDifficultyFilter() {
     this.selectFirstMatchingLevel();
@@ -839,46 +880,76 @@ appliedSecretWayLengthMax() {
 
 
 
+
 async mounted() {
-    // Load list
-    this.list = await fetchList();
+    const loadId = ++this.listLoadId;
 
-    // Select the first level appropriate for the current page
-    if (this.$route.path === '/extended' || this.$route.path === '/list/extended') {
-        this.selected = 150;
-    } else if (this.$route.path === '/legacy' || this.$route.path === '/list/legacy') {
-        const index = this.list.findIndex(
-            ([level]) => level && level.dateFallen
-        );
+    this.loading = true;
 
-        if (index !== -1) {
-            this.selected = index;
+    try {
+        const [initialList, editors] = await Promise.all([
+            fetchList(this.$route.path),
+            fetchEditors(),
+        ]);
+
+        // A route change may have started a newer load meanwhile.
+        if (loadId !== this.listLoadId) {
+            return;
+        }
+
+        this.list = initialList || [];
+        this.editors = editors || [];
+
+        if (
+            this.$route.path === '/extended' ||
+            this.$route.path === '/list/extended'
+        ) {
+            this.selected = 150;
+        } else if (
+            this.$route.path === '/legacy' ||
+            this.$route.path === '/list/legacy'
+        ) {
+            const index = this.list.findIndex(
+                ([level]) => level && level.dateFallen
+            );
+
+            if (index !== -1) {
+                this.selected = index;
+            }
+        }
+
+        this.errors = [];
+
+        if (!initialList) {
+            this.errors.push(
+                'Failed to load list. Retry in a few minutes or notify list staff.'
+            );
+        } else {
+            this.errors.push(
+                ...this.list
+                    .filter(([level, error]) => error)
+                    .map(([level, error]) => {
+                        return `Failed to load level. (${error}.json)`;
+                    })
+            );
+
+            if (!editors) {
+                this.errors.push('Failed to load list editors.');
+            }
+        }
+    } catch (error) {
+        if (loadId === this.listLoadId) {
+            console.error('Failed to initialise list page:', error);
+
+            this.errors.push(
+                'Failed to load list. Retry in a few minutes or notify list staff.'
+            );
+        }
+    } finally {
+        if (loadId === this.listLoadId) {
+            this.loading = false;
         }
     }
-
-    // Load editors
-    this.editors = await fetchEditors();
-
-    // Error handling
-    if (!this.list) {
-        this.errors = [
-            "Failed to load list. Retry in a few minutes or notify list staff.",
-        ];
-    } else {
-        this.errors.push(
-            ...this.list
-                .filter(([_, err]) => err)
-                .map(([_, err]) => {
-                    return `Failed to load level. (${err}.json)`;
-                })
-        );
-
-        if (!this.editors) {
-            this.errors.push("Failed to load list editors.");
-        }
-    }
-
-    this.loading = false;
 },
 
    methods: {

@@ -103,10 +103,10 @@ export default {
                        Here are the list IDs of the different lists in Geometry Dash:
                     </p>
                     <p style="line-height: 1.6; font-size: 0.95rem; color: #cbd5e1; margin: 0 0 16px 0;">
-                        2744369 - Mainlist #1-#75
+                        2744369 - Mainlist: #1-#75
                     </p>
                     <p style="line-height: 1.6; font-size: 0.95rem; color: #cbd5e1; margin: 0 0 16px 0;">
-                        2744371 - Mainlist - #76-#150
+                        2744371 - Mainlist: #76-#150
                     </p>
                     <p style="line-height: 1.6; font-size: 0.95rem; color: #cbd5e1; margin: 0 0 16px 0;">
                         2744403 - Extended List
