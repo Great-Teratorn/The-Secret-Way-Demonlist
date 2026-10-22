@@ -1827,7 +1827,8 @@ window.processSearchHighlight = function() {
                 weeklyMatch &&
                 weeklyMatch.weeklyDate &&
                 typeof currentWeeklyDate !== 'undefined' &&
-                weeklyMatch.weeklyDate === currentWeeklyDate
+                Array.isArray(weeklyMatch.weeklyEntries) &&
+                weeklyMatch.weeklyEntries.indexOf(1) !== -1
             ) {
 
                 highlightBorder = '#ffd54f';
