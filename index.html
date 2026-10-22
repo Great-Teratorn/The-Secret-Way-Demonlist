@@ -36,14 +36,14 @@
     
     
     
-    <script>    var masterSearchRegistry = [];
+    <script>    var masterSearchRegistry = [];
                 var currentWeeklyPath = null;
                 var weeklySearchRegistry = [];
                 var weeklyLeaderboardPlayers = {};
 
 
 
-    function loadIndexRegistry() {
+    function loadIndexRegistry() {
     masterSearchRegistry = [];
     weeklySearchRegistry = [];
 
@@ -998,12 +998,12 @@ function loadWeeklyLeaderboardPlayers() {
 
 
 
-    loadIndexRegistry();
+    loadIndexRegistry();
     loadWeeklyLeaderboardPlayers();
 
 
-    /*     * ==========================================================     * SEARCH TYPING / SUGGESTIONS     * ==========================================================     */
-   window.handleSearchTyping = function(val) {
+    /*     * ==========================================================     * SEARCH TYPING / SUGGESTIONS     * ==========================================================     */
+   window.handleSearchTyping = function(val) {
     var dropdown = document.getElementById('searchDropdownMenu');
 
     if (!dropdown) {
@@ -1738,7 +1738,7 @@ window.selectSearchResult = function(element) {
 
 
 
-/*     * ==========================================================     * SEARCH ENTER / HIGHLIGHT PROCESSING     * ==========================================================     */
+/*     * ==========================================================     * SEARCH ENTER / HIGHLIGHT PROCESSING     * ==========================================================     */
 
 window.processSearchHighlight = function() {
 
@@ -2170,121 +2170,119 @@ window.processSearchHighlight = function() {
     localStorage.removeItem('listSearchTarget');
     localStorage.removeItem('listSearchLevel');
 
-    var attempts = 0;
+    
+var attempts = 0;
+var maxAttempts = 60;
 
-    var loop = setInterval(function() {
+var loop = setInterval(function() {
+    attempts++;
 
-        attempts++;
+    var isLeaderboard =
+        window.location.hash.includes('/leaderboard');
 
-        var isLeaderboard =
-            window.location.hash.includes('/leaderboard');
+    var targetClass = isLeaderboard
+        ? '.leaderboard-row, .leaderboard-player, .player, [class*="leaderboard"] .player'
+        : '.list button, .list-container a, .list a, [class*="item"] button';
 
-        var targetClass = isLeaderboard
-            ? '.leaderboard-row, .leaderboard-player, .player, [class*="leaderboard"] .player'
-            : '.list button, .list-container a, .list a, [class*="item"] button';
+    var elements = document.querySelectorAll(targetClass);
+    var matchedElement = null;
 
-        var elements =
-            document.querySelectorAll(targetClass);
-
-        if (elements.length > 0) {
-
-            clearInterval(loop);
-
-            elements.forEach(function(el) {
-
-                
-var nameElement =
-    el.querySelector('.type-label-lg');
-
-var elementName =
-    nameElement
-        ? nameElement.textContent.trim().toLowerCase()
-        : el.textContent.trim().toLowerCase();
-
-if (elementName === query) {
-
-
-
-                    el.style.setProperty(
-                        'border',
-                        '2px dashed ' + highlightBorder,
-                        'important'
-                    );
-
-                    el.style.setProperty(
-                        'background',
-                        highlightBackground,
-                        'important'
-                    );
-
-                    el.classList.add(
-                        'search-highlight-active'
-                    );
-
-                    el.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'center'
-                    });
-
-                    if (typeof el.click === 'function') {
-                        el.click();
-                    }
-
-                }
-
-            });
-
+    // Keep waiting if the requested level has not rendered yet.
+    elements.forEach(function(el) {
+        if (matchedElement) {
+            return;
         }
 
-        if (attempts > 20) {
-            clearInterval(loop);
+        var nameElement = el.querySelector('.type-label-lg');
+
+        var elementName = nameElement
+            ? nameElement.textContent.trim().toLowerCase()
+            : el.textContent.trim().toLowerCase();
+
+        if (elementName === query) {
+            matchedElement = el;
+        }
+    });
+
+    // Only stop polling after finding the exact requested target.
+    if (matchedElement) {
+        clearInterval(loop);
+
+        matchedElement.style.setProperty(
+            'border',
+            '2px dashed ' + highlightBorder,
+            'important'
+        );
+
+        matchedElement.style.setProperty(
+            'background',
+            highlightBackground,
+            'important'
+        );
+
+        matchedElement.classList.add('search-highlight-active');
+
+        matchedElement.scrollIntoView({
+            behavior: 'smooth',
+            block: 'center'
+        });
+
+        if (typeof matchedElement.click === 'function') {
+            matchedElement.click();
         }
 
-    }, 150);
+        return;
+    }
+
+    // Allow more time for slow or delayed list rendering.
+    if (attempts >= maxAttempts) {
+        clearInterval(loop);
+    }
+}, 150);
 
 };
 
 
 
 
-/*     * ==========================================================     * SEARCH BUTTON     * ==========================================================     */
-    document.addEventListener('click', function(e) {
-        if (e.target.closest('#welcomeSearchBtn')) {
-            e.preventDefault();
-            var box = document.getElementById('welcomeSearchBox');            var inp = document.getElementById('levelSearch');
-            if (box && inp) {
-                box.classList.toggle('active');
-                if (box.classList.contains('active')) {
-                    inp.focus();
-                } else {
-                    inp.value = '';
-                    var dd = document.getElementById('searchDropdownMenu');
-                    if (dd) {                        dd.style.display = 'none';                    }                }            }        }    });
+/*     * ==========================================================     * SEARCH BUTTON     * ==========================================================     */
+    document.addEventListener('click', function(e) {
+        if (e.target.closest('#welcomeSearchBtn')) {
+            e.preventDefault();
+            var box = document.getElementById('welcomeSearchBox');            var inp = document.getElementById('levelSearch');
+            if (box && inp) {
+                box.classList.toggle('active');
+                if (box.classList.contains('active')) {
+                    inp.focus();
+                } else {
+                    inp.value = '';
+                    var dd = document.getElementById('searchDropdownMenu');
+                    if (dd) {                        dd.style.display = 'none';                    }                }            }        }    });
 
-    /*     * ==========================================================     * SEARCH INPUT     * ==========================================================     */
-    document.addEventListener('input', function(e) {
-        if (e.target && e.target.id === 'levelSearch') {            window.handleSearchTyping(e.target.value);        }
-    });
+    /*     * ==========================================================     * SEARCH INPUT     * ==========================================================     */
+    document.addEventListener('input', function(e) {
+        if (e.target && e.target.id === 'levelSearch') {            window.handleSearchTyping(e.target.value);        }
+    });
 
-    /*     * ==========================================================     * ENTER KEY     * ==========================================================     */
-    document.addEventListener('keydown', function(e) {
-        if (            e.target &&            e.target.id === 'levelSearch' &&            e.key === 'Enter'        ) {
-            if (e.target.value.trim().length > 0) {
-                var inputVal = e.target.value.trim();
-                var matchedItem = masterSearchRegistry.find(function(i) {                    return i.name.toLowerCase() === inputVal.toLowerCase();                });
-                /*                 * If the exact search is a player, send it to                 * the leaderboard using the new player-search key.                 */                if (matchedItem && matchedItem.type === 'Player') {
-                    localStorage.setItem(                        'leaderboardPlayerSearch',                        inputVal                    );
-                    if (window.location.hash !== '#/leaderboard') {                        window.location.hash = '/leaderboard';                    }
-                } else {
-                    /*                     * Existing behaviour for levels, creators,                     * verifiers, or unmatched searches.                     */                    localStorage.setItem(                        'listSearchTarget',                        inputVal                    );
-                    var destinationRoute = matchedItem                        ? matchedItem.route                        : '/list';
-                    if (window.location.hash !== '#' + destinationRoute) {                        window.location.hash = destinationRoute;                    } else {                        window.processSearchHighlight();                    }                }            }        }    });
+    /*     * ==========================================================     * ENTER KEY     * ==========================================================     */
+    document.addEventListener('keydown', function(e) {
+        if (            e.target &&            e.target.id === 'levelSearch' &&            e.key === 'Enter'        ) {
+            if (e.target.value.trim().length > 0) {
+                var inputVal = e.target.value.trim();
+                var matchedItem = masterSearchRegistry.find(function(i) {                    return i.name.toLowerCase() === inputVal.toLowerCase();                });
+                /*                 * If the exact search is a player, send it to                 * the leaderboard using the new player-search key.                 */                if (matchedItem && matchedItem.type === 'Player') {
+                    localStorage.setItem(                        'leaderboardPlayerSearch',                        inputVal                    );
+                    if (window.location.hash !== '#/leaderboard') {                        window.location.hash = '/leaderboard';                    }
+                } else {
+                    /*                     * Existing behaviour for levels, creators,                     * verifiers, or unmatched searches.                     */                    localStorage.setItem(                        'listSearchTarget',                        inputVal                    );
+                    var destinationRoute = matchedItem                        ? matchedItem.route                        : '/list';
+                    if (window.location.hash !== '#' + destinationRoute) {                        window.location.hash = destinationRoute;                    } else {                        window.processSearchHighlight();                    }                }            }        }    });
 
-    /*     * ==========================================================     * ROUTE CHANGES     * ==========================================================     */
-    window.addEventListener('hashchange', function() {        window.processSearchHighlight();    });
+    /*     * ==========================================================     * ROUTE CHANGES     * ==========================================================     */
+    window.addEventListener('hashchange', function() {        window.processSearchHighlight();    });
 
-    /*     * ==========================================================     * INITIAL PAGE LOAD     * ==========================================================     */
-    window.addEventListener('load', function() {        window.processSearchHighlight();    });</script>
+    /*     * ==========================================================     * INITIAL PAGE LOAD     * ==========================================================     */
+    window.addEventListener('load', function() {        window.processSearchHighlight();    });</script>
 
     
     

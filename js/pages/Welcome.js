@@ -32,10 +32,7 @@ export default {
                     </div>
                 </div>
 
-                <!-- RIGHT SIDE: RESERVED SPACE FOR WAYBACK MACHINE -->
-                <div class="wayback-widget-column">
-                    <div class="wayback-placeholder-text">Wayback Machine Coming Soon...</div>
-                </div>
+                
 
             </div>
 
@@ -143,6 +140,7 @@ export default {
                         <li style="margin-bottom: 8px;">Click on the dropdown in the search results. All of the levels which they have contributed to will show up in the search results, so that you can pick which one you would like to be navigated to. A person may be both a creator and a collaborator depending on the level.  </li>
                         <li style="margin-bottom: 8px;">You may search a level by its ID only if it is the exact, complete ID. For instance, 58825144 will take you to xo - only if it is fully typed out. </li>
                         <li>(R) - if this is next to a level name, it simply means that it is in the Removed list. This helps in differentiating between search results with the same level name.  </li>
+                        <li>Some creators' names look like this: -(nano4618). This just means a creator with a green name - an unregistered user who has not created or confirmed a standard online game account. Usually on old levels. </li> 
                     </ul>
                 </div>
 
