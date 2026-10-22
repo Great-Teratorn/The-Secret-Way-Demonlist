@@ -6,6 +6,80 @@ import { round, score } from './score.js';
 const dir = './data';
 
 
+
+/*
+ * Cached verifier lookup for original Main/Extended levels.
+ * Built only once per page session.
+ */
+let originalVerifierMapPromise = null;
+
+async function getOriginalVerifierMap() {
+    if (originalVerifierMapPromise) {
+        return originalVerifierMapPromise;
+    }
+
+    originalVerifierMapPromise = (async () => {
+        const verifierMap = new Map();
+
+        const response = await fetch(`${dir}/_list.json`);
+
+        if (!response.ok) {
+            throw new Error('Failed to load _list.json');
+        }
+
+        const paths = await response.json();
+
+        // Fetch a small batch at a time to avoid flooding the server.
+        const batchSize = 10;
+
+        for (let i = 0; i < paths.length; i += batchSize) {
+            const batch = paths.slice(i, i + batchSize);
+
+            const levels = await Promise.all(
+                batch.map(async (path) => {
+                    try {
+                        const result = await fetch(`${dir}/${path}.json`);
+
+                        if (!result.ok) {
+                            return null;
+                        }
+
+                        return await result.json();
+                    } catch {
+                        return null;
+                    }
+                })
+            );
+
+            levels.forEach((level) => {
+                if (
+                    level &&
+                    level.id != null &&
+                    level.verifier &&
+                    !['unknown', 'none'].includes(
+                        String(level.verifier).trim().toLowerCase()
+                    )
+                ) {
+                    verifierMap.set(
+                        String(level.id),
+                        level.verifier
+                    );
+                }
+            });
+        }
+
+        return verifierMap;
+    })().catch((error) => {
+        // Allow a later attempt if loading fails.
+        originalVerifierMapPromise = null;
+        throw error;
+    });
+
+    return originalVerifierMapPromise;
+}
+
+
+
 export async function fetchList() {
     let listFile = '_list.json';
     const hash = window.location.hash;
@@ -41,20 +115,51 @@ export async function fetchList() {
                     );
                 }
 
-                const level = await levelResult.json();
+               
+let level = await levelResult.json();
 
-                results.push([
-                    {
-                        ...level,
-                        path,
-                        records: Array.isArray(level.records)
-                            ? level.records.sort(
-                                  (a, b) => b.percent - a.percent,
-                              )
-                            : [],
-                    },
-                    null,
-                ]);
+
+        
+if (
+    hash.includes('/weekly') &&
+    (!level.verifier ||
+        ['unknown', 'none'].includes(
+            String(level.verifier).trim().toLowerCase()
+        ))
+) {
+    try {
+        const verifierMap = await getOriginalVerifierMap();
+
+        const originalVerifier = verifierMap.get(
+            String(level.id)
+        );
+
+        if (originalVerifier) {
+            level.verifier = originalVerifier;
+        }
+    } catch (error) {
+        console.warn(
+            `Could not recover verifier for weekly level: ${path}`,
+            error
+        );
+    }
+}
+
+
+
+results.push([
+    {
+        ...level,
+        path,
+        records: Array.isArray(level.records)
+            ? level.records.sort(
+                (a, b) => b.percent - a.percent,
+            )
+            : [],
+    },
+    null,
+]);
+
             } catch (error) {
                 console.error(
                     `Failed to load level #${rank + 1} ${path}.`,
