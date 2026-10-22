@@ -95,6 +95,43 @@ export default {
                 </div>
                 
               
+
+                <!-- GD Lists Box -->
+                <div style="background: rgba(20, 15, 35, 0.8); padding: 25px; border-radius: 8px; border: 1px solid #4a3f75; margin-bottom: 25px;">
+                    <h2 style="font-size: 1.5rem; margin: 0 0 12px 0; color: #e0d4ff;">GD Lists</h2>
+                    <p style="line-height: 1.6; font-size: 0.95rem; color: #cbd5e1; margin: 0 0 15px 0;">
+                       Here are the list IDs of the different lists in Geometry Dash:
+                    </p>
+                    <p style="line-height: 1.6; font-size: 0.95rem; color: #cbd5e1; margin: 0 0 16px 0;">
+                        2744369 - Mainlist #1-#75
+                    </p>
+                    <p style="line-height: 1.6; font-size: 0.95rem; color: #cbd5e1; margin: 0 0 16px 0;">
+                        2744371 - Mainlist - #76-#150
+                    </p>
+                    <p style="line-height: 1.6; font-size: 0.95rem; color: #cbd5e1; margin: 0 0 16px 0;">
+                        2744403 - Extended List
+                    </p>
+                    <p style="line-height: 1.6; font-size: 0.95rem; color: #cbd5e1; margin: 0 0 16px 0;">
+                        2744418 - Legacy List
+                    </p>
+                    <p style="line-height: 1.6; font-size: 0.95rem; color: #cbd5e1; margin: 0 0 16px 0;">
+                        2744426 - Unverified List
+                    </p>
+                    <p style="line-height: 1.6; font-size: 0.95rem; color: #cbd5e1; margin: 0 0 16px 0;">
+                        2744428 - Anomalies List
+                    </p>
+                    <p style="line-height: 1.6; font-size: 0.95rem; color: #cbd5e1; margin: 0 0 16px 0;">
+                        2744431 - Weekly Demon List
+                    </p>
+                    <p style="line-height: 1.6; font-size: 0.95rem; color: #cbd5e1; margin: 0 0 16px 0;">
+                        2744433 - Removed List
+                    </p>
+                    
+                </div>
+
+
+
+
             <!-- Roulette Box -->
                 <div style="background: rgba(20, 15, 35, 0.8); padding: 25px; border-radius: 8px; border: 1px solid #4a3f75; margin-bottom: 25px;">
                     <h2 style="font-size: 1.5rem; margin: 0 0 12px 0; color: #e0d4ff;">Roulette</h2>
