@@ -510,66 +510,7 @@ nav a svg {
 
 @media screen and (max-width: 1100px) and (min-width: 769px) {
 
-    header {
-        padding-inline: 10px !important;
-        box-sizing: border-box !important;
-    }
-
-    header .nav {
-        padding: 0 8px !important;
-        gap: 4px !important;
-        overflow: visible !important;
-    }
-
-    /* Keep the site title on one line */
-    header nav > h2:first-of-type,
-    header h2:first-child {
-        white-space: nowrap !important;
-        font-size: 17px !important;
-        line-height: 1 !important;
-        flex-shrink: 1 !important;
-    }
-
-    /* Keep navigation buttons separate rather than overlapping */
-    header .nav__tab,
-    .lists-dropdown {
-        flex-shrink: 0 !important;
-        white-space: nowrap !important;
-    }
-
-    header .nav__tab {
-        padding-inline: 5px !important;
-    }
-
-    header .nav__tab span {
-        font-size: 0.72rem !important;
-        white-space: nowrap !important;
-    }
-
-    .dropdown-trigger {
-        padding-inline: 5px !important;
-        font-size: 0.72rem !important;
-        white-space: nowrap !important;
-        transform: translateY(-8px) !important;
-    }
-
-    /* Keep right-side controls visible */
-    header .nav__actions {
-        gap: 5px !important;
-        flex-shrink: 0 !important;
-    }
-
-    header .nav__actions > * {
-        white-space: nowrap !important;
-    }
-
-    /* Compact submit button */
-    .nav_cta,
-    [class*="submit"],
-    .btn {
-        padding: 4px 9px !important;
-        font-size: 0.72rem !important;
-    }
+    
 
 
     /* ===================================================
@@ -1049,128 +990,10 @@ nav a svg {
 }
 
 
-@media screen and (min-width: 769px) and (max-width: 1365px) {
-
-    header {
-        width: 100% !important;
-        box-sizing: border-box !important;
-        overflow: hidden !important;
-        padding-inline: 6px !important;
-    }
-
-    header .nav {
-        width: 100% !important;
-        box-sizing: border-box !important;
-        padding: 0 6px !important;
-        gap: 4px !important;
-        overflow: visible !important;
-    }
-
-    /* Keep navigation items from ever overlapping */
-    header .nav__tab,
-    header .lists-dropdown,
-    header .nav__actions {
-        flex-shrink: 0 !important;
-    }
-
-    /* Slightly reduce spacing rather than squeezing buttons */
-    header .nav__tab {
-        padding-left: 6px !important;
-        padding-right: 6px !important;
-    }
-
-    header .nav__tab span {
-        font-size: 0.78rem !important;
-        white-space: nowrap !important;
-    }
-
-    .dropdown-trigger {
-        padding-left: 6px !important;
-        padding-right: 6px !important;
-        white-space: nowrap !important;
-    }
-
-    header .nav__actions {
-        gap: 7px !important;
-    }
-
-    header .nav__actions > * {
-        flex-shrink: 0 !important;
-    }
-}
 
 
-@media screen and (min-width: 769px) {
-
-    /* =====================================================
-       NAVBAR: PREVENT CLIPPING
-       ===================================================== */
-
-    header {
-        overflow: visible !important;
-        box-sizing: border-box !important;
-    }
-
-    header .nav {
-        box-sizing: border-box !important;
-        overflow: visible !important;
-    }
-
-    /*
-     * Make the navigation itself sit above page content.
-     * This also gives the dropdown a clean stacking context.
-     */
-    header,
-    header .nav {
-        position: relative !important;
-        z-index: 10000 !important;
-    }
 
 
-    /* =====================================================
-       LISTS DROPDOWN: RESTORE CLICKABILITY
-       ===================================================== */
-
-    header .lists-dropdown {
-        position: relative !important;
-        z-index: 10001 !important;
-        pointer-events: auto !important;
-    }
-
-    header .dropdown-trigger {
-        position: relative !important;
-        z-index: 10002 !important;
-        pointer-events: auto !important;
-    }
-
-    header .dropdown-menu {
-        position: absolute !important;
-        z-index: 10003 !important;
-        pointer-events: auto !important;
-    }
-
-    header .lists-dropdown:hover .dropdown-menu {
-        display: block !important;
-        pointer-events: auto !important;
-    }
-
-
-    /* =====================================================
-       KEEP THE WELCOME SEARCH BELOW THE NAVBAR
-       ===================================================== */
-
-    .welcome-widgets-grid {
-        z-index: 1 !important;
-    }
-
-    .search-box {
-        z-index: 2 !important;
-    }
-
-    .search-suggestions-dropdown {
-        z-index: 4 !important;
-    }
-}
 
 
 
@@ -2616,3 +2439,297 @@ body#app.tswd-chaos::before {
         background: transparent;
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ============================================================
+   PHONES
+   ============================================================ */
+
+@media screen and (max-width: 600px) {
+    header {
+        flex-wrap: wrap !important;
+        justify-content: center !important;
+        gap: 4px !important;
+    }
+
+    header > .logo {
+        flex: 1 1 100% !important;
+        max-width: 100% !important;
+        justify-content: center !important;
+        align-items: center !important;
+    }
+
+    header > .logo h2 {
+        font-size: 15px !important;
+    }
+
+    header > nav.nav {
+        flex: 1 1 100% !important;
+        justify-content: center !important;
+        flex-wrap: wrap !important;
+        gap: 2px !important;
+    }
+
+    header > nav.nav > .nav__tab {
+        height: 40px !important;
+        padding-inline: 5px !important;
+    }
+
+    header > nav.nav > .nav__tab span,
+    header > nav.nav > .lists-dropdown .dropdown-trigger span {
+        font-size: 11px !important;
+    }
+
+    header .nav__actions .nav__cta {
+        font-size: 10px !important;
+    }
+
+    header > nav.nav > a[href*="youtube.com"] {
+        flex: 0 1 80px !important;
+        width: 80px !important;
+        max-width: 80px !important;
+    }
+}
+
+
+
+
+
+
+
+/* ============================================================
+   TSWD — RESPONSIVE TABLET HEADER
+   Preserve existing HTML, links, and navigation controls
+   ============================================================ */
+
+@media screen and (min-width: 769px) and (max-width: 1365px) {
+
+    header {
+        display: flex !important;
+        flex-wrap: wrap !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        gap: 6px 12px !important;
+
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+        height: auto !important;
+        min-height: 60px !important;
+
+        padding: 6px 12px !important;
+        box-sizing: border-box !important;
+        overflow: visible !important;
+    }
+
+    /* Site title and version */
+    header > .logo {
+        display: flex !important;
+        flex: 0 1 auto !important;
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        justify-content: center !important;
+
+        width: auto !important;
+        min-width: 0 !important;
+        max-width: 100% !important;
+        margin: 0 !important;
+        gap: 3px !important;
+    }
+
+    header > .logo h2 {
+        width: auto !important;
+        max-width: 100% !important;
+        margin: 0 !important;
+
+        font-size: clamp(12px, 1.15vw, 16px) !important;
+        line-height: 1.25 !important;
+        white-space: normal !important;
+        overflow-wrap: break-word !important;
+    }
+
+    header > .logo p {
+        position: static !important;
+        margin: 0 !important;
+
+        font-size: 10px !important;
+        line-height: 1.2 !important;
+        white-space: nowrap !important;
+    }
+
+    /* Navigation may use another row if necessary */
+    header > nav.nav {
+        display: flex !important;
+        flex: 1 1 560px !important;
+
+        width: auto !important;
+        min-width: 0 !important;
+        max-width: 100% !important;
+        height: auto !important;
+
+        flex-wrap: wrap !important;
+        align-items: center !important;
+        justify-content: flex-end !important;
+        gap: 4px 8px !important;
+
+        margin: 0 !important;
+        padding: 0 !important;
+        box-sizing: border-box !important;
+        overflow: visible !important;
+    }
+
+    /* Main navigation links */
+    header > nav.nav > .nav__tab {
+        display: inline-flex !important;
+        flex: 0 1 auto !important;
+        align-items: center !important;
+        justify-content: center !important;
+
+        min-width: 0 !important;
+        max-width: 100% !important;
+        height: 44px !important;
+        padding-inline: 6px !important;
+
+        white-space: nowrap !important;
+        box-sizing: border-box !important;
+    }
+
+    header > nav.nav > .nav__tab span,
+    header > nav.nav > .lists-dropdown .dropdown-trigger span {
+        font-size: clamp(10px, 0.85vw, 13px) !important;
+        white-space: nowrap !important;
+    }
+
+    /* Lists dropdown */
+    header > nav.nav > .lists-dropdown {
+        display: inline-flex !important;
+        flex: 0 1 auto !important;
+        min-width: 0 !important;
+        max-width: 100% !important;
+        align-items: center !important;
+    }
+
+    header > nav.nav > .lists-dropdown .dropdown-trigger {
+        height: 44px !important;
+        padding-inline: 6px !important;
+        transform: none !important;
+        white-space: nowrap !important;
+    }
+
+    /* Moon, Discord, and Submit Record */
+    header > nav.nav > .nav__actions {
+        display: flex !important;
+        flex: 0 1 auto !important;
+        flex-wrap: nowrap !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 8px !important;
+
+        width: auto !important;
+        min-width: 0 !important;
+        max-width: 100% !important;
+        height: auto !important;
+        overflow: visible !important;
+    }
+
+    header > nav.nav > .nav__actions > * {
+        flex: 0 1 auto !important;
+        min-width: 0 !important;
+        max-width: 100% !important;
+    }
+
+    header > nav.nav > .nav__actions .nav__cta {
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+
+        width: auto !important;
+        min-width: 0 !important;
+        max-width: 100% !important;
+        height: auto !important;
+        min-height: 32px !important;
+
+        padding: 6px 8px !important;
+        font-size: clamp(9px, 0.8vw, 12px) !important;
+        line-height: 1.2 !important;
+        white-space: nowrap !important;
+        box-sizing: border-box !important;
+
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+
+    /* Preserve the existing logo link and its destination */
+    header > nav.nav > a[href*="youtube.com"],
+    header > nav.nav > a.tswd-header-logo {
+        display: inline-flex !important;
+        flex: 0 1 100px !important;
+
+        width: 100px !important;
+        min-width: 64px !important;
+        max-width: 100px !important;
+        height: 36px !important;
+
+        margin: 0 !important;
+        padding: 0 !important;
+        align-items: center !important;
+        justify-content: center !important;
+
+        box-sizing: border-box !important;
+        overflow: visible !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+
+    header > nav.nav > a[href*="youtube.com"] img,
+    header > nav.nav > a.tswd-header-logo img {
+        display: block !important;
+        width: 100% !important;
+        min-width: 0 !important;
+        max-width: 100% !important;
+        height: 36px !important;
+
+        object-fit: contain !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
