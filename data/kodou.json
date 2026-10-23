@@ -22,5 +22,13 @@
 "dateFallen": "26/07/2026",
 "secret_way_at": 48,
 "password": "Password Required",
-    "records": [ ]
+"records": [
+        {
+            "user": "Gold Dyno",
+            "link": "https://youtu.be/9JEulNueBf8?si=urzwPkGAjAc-bNM6",
+            "percent": 100,
+            "hz": 120,
+            "mobile": true
+        }
+    ]
 }

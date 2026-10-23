@@ -15,6 +15,13 @@
 "secret_way_at": 34, 
     "records": [
         {
+            "user": "Gold Dyno",
+            "link": "https://youtu.be/CHzzj54f0Pk?si=s0IYyri8BDCbGe2P",
+            "percent": 100,
+            "hz": 120,
+            "mobile": true
+        },
+        {
             "user": "DariGamer13",
             "link": "https://youtu.be/-m36MJ1SleY?si=Ka-ZSZDTNFCpvQ8n",
             "percent": 100,
