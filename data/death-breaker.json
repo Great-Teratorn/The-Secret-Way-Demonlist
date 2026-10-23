@@ -34,7 +34,14 @@
             "link": "https://youtu.be/RA8HkvpXjDc?si=EZVHVLNq1Cp7btJ4",
             "percent": 100,
             "hz": 120,
-            "mobile": true 
+            "mobile": true
+        },
+        {
+            "user": "aMaxZon200",
+            "link": "https://youtu.be/AwfJZVLdk7A?si=BR0FerrJtlNqemjn",
+            "percent": 100,
+            "hz": 240,
+            "mobile": false
         }
     ]
 
