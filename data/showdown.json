@@ -12,6 +12,14 @@
 "secret_way_end": 100,
 "description": "Hold above the level between the structure and dash orb as the wave at 25%. Stay decently above the level until the end from there. ", 
 "difficulty": "extreme",
-    "records": []
+    "records": [
+        {
+            "user": "kolgotochnik",
+            "link": "https://youtu.be/e3Y_q7tn3Y4?si=rZr6ez1UbYSbu060",
+            "percent": 100,
+            "hz": 300,
+            "mobile": false      
+         }
+    ]
 
    }
