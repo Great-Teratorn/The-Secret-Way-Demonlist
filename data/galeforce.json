@@ -10,7 +10,7 @@
     "percentToQualify": 100,
 "secret_way_start": 35,
 "secret_way_end": 100,
-"description": "NOTE: Verification starts at 5:33 in the video. Time a click shortly after clicking the blue orb at 33.6% (your icon needs to be very close to hitting the saw) and then skip the pink orb to fall to the floor. A little bit after the percentage bar says “100%”, you will be teleported back into the level. Play the level normally from there.", 
+"description": "Note: The secret way is actually 34%-83%. The secret way makes the percentage bar inaccurate. Time a jump after you press the blue orb at 33% to fall out of the level between the gravity portal and spike. Stay at the floor until you are teleported back into the level as a ship.", 
 "difficulty": "extreme",
 "secret_way_at": 34, 
     "records": [
