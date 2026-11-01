@@ -12,6 +12,14 @@
     "secret_way_end": 100,
     "description": "Move up between the cube portal and spike at 39% and then play through the slopes as the wave. Spam between the cube portal and spike at 41%, get the mini portal and then hold above the level between the hitboxes at 42%. Stay slightly above the gameplay until 92% where you can fall back into the level and then have to spam through the red orbs while moving slightly upward until 94% where after you passed all the orbs and saws, you can stop spamming. ",  
 "difficulty": "easy",
-    "records": []
+    "records": [
+        {
+            "user": "DariGamer13",
+            "link": "https://youtu.be/JyhSMvvnv8g?si=0Dc60AJOCdyF18NJ",
+            "percent": 100,
+            "hz": 240,
+            "mobile": false      
+         }
+    ]
 
    }

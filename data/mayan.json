@@ -20,6 +20,13 @@
             "percent": 100,
             "hz": 60,
             "mobile": true
+        },
+        {
+            "user": "Gold Dyno",
+            "link": "https://youtu.be/V21mo52iFXM?si=KhXOFizNdHANKPBh",
+            "percent": 100,
+            "hz": 120,
+            "mobile": true
         }
     ]
 }

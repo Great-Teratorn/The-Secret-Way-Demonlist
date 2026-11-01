@@ -1,0 +1,17 @@
+{
+    "id": 82945531,
+    "name": "Final Conflux",
+    "author": "DriftGMD",
+    "creators": [
+        "DriftGMD"
+    ],
+    "verifier": "DariGamer13",
+    "verification": "https://youtu.be/R45OjdE7VWg?si=gFeIUitPNjA8RVd9",
+    "percentToQualify": 100,
+"secret_way_start": 16,
+"secret_way_end": 100,
+"description": "Fall below the cube portal at 15% and navigate between the sawblades until 17%. Hold to the end from there", 
+"difficulty": "hard",
+"secret_way_at": 17,
+    "records": [ ]
+}

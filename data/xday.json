@@ -10,10 +10,8 @@
     "percentToQualify": 100,
 "secret_way_start": 12,
 "secret_way_end": 100,
-"description": "Time the green orb click when your UFO icon is at the middle and briefly after that do 2 fast clicks to pass between the invisible spikes and the platform. After you get teleported, maintain a position until the level ends.", 
+"description": "Time the green orb click when your UFO icon is near the end of the platform at 11% and then quickly do two fast clicks to fall between the invisible spikes and the platform, don't click for a bit to fall into the invisible teleport portal to bring you above the level at 12%. Maintain a constant position above the level after being teleported until the end from there.", 
 "difficulty": "extreme",
-"removedReason": "Patched",
-"dateRemoved": "31/10/2026",
 "secret_way_at": 13,
     "records": [ ]
 }
