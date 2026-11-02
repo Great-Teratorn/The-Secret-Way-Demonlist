@@ -14,5 +14,13 @@
 "difficulty": "hard",
 "secret_way_at": 45,
 "password": "Not Copyable",
-    "records": [ ]
+    "records": [
+        {
+            "user": "Gold Dyno",
+            "link": "https://youtu.be/SWZSzGfIlI8?si=f5OhJiCYOeOxgDwv",
+            "percent": 100,
+            "hz": 120,
+            "mobile": true      
+         }
+    ]
 }
