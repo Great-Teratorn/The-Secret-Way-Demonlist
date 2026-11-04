@@ -14,5 +14,13 @@
 "difficulty": "extreme",  
 "secret_way_at": 43,
 "password": "Password Required",
-    "records": [ ]
+    "records": [
+        {
+            "user": "Gold Dyno",
+            "link": "https://www.youtube.com/watch?v=4lKMa9iAaiA&t=77s",
+            "percent": 100,
+            "hz": 120,
+            "mobile": true      
+         }
+    ]
 }
