@@ -16,11 +16,11 @@
 "password": "Password Required",
     "records": [
         {
-            "user": "Gold Dyno",
+            "user": "Sc0r5i0N",
             "link": "https://www.youtube.com/watch?v=4lKMa9iAaiA&t=77s",
             "percent": 100,
-            "hz": 120,
-            "mobile": true      
+            "hz": 240,
+            "mobile": false     
          }
     ]
 }
