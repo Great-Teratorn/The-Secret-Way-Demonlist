@@ -14,7 +14,13 @@
 "description": "Full detail mode only: Skip the green orb at 21% to fall between the saw and the cube portal at 22% (you can hit the slope behind the green orb to make this more consistent). Time 3 clicks to get between the ball portal and the platform. Stay in the level until 31%, where you can fall above the level. Stay at a constant position above the level, except at 97%, where you need to land on the platform made of black blocks to complete the level.",
 "difficulty": "medium",
     "records": [
-        
+        {
+            "user": "aMaxZon200",
+            "link": "https://youtu.be/CDxtoax8GaE?si=m6F0poOHlm8yisSU",
+            "percent": 100,
+            "hz": 240,
+            "mobile": false      
+         }
     ]
 }
 
