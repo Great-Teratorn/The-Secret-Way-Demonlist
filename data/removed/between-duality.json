@@ -12,6 +12,8 @@
 "secret_way_end": 100,
 "description": "Go between the cube portal and spikes at the wave at 7%. Navigate through the following section as the wave (make sure to have normal gravity at 10%). Hold barely to the right of the spike at 10% to go above the level before the wall. Stay near the ceiling for the rest of the level, especially at 96% to go over an invisible wall.", 
 "difficulty": "extreme",
+"removedReason": "Patched",
+"dateRemoved": "07/11/2026",
 "secret_way_at": 8,
     "records": [ ]
 }
