@@ -13,5 +13,13 @@
 "description": "Fly over the .5x speed portal at 35% while still entering the blue gravity portal. Time the green orb at 38% late and buffer the red orb to fall out of the level past the invisible spike and the teleport portal at 39%. ", 
 "difficulty": "hard",
 "secret_way_at": 35,
-    "records": [ ]
+    "records": [
+        {
+            "user": "aMaxZon200",
+            "link": "https://www.youtube.com/watch?v=_o55w-msiVI",
+            "percent": 100,
+            "hz": 240,
+            "mobile": false      
+         }
+    ]
 }
