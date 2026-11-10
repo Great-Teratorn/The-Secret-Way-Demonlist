@@ -27,7 +27,7 @@
     "percentToQualify": 100,
 "secret_way_start": 66,
 "secret_way_end": 100,
-"description": "Time the second blue orb relatively early at 65% and then skip the following orbs to fall to the floor between the hitboxes. Stay on the floor until the end from there. ", 
+"description": "Time the second blue orb relatively early at 65% and then skip the following orbs to fall to the floor between the hitboxes. Stay on the floor until the end except at around 74% where you'll have to jump over between the saws.", 
 "difficulty": "medium",
 "secret_way_at": 65,
     "records": [ ]
