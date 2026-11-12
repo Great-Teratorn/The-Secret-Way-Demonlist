@@ -1,0 +1,24 @@
+{
+    "id": 110649015,
+    "name": "radiocutter",
+    "author": "GMDbenedikT",
+    "creators": [
+        "GMDbenedikT",
+        "7oFIV3",
+        "AgusVGD",
+        "KrazyGFX",
+        "Sqiddo",
+        "chapig396",
+        "max1475",
+        "modc"
+    ],
+    "verifier": "aMaxZon200",
+    "verification": "https://www.youtube.com/watch?v=MgIRtCHUf74",
+    "percentToQualify": 100,
+"secret_way_start": 68,
+"secret_way_end": 100,
+"description": "Double click at the right edge of the platform at 68% to teleport to the floor as the spider (turn on the 'Always Limit Controls' setting in the options menu to be able to double click on mobile). Teleport onto the platform right after the spikes at 97% to fall up and complete the level.", 
+"difficulty": "insane",
+"secret_way_at": 69,
+    "records": [ ]
+}
