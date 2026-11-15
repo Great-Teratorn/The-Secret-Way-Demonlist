@@ -8,12 +8,12 @@
     "verifier": "Zorktron",
     "verification": "https://www.youtube.com/watch?v=218ZujHkncA",
     "percentToQualify": 100,
-    "secret_way_at": 41,
+    "secret_way_at": 40,
 "secret_way_start": 41,
 "secret_way_end": 65,
 "difficulty": "insane",
 "description": "Start holding after clicking the green orb at 39% until you fall out of the level at 41%. Continue playing the level at 65%. ",
-    "password": "",
+    "password": "Password Required",
     "records": [
 
         
