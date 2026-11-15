@@ -1,0 +1,18 @@
+{
+    "id": 7172363,
+    "name": "Dark Disco",
+    "author": "Jeyzor",
+    "creators": [
+        "Jeyzor"
+    ],
+    "verifier": "DavidAE",
+    "verification": "https://youtu.be/0EEneTfuR7g?si=feqEgnJ8NG8aSUY5",
+    "percentToQualify": 100,
+"secret_way_start": 47,
+"secret_way_end": 67,
+"description": "Double click the moment the upside down ball starts falling from the platform at 46.3% so both balls have the same gravity (turn on the 'Always Limit Controls' setting in the options menu to be able to double click on mobile). Click lightly when entering the wave portal at 47% so the upper wave doesn't crash and to sync the waves. Navigate through the rest of the section with essentially one wave. Fall to the floor at 58% to skip the ship portal. Continue playing normally at 67%.", 
+"difficulty": "hard",
+"secret_way_at": 49,
+"password": "Password Required",
+    "records": [ ]
+}
