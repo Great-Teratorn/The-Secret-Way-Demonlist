@@ -17,5 +17,13 @@
 "description": "Fall below the cube portal between the slope and saw at 47.0% as the wave. Briefly hold up while your icon is between the two saws at 47.4% and get very close to having your icon touch the cube portal then, briefly release and hold again to make it to the ceiling as the wave. Continue holding at the ceiling until the end from there.", 
 "difficulty": "easy",
 "secret_way_at": 48,
-    "records": [ ]
+    "records": [
+        {
+            "user": "Lizzy",
+            "link": "https://youtu.be/jK6yTc3DI5Y",
+            "percent": 100,
+            "hz": 360,
+            "mobile": false      
+         }
+    ]
 }
