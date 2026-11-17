@@ -11,11 +11,11 @@
     "password": "Password Required",
     "records": [
         {
-            "user": "Gold Dyno",
+            "user": "aMaxZon200",
             "link": "https://www.youtube.com/watch?v=3nX7AO_YCTY",
             "percent": 100,
-            "hz": 120,
-            "mobile": true      
+            "hz": 240,
+            "mobile": false      
          }
     ],
     "description": "Fit through the spike hitboxes 3 times at 47% to skip the cube portal. Hold to the end from there. "
