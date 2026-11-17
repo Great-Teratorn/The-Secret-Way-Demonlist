@@ -9,6 +9,14 @@
     "percentToQualify": 100,
     "weeklyDate": "16/11/2026 - 22/11/2026",
     "password": "Password Required",
-    "records": [],
+    "records": [
+        {
+            "user": "Gold Dyno",
+            "link": "https://www.youtube.com/watch?v=3nX7AO_YCTY",
+            "percent": 100,
+            "hz": 120,
+            "mobile": true      
+         }
+    ],
     "description": "Fit through the spike hitboxes 3 times at 47% to skip the cube portal. Hold to the end from there. "
 }
