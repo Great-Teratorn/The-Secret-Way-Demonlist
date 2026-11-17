@@ -5,15 +5,29 @@
     "creators": [
         "ErisethSP"
     ],
-    "verifier": "Gold Dyno",
-    "verification": "https://youtu.be/RrAD9VArLys?si=0YWRwR3mm_4thlit",
+    "verifier": "Iamsheep",
+    "verification": " https://www.youtube.com/watch?v=attxHVt7g0w",
     "percentToQualify": 100,
 "secret_way_start": 54,
 "secret_way_end": 100,
 "description": "Click the left middle of the yellow orb at 52%, then click quickly three times after passing the following structure to go between the slope and spikes at 53%. Click again after passing the slope to not enter the cube portal. Spam at the ceiling until 58%. Stay at the floor to the end from there.", 
 "difficulty": "hard",
-"dateFallen": "10/10/2026",
 "secret_way_at": 53,
 "password": "Password Required",
-    "records": [ ]
+    "records": [
+        {
+            "user": "Gold Dyno",
+            "link": "https://youtu.be/RrAD9VArLys?si=0YWRwR3mm_4thlit",
+            "percent": 100,
+            "hz": 120,
+            "mobile": true
+        },
+        {
+            "user": "Lizzy",
+            "link": "https://youtu.be/y0bm4gYF35w",
+            "percent": 100,
+            "hz": 360,
+            "mobile": false
+         }
+    ]
 }
