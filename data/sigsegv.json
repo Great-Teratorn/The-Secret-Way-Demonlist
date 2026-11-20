@@ -48,6 +48,13 @@
             "percent": 100,
             "hz": 60,
             "mobile": true
+        },
+        {
+            "user": "Salvoe",
+            "link": "https://youtu.be/FFrtT-jVLkI?si=X4-J_B9Yb1BEe6d4&t=337",
+            "percent": 100,
+            "hz": 240,
+           "mobile": false
         }
     ]
 

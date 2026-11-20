@@ -13,5 +13,13 @@
 "description": "Time the green orb click when your UFO icon is near the end of the platform at 11% and then quickly do two fast clicks to fall between the invisible spikes and the platform, don't click for a bit to fall into the invisible teleport portal to bring you above the level at 12%. Maintain a constant position above the level after being teleported until the end from there.", 
 "difficulty": "extreme",
 "secret_way_at": 13,
-    "records": [ ]
+    "records": [
+        {
+            "user": "Salvoe",
+            "link": "https://youtu.be/FFrtT-jVLkI?si=AZyiVkEeQK23zeO_&t=198",
+            "percent": 100,
+            "hz": 240,
+            "mobile": false   
+         }
+    ]
 }

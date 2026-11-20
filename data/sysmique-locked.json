@@ -14,5 +14,13 @@
 "difficulty": "extreme",
 "secret_way_at": 45,
 "password": "Password Required",
-    "records": [ ]
+    "records": [
+        {
+            "user": "Sc0r5i0N",
+            "link": "https://www.youtube.com/watch?v=nmuRE4Jdvl4&t=46s",
+            "percent": 100,
+            "hz": 144,
+            "mobile": false      
+         }
+    ]
 }
