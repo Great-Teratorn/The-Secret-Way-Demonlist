@@ -23,7 +23,14 @@
             "link": "https://youtu.be/jK6yTc3DI5Y",
             "percent": 100,
             "hz": 360,
-            "mobile": false      
+            "mobile": false
+        },
+        {
+            "user": "Sc0r5i0N",
+            "link": "https://www.youtube.com/watch?v=iUXwJKKuC_E&t=40s",
+            "percent": 100,
+            "hz": 240,
+            "mobile": false
          }
     ]
 }
