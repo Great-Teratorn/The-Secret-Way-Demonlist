@@ -15,5 +15,13 @@
 "removedReason": "Patched",
 "dateRemoved": "07/11/2026",
 "secret_way_at": 8,
-    "records": [ ]
+    "records": [
+        {
+            "user": "Salvoe",
+            "link": "https://youtu.be/FFrtT-jVLkI?si=w3ijSY1po1_QH2wX",
+            "percent": 100,
+            "hz": 240,
+            "mobile": false
+         }
+    ]
 }
