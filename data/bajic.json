@@ -6,23 +6,15 @@
         "Worz",
         "ShorkGD"
     ],
-    "verifier": "DariGamer13",
-    "verification": "https://youtu.be/20n8v8ZG6Ck?si=Oouj99yqeFDTeMHE",
+    "verifier": "Great Teratorn",
+    "verification": "https://youtu.be/FoVuPxJ_MRE?is=MetsnzyW1BMXX0Fe",
     "percentToQualify": 100,
 "secret_way_start": 12,
 "secret_way_end": 92,
-"description": "Go above the first part of the teleport portal at 11% and then fall into the later part and then hold to stay on the ceiling. Play through the wave challenge until 28% when you can hold to the floor. Start falling up at 91% to enter a ship portal at 92%. Play the level normally from there. ", 
+"description": "Go above the teleport portal as the wave at 11%. Hit the far end of the portal to go into 1X speed (REQUIRED). Play through the wave challenge until 27% where you can stay at the ceiling until around 72%, where you should hold to the floor. Release at around 91.3%-91.4% to re-enter the level. Play the level normally from there. ", 
 "difficulty": "easy",
 "secret_way_at": 16,
 "password": "Password Required",
-    "records": [
-        {
-            "user": "Lizzy",
-            "link": "https://www.youtube.com/watch?v=sbSfDsQbuDs",
-            "percent": 100,
-            "hz": 240,
-            "mobile": false
-        }
-    ]
+    "records": [ ]
 
 }
