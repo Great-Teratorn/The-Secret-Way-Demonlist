@@ -14,5 +14,13 @@
 "description": "Time a click on the edge of the block right before the pink orb at 47% to land on the pillar and then time a click very shortly after landing to fall up between the spike and reverse gravity portal as the ball at 48%. Don’t click until 53.0% when you have to click when your icon reaches the start of the pink pad, (the pad won't affect your icon) buffer a click after doing so for when your icon lands on the block and then don’t click to fall to the floor. Stay on the floor until the end from there. ", 
 "difficulty": "easy",
 "secret_way_at": 47,
-    "records": [ ]
+    "records": [
+        {
+            "user": "Sc0r5i0N",
+            "link": "https://www.youtube.com/watch?v=V3-lfhTBju0&t=23s",
+            "percent": 100,
+            "hz": 144,
+            "mobile": false
+         }
+    ]
 }
