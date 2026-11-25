@@ -13,5 +13,13 @@
 "description": "Enter the solo portal at 34% as the ufo without holding the dash orb or hitting the cube portal and then fall to the floor. Move above the floor at 39% to avoid the invisible spider portal and then start spamming at the ceiling at 40%. Avoid the invisible block at the ceiling at 45% and then continue spamming until 48%, where you'll then fall to the floor. Hold the dash orb at 50% to re-enter the level.\n\nhold through the slope as the wave at 57% and then fall to the floor after the cube portal. Fall between the diagonal wall of invisible spikes at 60%. Stay at the floor until 86%, where you'll then need to enter the swing portal and then click the black orb and hold until the level ends.", 
 "difficulty": "extreme",
 "secret_way_at": 35,
-    "records": [ ]
+    "records": [
+        {
+            "user": "Gold Dyno",
+            "link": "https://youtu.be/5Yr5asEYgJI?si=uT3Q1wAJRUrxHjjG",
+            "percent": 100,
+            "hz": 120,
+            "mobile": true
+         }
+    ]
 }
