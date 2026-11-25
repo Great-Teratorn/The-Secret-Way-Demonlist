@@ -12,6 +12,8 @@
 "secret_way_end": 100,
 "description": "Go into the cube portal in the top left corner of the bottom pillar and buffer to jump out of the level. Stay on the ground for the rest of the level.", 
 "difficulty": "easy",
+"removedReason": "voted to be removed",
+"dateRemoved": "25/11/2026",
 "secret_way_at": 80,
 "password": "Not Copyable",
     "records": [ ]

@@ -1,0 +1,17 @@
+{
+    "id": 91578599,
+    "name": "zuttomae",
+    "author": "Wyntaee",
+    "creators": [
+        "Wyntaee"
+    ],
+    "verifier": "aMaxZon200",
+    "verification": "https://www.youtube.com/watch?v=diR-r7Nlmrw",
+    "percentToQualify": 100,
+"secret_way_start": 15,
+"secret_way_end": 52,
+"description": "Fall to the floor before the platform at 14% instead of entering the yellow gravity portal. Jump right before reaching the saw in the floor at 15% to also go under the later platform. Stay at the floor until 50%, where you'll need to jump over the hitboxes until 52% while staying under the invisible saw. Continue playing normally after you enter the ship portal at 52%.", 
+"difficulty": "insane",
+"secret_way_at": 16,
+    "records": [ ]
+}
