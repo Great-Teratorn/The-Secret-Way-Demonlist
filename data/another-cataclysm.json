@@ -15,6 +15,12 @@
 "difficulty": "hard",
     "password": "Password Required",
     "records": [
-        
+        {
+            "user": "aMaxZon200",
+            "link": "https://www.youtube.com/watch?v=yjpljoZeK4U",
+            "percent": 100,
+            "hz": 240,
+            "mobile": false
+         }
     ]
 }
