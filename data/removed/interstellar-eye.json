@@ -1,6 +1,6 @@
 {
     "id": 148110348,
-    "name": "Interstellar Eye",
+    "name": "Interstellar Eye (R)",
     "author": "iErikyXX",
     "creators": [
         "iErikyXX",
@@ -13,6 +13,8 @@
 "secret_way_end": 100,
 "description": "Go up at 57% over the moving circles of portals and go between an invisible saw and spike at 58%. Then slightly tap the blue orb to go up. Wait a little bit and start maintaining a position by spamming until you complete the level.",
 "difficulty": "insane",
+"removedReason": "Patched",
+"dateRemoved": "26/11/2026",
 "secret_way_at": 59,
     "records": [ ]
 }
