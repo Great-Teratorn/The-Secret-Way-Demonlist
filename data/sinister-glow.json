@@ -31,7 +31,13 @@
             "percent": 100,
             "hz": 240,
             "mobile": false
+        },
+        {
+            "user": "aMaxZon200",
+            "link": "https://www.youtube.com/watch?v=5Or0r0AydZs",
+            "percent": 100,
+            "hz": 240,
+            "mobile": false
         }
     ]
-
 }
